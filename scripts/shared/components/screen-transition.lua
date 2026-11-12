@@ -66,42 +66,38 @@ function M.renderNanoVG(vg, screenW, screenH)
     nvgFillColor(vg, nvgRGBA(PAPER[1], PAPER[2], PAPER[3], math.floor(ep * 246)))
     nvgFill(vg)
 
-    -- 2. 上下双向聚拢的手绘波浪云朵帷幕
-    local curtainSlide = (1 - ep) * 110
+    -- 2. 上下双向聚拢的手绘花草云朵与藤蔓帷幕（无独立圆圈内切线）
+    local curtainSlide = (1 - ep) * 95
     local topY = -curtainSlide
     local botY = screenH + curtainSlide
-    local puffs = 6
-    local puffStep = screenW / (puffs - 1)
     nvgGlobalAlpha(vg, ep)
 
-    -- 顶部暖黄底衬与云朵波浪
+    -- 顶部与底部柔和暖色渐变衬底带
+    local topBand = nvgLinearGradient(vg, 0, topY, 0, topY + 115,
+        nvgRGBA(244, 229, 192, 245), nvgRGBA(255, 246, 220, 0))
     nvgBeginPath(vg)
-    nvgRect(vg, 0, topY - 40, screenW, 92)
-    nvgFillColor(vg, nvgRGBA(244, 229, 192, 255))
+    nvgRect(vg, 0, topY, screenW, 115)
+    nvgFillPaint(vg, topBand)
     nvgFill(vg)
-    for i = 0, puffs - 1 do
-        local px = i * puffStep
-        local py = topY + 46 + math.sin(animClock_ * 5 + i * 1.1) * 4
-        local pr = puffStep * 0.46
-        Pen.circle(vg, px, py, pr, { 244, 229, 192, 255 }, 2.2, C.ink)
-    end
 
-    -- 底部暖黄底衬与云朵波浪
+    local botBand = nvgLinearGradient(vg, 0, botY - 115, 0, botY,
+        nvgRGBA(255, 246, 220, 0), nvgRGBA(244, 229, 192, 245))
     nvgBeginPath(vg)
-    nvgRect(vg, 0, botY - 52, screenW, 92)
-    nvgFillColor(vg, nvgRGBA(244, 229, 192, 255))
+    nvgRect(vg, 0, botY - 115, screenW, 115)
+    nvgFillPaint(vg, botBand)
     nvgFill(vg)
-    for i = 0, puffs - 1 do
-        local px = i * puffStep
-        local py = botY - 46 + math.cos(animClock_ * 5 + i * 1.1) * 4
-        local pr = puffStep * 0.46
-        Pen.circle(vg, px, py, pr, { 244, 229, 192, 255 }, 2.2, C.ink)
-    end
 
-    -- 两侧飘入的手绘花草云朵插画
-    local cloudSlide = (1 - ep) * 90
-    Sprites.drawUI(vg, "transition-cloud", 68 - cloudSlide, topY + 74, 132, 88, ep * 0.95)
-    Sprites.drawUI(vg, "transition-cloud", screenW - 68 + cloudSlide, botY - 74, 132, 88, ep * 0.95)
+    -- 顶部中央悬挂手绘花叶藤蔓 + 两侧飘入的手绘云朵簇
+    local cloudSlide = (1 - ep) * 75
+    local sway = math.sin(animClock_ * 4.5) * 3.5
+    Sprites.drawUI(vg, "scenes/garden-top", screenW * 0.5, topY + 42 + sway * 0.5, 184, 92, ep * 0.96)
+    Sprites.drawUI(vg, "transition-cloud", 66 - cloudSlide, topY + 56 - sway, 136, 90, ep * 0.96)
+    Sprites.drawUI(vg, "transition-cloud", screenW - 66 + cloudSlide, topY + 60 + sway, 136, 90, ep * 0.96)
+
+    -- 底部两侧与中央错落迎合的手绘花草云朵簇
+    Sprites.drawUI(vg, "transition-cloud", 74 - cloudSlide, botY - 54 + sway, 144, 96, ep * 0.96)
+    Sprites.drawUI(vg, "transition-cloud", screenW - 74 + cloudSlide, botY - 58 - sway, 144, 96, ep * 0.96)
+    Sprites.drawUI(vg, "transition-cloud", screenW * 0.5, botY - 40 + sway * 0.6, 156, 104, ep * 0.98)
 
     -- 3. 中央弹簧弹出的跳跃小狐狸圆章与环绕星点
     if ep > 0.08 then
@@ -136,10 +132,13 @@ function M.renderNanoVG(vg, screenW, screenH)
         end
         nvgRestore(vg)
 
-        -- 底部活泼手绘铭牌
-        Pen.texturedPlaque(vg, -54, 52, 108, 28, C.orange, 2.2, { radius = 14 })
-        local dots = string.rep(".", (math.floor(animClock_ * 6) % 3) + 1)
-        Pen.text(vg, 0, 66, "出发喽" .. dots, 14, C.ink)
+        -- 底部活泼手绘胶囊与三颗波浪弹跳小星点（不依赖特定字体名）
+        Pen.texturedPlaque(vg, -46, 52, 92, 26, C.orange, 2.2, { radius = 13 })
+        for d = 1, 3 do
+            local dx = (d - 2) * 18
+            local dy = 65 - math.max(0, math.sin(animClock_ * 10 - (d - 1) * 1.1)) * 3.5
+            Pen.circle(vg, dx, dy, 4.2, C.paper, 1.6, C.ink)
+        end
 
         nvgRestore(vg)
     end
