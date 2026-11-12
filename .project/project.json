@@ -8,11 +8,9 @@
   "version": "1.0.4",
   "taptap_publish": {
     "title": "万曲乐源",
-    "description": "",
     "category": "casual",
     "screen_orientation": "portrait",
     "collection_type": "sce",
-    "trial_note": "",
     "app_platforms": "1,2",
     "app_id": 207814,
     "developer_id": 991084,
@@ -21,6 +19,14 @@
   "assets": {
     "icon": "",
     "screenshots": [],
-    "promotional_image": ""
+    "promotional_image": "",
+    "icon_url": "https://img.tapimg.com/market/images/ef4719159691d7db73760cadfc67eac4.png"
+  },
+  "metadata": {
+    "updated_at": "2026-11-12T07:45:13.563Z"
+  },
+  "test_qrcode": {
+    "url": "https://tapcode-sce.spark.xd.com/qrcode/m_ccva_1794469513503.png",
+    "generated_at": "2026-11-12T07:45:13.563Z"
   }
 }
