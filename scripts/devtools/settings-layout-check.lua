@@ -38,6 +38,9 @@ for index,stateId in ipairs(states) do
     V.atFrame(30+index*5,function()
         for _,id in ipairs(states) do anti:Find(id):SetVisible(id==selected) end
         UI.Layout()
+    end)
+    V.atFrame(32+index*5,function()
+        UI.Layout()
         local prefix=selected=="anti-addiction-reminder" and "" or selected:gsub("anti%-addiction%-","").."-"
         local card=anti:Find(prefix.."rest-card"):GetAbsoluteLayout()
         local w,h=UI.GetViewportSize()
