@@ -282,13 +282,12 @@ local function renderBgGrid(vg,screenW,gridTop,gridBottom,t,layout)
         local x=layout.startX+(index%layout.cols)*90
         local y=gridTop+14+math.floor(index/layout.cols)*114
         local selected,unlocked=bg.id==selectedBgId_,bgManager.isUnlocked(bg.id)
-        -- 竖版明信片保留上下两端场景，正方形Cover会把辨识主题的装饰全裁掉。
+        -- 缩略图显示背景最上方 1:1 区域，四周保留 3px 边框缝隙。
         Pen.plaque(vg,x,y,76,76,C.paper,0)
-        local ph=70
-        local pw=ph*9/20
-        nvgSave(vg);nvgTranslate(vg,x+(76-pw)/2,y+3)
-        nvgIntersectScissor(vg,0,0,pw,ph)
-        nvgScale(vg,pw/200,pw/200)
+        local psize=70
+        nvgSave(vg);nvgTranslate(vg,x+3,y+3)
+        nvgIntersectScissor(vg,0,0,psize,psize)
+        nvgScale(vg,psize/200,psize/200)
         bgManager.renderBackground(vg,200,200*20/9,t,bg)
         nvgRestore(vg)
         tileState(vg,x,y,76,selected,unlocked)

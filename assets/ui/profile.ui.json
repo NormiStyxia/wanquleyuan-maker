@@ -1901,13 +1901,28 @@
                   "type": "Panel",
                   "id": "background-default-image",
                   "position": "absolute",
-                  "left": 22.25,
+                  "left": 3,
                   "top": 3,
-                  "width": 31.5,
+                  "width": 70,
                   "height": 70,
                   "backgroundColor": false,
-                  "backgroundImage": "image/handdrawn/backgrounds/previews/default.png",
-                  "backgroundFit": "cover"
+                  "overflow": "hidden",
+                  "children": [
+                    {
+                      "type": "Panel",
+                      "id": "background-default-image-top-crop",
+                      "position": "absolute",
+                      "left": 0,
+                      "top": 0,
+                      "width": 70,
+                      "height": 155.556,
+                      "backgroundColor": false,
+                      "backgroundImage": "image/handdrawn/backgrounds/previews/default.png",
+                      "backgroundFit": "cover",
+                      "pointerEvents": "none",
+                      "children": []
+                    }
+                  ]
                 },
                 {
                   "type": "Label",
@@ -2007,13 +2022,28 @@
                   "type": "Panel",
                   "id": "background-sky_blue-image",
                   "position": "absolute",
-                  "left": 22.25,
+                  "left": 3,
                   "top": 3,
-                  "width": 31.5,
+                  "width": 70,
                   "height": 70,
                   "backgroundColor": false,
-                  "backgroundImage": "image/handdrawn/backgrounds/previews/sky_blue.png",
-                  "backgroundFit": "cover"
+                  "overflow": "hidden",
+                  "children": [
+                    {
+                      "type": "Panel",
+                      "id": "background-sky_blue-image-top-crop",
+                      "position": "absolute",
+                      "left": 0,
+                      "top": 0,
+                      "width": 70,
+                      "height": 155.556,
+                      "backgroundColor": false,
+                      "backgroundImage": "image/handdrawn/backgrounds/previews/sky_blue.png",
+                      "backgroundFit": "cover",
+                      "pointerEvents": "none",
+                      "children": []
+                    }
+                  ]
                 },
                 {
                   "type": "Label",
@@ -2086,13 +2116,28 @@
                   "type": "Panel",
                   "id": "background-mint_green-image",
                   "position": "absolute",
-                  "left": 22.25,
+                  "left": 3,
                   "top": 3,
-                  "width": 31.5,
+                  "width": 70,
                   "height": 70,
                   "backgroundColor": false,
-                  "backgroundImage": "image/handdrawn/backgrounds/previews/mint_green.png",
-                  "backgroundFit": "cover"
+                  "overflow": "hidden",
+                  "children": [
+                    {
+                      "type": "Panel",
+                      "id": "background-mint_green-image-top-crop",
+                      "position": "absolute",
+                      "left": 0,
+                      "top": 0,
+                      "width": 70,
+                      "height": 155.556,
+                      "backgroundColor": false,
+                      "backgroundImage": "image/handdrawn/backgrounds/previews/mint_green.png",
+                      "backgroundFit": "cover",
+                      "pointerEvents": "none",
+                      "children": []
+                    }
+                  ]
                 },
                 {
                   "type": "Label",
@@ -2165,13 +2210,28 @@
                   "type": "Panel",
                   "id": "background-sunset_glow-image",
                   "position": "absolute",
-                  "left": 22.25,
+                  "left": 3,
                   "top": 3,
-                  "width": 31.5,
+                  "width": 70,
                   "height": 70,
                   "backgroundColor": false,
-                  "backgroundImage": "image/handdrawn/backgrounds/previews/sunset_glow.png",
-                  "backgroundFit": "cover"
+                  "overflow": "hidden",
+                  "children": [
+                    {
+                      "type": "Panel",
+                      "id": "background-sunset_glow-image-top-crop",
+                      "position": "absolute",
+                      "left": 0,
+                      "top": 0,
+                      "width": 70,
+                      "height": 155.556,
+                      "backgroundColor": false,
+                      "backgroundImage": "image/handdrawn/backgrounds/previews/sunset_glow.png",
+                      "backgroundFit": "cover",
+                      "pointerEvents": "none",
+                      "children": []
+                    }
+                  ]
                 },
                 {
                   "type": "Panel",
@@ -2272,13 +2332,28 @@
                   "type": "Panel",
                   "id": "background-lavender-image",
                   "position": "absolute",
-                  "left": 22.25,
+                  "left": 3,
                   "top": 3,
-                  "width": 31.5,
+                  "width": 70,
                   "height": 70,
                   "backgroundColor": false,
-                  "backgroundImage": "image/handdrawn/backgrounds/previews/lavender.png",
-                  "backgroundFit": "cover"
+                  "overflow": "hidden",
+                  "children": [
+                    {
+                      "type": "Panel",
+                      "id": "background-lavender-image-top-crop",
+                      "position": "absolute",
+                      "left": 0,
+                      "top": 0,
+                      "width": 70,
+                      "height": 155.556,
+                      "backgroundColor": false,
+                      "backgroundImage": "image/handdrawn/backgrounds/previews/lavender.png",
+                      "backgroundFit": "cover",
+                      "pointerEvents": "none",
+                      "children": []
+                    }
+                  ]
                 },
                 {
                   "type": "Panel",
@@ -2379,13 +2454,28 @@
                   "type": "Panel",
                   "id": "background-cherry_blossom-image",
                   "position": "absolute",
-                  "left": 22.25,
+                  "left": 3,
                   "top": 3,
-                  "width": 31.5,
+                  "width": 70,
                   "height": 70,
                   "backgroundColor": false,
-                  "backgroundImage": "image/handdrawn/backgrounds/previews/cherry_blossom.png",
-                  "backgroundFit": "cover"
+                  "overflow": "hidden",
+                  "children": [
+                    {
+                      "type": "Panel",
+                      "id": "background-cherry_blossom-image-top-crop",
+                      "position": "absolute",
+                      "left": 0,
+                      "top": 0,
+                      "width": 70,
+                      "height": 155.556,
+                      "backgroundColor": false,
+                      "backgroundImage": "image/handdrawn/backgrounds/previews/cherry_blossom.png",
+                      "backgroundFit": "cover",
+                      "pointerEvents": "none",
+                      "children": []
+                    }
+                  ]
                 },
                 {
                   "type": "Panel",
@@ -2486,13 +2576,28 @@
                   "type": "Panel",
                   "id": "background-golden_autumn-image",
                   "position": "absolute",
-                  "left": 22.25,
+                  "left": 3,
                   "top": 3,
-                  "width": 31.5,
+                  "width": 70,
                   "height": 70,
                   "backgroundColor": false,
-                  "backgroundImage": "image/handdrawn/backgrounds/previews/golden_autumn.png",
-                  "backgroundFit": "cover"
+                  "overflow": "hidden",
+                  "children": [
+                    {
+                      "type": "Panel",
+                      "id": "background-golden_autumn-image-top-crop",
+                      "position": "absolute",
+                      "left": 0,
+                      "top": 0,
+                      "width": 70,
+                      "height": 155.556,
+                      "backgroundColor": false,
+                      "backgroundImage": "image/handdrawn/backgrounds/previews/golden_autumn.png",
+                      "backgroundFit": "cover",
+                      "pointerEvents": "none",
+                      "children": []
+                    }
+                  ]
                 },
                 {
                   "type": "Panel",
