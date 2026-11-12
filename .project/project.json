@@ -1,0 +1,53 @@
+{
+  "$schema": "../schemas/project.schema.json",
+  "project_id": "p_sn01",
+  "author": {
+    "id": "803528115"
+  },
+  "entry": "main.lua",
+  "version": "1.0.4",
+  "taptap_publish": {
+    "title": "玩趣乐园",
+    "description": "轻量化益智小游戏聚合平台，快速开始、连续体验",
+    "category": "puzzle",
+    "screen_orientation": "portrait",
+    "collection_type": "sce",
+    "trial_note": "",
+    "app_platforms": "1,2",
+    "developer_id": 378112,
+    "app_id": 833997,
+    "miniapp_id": "tapmcl5ucnshd4gt6q"
+  },
+  "assets": {
+    "icon": "./_uploads/2bbdf196ed2c78fe021b1d179e58d29600b05d2763f2eb21d82368682e5d9961.png",
+    "screenshots": [],
+    "promotional_image": "",
+    "icon_url": "https://img-tc.tapimg.com/market/images/Fvdvklt5qJUIfgF7x8umI1BukuXN.png"
+  },
+  "test_qrcode": {
+    "url": "https://tapcode-sce.spark.xd.com/qrcode/p_sn01_1787301599327.png",
+    "generated_at": "2026-08-21T08:39:59.461Z"
+  },
+  "metadata": {
+    "updated_at": "2026-11-11T04:18:47.753Z"
+  },
+  "dc_publish_sync": {
+    "synced": true,
+    "dcVersion": "V-20260326",
+    "dcStatus": "INIT",
+    "baseFields": {
+      "title": "我的森林世界",
+      "description": null,
+      "category": "casual",
+      "trial_note": null,
+      "icon_url": "https://img-tc.tapimg.com/market/images/Fvdvklt5qJUIfgF7x8umI1BukuXN.png",
+      "banner_url": null,
+      "square_promo_url": null,
+      "cover_horizontal_url": null,
+      "cover_vertical_url": null,
+      "screenshot_urls": null
+    },
+    "pending": {},
+    "baseGameplayDemoVideoId": 0
+  }
+}
