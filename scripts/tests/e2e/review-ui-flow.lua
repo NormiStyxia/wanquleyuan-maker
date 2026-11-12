@@ -8,6 +8,33 @@ local Density=require("shared.utils.density")
 local Health=require("shared.components.health-advisory")
 local Bg=require("shared.background-manager")
 local state=WANQU_UI_FLOW
+-- 记录真实引擎图标所有权：有正句柄不等于仍是原来的图片（可能已变成字体图集）。
+local iconPaths={}
+for _,path in pairs(require("shared.constants.art").gameIcons) do iconPaths[path]=true end
+local iconOwners,iconContexts,iconReleases={},0,0
+local createImage,deleteImage,deleteContext=nvgCreateImage,nvgDeleteImage,nvgDelete
+nvgCreateImage=function(vg,path,flags)
+    local image=createImage(vg,path,flags)
+    if iconPaths[path] and image and image>0 then
+        if not iconOwners[vg] then iconOwners[vg]={};iconContexts=iconContexts+1 end
+        V.assert(iconOwners[vg][image]==nil,"当前上下文没有重复加载大厅图标")
+        iconOwners[vg][image]=path
+    end
+    return image
+end
+nvgDeleteImage=function(vg,image)
+    if iconOwners[vg] and iconOwners[vg][image] then
+        iconOwners[vg][image]=nil;iconReleases=iconReleases+1
+    end
+    return deleteImage(vg,image)
+end
+nvgDelete=function(vg)
+    if iconOwners[vg] then
+        V.assert(next(iconOwners[vg])==nil,"大厅销毁上下文前已释放全部图标并清空缓存")
+        iconOwners[vg]=nil
+    end
+    return deleteContext(vg)
+end
 local names={"p1-puzzle-land","p2-memory-flip","p3-match-3","p4-link-match"}
 local tabs,cards,selects,gameDraws,pauseHits={},{},{},{},nil
 local tabRender=require("shared.components.tab-bar").render
@@ -180,5 +207,23 @@ V.atFrame(272,function()
     for _,path in ipairs(state.imageFailures) do print("[UIFlowImageError] "..path) end
     V.assert(state.files["saves/p1-puzzle-land.json"]~=nil,"退出存档只写独立内存")
     print("[UIFlow] finished real main/router/adapter path; saves and cloud isolated")
+end)
+-- replace 会销毁首页上下文；push/pop 保留上下文，两条路径都要覆盖。
+for round=0,7 do
+    V.atFrame(282+round*20,function() tab("home") end)
+    V.atFrame(292+round*20,function()
+        V.assert(Router.getCurrent()=="home","重建大厅可达")
+        local loaded=0
+        for _,images in pairs(iconOwners) do for _ in pairs(images) do loaded=loaded+1 end end
+        V.assert(loaded==4,"重建大厅四个独立手绘图标均重新加载")
+        tab(round%2==0 and "profile" or "adventure")
+    end)
+end
+V.atFrame(452,function()
+    V.assert(iconContexts==10,"十次大厅上下文均独立加载图标")
+    V.assert(iconReleases==40,"四十个大厅图标均在所属上下文销毁前释放")
+    V.assert(next(iconOwners)==nil,"离开大厅后没有遗留图标所有权")
+    V.assert(#state.errors==0 and #state.imageFailures==0,"反复切页后无业务错误或图片加载失败")
+    print("[UIFlow] icon lifecycle contexts="..iconContexts.." released="..iconReleases)
     V.finish()
 end)

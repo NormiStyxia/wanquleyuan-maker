@@ -30,6 +30,7 @@ local fontHandle_ = -1
 local active_ = false
 
 -- 瓷砖点击区域缓存（复用表，避免每帧 GC）
+---@type {x:number, y:number, w:number, h:number, config:table}[]
 local tileHitAreas_ = {}  -- { { x, y, w, h, config } }
 local tileHitCount_ = 0   -- 当前帧有效的点击区域数量
 
@@ -139,7 +140,7 @@ local function renderGrid(vg, screenW, screenH, curY)
         tileHitCount_ = tileHitCount_ + 1
         local hitArea = tileHitAreas_[tileHitCount_]
         if not hitArea then
-            hitArea = { x = 0, y = 0, w = 0, h = 0, config = nil }
+            hitArea = { x = 0, y = 0, w = 0, h = 0, config = config }
             tileHitAreas_[tileHitCount_] = hitArea
         end
         hitArea.x = tx
@@ -382,6 +383,7 @@ function M.destroy()
     FoxMascot.cleanup()
 
     if nvgCtx_ then
+        GameCard.release(nvgCtx_)
         bgManager.clearThemeCache(nvgCtx_)
         PlayTimeGuard.cleanup(nvgCtx_)
         nvgDelete(nvgCtx_)
