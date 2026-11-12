@@ -513,7 +513,9 @@ function M.open(parentContainer, opts)
                     -- 平整纸色标题，留出清楚的内容层级。
                     UI.Panel {
                         width="100%", height=s(64), flexShrink=0,
-                        backgroundColor=Art.colors.track, borderBottomWidth=2, borderColor=Art.colors.ink,
+                        backgroundColor=Art.colors.track,
+                        borderRadius={ s(12), s(12), 0, 0 },
+                        borderWidth=s(2.5), borderBottomWidth=2, borderColor=Art.colors.ink,
                         justifyContent="center", alignItems="center",
                         children={ UI.Label {
                             text="设置", fontSize=s(26), fontColor=Art.colors.ink, fontWeight="bold",

@@ -7,38 +7,46 @@ local Pen = require("shared.components.handdrawn")
 local C = Paper.colors
 local function ink(vg,size)
     nvgStrokeColor(vg,Pen.color(C.ink))
-    nvgStrokeWidth(vg,math.max(1.2,math.min(2.1,size*0.035)))
+    nvgStrokeWidth(vg,math.max(1.5,math.min(2.4,size*0.042)))
+    nvgLineCap(vg,NVG_ROUND)
     nvgLineJoin(vg,NVG_ROUND); nvgStroke(vg)
 end
+local function shine(vg, x, y, r)
+    nvgBeginPath(vg)
+    nvgCircle(vg, x, y, r)
+    nvgFillColor(vg, nvgRGBA(255, 255, 255, 185))
+    nvgFill(vg)
+end
+local CELL_CREAM = nvgRGBA(255, 248, 226, 255)
 local M = {}
 local Sprites=require("shared.rendering.piece-sprites")
 
--- 图案颜色调色板（24 色，高区分度）
+-- 图案颜色调色板（24 色，与手绘贴图色板一致的柔和暖调高区分度色彩）
 M.COLORS = {
-    nvgRGBA(46,  204, 113, 255),   -- 1  绿
-    nvgRGBA(231, 76,  60,  255),   -- 2  红
-    nvgRGBA(52,  152, 219, 255),   -- 3  蓝
-    nvgRGBA(241, 196, 15,  255),   -- 4  黄
-    nvgRGBA(155, 89,  182, 255),   -- 5  紫
-    nvgRGBA(230, 126, 34,  255),   -- 6  橙
-    nvgRGBA(26,  188, 156, 255),   -- 7  青
-    nvgRGBA(236, 100, 175, 255),   -- 8  粉
-    nvgRGBA(52,  73,  94,  255),   -- 9  深灰蓝
-    nvgRGBA(245, 210, 50,  255),   -- 10 亮黄
-    nvgRGBA(39,  174, 96,  255),   -- 11 翠绿
-    nvgRGBA(41,  128, 185, 255),   -- 12 钢蓝
-    nvgRGBA(142, 68,  173, 255),   -- 13 深紫
-    nvgRGBA(211, 84,  0,   255),   -- 14 深橙
-    nvgRGBA(22,  160, 133, 255),   -- 15 深青
-    nvgRGBA(243, 156, 18,  255),   -- 16 琥珀
-    nvgRGBA(127, 140, 141, 255),   -- 17 灰
-    nvgRGBA(44,  62,  80,  255),   -- 18 暗蓝
-    nvgRGBA(230, 80,  100, 255),   -- 19 玫红
-    nvgRGBA(100, 180, 80,  255),   -- 20 草绿
-    nvgRGBA(80,  100, 200, 255),   -- 21 靛蓝
-    nvgRGBA(200, 150, 50,  255),   -- 22 金色
-    nvgRGBA(170, 80,  160, 255),   -- 23 兰紫
-    nvgRGBA(80,  190, 180, 255),   -- 24 湖绿
+    nvgRGBA(97,  212, 146, 255),   -- 1  薄荷绿
+    nvgRGBA(234, 124, 112, 255),   -- 2  珊瑚红
+    nvgRGBA(104, 176, 224, 255),   -- 3  晴空蓝
+    nvgRGBA(242, 215, 106, 255),   -- 4  奶酪黄
+    nvgRGBA(174, 125, 195, 255),   -- 5  薰衣草紫
+    nvgRGBA(233, 164, 102, 255),   -- 6  蜜桃橙
+    nvgRGBA(88,  200, 177, 255),   -- 7  松石青
+    nvgRGBA(238, 142, 195, 255),   -- 8  樱花粉
+    nvgRGBA(121, 136, 209, 255),   -- 9  矢车菊蓝
+    nvgRGBA(203, 103, 92,  255),   -- 10 陶土红
+    nvgRGBA(86,  188, 129, 255),   -- 11 翠竹绿
+    nvgRGBA(89,  155, 197, 255),   -- 12 湖海蓝
+    nvgRGBA(164, 108, 188, 255),   -- 13 丁香紫
+    nvgRGBA(218, 144, 96,  255),   -- 14 杏仁橙
+    nvgRGBA(78,  177, 158, 255),   -- 15 碧玉青
+    nvgRGBA(244, 191, 107, 255),   -- 16 琥珀黄
+    nvgRGBA(133, 193, 118, 255),   -- 17 青苹果绿
+    nvgRGBA(185, 116, 178, 255),   -- 18 兰花紫
+    nvgRGBA(233, 126, 141, 255),   -- 19 玫瑰粉
+    nvgRGBA(148, 185, 105, 255),   -- 20 嫩芽绿
+    nvgRGBA(110, 150, 215, 255),   -- 21 钴蓝
+    nvgRGBA(215, 172, 99,  255),   -- 22 麦穗金
+    nvgRGBA(196, 132, 182, 255),   -- 23 藕荷紫
+    nvgRGBA(119, 201, 194, 255),   -- 24 浅湖绿
 }
 
 --- 根据 colorIndex 获取颜色
@@ -169,195 +177,229 @@ function shapes.heart(vg, cx, cy, size, color)
     ink(vg,size)
 end
 
-function shapes.pentagon(vg, cx, cy, size, color)
-    local r = size * 0.3
+local function roundedPoly(vg, pts, cornerR)
+    local n = #pts
     nvgBeginPath(vg)
-    for i = 0, 4 do
-        local angle = math.rad(-90 + i * 72)
-        local px = cx + r * math.cos(angle)
-        local py = cy + r * math.sin(angle)
-        if i == 0 then nvgMoveTo(vg, px, py) else nvgLineTo(vg, px, py) end
+    for i = 1, n do
+        local prev = pts[(i - 2) % n + 1]
+        local curr = pts[i]
+        local nextPt = pts[i % n + 1]
+        local dx1, dy1 = prev[1] - curr[1], prev[2] - curr[2]
+        local dx2, dy2 = nextPt[1] - curr[1], nextPt[2] - curr[2]
+        local len1 = math.sqrt(dx1 * dx1 + dy1 * dy1)
+        local len2 = math.sqrt(dx2 * dx2 + dy2 * dy2)
+        local r = math.min(cornerR, len1 * 0.35, len2 * 0.35)
+        local p1x, p1y = curr[1] + dx1 / len1 * r, curr[2] + dy1 / len1 * r
+        local p2x, p2y = curr[1] + dx2 / len2 * r, curr[2] + dy2 / len2 * r
+        if i == 1 then nvgMoveTo(vg, p1x, p1y) else nvgLineTo(vg, p1x, p1y) end
+        nvgQuadTo(vg, curr[1], curr[2], p2x, p2y)
     end
     nvgClosePath(vg)
+end
+
+function shapes.pentagon(vg, cx, cy, size, color)
+    local r = size * 0.30
+    local pts = {}
+    for i = 0, 4 do
+        local angle = math.rad(-90 + i * 72)
+        pts[#pts + 1] = { cx + r * math.cos(angle), cy + size * 0.02 + r * math.sin(angle) }
+    end
+    roundedPoly(vg, pts, size * 0.048)
     nvgFillColor(vg, color)
     nvgFill(vg)
     ink(vg,size)
+    shine(vg, cx - r * 0.28, cy - r * 0.22, size * 0.036)
 end
 
 function shapes.hexagon(vg, cx, cy, size, color)
-    local r = size * 0.3
-    nvgBeginPath(vg)
+    local r = size * 0.30
+    local pts = {}
     for i = 0, 5 do
         local angle = math.rad(-90 + i * 60)
-        local px = cx + r * math.cos(angle)
-        local py = cy + r * math.sin(angle)
-        if i == 0 then nvgMoveTo(vg, px, py) else nvgLineTo(vg, px, py) end
+        pts[#pts + 1] = { cx + r * math.cos(angle), cy + r * math.sin(angle) }
     end
-    nvgClosePath(vg)
+    roundedPoly(vg, pts, size * 0.045)
     nvgFillColor(vg, color)
     nvgFill(vg)
     ink(vg,size)
+    shine(vg, cx - r * 0.28, cy - r * 0.25, size * 0.036)
 end
 
 function shapes.arrow(vg, cx, cy, size, color)
-    local s = size * 0.38
-    local blueColor = nvgRGBA(52, 152, 219, 255)
-    -- 朝下箭头
-    nvgBeginPath(vg)
-    nvgMoveTo(vg, cx, cy + s)
-    nvgLineTo(vg, cx + s * 0.7, cy)
-    nvgLineTo(vg, cx + s * 0.25, cy)
-    nvgLineTo(vg, cx + s * 0.25, cy - s)
-    nvgLineTo(vg, cx - s * 0.25, cy - s)
-    nvgLineTo(vg, cx - s * 0.25, cy)
-    nvgLineTo(vg, cx - s * 0.7, cy)
-    nvgClosePath(vg)
-    nvgFillColor(vg, blueColor)
+    local s = size * 0.28
+    local pts = {
+        { cx, cy + s },
+        { cx + s * 0.82, cy + s * 0.05 },
+        { cx + s * 0.36, cy + s * 0.05 },
+        { cx + s * 0.36, cy - s * 0.92 },
+        { cx - s * 0.36, cy - s * 0.92 },
+        { cx - s * 0.36, cy + s * 0.05 },
+        { cx - s * 0.82, cy + s * 0.05 },
+    }
+    roundedPoly(vg, pts, size * 0.035)
+    nvgFillColor(vg, color)
     nvgFill(vg)
     ink(vg,size)
+    shine(vg, cx - s * 0.14, cy - s * 0.52, size * 0.032)
 end
 
 function shapes.lightning(vg, cx, cy, size, color)
-    local s = size * 0.21
-    nvgBeginPath(vg)
-    nvgMoveTo(vg, cx + s * 0.2, cy - s * 2.2)
-    nvgLineTo(vg, cx - s * 1.0, cy + s * 0.2)
-    nvgLineTo(vg, cx + s * 0.1, cy + s * 0.2)
-    nvgLineTo(vg, cx - s * 0.2, cy + s * 2.2)
-    nvgLineTo(vg, cx + s * 1.0, cy - s * 0.2)
-    nvgLineTo(vg, cx - s * 0.1, cy - s * 0.2)
-    nvgClosePath(vg)
+    local s = size * 0.145
+    local pts = {
+        { cx + s * 0.35, cy - s * 1.95 },
+        { cx - s * 1.15, cy + s * 0.15 },
+        { cx - s * 0.05, cy + s * 0.15 },
+        { cx - s * 0.35, cy + s * 1.95 },
+        { cx + s * 1.15, cy - s * 0.15 },
+        { cx + s * 0.05, cy - s * 0.15 },
+    }
+    roundedPoly(vg, pts, size * 0.024)
     nvgFillColor(vg, color)
     nvgFill(vg)
     ink(vg,size)
 end
 
-function shapes.crescent(vg, cx, cy, size, color)
-    local r = size * 0.3
+local function drawTrueCrescent(vg, cx, cy, r, dir, color, size)
+    -- 使用两条贝塞尔曲线绘制闭合弯月，不依赖底色遮挡圆
+    local tipX = cx + dir * r * 0.38
+    local topY = cy - r * 0.86
+    local botY = cy + r * 0.86
     nvgBeginPath(vg)
-    nvgCircle(vg, cx, cy, r)
+    nvgMoveTo(vg, tipX, topY)
+    nvgBezierTo(vg, cx - dir * r * 1.18, cy - r * 0.72, cx - dir * r * 1.18, cy + r * 0.72, tipX, botY)
+    nvgBezierTo(vg, cx - dir * r * 0.36, cy + r * 0.42, cx - dir * r * 0.36, cy - r * 0.42, tipX, topY)
+    nvgClosePath(vg)
     nvgFillColor(vg, color)
     nvgFill(vg)
-    ink(vg,size)
-    nvgBeginPath(vg)
-    nvgCircle(vg, cx + r * 0.4, cy - r * 0.15, r * 0.78)
-    nvgFillColor(vg, nvgRGBA(255, 255, 255, 255))
-    nvgFill(vg)
-    ink(vg,size)
+    ink(vg, size)
+end
+
+function shapes.crescent(vg, cx, cy, size, color)
+    drawTrueCrescent(vg, cx + size * 0.02, cy, size * 0.30, 1, color, size)
+    shine(vg, cx - size * 0.12, cy - size * 0.08, size * 0.032)
 end
 
 function shapes.shield(vg, cx, cy, size, color)
     local w = size * 0.25
-    local h = size * 0.34
+    local h = size * 0.29
     nvgBeginPath(vg)
     nvgMoveTo(vg, cx, cy - h)
     nvgLineTo(vg, cx + w, cy - h * 0.5)
     nvgLineTo(vg, cx + w, cy + h * 0.1)
-    nvgBezierTo(vg, cx + w, cy + h * 0.6, cx, cy + h, cx, cy + h)
-    nvgBezierTo(vg, cx, cy + h, cx - w, cy + h * 0.6, cx - w, cy + h * 0.1)
+    nvgBezierTo(vg, cx + w, cy + h * 0.65, cx, cy + h, cx, cy + h)
+    nvgBezierTo(vg, cx, cy + h, cx - w, cy + h * 0.65, cx - w, cy + h * 0.1)
     nvgLineTo(vg, cx - w, cy - h * 0.5)
     nvgClosePath(vg)
     nvgFillColor(vg, color)
     nvgFill(vg)
     ink(vg,size)
+    shine(vg, cx - w * 0.38, cy - h * 0.32, size * 0.034)
 end
 
 function shapes.plus(vg, cx, cy, size, color)
-    local arm = size * 0.28
-    local t = size * 0.1
-    nvgBeginPath(vg)
-    nvgRoundedRect(vg, cx - arm, cy - t, arm * 2, t * 2, 2)
+    local a = size * 0.27
+    local t = size * 0.105
+    local pts = {
+        { cx - t, cy - a }, { cx + t, cy - a },
+        { cx + t, cy - t }, { cx + a, cy - t },
+        { cx + a, cy + t }, { cx + t, cy + t },
+        { cx + t, cy + a }, { cx - t, cy + a },
+        { cx - t, cy + t }, { cx - a, cy + t },
+        { cx - a, cy - t }, { cx - t, cy - t },
+    }
+    roundedPoly(vg, pts, size * 0.032)
     nvgFillColor(vg, color)
     nvgFill(vg)
     ink(vg,size)
-    nvgBeginPath(vg)
-    nvgRoundedRect(vg, cx - t, cy - arm, t * 2, arm * 2, 2)
-    nvgFillColor(vg, color)
-    nvgFill(vg)
-    ink(vg,size)
+    shine(vg, cx - t * 0.3, cy - a * 0.58, size * 0.03)
 end
 
 function shapes.minus(vg, cx, cy, size, color)
-    local arm = size * 0.28
-    local t = size * 0.1
+    local arm = size * 0.27
+    local t = size * 0.125
     nvgBeginPath(vg)
     nvgRoundedRect(vg, cx - arm, cy - t, arm * 2, t * 2, t)
     nvgFillColor(vg, color)
     nvgFill(vg)
     ink(vg,size)
+    shine(vg, cx - arm * 0.45, cy - t * 0.25, size * 0.032)
 end
 
 function shapes.spiral(vg, cx, cy, size, color)
-    local maxR = size * 0.38
+    local r = size * 0.28
     nvgBeginPath(vg)
-    local points = 60
+    nvgCircle(vg, cx, cy, r)
+    nvgFillColor(vg, color)
+    nvgFill(vg)
+    ink(vg, size)
+    nvgBeginPath(vg)
+    local points = 48
     for i = 0, points do
         local t = i / points
-        local angle = t * math.pi * 4
-        local r = maxR * t
-        local px = cx + r * math.cos(angle)
-        local py = cy + r * math.sin(angle)
+        local angle = t * math.pi * 3.5
+        local sr = r * 0.72 * t
+        local px = cx + sr * math.cos(angle)
+        local py = cy + sr * math.sin(angle)
         if i == 0 then nvgMoveTo(vg, px, py) else nvgLineTo(vg, px, py) end
     end
-    nvgStrokeColor(vg, color)
-    nvgStrokeWidth(vg, size * 0.09)
+    nvgStrokeColor(vg, CELL_CREAM)
+    nvgStrokeWidth(vg, size * 0.05)
     nvgLineCap(vg, NVG_ROUND)
     nvgStroke(vg)
 end
 
 function shapes.gear(vg, cx, cy, size, color)
-    local outerR = size * 0.3
-    local innerR = outerR * 0.7
+    local outerR = size * 0.29
+    local innerR = outerR * 0.74
     local teeth = 8
-    nvgBeginPath(vg)
+    local pts = {}
     for i = 0, teeth * 2 - 1 do
         local r = (i % 2 == 0) and outerR or innerR
         local angle = math.rad(i * 360 / (teeth * 2))
-        local px = cx + r * math.cos(angle)
-        local py = cy + r * math.sin(angle)
-        if i == 0 then nvgMoveTo(vg, px, py) else nvgLineTo(vg, px, py) end
+        pts[#pts + 1] = { cx + r * math.cos(angle), cy + r * math.sin(angle) }
     end
-    nvgClosePath(vg)
+    roundedPoly(vg, pts, size * 0.025)
     nvgFillColor(vg, color)
     nvgFill(vg)
     ink(vg,size)
     nvgBeginPath(vg)
-    nvgCircle(vg, cx, cy, innerR * 0.35)
-    nvgFillColor(vg, nvgRGBA(255, 255, 255, 255))
+    nvgCircle(vg, cx, cy, innerR * 0.42)
+    nvgFillColor(vg, CELL_CREAM)
     nvgFill(vg)
     ink(vg,size)
 end
 
 function shapes.hourglass(vg, cx, cy, size, color)
-    local w = size * 0.22
-    local h = size * 0.32
-    nvgBeginPath(vg)
-    nvgMoveTo(vg, cx - w, cy - h)
-    nvgLineTo(vg, cx + w, cy - h)
-    nvgLineTo(vg, cx + w * 0.15, cy)
-    nvgLineTo(vg, cx + w, cy + h)
-    nvgLineTo(vg, cx - w, cy + h)
-    nvgLineTo(vg, cx - w * 0.15, cy)
-    nvgClosePath(vg)
+    local w = size * 0.23
+    local h = size * 0.27
+    local pts = {
+        { cx - w, cy - h },
+        { cx + w, cy - h },
+        { cx + w * 0.22, cy },
+        { cx + w, cy + h },
+        { cx - w, cy + h },
+        { cx - w * 0.22, cy },
+    }
+    roundedPoly(vg, pts, size * 0.03)
     nvgFillColor(vg, color)
     nvgFill(vg)
     ink(vg,size)
 end
 
 function shapes.gem(vg, cx, cy, size, color)
-    local w = size * 0.26
-    local h = size * 0.34
-    nvgBeginPath(vg)
-    nvgMoveTo(vg, cx, cy - h)
-    nvgLineTo(vg, cx + w, cy - h * 0.3)
-    nvgLineTo(vg, cx + w * 0.6, cy - h * 0.3)
-    nvgLineTo(vg, cx, cy + h)
-    nvgLineTo(vg, cx - w * 0.6, cy - h * 0.3)
-    nvgLineTo(vg, cx - w, cy - h * 0.3)
-    nvgClosePath(vg)
+    local w = size * 0.27
+    local h = size * 0.29
+    local pts = {
+        { cx, cy - h },
+        { cx + w, cy },
+        { cx, cy + h },
+        { cx - w, cy },
+    }
+    roundedPoly(vg, pts, size * 0.038)
     nvgFillColor(vg, color)
     nvgFill(vg)
     ink(vg,size)
+    shine(vg, cx - w * 0.25, cy - h * 0.32, size * 0.034)
 end
 
 function shapes.flower(vg, cx, cy, size, color)
@@ -381,48 +423,37 @@ function shapes.flower(vg, cx, cy, size, color)
 end
 
 function shapes.leaf(vg, cx, cy, size, color)
-    -- 黄色月亮（弯月形）
-    local moonColor = nvgRGBA(255, 210, 50, 255)
-    local r = size * 0.32
-    -- 大圆（月亮主体）
-    nvgBeginPath(vg)
-    nvgCircle(vg, cx - size * 0.03, cy, r)
-    nvgFillColor(vg, moonColor)
-    nvgFill(vg)
-    ink(vg,size)
-    -- 用白色小圆遮挡形成弯月
-    nvgBeginPath(vg)
-    nvgCircle(vg, cx + r * 0.4, cy - r * 0.2, r * 0.75)
-    nvgFillColor(vg, nvgRGBA(255, 255, 255, 255))
-    nvgFill(vg)
-    ink(vg,size)
+    drawTrueCrescent(vg, cx + size * 0.02, cy, size * 0.30, 1, color, size)
+    shine(vg, cx - size * 0.12, cy - size * 0.08, size * 0.032)
 end
 
 function shapes.drop(vg, cx, cy, size, color)
-    local r = size * 0.18
-    local h = size * 0.16
+    local r = size * 0.21
+    local h = size * 0.18
     nvgBeginPath(vg)
-    nvgMoveTo(vg, cx, cy - h - r)
-    nvgBezierTo(vg, cx + r * 1.2, cy - h * 0.2, cx + r, cy + h * 0.5, cx, cy + h + r * 0.5)
-    nvgBezierTo(vg, cx - r, cy + h * 0.5, cx - r * 1.2, cy - h * 0.2, cx, cy - h - r)
+    nvgMoveTo(vg, cx, cy - h - r * 0.65)
+    nvgBezierTo(vg, cx + r * 1.25, cy - h * 0.15, cx + r * 1.05, cy + h * 0.6, cx, cy + h + r * 0.45)
+    nvgBezierTo(vg, cx - r * 1.05, cy + h * 0.6, cx - r * 1.25, cy - h * 0.15, cx, cy - h - r * 0.65)
     nvgClosePath(vg)
     nvgFillColor(vg, color)
     nvgFill(vg)
     ink(vg,size)
+    shine(vg, cx - r * 0.35, cy + h * 0.1, size * 0.032)
 end
 
 function shapes.flame(vg, cx, cy, size, color)
-    local s = size * 0.16
+    local s = size * 0.165
     nvgBeginPath(vg)
-    nvgMoveTo(vg, cx, cy - s * 2.0)
-    nvgBezierTo(vg, cx + s * 0.8, cy - s * 1.0, cx + s * 1.4, cy, cx + s * 0.8, cy + s * 1.2)
-    nvgBezierTo(vg, cx + s * 0.5, cy + s * 1.8, cx, cy + s * 1.5, cx, cy + s * 1.5)
-    nvgBezierTo(vg, cx, cy + s * 1.5, cx - s * 0.5, cy + s * 1.8, cx - s * 0.8, cy + s * 1.2)
-    nvgBezierTo(vg, cx - s * 1.4, cy, cx - s * 0.8, cy - s * 1.0, cx, cy - s * 2.0)
+    nvgMoveTo(vg, cx, cy - s * 1.75)
+    nvgBezierTo(vg, cx + s * 0.95, cy - s * 0.85, cx + s * 1.55, cy + s * 0.1, cx + s * 0.9, cy + s * 1.2)
+    nvgBezierTo(vg, cx + s * 0.55, cy + s * 1.75, cx, cy + s * 1.65, cx, cy + s * 1.65)
+    nvgBezierTo(vg, cx, cy + s * 1.65, cx - s * 0.55, cy + s * 1.75, cx - s * 0.9, cy + s * 1.2)
+    nvgBezierTo(vg, cx - s * 1.55, cy + s * 0.1, cx - s * 0.95, cy - s * 0.85, cx, cy - s * 1.75)
     nvgClosePath(vg)
     nvgFillColor(vg, color)
     nvgFill(vg)
     ink(vg,size)
+    shine(vg, cx - s * 0.32, cy + s * 0.35, size * 0.032)
 end
 
 -- ============================================================================
@@ -606,168 +637,156 @@ end
 
 --- 火箭：圆头 + 矩形机身 + 两个尾翼三角
 function shapes.rocket(vg, cx, cy, size, color)
-    local s = size * 0.12
-    -- 机身
-    nvgBeginPath(vg)
-    nvgRoundedRect(vg, cx - s * 0.8, cy - s * 1.5, s * 1.6, s * 3.0, s * 0.3)
-    nvgFillColor(vg, color)
-    nvgFill(vg)
-    ink(vg,size)
-    -- 头部
-    nvgBeginPath(vg)
-    nvgMoveTo(vg, cx, cy - s * 2.8)
-    nvgBezierTo(vg, cx + s * 0.6, cy - s * 2.0, cx + s * 0.8, cy - s * 1.5, cx + s * 0.8, cy - s * 1.2)
-    nvgLineTo(vg, cx - s * 0.8, cy - s * 1.2)
-    nvgBezierTo(vg, cx - s * 0.8, cy - s * 1.5, cx - s * 0.6, cy - s * 2.0, cx, cy - s * 2.8)
-    nvgClosePath(vg)
-    nvgFillColor(vg, color)
-    nvgFill(vg)
-    ink(vg,size)
+    local s = size * 0.145
     -- 左尾翼
     nvgBeginPath(vg)
-    nvgMoveTo(vg, cx - s * 0.8, cy + s * 0.8)
-    nvgLineTo(vg, cx - s * 1.5, cy + s * 1.8)
-    nvgLineTo(vg, cx - s * 0.8, cy + s * 1.5)
+    nvgMoveTo(vg, cx - s * 0.7, cy + s * 0.5)
+    nvgLineTo(vg, cx - s * 1.45, cy + s * 1.55)
+    nvgLineTo(vg, cx - s * 0.65, cy + s * 1.35)
     nvgClosePath(vg)
     nvgFillColor(vg, color)
     nvgFill(vg)
     ink(vg,size)
     -- 右尾翼
     nvgBeginPath(vg)
-    nvgMoveTo(vg, cx + s * 0.8, cy + s * 0.8)
-    nvgLineTo(vg, cx + s * 1.5, cy + s * 1.8)
-    nvgLineTo(vg, cx + s * 0.8, cy + s * 1.5)
+    nvgMoveTo(vg, cx + s * 0.7, cy + s * 0.5)
+    nvgLineTo(vg, cx + s * 1.45, cy + s * 1.55)
+    nvgLineTo(vg, cx + s * 0.65, cy + s * 1.35)
+    nvgClosePath(vg)
+    nvgFillColor(vg, color)
+    nvgFill(vg)
+    ink(vg,size)
+    -- 一体化流线机身
+    nvgBeginPath(vg)
+    nvgMoveTo(vg, cx, cy - s * 1.95)
+    nvgBezierTo(vg, cx + s * 0.85, cy - s * 1.2, cx + s * 0.9, cy + s * 0.6, cx + s * 0.7, cy + s * 1.45)
+    nvgLineTo(vg, cx - s * 0.7, cy + s * 1.45)
+    nvgBezierTo(vg, cx - s * 0.9, cy + s * 0.6, cx - s * 0.85, cy - s * 1.2, cx, cy - s * 1.95)
     nvgClosePath(vg)
     nvgFillColor(vg, color)
     nvgFill(vg)
     ink(vg,size)
     -- 窗户
     nvgBeginPath(vg)
-    nvgCircle(vg, cx, cy - s * 0.6, s * 0.35)
-    nvgFillColor(vg, nvgRGBA(255, 255, 255, 180))
+    nvgCircle(vg, cx, cy - s * 0.25, s * 0.38)
+    nvgFillColor(vg, CELL_CREAM)
     nvgFill(vg)
     ink(vg,size)
 end
 
 --- 铃铛：上方圆弧 + 下方梯形 + 小圆锤
 function shapes.bell(vg, cx, cy, size, color)
-    local s = size * 0.26
-    -- 铃体
-    nvgBeginPath(vg)
-    nvgMoveTo(vg, cx - s * 0.2, cy - s * 1.0)
-    nvgBezierTo(vg, cx - s * 0.8, cy - s * 0.6, cx - s * 0.9, cy + s * 0.3, cx - s * 0.9, cy + s * 0.6)
-    nvgLineTo(vg, cx + s * 0.9, cy + s * 0.6)
-    nvgBezierTo(vg, cx + s * 0.9, cy + s * 0.3, cx + s * 0.8, cy - s * 0.6, cx + s * 0.2, cy - s * 1.0)
-    nvgClosePath(vg)
-    nvgFillColor(vg, color)
-    nvgFill(vg)
-    ink(vg,size)
+    local s = size * 0.25
     -- 铃舌
     nvgBeginPath(vg)
-    nvgCircle(vg, cx, cy + s * 0.75, s * 0.18)
+    nvgCircle(vg, cx, cy + s * 0.72, s * 0.22)
     nvgFillColor(vg, color)
     nvgFill(vg)
     ink(vg,size)
     -- 顶部小圆
     nvgBeginPath(vg)
-    nvgCircle(vg, cx, cy - s * 1.1, s * 0.14)
+    nvgCircle(vg, cx, cy - s * 0.98, s * 0.16)
     nvgFillColor(vg, color)
     nvgFill(vg)
     ink(vg,size)
+    -- 铃体
+    nvgBeginPath(vg)
+    nvgMoveTo(vg, cx - s * 0.22, cy - s * 0.9)
+    nvgBezierTo(vg, cx - s * 0.82, cy - s * 0.55, cx - s * 0.95, cy + s * 0.3, cx - s * 0.95, cy + s * 0.62)
+    nvgLineTo(vg, cx + s * 0.95, cy + s * 0.62)
+    nvgBezierTo(vg, cx + s * 0.95, cy + s * 0.3, cx + s * 0.82, cy - s * 0.55, cx + s * 0.22, cy - s * 0.9)
+    nvgClosePath(vg)
+    nvgFillColor(vg, color)
+    nvgFill(vg)
+    ink(vg,size)
+    shine(vg, cx - s * 0.32, cy - s * 0.22, size * 0.032)
 end
 
 --- 锚：竖杆 + 底部弧 + 横杆 + 顶圆
 function shapes.anchor(vg, cx, cy, size, color)
-    local s = size * 0.14
+    local s = size * 0.155
+    -- 底部弧（先描黑边再描主色）
+    nvgBeginPath(vg)
+    nvgArc(vg, cx, cy + s * 0.35, s * 1.15, math.rad(15), math.rad(165), NVG_CW)
+    nvgStrokeColor(vg, Pen.color(C.ink))
+    nvgStrokeWidth(vg, s * 0.58 + math.max(2.6, size * 0.065))
+    nvgLineCap(vg, NVG_ROUND)
+    nvgStroke(vg)
+    nvgStrokeColor(vg, color)
+    nvgStrokeWidth(vg, s * 0.55)
+    nvgStroke(vg)
     -- 竖杆
     nvgBeginPath(vg)
-    nvgRect(vg, cx - s * 0.25, cy - s * 1.2, s * 0.5, s * 2.6)
+    nvgRoundedRect(vg, cx - s * 0.28, cy - s * 1.0, s * 0.56, s * 2.45, s * 0.18)
     nvgFillColor(vg, color)
     nvgFill(vg)
     ink(vg,size)
     -- 横杆
     nvgBeginPath(vg)
-    nvgRect(vg, cx - s * 1.2, cy - s * 0.7, s * 2.4, s * 0.4)
+    nvgRoundedRect(vg, cx - s * 1.05, cy - s * 0.55, s * 2.1, s * 0.48, s * 0.18)
     nvgFillColor(vg, color)
     nvgFill(vg)
     ink(vg,size)
-    -- 底部弧
-    nvgBeginPath(vg)
-    nvgArc(vg, cx, cy + s * 0.5, s * 1.1, math.rad(0), math.rad(180), NVG_CW)
-    nvgStrokeColor(vg, color)
-    nvgStrokeWidth(vg, s * 0.4)
-    nvgStroke(vg)
     -- 顶部圆环
     nvgBeginPath(vg)
-    nvgCircle(vg, cx, cy - s * 1.6, s * 0.4)
-    nvgStrokeColor(vg, color)
-    nvgStrokeWidth(vg, s * 0.25)
-    nvgStroke(vg)
+    nvgCircle(vg, cx, cy - s * 1.25, s * 0.48)
+    nvgFillColor(vg, color)
+    nvgFill(vg)
+    ink(vg,size)
+    nvgBeginPath(vg)
+    nvgCircle(vg, cx, cy - s * 1.25, s * 0.2)
+    nvgFillColor(vg, CELL_CREAM)
+    nvgFill(vg)
 end
 
---- 雪花：三条交叉线 + 六个端点菱形
+--- 雪花：六角饱满冰晶
 function shapes.snowflake(vg, cx, cy, size, color)
-    local r = size * 0.3
-    local t = size * 0.025
+    local r = size * 0.27
+    local w = size * 0.075
     for i = 0, 2 do
         local angle = math.rad(i * 60)
-        local x1 = cx + r * math.cos(angle)
-        local y1 = cy + r * math.sin(angle)
-        local x2 = cx - r * math.cos(angle)
-        local y2 = cy - r * math.sin(angle)
+        nvgSave(vg)
+        nvgTranslate(vg, cx, cy)
+        nvgRotate(vg, angle)
         nvgBeginPath(vg)
-        nvgMoveTo(vg, x1, y1)
-        nvgLineTo(vg, x2, y2)
-        nvgStrokeColor(vg, color)
-        nvgStrokeWidth(vg, t * 2)
-        nvgStroke(vg)
-        -- 分支
-        for _, sign in ipairs({ 1, -1 }) do
-            local bx = cx + r * 0.55 * math.cos(angle) * sign
-            local by = cy + r * 0.55 * math.sin(angle) * sign
-            local ba = angle + math.rad(45)
-            local bb = angle - math.rad(45)
-            local bl = r * 0.25
-            nvgBeginPath(vg)
-            nvgMoveTo(vg, bx, by)
-            nvgLineTo(vg, bx + bl * math.cos(ba) * sign, by + bl * math.sin(ba) * sign)
-            nvgStroke(vg)
-            nvgBeginPath(vg)
-            nvgMoveTo(vg, bx, by)
-            nvgLineTo(vg, bx + bl * math.cos(bb) * sign, by + bl * math.sin(bb) * sign)
-            nvgStroke(vg)
-        end
+        nvgRoundedRect(vg, -r, -w / 2, r * 2, w, w / 2)
+        nvgFillColor(vg, color)
+        nvgFill(vg)
+        ink(vg, size)
+        nvgRestore(vg)
     end
-    -- 中心
     nvgBeginPath(vg)
-    nvgCircle(vg, cx, cy, t * 3)
+    nvgCircle(vg, cx, cy, size * 0.11)
     nvgFillColor(vg, color)
     nvgFill(vg)
     ink(vg,size)
+    shine(vg, cx, cy, size * 0.035)
 end
 
---- 音符：圆头 + 竖杆 + 旗子
+--- 音符：饱满八分音符
 function shapes.note(vg, cx, cy, size, color)
-    local s = size * 0.14
-    -- 音符头（椭圆）
+    local s = size * 0.175
+    -- 竖杆與横梁
     nvgBeginPath(vg)
-    nvgEllipse(vg, cx - s * 0.3, cy + s * 1.2, s * 0.6, s * 0.45)
-    nvgFillColor(vg, color)
-    nvgFill(vg)
-    ink(vg,size)
-    -- 竖杆
-    nvgBeginPath(vg)
-    nvgRect(vg, cx + s * 0.15, cy - s * 1.3, s * 0.2, s * 2.6)
+    nvgRoundedRect(vg, cx - s * 0.05, cy - s * 1.35, s * 0.42, s * 2.25, s * 0.15)
     nvgFillColor(vg, color)
     nvgFill(vg)
     ink(vg,size)
     -- 旗子
     nvgBeginPath(vg)
-    nvgMoveTo(vg, cx + s * 0.35, cy - s * 1.3)
-    nvgBezierTo(vg, cx + s * 1.2, cy - s * 1.0, cx + s * 1.0, cy - s * 0.4, cx + s * 0.35, cy - s * 0.4)
+    nvgMoveTo(vg, cx + s * 0.2, cy - s * 1.35)
+    nvgBezierTo(vg, cx + s * 1.25, cy - s * 1.1, cx + s * 1.2, cy - s * 0.2, cx + s * 0.3, cy - s * 0.35)
+    nvgClosePath(vg)
     nvgFillColor(vg, color)
     nvgFill(vg)
     ink(vg,size)
+    -- 音符头（椭圆）
+    nvgBeginPath(vg)
+    nvgEllipse(vg, cx - s * 0.32, cy + s * 0.85, s * 0.72, s * 0.54)
+    nvgFillColor(vg, color)
+    nvgFill(vg)
+    ink(vg,size)
+    shine(vg, cx - s * 0.5, cy + s * 0.72, size * 0.03)
 end
 
 --- 太阳：中心圆 + 外围三角光芒
@@ -803,23 +822,12 @@ end
 
 --- 月亮与星：弯月 + 小星星
 function shapes.moonstar(vg, cx, cy, size, color)
-    local r = size * 0.28
-    -- 弯月（大圆减小圆）
-    nvgBeginPath(vg)
-    nvgCircle(vg, cx - size * 0.04, cy, r)
-    nvgFillColor(vg, color)
-    nvgFill(vg)
-    ink(vg,size)
-    nvgBeginPath(vg)
-    nvgCircle(vg, cx + r * 0.35, cy - r * 0.2, r * 0.78)
-    nvgFillColor(vg, nvgRGBA(255, 255, 255, 255))
-    nvgFill(vg)
-    ink(vg,size)
+    drawTrueCrescent(vg, cx - size * 0.02, cy + size * 0.02, size * 0.27, 1, color, size)
     -- 小星星
-    local sx = cx + size * 0.2
-    local sy = cy - size * 0.16
-    local sr = size * 0.07
-    local si = sr * 0.42
+    local sx = cx + size * 0.15
+    local sy = cy - size * 0.13
+    local sr = size * 0.085
+    local si = sr * 0.45
     nvgBeginPath(vg)
     for i = 0, 9 do
         local pr = (i % 2 == 0) and sr or si
@@ -836,33 +844,32 @@ end
 
 --- 钥匙：圆形手柄 + 长方齿
 function shapes.key(vg, cx, cy, size, color)
-    local s = size * 0.13
+    local s = size * 0.145
+    -- 杆与齿先画，手柄圆环盖在上方避免内部交叉线
+    nvgBeginPath(vg)
+    nvgRoundedRect(vg, cx - s * 0.24, cy - s * 0.4, s * 0.48, s * 2.15, s * 0.12)
+    nvgFillColor(vg, color)
+    nvgFill(vg)
+    ink(vg,size)
+    nvgBeginPath(vg)
+    nvgRoundedRect(vg, cx + s * 0.18, cy + s * 0.95, s * 0.62, s * 0.36, s * 0.1)
+    nvgFillColor(vg, color)
+    nvgFill(vg)
+    ink(vg,size)
+    nvgBeginPath(vg)
+    nvgRoundedRect(vg, cx + s * 0.18, cy + s * 0.35, s * 0.48, s * 0.34, s * 0.1)
+    nvgFillColor(vg, color)
+    nvgFill(vg)
+    ink(vg,size)
     -- 手柄圆环
     nvgBeginPath(vg)
-    nvgCircle(vg, cx, cy - s * 1.2, s * 0.9)
+    nvgCircle(vg, cx, cy - s * 1.05, s * 0.95)
     nvgFillColor(vg, color)
     nvgFill(vg)
     ink(vg,size)
     nvgBeginPath(vg)
-    nvgCircle(vg, cx, cy - s * 1.2, s * 0.45)
-    nvgFillColor(vg, nvgRGBA(255, 255, 255, 255))
-    nvgFill(vg)
-    ink(vg,size)
-    -- 杆
-    nvgBeginPath(vg)
-    nvgRect(vg, cx - s * 0.2, cy - s * 0.4, s * 0.4, s * 2.2)
-    nvgFillColor(vg, color)
-    nvgFill(vg)
-    ink(vg,size)
-    -- 齿
-    nvgBeginPath(vg)
-    nvgRect(vg, cx + s * 0.2, cy + s * 1.0, s * 0.5, s * 0.3)
-    nvgFillColor(vg, color)
-    nvgFill(vg)
-    ink(vg,size)
-    nvgBeginPath(vg)
-    nvgRect(vg, cx + s * 0.2, cy + s * 0.4, s * 0.4, s * 0.3)
-    nvgFillColor(vg, color)
+    nvgCircle(vg, cx, cy - s * 1.05, s * 0.42)
+    nvgFillColor(vg, CELL_CREAM)
     nvgFill(vg)
     ink(vg,size)
 end
@@ -1006,23 +1013,29 @@ end
 
 --- 杯子：梯形杯身 + 半圆手柄
 function shapes.cup(vg, cx, cy, size, color)
-    local s = size * 0.24
-    -- 杯身（梯形）
+    local s = size * 0.27
+    -- 手柄
     nvgBeginPath(vg)
-    nvgMoveTo(vg, cx - s * 0.85, cy - s * 0.7)
-    nvgLineTo(vg, cx + s * 0.85, cy - s * 0.7)
-    nvgLineTo(vg, cx + s * 0.65, cy + s * 0.7)
-    nvgLineTo(vg, cx - s * 0.65, cy + s * 0.7)
-    nvgClosePath(vg)
+    nvgArc(vg, cx + s * 0.72, cy, s * 0.36, math.rad(-65), math.rad(65), NVG_CW)
+    nvgStrokeColor(vg, Pen.color(C.ink))
+    nvgStrokeWidth(vg, size * 0.055 + 2.4)
+    nvgLineCap(vg, NVG_ROUND)
+    nvgStroke(vg)
+    nvgStrokeColor(vg, color)
+    nvgStrokeWidth(vg, size * 0.048)
+    nvgStroke(vg)
+    -- 杯身（梯形）
+    local pts = {
+        { cx - s * 0.85, cy - s * 0.78 },
+        { cx + s * 0.75, cy - s * 0.78 },
+        { cx + s * 0.58, cy + s * 0.78 },
+        { cx - s * 0.68, cy + s * 0.78 },
+    }
+    roundedPoly(vg, pts, size * 0.035)
     nvgFillColor(vg, color)
     nvgFill(vg)
     ink(vg,size)
-    -- 手柄
-    nvgBeginPath(vg)
-    nvgArc(vg, cx + s * 0.85, cy, s * 0.35, math.rad(-60), math.rad(60), NVG_CW)
-    nvgStrokeColor(vg, color)
-    nvgStrokeWidth(vg, size * 0.04)
-    nvgStroke(vg)
+    shine(vg, cx - s * 0.38, cy - s * 0.25, size * 0.032)
 end
 
 --- 山峰：两座高低不同的三角山
@@ -1030,78 +1043,73 @@ function shapes.mountain(vg, cx, cy, size, color)
     local s = size * 0.28
     -- 大山
     nvgBeginPath(vg)
-    nvgMoveTo(vg, cx - s * 0.2, cy - s * 1.1)
-    nvgLineTo(vg, cx + s * 0.8, cy + s * 0.8)
-    nvgLineTo(vg, cx - s * 1.2, cy + s * 0.8)
+    nvgMoveTo(vg, cx - s * 0.2, cy - s * 1.0)
+    nvgLineTo(vg, cx + s * 0.75, cy + s * 0.78)
+    nvgLineTo(vg, cx - s * 1.1, cy + s * 0.78)
     nvgClosePath(vg)
     nvgFillColor(vg, color)
     nvgFill(vg)
     ink(vg,size)
     -- 小山
     nvgBeginPath(vg)
-    nvgMoveTo(vg, cx + s * 0.6, cy - s * 0.5)
-    nvgLineTo(vg, cx + s * 1.2, cy + s * 0.8)
-    nvgLineTo(vg, cx + s * 0.0, cy + s * 0.8)
+    nvgMoveTo(vg, cx + s * 0.55, cy - s * 0.45)
+    nvgLineTo(vg, cx + s * 1.1, cy + s * 0.78)
+    nvgLineTo(vg, cx - s * 0.05, cy + s * 0.78)
     nvgClosePath(vg)
     nvgFillColor(vg, color)
     nvgFill(vg)
     ink(vg,size)
     -- 雪顶
     nvgBeginPath(vg)
-    nvgMoveTo(vg, cx - s * 0.2, cy - s * 1.1)
-    nvgLineTo(vg, cx - s * 0.45, cy - s * 0.65)
-    nvgLineTo(vg, cx - s * 0.05, cy - s * 0.75)
-    nvgLineTo(vg, cx + s * 0.05, cy - s * 0.65)
+    nvgMoveTo(vg, cx - s * 0.2, cy - s * 1.0)
+    nvgLineTo(vg, cx - s * 0.45, cy - s * 0.55)
+    nvgLineTo(vg, cx - s * 0.05, cy - s * 0.65)
+    nvgLineTo(vg, cx + s * 0.06, cy - s * 0.55)
     nvgClosePath(vg)
-    nvgFillColor(vg, nvgRGBA(255, 255, 255, 200))
+    nvgFillColor(vg, nvgRGBA(255, 255, 255, 215))
     nvgFill(vg)
     ink(vg,size)
 end
 
---- 手掌：五指张开的简化手型
+--- 手掌：可爱猫爪肉垫造型
 function shapes.hand(vg, cx, cy, size, color)
-    local s = size * 0.1
-    -- 掌心
+    local s = size * 0.26
+    -- 主掌垫
     nvgBeginPath(vg)
-    nvgRoundedRect(vg, cx - s * 1.2, cy - s * 0.2, s * 2.4, s * 2.0, s * 0.4)
+    nvgEllipse(vg, cx, cy + s * 0.28, s * 0.75, s * 0.58)
     nvgFillColor(vg, color)
     nvgFill(vg)
     ink(vg,size)
-    -- 五根手指
-    local fingers = {
-        { -s * 0.9, -s * 0.2, s * 0.35, s * 1.2 },
-        { -s * 0.35, -s * 0.2, s * 0.35, s * 1.6 },
-        { s * 0.15, -s * 0.2, s * 0.35, s * 1.5 },
-        { s * 0.65, -s * 0.2, s * 0.35, s * 1.2 },
+    -- 四个指垫
+    local toes = {
+        { -s * 0.68, -s * 0.32, s * 0.25 },
+        { -s * 0.24, -s * 0.62, s * 0.27 },
+        {  s * 0.24, -s * 0.62, s * 0.27 },
+        {  s * 0.68, -s * 0.32, s * 0.25 },
     }
-    for _, f in ipairs(fingers) do
+    for _, t in ipairs(toes) do
         nvgBeginPath(vg)
-        nvgRoundedRect(vg, cx + f[1], cy - f[4], f[3], f[4], s * 0.15)
+        nvgCircle(vg, cx + t[1], cy + t[2], t[3])
         nvgFillColor(vg, color)
         nvgFill(vg)
-    ink(vg,size)
+        ink(vg,size)
     end
-    -- 拇指
-    nvgBeginPath(vg)
-    nvgRoundedRect(vg, cx - s * 1.5, cy + s * 0.1, s * 0.9, s * 0.35, s * 0.15)
-    nvgFillColor(vg, color)
-    nvgFill(vg)
-    ink(vg,size)
+    shine(vg, cx - s * 0.25, cy + s * 0.18, size * 0.03)
 end
 
 --- 骰子：圆角方块 + 点数
 function shapes.dice(vg, cx, cy, size, color)
-    local s = size * 0.5
+    local s = size * 0.52
     -- 底色方块
     nvgBeginPath(vg)
-    nvgRoundedRect(vg, cx - s / 2, cy - s / 2, s, s, s * 0.12)
+    nvgRoundedRect(vg, cx - s / 2, cy - s / 2, s, s, s * 0.16)
     nvgFillColor(vg, color)
     nvgFill(vg)
     ink(vg,size)
     -- 5 点
-    local dot = s * 0.08
-    local off = s * 0.22
-    local dotColor = nvgRGBA(255, 255, 255, 230)
+    local dot = s * 0.085
+    local off = s * 0.23
+    local dotColor = nvgRGBA(255, 255, 255, 235)
     local dots = {
         { 0, 0 }, { -off, -off }, { off, -off }, { -off, off }, { off, off },
     }
@@ -1110,26 +1118,28 @@ function shapes.dice(vg, cx, cy, size, color)
         nvgCircle(vg, cx + d[1], cy + d[2], dot)
         nvgFillColor(vg, dotColor)
         nvgFill(vg)
-    ink(vg,size)
     end
 end
 
 --- 樱桃：两个圆果实 + Y 形茎
 function shapes.cherry(vg, cx, cy, size, color)
-    local r = size * 0.13
+    local r = size * 0.15
     -- 茎
     nvgBeginPath(vg)
     nvgMoveTo(vg, cx, cy - size * 0.22)
-    nvgBezierTo(vg, cx - size * 0.05, cy - size * 0.1, cx - size * 0.12, cy + size * 0.02, cx - size * 0.13, cy + size * 0.08)
-    nvgStrokeColor(vg, nvgRGBA(100, 70, 40, 220))
-    nvgStrokeWidth(vg, size * 0.025)
-    nvgStroke(vg)
-    nvgBeginPath(vg)
+    nvgBezierTo(vg, cx - size * 0.05, cy - size * 0.1, cx - size * 0.13, cy + size * 0.02, cx - size * 0.14, cy + size * 0.10)
     nvgMoveTo(vg, cx, cy - size * 0.22)
-    nvgBezierTo(vg, cx + size * 0.05, cy - size * 0.1, cx + size * 0.12, cy + size * 0.02, cx + size * 0.13, cy + size * 0.08)
-    nvgStrokeColor(vg, nvgRGBA(100, 70, 40, 220))
-    nvgStrokeWidth(vg, size * 0.025)
+    nvgBezierTo(vg, cx + size * 0.05, cy - size * 0.1, cx + size * 0.13, cy + size * 0.02, cx + size * 0.14, cy + size * 0.10)
+    nvgStrokeColor(vg, Pen.color(C.ink))
+    nvgStrokeWidth(vg, math.max(1.8, size * 0.04))
+    nvgLineCap(vg, NVG_ROUND)
     nvgStroke(vg)
+    -- 叶子
+    nvgBeginPath(vg)
+    nvgEllipse(vg, cx + size * 0.06, cy - size * 0.22, size * 0.08, size * 0.042)
+    nvgFillColor(vg, nvgRGBA(97, 212, 146, 255))
+    nvgFill(vg)
+    ink(vg,size)
     -- 果实
     nvgBeginPath(vg)
     nvgCircle(vg, cx - size * 0.13, cy + size * 0.12, r)
@@ -1141,54 +1151,48 @@ function shapes.cherry(vg, cx, cy, size, color)
     nvgFillColor(vg, color)
     nvgFill(vg)
     ink(vg,size)
-    -- 叶子
-    nvgBeginPath(vg)
-    nvgEllipse(vg, cx + size * 0.05, cy - size * 0.24, size * 0.06, size * 0.03)
-    nvgFillColor(vg, nvgRGBA(80, 180, 60, 220))
-    nvgFill(vg)
-    ink(vg,size)
+    shine(vg, cx - size * 0.17, cy + size * 0.08, size * 0.026)
+    shine(vg, cx + size * 0.09, cy + size * 0.08, size * 0.026)
 end
 
 --- 星星（六角）
 function shapes.star6(vg, cx, cy, size, color)
-    local outerR = size * 0.3
-    local innerR = outerR * 0.5
-    nvgBeginPath(vg)
+    local outerR = size * 0.31
+    local innerR = outerR * 0.54
+    local pts = {}
     for i = 0, 11 do
         local r = (i % 2 == 0) and outerR or innerR
         local angle = math.rad(-90 + i * 30)
-        local px = cx + r * math.cos(angle)
-        local py = cy + r * math.sin(angle)
-        if i == 0 then nvgMoveTo(vg, px, py) else nvgLineTo(vg, px, py) end
+        pts[#pts + 1] = { cx + r * math.cos(angle), cy + r * math.sin(angle) }
     end
-    nvgClosePath(vg)
+    roundedPoly(vg, pts, size * 0.025)
     nvgFillColor(vg, color)
     nvgFill(vg)
     ink(vg,size)
+    shine(vg, cx - outerR * 0.22, cy - outerR * 0.22, size * 0.032)
 end
 
 --- 七角星
 function shapes.star7(vg, cx, cy, size, color)
-    local outerR = size * 0.3
-    local innerR = outerR * 0.45
-    nvgBeginPath(vg)
+    local outerR = size * 0.31
+    local innerR = outerR * 0.52
+    local pts = {}
     for i = 0, 13 do
         local r = (i % 2 == 0) and outerR or innerR
         local angle = math.rad(-90 + i * (360 / 14))
-        local px = cx + r * math.cos(angle)
-        local py = cy + r * math.sin(angle)
-        if i == 0 then nvgMoveTo(vg, px, py) else nvgLineTo(vg, px, py) end
+        pts[#pts + 1] = { cx + r * math.cos(angle), cy + r * math.sin(angle) }
     end
-    nvgClosePath(vg)
+    roundedPoly(vg, pts, size * 0.022)
     nvgFillColor(vg, color)
     nvgFill(vg)
     ink(vg,size)
+    shine(vg, cx - outerR * 0.22, cy - outerR * 0.22, size * 0.032)
 end
 
 --- 环形甜甜圈
 function shapes.donut(vg, cx, cy, size, color)
-    local outerR = size * 0.28
-    local innerR = outerR * 0.48
+    local outerR = size * 0.29
+    local innerR = outerR * 0.44
     nvgBeginPath(vg)
     nvgCircle(vg, cx, cy, outerR)
     nvgFillColor(vg, color)
@@ -1196,218 +1200,195 @@ function shapes.donut(vg, cx, cy, size, color)
     ink(vg,size)
     nvgBeginPath(vg)
     nvgCircle(vg, cx, cy, innerR)
-    nvgFillColor(vg, nvgRGBA(255, 255, 255, 255))
+    nvgFillColor(vg, CELL_CREAM)
     nvgFill(vg)
     ink(vg,size)
+    shine(vg, cx - outerR * 0.52, cy - outerR * 0.45, size * 0.032)
 end
 
 --- 棒棒糖：圆头 + 长杆
 function shapes.lollipop(vg, cx, cy, size, color)
-    local r = size * 0.2
+    local r = size * 0.22
     -- 杆
     nvgBeginPath(vg)
-    nvgRect(vg, cx - size * 0.02, cy + r * 0.5, size * 0.04, size * 0.2)
-    nvgFillColor(vg, nvgRGBA(200, 180, 150, 220))
+    nvgRoundedRect(vg, cx - size * 0.028, cy + r * 0.45, size * 0.056, size * 0.22, size * 0.02)
+    nvgFillColor(vg, nvgRGBA(225, 205, 175, 255))
     nvgFill(vg)
     ink(vg,size)
-    -- 糖果头（螺旋效果用两半色模拟）
-    nvgBeginPath(vg)
-    nvgCircle(vg, cx, cy - size * 0.02, r)
-    nvgFillColor(vg, color)
-    nvgFill(vg)
-    ink(vg,size)
-    -- 白色纹路
-    nvgBeginPath(vg)
-    nvgArc(vg, cx, cy - size * 0.02, r * 0.6, math.rad(0), math.rad(180), NVG_CW)
-    nvgStrokeColor(vg, nvgRGBA(255, 255, 255, 160))
-    nvgStrokeWidth(vg, size * 0.04)
-    nvgStroke(vg)
-end
-
---- 船：梯形船体 + 三角帆
-function shapes.boat(vg, cx, cy, size, color)
-    local s = size * 0.26
-    -- 船体（梯形）
-    nvgBeginPath(vg)
-    nvgMoveTo(vg, cx - s * 1.0, cy + s * 0.1)
-    nvgLineTo(vg, cx + s * 1.0, cy + s * 0.1)
-    nvgLineTo(vg, cx + s * 0.7, cy + s * 0.7)
-    nvgLineTo(vg, cx - s * 0.7, cy + s * 0.7)
-    nvgClosePath(vg)
-    nvgFillColor(vg, color)
-    nvgFill(vg)
-    ink(vg,size)
-    -- 桅杆
-    nvgBeginPath(vg)
-    nvgRect(vg, cx - s * 0.06, cy - s * 1.1, s * 0.12, s * 1.2)
-    nvgFillColor(vg, color)
-    nvgFill(vg)
-    ink(vg,size)
-    -- 帆
-    nvgBeginPath(vg)
-    nvgMoveTo(vg, cx + s * 0.06, cy - s * 1.0)
-    nvgLineTo(vg, cx + s * 0.8, cy + s * 0.0)
-    nvgLineTo(vg, cx + s * 0.06, cy + s * 0.0)
-    nvgClosePath(vg)
-    nvgFillColor(vg, nvgRGBA(255, 255, 255, 200))
-    nvgFill(vg)
-    ink(vg,size)
-end
-
---- 飞机：简化侧视图
-function shapes.plane(vg, cx, cy, size, color)
-    local s = size * 0.14
-    -- 机身
-    nvgBeginPath(vg)
-    nvgEllipse(vg, cx, cy, s * 2.0, s * 0.45)
-    nvgFillColor(vg, color)
-    nvgFill(vg)
-    ink(vg,size)
-    -- 主翼
-    nvgBeginPath(vg)
-    nvgMoveTo(vg, cx - s * 0.2, cy)
-    nvgLineTo(vg, cx + s * 0.3, cy - s * 1.4)
-    nvgLineTo(vg, cx + s * 0.7, cy - s * 1.4)
-    nvgLineTo(vg, cx + s * 0.3, cy)
-    nvgClosePath(vg)
-    nvgFillColor(vg, color)
-    nvgFill(vg)
-    ink(vg,size)
-    -- 尾翼
-    nvgBeginPath(vg)
-    nvgMoveTo(vg, cx - s * 1.5, cy)
-    nvgLineTo(vg, cx - s * 1.2, cy - s * 0.8)
-    nvgLineTo(vg, cx - s * 0.9, cy)
-    nvgClosePath(vg)
-    nvgFillColor(vg, color)
-    nvgFill(vg)
-    ink(vg,size)
-end
-
---- 信封：矩形 + V 形折口
-function shapes.envelope(vg, cx, cy, size, color)
-    local w = size * 0.32
-    local h = size * 0.22
-    -- 信封体
-    nvgBeginPath(vg)
-    nvgRect(vg, cx - w, cy - h, w * 2, h * 2)
-    nvgFillColor(vg, color)
-    nvgFill(vg)
-    ink(vg,size)
-    -- V 形折口
-    nvgBeginPath(vg)
-    nvgMoveTo(vg, cx - w, cy - h)
-    nvgLineTo(vg, cx, cy + h * 0.15)
-    nvgLineTo(vg, cx + w, cy - h)
-    nvgStrokeColor(vg, nvgRGBA(255, 255, 255, 180))
-    nvgStrokeWidth(vg, size * 0.025)
-    nvgStroke(vg)
-end
-
---- 灯泡：圆球 + 矩形底座
-function shapes.bulb(vg, cx, cy, size, color)
-    local r = size * 0.2
-    -- 灯泡球体
+    -- 糖果头
     nvgBeginPath(vg)
     nvgCircle(vg, cx, cy - size * 0.05, r)
     nvgFillColor(vg, color)
     nvgFill(vg)
     ink(vg,size)
-    -- 灯泡下方收束
+    -- 白色纹路
     nvgBeginPath(vg)
-    nvgMoveTo(vg, cx - r * 0.65, cy + r * 0.6)
-    nvgLineTo(vg, cx - r * 0.4, cy + r * 1.3)
-    nvgLineTo(vg, cx + r * 0.4, cy + r * 1.3)
-    nvgLineTo(vg, cx + r * 0.65, cy + r * 0.6)
+    nvgArc(vg, cx, cy - size * 0.05, r * 0.55, math.rad(0), math.rad(180), NVG_CW)
+    nvgStrokeColor(vg, nvgRGBA(255, 255, 255, 175))
+    nvgStrokeWidth(vg, size * 0.04)
+    nvgLineCap(vg, NVG_ROUND)
+    nvgStroke(vg)
+end
+
+--- 船：梯形船体 + 三角帆
+function shapes.boat(vg, cx, cy, size, color)
+    local s = size * 0.27
+    -- 桅杆
+    nvgBeginPath(vg)
+    nvgRect(vg, cx - s * 0.08, cy - s * 1.05, s * 0.16, s * 1.2)
+    nvgFillColor(vg, color)
+    nvgFill(vg)
+    ink(vg,size)
+    -- 帆
+    nvgBeginPath(vg)
+    nvgMoveTo(vg, cx + s * 0.05, cy - s * 1.0)
+    nvgLineTo(vg, cx + s * 0.85, cy + s * 0.05)
+    nvgLineTo(vg, cx + s * 0.05, cy + s * 0.05)
+    nvgClosePath(vg)
+    nvgFillColor(vg, nvgRGBA(255, 255, 255, 225))
+    nvgFill(vg)
+    ink(vg,size)
+    -- 船体（梯形）
+    nvgBeginPath(vg)
+    nvgMoveTo(vg, cx - s * 1.05, cy + s * 0.1)
+    nvgLineTo(vg, cx + s * 1.05, cy + s * 0.1)
+    nvgLineTo(vg, cx + s * 0.72, cy + s * 0.75)
+    nvgLineTo(vg, cx - s * 0.72, cy + s * 0.75)
     nvgClosePath(vg)
     nvgFillColor(vg, color)
     nvgFill(vg)
     ink(vg,size)
-    -- 底座横纹
+end
+
+--- 飞机：俯视对称小飞机
+function shapes.plane(vg, cx, cy, size, color)
+    local s = size * 0.27
+    -- 主翼
     nvgBeginPath(vg)
-    nvgRect(vg, cx - r * 0.38, cy + r * 1.3, r * 0.76, r * 0.25)
-    nvgFillColor(vg, nvgRGBA(200, 200, 200, 220))
+    nvgRoundedRect(vg, cx - s * 1.0, cy - s * 0.22, s * 2.0, s * 0.44, s * 0.18)
+    nvgFillColor(vg, color)
     nvgFill(vg)
     ink(vg,size)
+    -- 尾翼
+    nvgBeginPath(vg)
+    nvgRoundedRect(vg, cx - s * 0.55, cy + s * 0.48, s * 1.1, s * 0.3, s * 0.12)
+    nvgFillColor(vg, color)
+    nvgFill(vg)
+    ink(vg,size)
+    -- 机身
+    nvgBeginPath(vg)
+    nvgRoundedRect(vg, cx - s * 0.26, cy - s * 0.95, s * 0.52, s * 1.9, s * 0.26)
+    nvgFillColor(vg, color)
+    nvgFill(vg)
+    ink(vg,size)
+    shine(vg, cx, cy - s * 0.5, size * 0.032)
+end
+
+--- 信封：矩形 + V 形折口
+function shapes.envelope(vg, cx, cy, size, color)
+    local w = size * 0.28
+    local h = size * 0.21
+    -- 信封体
+    nvgBeginPath(vg)
+    nvgRoundedRect(vg, cx - w, cy - h, w * 2, h * 2, size * 0.04)
+    nvgFillColor(vg, color)
+    nvgFill(vg)
+    ink(vg,size)
+    -- V 形折口
+    nvgBeginPath(vg)
+    nvgMoveTo(vg, cx - w * 0.9, cy - h * 0.85)
+    nvgLineTo(vg, cx, cy + h * 0.15)
+    nvgLineTo(vg, cx + w * 0.9, cy - h * 0.85)
+    nvgStrokeColor(vg, Pen.color(C.ink))
+    nvgStrokeWidth(vg, math.max(1.4, size * 0.038))
+    nvgLineCap(vg, NVG_ROUND)
+    nvgLineJoin(vg, NVG_ROUND)
+    nvgStroke(vg)
+end
+
+--- 灯泡：圆球 + 矩形底座
+function shapes.bulb(vg, cx, cy, size, color)
+    local r = size * 0.22
+    -- 底座横纹
+    nvgBeginPath(vg)
+    nvgRoundedRect(vg, cx - r * 0.52, cy + r * 0.65, r * 1.04, r * 0.58, r * 0.18)
+    nvgFillColor(vg, nvgRGBA(215, 205, 185, 255))
+    nvgFill(vg)
+    ink(vg,size)
+    -- 灯泡球体
+    nvgBeginPath(vg)
+    nvgCircle(vg, cx, cy - size * 0.06, r)
+    nvgFillColor(vg, color)
+    nvgFill(vg)
+    ink(vg,size)
+    shine(vg, cx - r * 0.35, cy - size * 0.06 - r * 0.35, size * 0.035)
 end
 
 --- 月牙（加粗版，与 crescent 不同朝向）
 function shapes.moon(vg, cx, cy, size, color)
-    local r = size * 0.3
-    nvgBeginPath(vg)
-    nvgCircle(vg, cx, cy, r)
-    nvgFillColor(vg, color)
-    nvgFill(vg)
-    ink(vg,size)
-    nvgBeginPath(vg)
-    nvgCircle(vg, cx - r * 0.4, cy - r * 0.2, r * 0.75)
-    nvgFillColor(vg, nvgRGBA(255, 255, 255, 255))
-    nvgFill(vg)
-    ink(vg,size)
+    drawTrueCrescent(vg, cx - size * 0.02, cy, size * 0.30, -1, color, size)
+    shine(vg, cx + size * 0.12, cy - size * 0.08, size * 0.032)
 end
 
 --- 四叶草
 function shapes.clover(vg, cx, cy, size, color)
-    local r = size * 0.13
-    local d = size * 0.1
-    -- 四片叶子
-    nvgBeginPath(vg)
-    nvgCircle(vg, cx, cy - d, r)
-    nvgCircle(vg, cx, cy + d, r)
-    nvgCircle(vg, cx - d, cy, r)
-    nvgCircle(vg, cx + d, cy, r)
-    nvgFillColor(vg, color)
-    nvgFill(vg)
-    ink(vg,size)
+    local r = size * 0.135
+    local d = size * 0.11
     -- 茎
     nvgBeginPath(vg)
     nvgMoveTo(vg, cx, cy + d)
-    nvgLineTo(vg, cx + size * 0.04, cy + size * 0.25)
-    nvgStrokeColor(vg, color)
-    nvgStrokeWidth(vg, size * 0.03)
+    nvgLineTo(vg, cx + size * 0.05, cy + size * 0.27)
+    nvgStrokeColor(vg, Pen.color(C.ink))
+    nvgStrokeWidth(vg, math.max(1.8, size * 0.045))
+    nvgLineCap(vg, NVG_ROUND)
     nvgStroke(vg)
+    -- 四片叶子
+    for _, pos in ipairs({ { 0, -d }, { 0, d }, { -d, 0 }, { d, 0 } }) do
+        nvgBeginPath(vg)
+        nvgCircle(vg, cx + pos[1], cy - size * 0.02 + pos[2], r)
+        nvgFillColor(vg, color)
+        nvgFill(vg)
+        ink(vg,size)
+    end
+    nvgBeginPath(vg)
+    nvgCircle(vg, cx, cy - size * 0.02, r * 0.65)
+    nvgFillColor(vg, color)
+    nvgFill(vg)
 end
 
 --- 拱门
 function shapes.arch(vg, cx, cy, size, color)
-    local w = size * 0.26
-    local h = size * 0.3
-    local t = size * 0.07
-    -- 左柱
+    local w = size * 0.25
+    local h = size * 0.27
+    local innerW = w * 0.48
     nvgBeginPath(vg)
-    nvgRect(vg, cx - w, cy - h * 0.2, t, h * 1.2)
+    nvgArc(vg, cx, cy - h * 0.1, w, math.rad(180), math.rad(0), NVG_CW)
+    nvgLineTo(vg, cx + w, cy + h)
+    nvgLineTo(vg, cx + innerW, cy + h)
+    nvgArc(vg, cx, cy + h * 0.05, innerW, math.rad(0), math.rad(180), NVG_CCW)
+    nvgLineTo(vg, cx - innerW, cy + h)
+    nvgLineTo(vg, cx - w, cy + h)
+    nvgClosePath(vg)
     nvgFillColor(vg, color)
     nvgFill(vg)
     ink(vg,size)
-    -- 右柱
-    nvgBeginPath(vg)
-    nvgRect(vg, cx + w - t, cy - h * 0.2, t, h * 1.2)
-    nvgFillColor(vg, color)
-    nvgFill(vg)
-    ink(vg,size)
-    -- 拱顶
-    nvgBeginPath(vg)
-    nvgArc(vg, cx, cy - h * 0.2, w, math.rad(180), math.rad(0), NVG_CW)
-    nvgStrokeColor(vg, color)
-    nvgStrokeWidth(vg, t)
-    nvgStroke(vg)
 end
 
 --- 靶心（同心圆环）
 function shapes.target(vg, cx, cy, size, color)
-    local r = size * 0.3
+    local r = size * 0.29
     nvgBeginPath(vg)
     nvgCircle(vg, cx, cy, r)
     nvgFillColor(vg, color)
     nvgFill(vg)
     ink(vg,size)
     nvgBeginPath(vg)
-    nvgCircle(vg, cx, cy, r * 0.65)
-    nvgFillColor(vg, nvgRGBA(255, 255, 255, 255))
+    nvgCircle(vg, cx, cy, r * 0.62)
+    nvgFillColor(vg, CELL_CREAM)
     nvgFill(vg)
     ink(vg,size)
     nvgBeginPath(vg)
-    nvgCircle(vg, cx, cy, r * 0.35)
+    nvgCircle(vg, cx, cy, r * 0.30)
     nvgFillColor(vg, color)
     nvgFill(vg)
     ink(vg,size)

@@ -83,7 +83,8 @@ local function createPopup(opts)
                 borderRadius = 12, overflow = "hidden", flexDirection = "column",
                 children = {
                     UI.Panel {
-                        width = "100%", height = s(80), flexShrink = 0,
+                        alignSelf = "stretch", marginLeft = 2.5, marginRight = 2.5,
+                        height = s(80), flexShrink = 0,
                         borderBottomWidth = 1.5, borderColor = C.track,
                         justifyContent = "center", alignItems = "center", gap = s(4),
                         children = {

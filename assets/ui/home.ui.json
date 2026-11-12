@@ -38,46 +38,19 @@
       "type": "Panel",
       "id": "home-header-shadow",
       "position": "absolute",
-      "left": 119.6,
-      "top": 53.5,
+      "left": 120.6,
+      "top": 53,
       "width": 164,
       "height": 48,
       "backgroundColor": [
-        112,
-        88,
-        52,
-        95
+        151,
+        123,
+        78,
+        45
       ],
-      "borderRadius": 12,
+      "borderRadius": 11,
       "borderWidth": 0,
       "pointerEvents": "none"
-    },
-    {
-      "type": "Panel",
-      "id": "home-header-rim",
-      "position": "absolute",
-      "left": 117.6,
-      "top": 48,
-      "width": 168,
-      "height": 52,
-      "padding": 0,
-      "borderWidth": 1.4,
-      "backgroundColor": [
-        255,
-        250,
-        236,
-        240
-      ],
-      "pointerEvents": "none",
-      "children": [],
-      "borderRadius": 13.5,
-      "borderColor": [
-        138,
-        112,
-        72,
-        155
-      ],
-      "borderAlign": "center"
     },
     {
       "type": "Panel",
@@ -99,172 +72,12 @@
         47,
         255
       ],
-      "borderWidth": 2.5,
+      "borderWidth": 2.3,
       "borderAlign": "center",
-      "borderRadius": 11.5,
+      "borderRadius": 11,
       "pointerEvents": "none",
       "overflow": "hidden",
       "children": [
-        {
-          "type": "Panel",
-          "id": "home-header-top-gloss",
-          "position": "absolute",
-          "left": 3,
-          "top": 2,
-          "width": 158,
-          "height": 9,
-          "padding": 0,
-          "borderWidth": 0,
-          "backgroundColor": [
-            255,
-            255,
-            255,
-            110
-          ],
-          "pointerEvents": "none",
-          "children": [],
-          "borderRadius": 6
-        },
-        {
-          "type": "Panel",
-          "id": "home-header-bottom-bevel",
-          "position": "absolute",
-          "left": 2,
-          "top": 41,
-          "width": 160,
-          "height": 6,
-          "padding": 0,
-          "borderWidth": 0,
-          "backgroundColor": [
-            216,
-            192,
-            145,
-            115
-          ],
-          "pointerEvents": "none",
-          "children": [],
-          "borderRadius": 5
-        },
-        {
-          "type": "Panel",
-          "id": "home-header-grain-1a",
-          "position": "absolute",
-          "left": 8,
-          "top": 12,
-          "width": 148,
-          "height": 1.5,
-          "padding": 0,
-          "borderWidth": 0,
-          "backgroundColor": [
-            175,
-            146,
-            98,
-            36
-          ],
-          "pointerEvents": "none",
-          "children": [],
-          "borderRadius": 1
-        },
-        {
-          "type": "Panel",
-          "id": "home-header-grain-1b",
-          "position": "absolute",
-          "left": 12,
-          "top": 13.6,
-          "width": 111.0,
-          "height": 1.2,
-          "padding": 0,
-          "borderWidth": 0,
-          "backgroundColor": [
-            255,
-            253,
-            244,
-            70
-          ],
-          "pointerEvents": "none",
-          "children": [],
-          "borderRadius": 1
-        },
-        {
-          "type": "Panel",
-          "id": "home-header-grain-2a",
-          "position": "absolute",
-          "left": 14,
-          "top": 24,
-          "width": 85.28,
-          "height": 1.5,
-          "padding": 0,
-          "borderWidth": 0,
-          "backgroundColor": [
-            175,
-            146,
-            98,
-            36
-          ],
-          "pointerEvents": "none",
-          "children": [],
-          "borderRadius": 1
-        },
-        {
-          "type": "Panel",
-          "id": "home-header-grain-2c",
-          "position": "absolute",
-          "left": 98.4,
-          "top": 24,
-          "width": 53.6,
-          "height": 1.5,
-          "padding": 0,
-          "borderWidth": 0,
-          "backgroundColor": [
-            175,
-            146,
-            98,
-            36
-          ],
-          "pointerEvents": "none",
-          "children": [],
-          "borderRadius": 1
-        },
-        {
-          "type": "Panel",
-          "id": "home-header-grain-3a",
-          "position": "absolute",
-          "left": 10,
-          "top": 36,
-          "width": 144,
-          "height": 1.5,
-          "padding": 0,
-          "borderWidth": 0,
-          "backgroundColor": [
-            175,
-            146,
-            98,
-            36
-          ],
-          "pointerEvents": "none",
-          "children": [],
-          "borderRadius": 1
-        },
-        {
-          "type": "Panel",
-          "id": "home-header-grain-3b",
-          "position": "absolute",
-          "left": 14,
-          "top": 37.6,
-          "width": 108.0,
-          "height": 1.2,
-          "padding": 0,
-          "borderWidth": 0,
-          "backgroundColor": [
-            255,
-            253,
-            244,
-            70
-          ],
-          "pointerEvents": "none",
-          "children": [],
-          "borderRadius": 1
-        },
         {
           "type": "Panel",
           "id": "home-header-inner-frame",
@@ -274,7 +87,7 @@
           "width": 156,
           "height": 40,
           "padding": 0,
-          "borderWidth": 1.2,
+          "borderWidth": 1.1,
           "backgroundColor": [
             0,
             0,
@@ -283,66 +96,14 @@
           ],
           "pointerEvents": "none",
           "children": [],
-          "borderRadius": 8.5,
+          "borderRadius": 8,
           "borderColor": [
             135,
             108,
             68,
-            90
+            85
           ],
           "borderAlign": "center"
-        },
-        {
-          "type": "Panel",
-          "id": "home-header-pin-l",
-          "position": "absolute",
-          "left": 9,
-          "top": 21.5,
-          "width": 5,
-          "height": 5,
-          "padding": 0,
-          "borderWidth": 1,
-          "backgroundColor": [
-            148,
-            120,
-            76,
-            150
-          ],
-          "pointerEvents": "none",
-          "children": [],
-          "borderRadius": 2.5,
-          "borderColor": [
-            91,
-            76,
-            47,
-            180
-          ]
-        },
-        {
-          "type": "Panel",
-          "id": "home-header-pin-r",
-          "position": "absolute",
-          "left": 150,
-          "top": 21.5,
-          "width": 5,
-          "height": 5,
-          "padding": 0,
-          "borderWidth": 1,
-          "backgroundColor": [
-            148,
-            120,
-            76,
-            150
-          ],
-          "pointerEvents": "none",
-          "children": [],
-          "borderRadius": 2.5,
-          "borderColor": [
-            91,
-            76,
-            47,
-            180
-          ]
         }
       ]
     },
@@ -368,33 +129,6 @@
       "verticalAlign": "middle",
       "lineHeight": 1,
       "pointerEvents": "none"
-    },
-    {
-      "type": "Panel",
-      "id": "home-subtitle-plaque",
-      "position": "absolute",
-      "left": 161.6,
-      "top": 106,
-      "width": 80,
-      "height": 22,
-      "padding": 0,
-      "borderWidth": 1.5,
-      "backgroundColor": [
-        255,
-        248,
-        226,
-        215
-      ],
-      "pointerEvents": "none",
-      "children": [],
-      "borderRadius": 11,
-      "borderColor": [
-        128,
-        104,
-        66,
-        145
-      ],
-      "borderAlign": "center"
     },
     {
       "type": "Label",
@@ -483,47 +217,20 @@
                   "type": "Panel",
                   "id": "p1-puzzle-land-shadow",
                   "position": "absolute",
-                  "left": 0,
-                  "top": 4.5,
+                  "left": 1,
+                  "top": 3,
                   "width": 169.6,
                   "height": 169.6,
                   "padding": 0,
                   "borderWidth": 0,
                   "backgroundColor": [
-                    110,
-                    86,
-                    50,
-                    100
+                    151,
+                    123,
+                    78,
+                    45
                   ],
                   "pointerEvents": "none",
-                  "borderRadius": 13
-                },
-                {
-                  "type": "Panel",
-                  "id": "p1-puzzle-land-rim",
-                  "position": "absolute",
-                  "left": -2,
-                  "top": -2,
-                  "width": 173.6,
-                  "height": 173.6,
-                  "padding": 0,
-                  "borderWidth": 1.5,
-                  "backgroundColor": [
-                    255,
-                    250,
-                    236,
-                    245
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 14,
-                  "borderColor": [
-                    138,
-                    112,
-                    72,
-                    165
-                  ],
-                  "borderAlign": "center"
+                  "borderRadius": 11
                 },
                 {
                   "type": "Panel",
@@ -534,7 +241,7 @@
                   "width": 169.6,
                   "height": 169.6,
                   "padding": 0,
-                  "borderWidth": 2.5,
+                  "borderWidth": 2.3,
                   "backgroundColor": [
                     246,
                     216,
@@ -542,7 +249,7 @@
                     255
                   ],
                   "pointerEvents": "none",
-                  "borderRadius": 12,
+                  "borderRadius": 11,
                   "borderColor": [
                     91,
                     76,
@@ -554,333 +261,6 @@
                   "children": [
                     {
                       "type": "Panel",
-                      "id": "p1-puzzle-land-top-gloss",
-                      "position": "absolute",
-                      "left": 3,
-                      "top": 2,
-                      "width": 163.6,
-                      "height": 14,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        255,
-                        255,
-                        255,
-                        105
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 9
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p1-puzzle-land-bottom-bevel",
-                      "position": "absolute",
-                      "left": 2,
-                      "top": 158.6,
-                      "width": 165.6,
-                      "height": 10,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        212,
-                        172,
-                        112,
-                        130
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 8
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p1-puzzle-land-grain-1a",
-                      "position": "absolute",
-                      "left": 8,
-                      "top": 18,
-                      "width": 153.6,
-                      "height": 1.5,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        196,
-                        154,
-                        92,
-                        52
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p1-puzzle-land-grain-1b",
-                      "position": "absolute",
-                      "left": 12,
-                      "top": 19.6,
-                      "width": 115.2,
-                      "height": 1.2,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        255,
-                        244,
-                        218,
-                        85
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p1-puzzle-land-grain-2a",
-                      "position": "absolute",
-                      "left": 14,
-                      "top": 35,
-                      "width": 88.19,
-                      "height": 1.5,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        196,
-                        154,
-                        92,
-                        52
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p1-puzzle-land-grain-2c",
-                      "position": "absolute",
-                      "left": 101.76,
-                      "top": 35,
-                      "width": 55.84,
-                      "height": 1.5,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        196,
-                        154,
-                        92,
-                        52
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p1-puzzle-land-grain-3a",
-                      "position": "absolute",
-                      "left": 10,
-                      "top": 52,
-                      "width": 149.6,
-                      "height": 1.5,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        196,
-                        154,
-                        92,
-                        52
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p1-puzzle-land-grain-3b",
-                      "position": "absolute",
-                      "left": 14,
-                      "top": 53.6,
-                      "width": 112.2,
-                      "height": 1.2,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        255,
-                        244,
-                        218,
-                        85
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p1-puzzle-land-grain-4a",
-                      "position": "absolute",
-                      "left": 18,
-                      "top": 69,
-                      "width": 78.02,
-                      "height": 1.5,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        196,
-                        154,
-                        92,
-                        52
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p1-puzzle-land-grain-4c",
-                      "position": "absolute",
-                      "left": 91.58,
-                      "top": 69,
-                      "width": 66.02,
-                      "height": 1.5,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        196,
-                        154,
-                        92,
-                        52
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p1-puzzle-land-grain-5a",
-                      "position": "absolute",
-                      "left": 12,
-                      "top": 86,
-                      "width": 145.6,
-                      "height": 1.5,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        196,
-                        154,
-                        92,
-                        52
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p1-puzzle-land-grain-5b",
-                      "position": "absolute",
-                      "left": 16,
-                      "top": 87.6,
-                      "width": 109.2,
-                      "height": 1.2,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        255,
-                        244,
-                        218,
-                        85
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p1-puzzle-land-grain-6a",
-                      "position": "absolute",
-                      "left": 16,
-                      "top": 104,
-                      "width": 98.37,
-                      "height": 1.5,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        196,
-                        154,
-                        92,
-                        52
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p1-puzzle-land-grain-7a",
-                      "position": "absolute",
-                      "left": 8,
-                      "top": 154,
-                      "width": 153.6,
-                      "height": 1.5,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        196,
-                        154,
-                        92,
-                        52
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p1-puzzle-land-grain-7b",
-                      "position": "absolute",
-                      "left": 12,
-                      "top": 155.6,
-                      "width": 115.2,
-                      "height": 1.2,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        255,
-                        244,
-                        218,
-                        85
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p1-puzzle-land-label-band",
-                      "position": "absolute",
-                      "left": 11,
-                      "top": 101,
-                      "width": 147.6,
-                      "height": 55,
-                      "padding": 0,
-                      "borderWidth": 1,
-                      "backgroundColor": [
-                        255,
-                        247,
-                        228,
-                        135
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 9,
-                      "borderColor": [
-                        148,
-                        112,
-                        62,
-                        95
-                      ],
-                      "borderAlign": "center"
-                    },
-                    {
-                      "type": "Panel",
                       "id": "p1-puzzle-land-inner-frame",
                       "position": "absolute",
                       "left": 4.5,
@@ -888,7 +268,7 @@
                       "width": 160.6,
                       "height": 160.6,
                       "padding": 0,
-                      "borderWidth": 1.3,
+                      "borderWidth": 1.2,
                       "backgroundColor": [
                         0,
                         0,
@@ -897,66 +277,14 @@
                       ],
                       "pointerEvents": "none",
                       "children": [],
-                      "borderRadius": 9,
+                      "borderRadius": 8.5,
                       "borderColor": [
                         148,
                         112,
                         62,
-                        95
+                        90
                       ],
                       "borderAlign": "center"
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p1-puzzle-land-pin-tl",
-                      "position": "absolute",
-                      "left": 9,
-                      "top": 9,
-                      "width": 4.5,
-                      "height": 4.5,
-                      "padding": 0,
-                      "borderWidth": 1,
-                      "backgroundColor": [
-                        212,
-                        172,
-                        112,
-                        130
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 2.25,
-                      "borderColor": [
-                        91,
-                        76,
-                        47,
-                        150
-                      ]
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p1-puzzle-land-pin-tr",
-                      "position": "absolute",
-                      "left": 156.1,
-                      "top": 9,
-                      "width": 4.5,
-                      "height": 4.5,
-                      "padding": 0,
-                      "borderWidth": 1,
-                      "backgroundColor": [
-                        212,
-                        172,
-                        112,
-                        130
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 2.25,
-                      "borderColor": [
-                        91,
-                        76,
-                        47,
-                        150
-                      ]
                     }
                   ]
                 },
@@ -1068,47 +396,20 @@
                   "type": "Panel",
                   "id": "p4-link-match-shadow",
                   "position": "absolute",
-                  "left": 0,
-                  "top": 4.5,
+                  "left": 1,
+                  "top": 3,
                   "width": 169.6,
                   "height": 169.6,
                   "padding": 0,
                   "borderWidth": 0,
                   "backgroundColor": [
-                    110,
-                    86,
-                    50,
-                    100
+                    151,
+                    123,
+                    78,
+                    45
                   ],
                   "pointerEvents": "none",
-                  "borderRadius": 13
-                },
-                {
-                  "type": "Panel",
-                  "id": "p4-link-match-rim",
-                  "position": "absolute",
-                  "left": -2,
-                  "top": -2,
-                  "width": 173.6,
-                  "height": 173.6,
-                  "padding": 0,
-                  "borderWidth": 1.5,
-                  "backgroundColor": [
-                    255,
-                    250,
-                    236,
-                    245
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 14,
-                  "borderColor": [
-                    138,
-                    112,
-                    72,
-                    165
-                  ],
-                  "borderAlign": "center"
+                  "borderRadius": 11
                 },
                 {
                   "type": "Panel",
@@ -1119,7 +420,7 @@
                   "width": 169.6,
                   "height": 169.6,
                   "padding": 0,
-                  "borderWidth": 2.5,
+                  "borderWidth": 2.3,
                   "backgroundColor": [
                     220,
                     232,
@@ -1127,7 +428,7 @@
                     255
                   ],
                   "pointerEvents": "none",
-                  "borderRadius": 12,
+                  "borderRadius": 11,
                   "borderColor": [
                     91,
                     76,
@@ -1139,333 +440,6 @@
                   "children": [
                     {
                       "type": "Panel",
-                      "id": "p4-link-match-top-gloss",
-                      "position": "absolute",
-                      "left": 3,
-                      "top": 2,
-                      "width": 163.6,
-                      "height": 14,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        255,
-                        255,
-                        255,
-                        105
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 9
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p4-link-match-bottom-bevel",
-                      "position": "absolute",
-                      "left": 2,
-                      "top": 158.6,
-                      "width": 165.6,
-                      "height": 10,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        182,
-                        200,
-                        148,
-                        135
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 8
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p4-link-match-grain-1a",
-                      "position": "absolute",
-                      "left": 8,
-                      "top": 18,
-                      "width": 153.6,
-                      "height": 1.5,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        154,
-                        176,
-                        118,
-                        52
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p4-link-match-grain-1b",
-                      "position": "absolute",
-                      "left": 12,
-                      "top": 19.6,
-                      "width": 115.2,
-                      "height": 1.2,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        244,
-                        252,
-                        228,
-                        85
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p4-link-match-grain-2a",
-                      "position": "absolute",
-                      "left": 14,
-                      "top": 35,
-                      "width": 88.19,
-                      "height": 1.5,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        154,
-                        176,
-                        118,
-                        52
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p4-link-match-grain-2c",
-                      "position": "absolute",
-                      "left": 101.76,
-                      "top": 35,
-                      "width": 55.84,
-                      "height": 1.5,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        154,
-                        176,
-                        118,
-                        52
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p4-link-match-grain-3a",
-                      "position": "absolute",
-                      "left": 10,
-                      "top": 52,
-                      "width": 149.6,
-                      "height": 1.5,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        154,
-                        176,
-                        118,
-                        52
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p4-link-match-grain-3b",
-                      "position": "absolute",
-                      "left": 14,
-                      "top": 53.6,
-                      "width": 112.2,
-                      "height": 1.2,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        244,
-                        252,
-                        228,
-                        85
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p4-link-match-grain-4a",
-                      "position": "absolute",
-                      "left": 18,
-                      "top": 69,
-                      "width": 78.02,
-                      "height": 1.5,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        154,
-                        176,
-                        118,
-                        52
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p4-link-match-grain-4c",
-                      "position": "absolute",
-                      "left": 91.58,
-                      "top": 69,
-                      "width": 66.02,
-                      "height": 1.5,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        154,
-                        176,
-                        118,
-                        52
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p4-link-match-grain-5a",
-                      "position": "absolute",
-                      "left": 12,
-                      "top": 86,
-                      "width": 145.6,
-                      "height": 1.5,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        154,
-                        176,
-                        118,
-                        52
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p4-link-match-grain-5b",
-                      "position": "absolute",
-                      "left": 16,
-                      "top": 87.6,
-                      "width": 109.2,
-                      "height": 1.2,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        244,
-                        252,
-                        228,
-                        85
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p4-link-match-grain-6a",
-                      "position": "absolute",
-                      "left": 16,
-                      "top": 104,
-                      "width": 98.37,
-                      "height": 1.5,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        154,
-                        176,
-                        118,
-                        52
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p4-link-match-grain-7a",
-                      "position": "absolute",
-                      "left": 8,
-                      "top": 154,
-                      "width": 153.6,
-                      "height": 1.5,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        154,
-                        176,
-                        118,
-                        52
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p4-link-match-grain-7b",
-                      "position": "absolute",
-                      "left": 12,
-                      "top": 155.6,
-                      "width": 115.2,
-                      "height": 1.2,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        244,
-                        252,
-                        228,
-                        85
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p4-link-match-label-band",
-                      "position": "absolute",
-                      "left": 11,
-                      "top": 101,
-                      "width": 147.6,
-                      "height": 55,
-                      "padding": 0,
-                      "borderWidth": 1,
-                      "backgroundColor": [
-                        248,
-                        253,
-                        238,
-                        135
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 9,
-                      "borderColor": [
-                        112,
-                        132,
-                        82,
-                        95
-                      ],
-                      "borderAlign": "center"
-                    },
-                    {
-                      "type": "Panel",
                       "id": "p4-link-match-inner-frame",
                       "position": "absolute",
                       "left": 4.5,
@@ -1473,7 +447,7 @@
                       "width": 160.6,
                       "height": 160.6,
                       "padding": 0,
-                      "borderWidth": 1.3,
+                      "borderWidth": 1.2,
                       "backgroundColor": [
                         0,
                         0,
@@ -1482,66 +456,14 @@
                       ],
                       "pointerEvents": "none",
                       "children": [],
-                      "borderRadius": 9,
+                      "borderRadius": 8.5,
                       "borderColor": [
                         112,
                         132,
                         82,
-                        95
+                        90
                       ],
                       "borderAlign": "center"
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p4-link-match-pin-tl",
-                      "position": "absolute",
-                      "left": 9,
-                      "top": 9,
-                      "width": 4.5,
-                      "height": 4.5,
-                      "padding": 0,
-                      "borderWidth": 1,
-                      "backgroundColor": [
-                        182,
-                        200,
-                        148,
-                        135
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 2.25,
-                      "borderColor": [
-                        91,
-                        76,
-                        47,
-                        150
-                      ]
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p4-link-match-pin-tr",
-                      "position": "absolute",
-                      "left": 156.1,
-                      "top": 9,
-                      "width": 4.5,
-                      "height": 4.5,
-                      "padding": 0,
-                      "borderWidth": 1,
-                      "backgroundColor": [
-                        182,
-                        200,
-                        148,
-                        135
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 2.25,
-                      "borderColor": [
-                        91,
-                        76,
-                        47,
-                        150
-                      ]
                     }
                   ]
                 },
@@ -1653,47 +575,20 @@
                   "type": "Panel",
                   "id": "p3-match-3-shadow",
                   "position": "absolute",
-                  "left": 0,
-                  "top": 4.5,
+                  "left": 1,
+                  "top": 3,
                   "width": 169.6,
                   "height": 169.6,
                   "padding": 0,
                   "borderWidth": 0,
                   "backgroundColor": [
-                    110,
-                    86,
-                    50,
-                    100
+                    151,
+                    123,
+                    78,
+                    45
                   ],
                   "pointerEvents": "none",
-                  "borderRadius": 13
-                },
-                {
-                  "type": "Panel",
-                  "id": "p3-match-3-rim",
-                  "position": "absolute",
-                  "left": -2,
-                  "top": -2,
-                  "width": 173.6,
-                  "height": 173.6,
-                  "padding": 0,
-                  "borderWidth": 1.5,
-                  "backgroundColor": [
-                    255,
-                    250,
-                    236,
-                    245
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 14,
-                  "borderColor": [
-                    138,
-                    112,
-                    72,
-                    165
-                  ],
-                  "borderAlign": "center"
+                  "borderRadius": 11
                 },
                 {
                   "type": "Panel",
@@ -1704,7 +599,7 @@
                   "width": 169.6,
                   "height": 169.6,
                   "padding": 0,
-                  "borderWidth": 2.5,
+                  "borderWidth": 2.3,
                   "backgroundColor": [
                     242,
                     226,
@@ -1712,7 +607,7 @@
                     255
                   ],
                   "pointerEvents": "none",
-                  "borderRadius": 12,
+                  "borderRadius": 11,
                   "borderColor": [
                     91,
                     76,
@@ -1724,333 +619,6 @@
                   "children": [
                     {
                       "type": "Panel",
-                      "id": "p3-match-3-top-gloss",
-                      "position": "absolute",
-                      "left": 3,
-                      "top": 2,
-                      "width": 163.6,
-                      "height": 14,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        255,
-                        255,
-                        255,
-                        105
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 9
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p3-match-3-bottom-bevel",
-                      "position": "absolute",
-                      "left": 2,
-                      "top": 158.6,
-                      "width": 165.6,
-                      "height": 10,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        210,
-                        188,
-                        116,
-                        130
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 8
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p3-match-3-grain-1a",
-                      "position": "absolute",
-                      "left": 8,
-                      "top": 18,
-                      "width": 153.6,
-                      "height": 1.5,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        192,
-                        168,
-                        92,
-                        52
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p3-match-3-grain-1b",
-                      "position": "absolute",
-                      "left": 12,
-                      "top": 19.6,
-                      "width": 115.2,
-                      "height": 1.2,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        255,
-                        248,
-                        220,
-                        85
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p3-match-3-grain-2a",
-                      "position": "absolute",
-                      "left": 14,
-                      "top": 35,
-                      "width": 88.19,
-                      "height": 1.5,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        192,
-                        168,
-                        92,
-                        52
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p3-match-3-grain-2c",
-                      "position": "absolute",
-                      "left": 101.76,
-                      "top": 35,
-                      "width": 55.84,
-                      "height": 1.5,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        192,
-                        168,
-                        92,
-                        52
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p3-match-3-grain-3a",
-                      "position": "absolute",
-                      "left": 10,
-                      "top": 52,
-                      "width": 149.6,
-                      "height": 1.5,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        192,
-                        168,
-                        92,
-                        52
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p3-match-3-grain-3b",
-                      "position": "absolute",
-                      "left": 14,
-                      "top": 53.6,
-                      "width": 112.2,
-                      "height": 1.2,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        255,
-                        248,
-                        220,
-                        85
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p3-match-3-grain-4a",
-                      "position": "absolute",
-                      "left": 18,
-                      "top": 69,
-                      "width": 78.02,
-                      "height": 1.5,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        192,
-                        168,
-                        92,
-                        52
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p3-match-3-grain-4c",
-                      "position": "absolute",
-                      "left": 91.58,
-                      "top": 69,
-                      "width": 66.02,
-                      "height": 1.5,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        192,
-                        168,
-                        92,
-                        52
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p3-match-3-grain-5a",
-                      "position": "absolute",
-                      "left": 12,
-                      "top": 86,
-                      "width": 145.6,
-                      "height": 1.5,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        192,
-                        168,
-                        92,
-                        52
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p3-match-3-grain-5b",
-                      "position": "absolute",
-                      "left": 16,
-                      "top": 87.6,
-                      "width": 109.2,
-                      "height": 1.2,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        255,
-                        248,
-                        220,
-                        85
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p3-match-3-grain-6a",
-                      "position": "absolute",
-                      "left": 16,
-                      "top": 104,
-                      "width": 98.37,
-                      "height": 1.5,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        192,
-                        168,
-                        92,
-                        52
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p3-match-3-grain-7a",
-                      "position": "absolute",
-                      "left": 8,
-                      "top": 154,
-                      "width": 153.6,
-                      "height": 1.5,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        192,
-                        168,
-                        92,
-                        52
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p3-match-3-grain-7b",
-                      "position": "absolute",
-                      "left": 12,
-                      "top": 155.6,
-                      "width": 115.2,
-                      "height": 1.2,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        255,
-                        248,
-                        220,
-                        85
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p3-match-3-label-band",
-                      "position": "absolute",
-                      "left": 11,
-                      "top": 101,
-                      "width": 147.6,
-                      "height": 55,
-                      "padding": 0,
-                      "borderWidth": 1,
-                      "backgroundColor": [
-                        255,
-                        250,
-                        230,
-                        135
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 9,
-                      "borderColor": [
-                        146,
-                        124,
-                        62,
-                        95
-                      ],
-                      "borderAlign": "center"
-                    },
-                    {
-                      "type": "Panel",
                       "id": "p3-match-3-inner-frame",
                       "position": "absolute",
                       "left": 4.5,
@@ -2058,7 +626,7 @@
                       "width": 160.6,
                       "height": 160.6,
                       "padding": 0,
-                      "borderWidth": 1.3,
+                      "borderWidth": 1.2,
                       "backgroundColor": [
                         0,
                         0,
@@ -2067,66 +635,14 @@
                       ],
                       "pointerEvents": "none",
                       "children": [],
-                      "borderRadius": 9,
+                      "borderRadius": 8.5,
                       "borderColor": [
                         146,
                         124,
                         62,
-                        95
+                        90
                       ],
                       "borderAlign": "center"
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p3-match-3-pin-tl",
-                      "position": "absolute",
-                      "left": 9,
-                      "top": 9,
-                      "width": 4.5,
-                      "height": 4.5,
-                      "padding": 0,
-                      "borderWidth": 1,
-                      "backgroundColor": [
-                        210,
-                        188,
-                        116,
-                        130
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 2.25,
-                      "borderColor": [
-                        91,
-                        76,
-                        47,
-                        150
-                      ]
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p3-match-3-pin-tr",
-                      "position": "absolute",
-                      "left": 156.1,
-                      "top": 9,
-                      "width": 4.5,
-                      "height": 4.5,
-                      "padding": 0,
-                      "borderWidth": 1,
-                      "backgroundColor": [
-                        210,
-                        188,
-                        116,
-                        130
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 2.25,
-                      "borderColor": [
-                        91,
-                        76,
-                        47,
-                        150
-                      ]
                     }
                   ]
                 },
@@ -2238,47 +754,20 @@
                   "type": "Panel",
                   "id": "p2-memory-flip-shadow",
                   "position": "absolute",
-                  "left": 0,
-                  "top": 4.5,
+                  "left": 1,
+                  "top": 3,
                   "width": 169.6,
                   "height": 169.6,
                   "padding": 0,
                   "borderWidth": 0,
                   "backgroundColor": [
-                    110,
-                    86,
-                    50,
-                    100
+                    151,
+                    123,
+                    78,
+                    45
                   ],
                   "pointerEvents": "none",
-                  "borderRadius": 13
-                },
-                {
-                  "type": "Panel",
-                  "id": "p2-memory-flip-rim",
-                  "position": "absolute",
-                  "left": -2,
-                  "top": -2,
-                  "width": 173.6,
-                  "height": 173.6,
-                  "padding": 0,
-                  "borderWidth": 1.5,
-                  "backgroundColor": [
-                    255,
-                    250,
-                    236,
-                    245
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 14,
-                  "borderColor": [
-                    138,
-                    112,
-                    72,
-                    165
-                  ],
-                  "borderAlign": "center"
+                  "borderRadius": 11
                 },
                 {
                   "type": "Panel",
@@ -2289,7 +778,7 @@
                   "width": 169.6,
                   "height": 169.6,
                   "padding": 0,
-                  "borderWidth": 2.5,
+                  "borderWidth": 2.3,
                   "backgroundColor": [
                     227,
                     216,
@@ -2297,7 +786,7 @@
                     255
                   ],
                   "pointerEvents": "none",
-                  "borderRadius": 12,
+                  "borderRadius": 11,
                   "borderColor": [
                     91,
                     76,
@@ -2309,333 +798,6 @@
                   "children": [
                     {
                       "type": "Panel",
-                      "id": "p2-memory-flip-top-gloss",
-                      "position": "absolute",
-                      "left": 3,
-                      "top": 2,
-                      "width": 163.6,
-                      "height": 14,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        255,
-                        255,
-                        255,
-                        105
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 9
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p2-memory-flip-bottom-bevel",
-                      "position": "absolute",
-                      "left": 2,
-                      "top": 158.6,
-                      "width": 165.6,
-                      "height": 10,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        192,
-                        174,
-                        198,
-                        135
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 8
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p2-memory-flip-grain-1a",
-                      "position": "absolute",
-                      "left": 8,
-                      "top": 18,
-                      "width": 153.6,
-                      "height": 1.5,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        168,
-                        148,
-                        176,
-                        50
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p2-memory-flip-grain-1b",
-                      "position": "absolute",
-                      "left": 12,
-                      "top": 19.6,
-                      "width": 115.2,
-                      "height": 1.2,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        248,
-                        240,
-                        252,
-                        85
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p2-memory-flip-grain-2a",
-                      "position": "absolute",
-                      "left": 14,
-                      "top": 35,
-                      "width": 88.19,
-                      "height": 1.5,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        168,
-                        148,
-                        176,
-                        50
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p2-memory-flip-grain-2c",
-                      "position": "absolute",
-                      "left": 101.76,
-                      "top": 35,
-                      "width": 55.84,
-                      "height": 1.5,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        168,
-                        148,
-                        176,
-                        50
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p2-memory-flip-grain-3a",
-                      "position": "absolute",
-                      "left": 10,
-                      "top": 52,
-                      "width": 149.6,
-                      "height": 1.5,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        168,
-                        148,
-                        176,
-                        50
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p2-memory-flip-grain-3b",
-                      "position": "absolute",
-                      "left": 14,
-                      "top": 53.6,
-                      "width": 112.2,
-                      "height": 1.2,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        248,
-                        240,
-                        252,
-                        85
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p2-memory-flip-grain-4a",
-                      "position": "absolute",
-                      "left": 18,
-                      "top": 69,
-                      "width": 78.02,
-                      "height": 1.5,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        168,
-                        148,
-                        176,
-                        50
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p2-memory-flip-grain-4c",
-                      "position": "absolute",
-                      "left": 91.58,
-                      "top": 69,
-                      "width": 66.02,
-                      "height": 1.5,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        168,
-                        148,
-                        176,
-                        50
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p2-memory-flip-grain-5a",
-                      "position": "absolute",
-                      "left": 12,
-                      "top": 86,
-                      "width": 145.6,
-                      "height": 1.5,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        168,
-                        148,
-                        176,
-                        50
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p2-memory-flip-grain-5b",
-                      "position": "absolute",
-                      "left": 16,
-                      "top": 87.6,
-                      "width": 109.2,
-                      "height": 1.2,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        248,
-                        240,
-                        252,
-                        85
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p2-memory-flip-grain-6a",
-                      "position": "absolute",
-                      "left": 16,
-                      "top": 104,
-                      "width": 98.37,
-                      "height": 1.5,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        168,
-                        148,
-                        176,
-                        50
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p2-memory-flip-grain-7a",
-                      "position": "absolute",
-                      "left": 8,
-                      "top": 154,
-                      "width": 153.6,
-                      "height": 1.5,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        168,
-                        148,
-                        176,
-                        50
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p2-memory-flip-grain-7b",
-                      "position": "absolute",
-                      "left": 12,
-                      "top": 155.6,
-                      "width": 115.2,
-                      "height": 1.2,
-                      "padding": 0,
-                      "borderWidth": 0,
-                      "backgroundColor": [
-                        248,
-                        240,
-                        252,
-                        85
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 1
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p2-memory-flip-label-band",
-                      "position": "absolute",
-                      "left": 11,
-                      "top": 101,
-                      "width": 147.6,
-                      "height": 55,
-                      "padding": 0,
-                      "borderWidth": 1,
-                      "backgroundColor": [
-                        250,
-                        244,
-                        252,
-                        135
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 9,
-                      "borderColor": [
-                        126,
-                        106,
-                        134,
-                        95
-                      ],
-                      "borderAlign": "center"
-                    },
-                    {
-                      "type": "Panel",
                       "id": "p2-memory-flip-inner-frame",
                       "position": "absolute",
                       "left": 4.5,
@@ -2643,7 +805,7 @@
                       "width": 160.6,
                       "height": 160.6,
                       "padding": 0,
-                      "borderWidth": 1.3,
+                      "borderWidth": 1.2,
                       "backgroundColor": [
                         0,
                         0,
@@ -2652,66 +814,14 @@
                       ],
                       "pointerEvents": "none",
                       "children": [],
-                      "borderRadius": 9,
+                      "borderRadius": 8.5,
                       "borderColor": [
                         126,
                         106,
                         134,
-                        95
+                        90
                       ],
                       "borderAlign": "center"
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p2-memory-flip-pin-tl",
-                      "position": "absolute",
-                      "left": 9,
-                      "top": 9,
-                      "width": 4.5,
-                      "height": 4.5,
-                      "padding": 0,
-                      "borderWidth": 1,
-                      "backgroundColor": [
-                        192,
-                        174,
-                        198,
-                        135
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 2.25,
-                      "borderColor": [
-                        91,
-                        76,
-                        47,
-                        150
-                      ]
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "p2-memory-flip-pin-tr",
-                      "position": "absolute",
-                      "left": 156.1,
-                      "top": 9,
-                      "width": 4.5,
-                      "height": 4.5,
-                      "padding": 0,
-                      "borderWidth": 1,
-                      "backgroundColor": [
-                        192,
-                        174,
-                        198,
-                        135
-                      ],
-                      "pointerEvents": "none",
-                      "children": [],
-                      "borderRadius": 2.25,
-                      "borderColor": [
-                        91,
-                        76,
-                        47,
-                        150
-                      ]
                     }
                   ]
                 },
@@ -2871,53 +981,6 @@
           "children": [
             {
               "type": "Panel",
-              "id": "tab-adventure-shadow",
-              "position": "absolute",
-              "left": 5.52,
-              "top": 11,
-              "width": 99.36,
-              "height": 40,
-              "padding": 0,
-              "borderWidth": 0,
-              "backgroundColor": [
-                110,
-                86,
-                50,
-                90
-              ],
-              "pointerEvents": "none",
-              "children": [],
-              "borderRadius": 11
-            },
-            {
-              "type": "Panel",
-              "id": "tab-adventure-rim",
-              "position": "absolute",
-              "left": 4.02,
-              "top": 6.5,
-              "width": 102.36,
-              "height": 43,
-              "padding": 0,
-              "borderWidth": 1.2,
-              "backgroundColor": [
-                255,
-                250,
-                236,
-                235
-              ],
-              "pointerEvents": "none",
-              "children": [],
-              "borderRadius": 12.5,
-              "borderColor": [
-                138,
-                112,
-                72,
-                150
-              ],
-              "borderAlign": "center"
-            },
-            {
-              "type": "Panel",
               "id": "tab-adventure-plaque",
               "position": "absolute",
               "left": 5.52,
@@ -2926,7 +989,7 @@
               "height": 40,
               "padding": 0,
               "gap": 0,
-              "borderWidth": 2.2,
+              "borderWidth": 2,
               "borderRadius": 11,
               "backgroundColor": [
                 255,
@@ -2939,154 +1002,14 @@
               "children": [
                 {
                   "type": "Panel",
-                  "id": "tab-adventure-top-gloss",
-                  "position": "absolute",
-                  "left": 2,
-                  "top": 1.5,
-                  "width": 95.36,
-                  "height": 7,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    255,
-                    255,
-                    255,
-                    95
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 6
-                },
-                {
-                  "type": "Panel",
-                  "id": "tab-adventure-bottom-bevel",
-                  "position": "absolute",
-                  "left": 1.5,
-                  "top": 34,
-                  "width": 96.36,
-                  "height": 5,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    216,
-                    192,
-                    145,
-                    115
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 5
-                },
-                {
-                  "type": "Panel",
-                  "id": "tab-adventure-grain-1a",
-                  "position": "absolute",
-                  "left": 8,
-                  "top": 11,
-                  "width": 83.36,
-                  "height": 1.5,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    170,
-                    142,
-                    95,
-                    38
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 1
-                },
-                {
-                  "type": "Panel",
-                  "id": "tab-adventure-grain-1b",
-                  "position": "absolute",
-                  "left": 12,
-                  "top": 12.6,
-                  "width": 62.52,
-                  "height": 1.2,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    255,
-                    253,
-                    244,
-                    75
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 1
-                },
-                {
-                  "type": "Panel",
-                  "id": "tab-adventure-grain-2a",
-                  "position": "absolute",
-                  "left": 14,
-                  "top": 21,
-                  "width": 51.67,
-                  "height": 1.5,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    170,
-                    142,
-                    95,
-                    38
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 1
-                },
-                {
-                  "type": "Panel",
-                  "id": "tab-adventure-grain-3a",
-                  "position": "absolute",
-                  "left": 10,
-                  "top": 30,
-                  "width": 79.36,
-                  "height": 1.5,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    170,
-                    142,
-                    95,
-                    38
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 1
-                },
-                {
-                  "type": "Panel",
-                  "id": "tab-adventure-grain-3b",
-                  "position": "absolute",
-                  "left": 14,
-                  "top": 31.6,
-                  "width": 59.52,
-                  "height": 1.2,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    255,
-                    253,
-                    244,
-                    75
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 1
-                },
-                {
-                  "type": "Panel",
                   "id": "tab-adventure-inner-frame",
                   "position": "absolute",
-                  "left": 3,
-                  "top": 3,
-                  "width": 93.36,
-                  "height": 34,
+                  "left": 3.5,
+                  "top": 3.5,
+                  "width": 92.36,
+                  "height": 33,
                   "padding": 0,
-                  "borderWidth": 1,
+                  "borderWidth": 1.0,
                   "backgroundColor": [
                     0,
                     0,
@@ -3100,7 +1023,7 @@
                     120,
                     96,
                     60,
-                    85
+                    80
                   ],
                   "borderAlign": "center"
                 }
@@ -3201,53 +1124,6 @@
           "children": [
             {
               "type": "Panel",
-              "id": "tab-home-shadow",
-              "position": "absolute",
-              "left": 5.52,
-              "top": 11,
-              "width": 99.36,
-              "height": 40,
-              "padding": 0,
-              "borderWidth": 0,
-              "backgroundColor": [
-                110,
-                86,
-                50,
-                90
-              ],
-              "pointerEvents": "none",
-              "children": [],
-              "borderRadius": 11
-            },
-            {
-              "type": "Panel",
-              "id": "tab-home-rim",
-              "position": "absolute",
-              "left": 4.02,
-              "top": 6.5,
-              "width": 102.36,
-              "height": 43,
-              "padding": 0,
-              "borderWidth": 1.2,
-              "backgroundColor": [
-                255,
-                250,
-                236,
-                235
-              ],
-              "pointerEvents": "none",
-              "children": [],
-              "borderRadius": 12.5,
-              "borderColor": [
-                138,
-                112,
-                72,
-                150
-              ],
-              "borderAlign": "center"
-            },
-            {
-              "type": "Panel",
               "id": "tab-home-plaque",
               "position": "absolute",
               "left": 5.52,
@@ -3256,7 +1132,7 @@
               "height": 40,
               "padding": 0,
               "gap": 0,
-              "borderWidth": 2.2,
+              "borderWidth": 2,
               "borderRadius": 11,
               "backgroundColor": [
                 224,
@@ -3269,154 +1145,14 @@
               "children": [
                 {
                   "type": "Panel",
-                  "id": "tab-home-top-gloss",
-                  "position": "absolute",
-                  "left": 2,
-                  "top": 1.5,
-                  "width": 95.36,
-                  "height": 7,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    255,
-                    255,
-                    255,
-                    95
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 6
-                },
-                {
-                  "type": "Panel",
-                  "id": "tab-home-bottom-bevel",
-                  "position": "absolute",
-                  "left": 1.5,
-                  "top": 34,
-                  "width": 96.36,
-                  "height": 5,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    188,
-                    180,
-                    156,
-                    115
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 5
-                },
-                {
-                  "type": "Panel",
-                  "id": "tab-home-grain-1a",
-                  "position": "absolute",
-                  "left": 8,
-                  "top": 11,
-                  "width": 83.36,
-                  "height": 1.5,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    170,
-                    142,
-                    95,
-                    38
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 1
-                },
-                {
-                  "type": "Panel",
-                  "id": "tab-home-grain-1b",
-                  "position": "absolute",
-                  "left": 12,
-                  "top": 12.6,
-                  "width": 62.52,
-                  "height": 1.2,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    255,
-                    253,
-                    244,
-                    75
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 1
-                },
-                {
-                  "type": "Panel",
-                  "id": "tab-home-grain-2a",
-                  "position": "absolute",
-                  "left": 14,
-                  "top": 21,
-                  "width": 51.67,
-                  "height": 1.5,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    170,
-                    142,
-                    95,
-                    38
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 1
-                },
-                {
-                  "type": "Panel",
-                  "id": "tab-home-grain-3a",
-                  "position": "absolute",
-                  "left": 10,
-                  "top": 30,
-                  "width": 79.36,
-                  "height": 1.5,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    170,
-                    142,
-                    95,
-                    38
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 1
-                },
-                {
-                  "type": "Panel",
-                  "id": "tab-home-grain-3b",
-                  "position": "absolute",
-                  "left": 14,
-                  "top": 31.6,
-                  "width": 59.52,
-                  "height": 1.2,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    255,
-                    253,
-                    244,
-                    75
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 1
-                },
-                {
-                  "type": "Panel",
                   "id": "tab-home-inner-frame",
                   "position": "absolute",
-                  "left": 3,
-                  "top": 3,
-                  "width": 93.36,
-                  "height": 34,
+                  "left": 3.5,
+                  "top": 3.5,
+                  "width": 92.36,
+                  "height": 33,
                   "padding": 0,
-                  "borderWidth": 1,
+                  "borderWidth": 1.0,
                   "backgroundColor": [
                     0,
                     0,
@@ -3430,7 +1166,7 @@
                     120,
                     96,
                     60,
-                    85
+                    80
                   ],
                   "borderAlign": "center"
                 }
@@ -3603,53 +1339,6 @@
           "children": [
             {
               "type": "Panel",
-              "id": "tab-profile-shadow",
-              "position": "absolute",
-              "left": 5.52,
-              "top": 11,
-              "width": 99.36,
-              "height": 40,
-              "padding": 0,
-              "borderWidth": 0,
-              "backgroundColor": [
-                110,
-                86,
-                50,
-                90
-              ],
-              "pointerEvents": "none",
-              "children": [],
-              "borderRadius": 11
-            },
-            {
-              "type": "Panel",
-              "id": "tab-profile-rim",
-              "position": "absolute",
-              "left": 4.02,
-              "top": 6.5,
-              "width": 102.36,
-              "height": 43,
-              "padding": 0,
-              "borderWidth": 1.2,
-              "backgroundColor": [
-                255,
-                250,
-                236,
-                235
-              ],
-              "pointerEvents": "none",
-              "children": [],
-              "borderRadius": 12.5,
-              "borderColor": [
-                138,
-                112,
-                72,
-                150
-              ],
-              "borderAlign": "center"
-            },
-            {
-              "type": "Panel",
               "id": "tab-profile-plaque",
               "position": "absolute",
               "left": 5.52,
@@ -3658,7 +1347,7 @@
               "height": 40,
               "padding": 0,
               "gap": 0,
-              "borderWidth": 2.2,
+              "borderWidth": 2,
               "borderRadius": 11,
               "backgroundColor": [
                 255,
@@ -3671,154 +1360,14 @@
               "children": [
                 {
                   "type": "Panel",
-                  "id": "tab-profile-top-gloss",
-                  "position": "absolute",
-                  "left": 2,
-                  "top": 1.5,
-                  "width": 95.36,
-                  "height": 7,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    255,
-                    255,
-                    255,
-                    95
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 6
-                },
-                {
-                  "type": "Panel",
-                  "id": "tab-profile-bottom-bevel",
-                  "position": "absolute",
-                  "left": 1.5,
-                  "top": 34,
-                  "width": 96.36,
-                  "height": 5,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    216,
-                    192,
-                    145,
-                    115
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 5
-                },
-                {
-                  "type": "Panel",
-                  "id": "tab-profile-grain-1a",
-                  "position": "absolute",
-                  "left": 8,
-                  "top": 11,
-                  "width": 83.36,
-                  "height": 1.5,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    170,
-                    142,
-                    95,
-                    38
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 1
-                },
-                {
-                  "type": "Panel",
-                  "id": "tab-profile-grain-1b",
-                  "position": "absolute",
-                  "left": 12,
-                  "top": 12.6,
-                  "width": 62.52,
-                  "height": 1.2,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    255,
-                    253,
-                    244,
-                    75
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 1
-                },
-                {
-                  "type": "Panel",
-                  "id": "tab-profile-grain-2a",
-                  "position": "absolute",
-                  "left": 14,
-                  "top": 21,
-                  "width": 51.67,
-                  "height": 1.5,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    170,
-                    142,
-                    95,
-                    38
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 1
-                },
-                {
-                  "type": "Panel",
-                  "id": "tab-profile-grain-3a",
-                  "position": "absolute",
-                  "left": 10,
-                  "top": 30,
-                  "width": 79.36,
-                  "height": 1.5,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    170,
-                    142,
-                    95,
-                    38
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 1
-                },
-                {
-                  "type": "Panel",
-                  "id": "tab-profile-grain-3b",
-                  "position": "absolute",
-                  "left": 14,
-                  "top": 31.6,
-                  "width": 59.52,
-                  "height": 1.2,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    255,
-                    253,
-                    244,
-                    75
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 1
-                },
-                {
-                  "type": "Panel",
                   "id": "tab-profile-inner-frame",
                   "position": "absolute",
-                  "left": 3,
-                  "top": 3,
-                  "width": 93.36,
-                  "height": 34,
+                  "left": 3.5,
+                  "top": 3.5,
+                  "width": 92.36,
+                  "height": 33,
                   "padding": 0,
-                  "borderWidth": 1,
+                  "borderWidth": 1.0,
                   "backgroundColor": [
                     0,
                     0,
@@ -3832,7 +1381,7 @@
                     120,
                     96,
                     60,
-                    85
+                    80
                   ],
                   "borderAlign": "center"
                 }
@@ -3933,53 +1482,6 @@
           "children": [
             {
               "type": "Panel",
-              "id": "settings-shadow",
-              "position": "absolute",
-              "left": -2,
-              "top": 11,
-              "width": 44,
-              "height": 40,
-              "padding": 0,
-              "borderWidth": 0,
-              "backgroundColor": [
-                110,
-                86,
-                50,
-                90
-              ],
-              "pointerEvents": "none",
-              "children": [],
-              "borderRadius": 11
-            },
-            {
-              "type": "Panel",
-              "id": "settings-rim",
-              "position": "absolute",
-              "left": -3.5,
-              "top": 6.5,
-              "width": 47,
-              "height": 43,
-              "padding": 0,
-              "borderWidth": 1.2,
-              "backgroundColor": [
-                255,
-                250,
-                236,
-                235
-              ],
-              "pointerEvents": "none",
-              "children": [],
-              "borderRadius": 12.5,
-              "borderColor": [
-                138,
-                112,
-                72,
-                150
-              ],
-              "borderAlign": "center"
-            },
-            {
-              "type": "Panel",
               "id": "settings-plaque",
               "position": "absolute",
               "left": -2,
@@ -3988,7 +1490,7 @@
               "height": 40,
               "padding": 0,
               "gap": 0,
-              "borderWidth": 2.2,
+              "borderWidth": 2,
               "borderRadius": 11,
               "backgroundColor": [
                 255,
@@ -4001,154 +1503,14 @@
               "children": [
                 {
                   "type": "Panel",
-                  "id": "settings-top-gloss",
-                  "position": "absolute",
-                  "left": 2,
-                  "top": 1.5,
-                  "width": 40,
-                  "height": 7,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    255,
-                    255,
-                    255,
-                    95
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 6
-                },
-                {
-                  "type": "Panel",
-                  "id": "settings-bottom-bevel",
-                  "position": "absolute",
-                  "left": 1.5,
-                  "top": 34,
-                  "width": 41,
-                  "height": 5,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    216,
-                    192,
-                    145,
-                    115
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 5
-                },
-                {
-                  "type": "Panel",
-                  "id": "settings-grain-1a",
-                  "position": "absolute",
-                  "left": 8,
-                  "top": 11,
-                  "width": 28,
-                  "height": 1.5,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    170,
-                    142,
-                    95,
-                    38
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 1
-                },
-                {
-                  "type": "Panel",
-                  "id": "settings-grain-1b",
-                  "position": "absolute",
-                  "left": 12,
-                  "top": 12.6,
-                  "width": 21.0,
-                  "height": 1.2,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    255,
-                    253,
-                    244,
-                    75
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 1
-                },
-                {
-                  "type": "Panel",
-                  "id": "settings-grain-2a",
-                  "position": "absolute",
-                  "left": 14,
-                  "top": 21,
-                  "width": 22.88,
-                  "height": 1.5,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    170,
-                    142,
-                    95,
-                    38
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 1
-                },
-                {
-                  "type": "Panel",
-                  "id": "settings-grain-3a",
-                  "position": "absolute",
-                  "left": 10,
-                  "top": 30,
-                  "width": 24,
-                  "height": 1.5,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    170,
-                    142,
-                    95,
-                    38
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 1
-                },
-                {
-                  "type": "Panel",
-                  "id": "settings-grain-3b",
-                  "position": "absolute",
-                  "left": 14,
-                  "top": 31.6,
-                  "width": 18.0,
-                  "height": 1.2,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    255,
-                    253,
-                    244,
-                    75
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 1
-                },
-                {
-                  "type": "Panel",
                   "id": "settings-inner-frame",
                   "position": "absolute",
-                  "left": 3,
-                  "top": 3,
-                  "width": 38,
-                  "height": 34,
+                  "left": 3.5,
+                  "top": 3.5,
+                  "width": 37,
+                  "height": 33,
                   "padding": 0,
-                  "borderWidth": 1,
+                  "borderWidth": 1.0,
                   "backgroundColor": [
                     0,
                     0,
@@ -4162,7 +1524,7 @@
                     120,
                     96,
                     60,
-                    85
+                    80
                   ],
                   "borderAlign": "center"
                 }

@@ -69,10 +69,10 @@
                       "width": "100%",
                       "height": 92,
                       "backgroundColor": [
-                        255,
-                        246,
-                        220,
-                        255
+                        0,
+                        0,
+                        0,
+                        0
                       ],
                       "borderBottomWidth": 2,
                       "borderColor": [
@@ -101,6 +101,12 @@
                           "children": [],
                           "fontFamily": "sans"
                         }
+                      ],
+                      "borderRadius": [
+                        16,
+                        16,
+                        0,
+                        0
                       ]
                     },
                     {
@@ -582,10 +588,10 @@
                       "width": "100%",
                       "height": 92,
                       "backgroundColor": [
-                        255,
-                        246,
-                        220,
-                        255
+                        0,
+                        0,
+                        0,
+                        0
                       ],
                       "borderBottomWidth": 2,
                       "borderColor": [
@@ -614,6 +620,12 @@
                           "children": [],
                           "fontFamily": "sans"
                         }
+                      ],
+                      "borderRadius": [
+                        16,
+                        16,
+                        0,
+                        0
                       ]
                     },
                     {

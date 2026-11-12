@@ -9,32 +9,31 @@ local M = {}
 M.__index = M
 local MODULE = "lm-board"
 
--- 图案池定义
+-- 图案池定义（优先使用独立手绘图案集，保证各关卡图标风格与视觉体量统一）
 local ART_POOLS = {
     shapes_easy = {
         "circle", "square", "triangle", "star",
-        "diamond", "cross", "halfcircle", "heart",
+        "diamond", "cross", "heart", "flower",
     },
     shapes_medium = {
         "circle", "square", "triangle", "star",
-        "diamond", "cross", "halfcircle", "heart",
-        "pentagon", "hexagon", "arrow", "lightning",
-        "crescent", "shield", "plus", "minus",
+        "diamond", "cross", "heart", "flower",
+        "leaf", "apple", "sun", "house",
+        "cloud", "fish", "halfcircle", "pentagon",
     },
     shapes_hard = {
         "circle", "square", "triangle", "star",
-        "diamond", "cross", "halfcircle", "heart",
+        "diamond", "cross", "heart", "flower",
+        "leaf", "apple", "sun", "house",
+        "cloud", "fish", "halfcircle",
         "pentagon", "hexagon", "arrow", "lightning",
         "crescent", "shield", "plus", "minus",
         "spiral", "gear", "hourglass", "gem",
-        "flower", "leaf", "flame",
-        -- 复合图案（多多边形组合）
-        "house", "fish", "tree", "jewel",
+        "flame", "tree", "jewel",
         "bowtie", "crown", "rocket", "bell",
-        "anchor", "snowflake", "note", "sun",
+        "anchor", "snowflake", "note",
         "moonstar", "key", "flag", "eye",
-        -- 新增图案
-        "cloud", "umbrella", "mushroom", "apple",
+        "umbrella", "mushroom",
         "cup", "mountain", "hand", "dice",
         "cherry", "star6", "star7", "donut",
         "lollipop", "boat", "plane", "envelope",

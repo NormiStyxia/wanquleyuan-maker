@@ -86,7 +86,14 @@
                       ],
                       "fontWeight": "bold"
                     }
-                  ]
+                  ],
+                  "borderRadius": [
+                    16,
+                    16,
+                    0,
+                    0
+                  ],
+                  "borderWidth": 2.667
                 },
                 {
                   "type": "Panel",

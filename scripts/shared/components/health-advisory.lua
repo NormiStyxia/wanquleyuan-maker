@@ -202,6 +202,8 @@ local function showCadpaPopup()
             UI.Panel {
                 width = "100%", height = 76,
                 backgroundColor = COLORS.green,
+                borderRadius = { 18, 18, 0, 0 },
+                borderWidth = 2, borderColor = COLORS.ink,
                 justifyContent = "center", alignItems = "center",
                 flexDirection = "column",
                 children = {

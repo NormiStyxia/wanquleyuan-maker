@@ -32,14 +32,17 @@ end
 function M.panel(vg, x, y, w, h, fill, alpha)
     nvgSave(vg)
     if alpha then nvgGlobalAlpha(vg, alpha) end
-    Pen.texturedPlaque(vg, x, y, w, h, fill or C.paper, 2.4)
+    Pen.plaque(vg, x + 1, y + 3, w, h, {151, 123, 78, 45}, 1, {151, 123, 78, 0})
+    Pen.texturedPlaque(vg, x, y, w, h, fill or C.paper, 2.3)
     nvgRestore(vg)
 end
 
 function M.button(vg, x, y, w, h, label, primary, enabled, face, alpha)
     nvgSave(vg)
-    nvgGlobalAlpha(vg, (alpha or 1) * (enabled == false and 0.5 or 1))
-    Pen.texturedPlaque(vg, x, y, w, h, primary and C.orange or C.paper, 2.2)
+    if alpha or enabled == false then
+        nvgGlobalAlpha(vg, (alpha or 1) * (enabled == false and 0.5 or 1))
+    end
+    Pen.texturedPlaque(vg, x, y, w, h, primary and C.orange or C.paper, 2)
     M.text(vg, x + w / 2, y + h / 2, label, math.min(16, h * 0.4), C.ink, nil, face)
     nvgRestore(vg)
 end

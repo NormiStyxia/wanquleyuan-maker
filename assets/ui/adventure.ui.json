@@ -2713,53 +2713,6 @@
           "children": [
             {
               "type": "Panel",
-              "id": "tab-adventure-shadow",
-              "position": "absolute",
-              "left": 5.52,
-              "top": 11,
-              "width": 99.36,
-              "height": 40,
-              "padding": 0,
-              "borderWidth": 0,
-              "backgroundColor": [
-                110,
-                86,
-                50,
-                90
-              ],
-              "pointerEvents": "none",
-              "children": [],
-              "borderRadius": 11
-            },
-            {
-              "type": "Panel",
-              "id": "tab-adventure-rim",
-              "position": "absolute",
-              "left": 4.02,
-              "top": 6.5,
-              "width": 102.36,
-              "height": 43,
-              "padding": 0,
-              "borderWidth": 1.2,
-              "backgroundColor": [
-                255,
-                250,
-                236,
-                235
-              ],
-              "pointerEvents": "none",
-              "children": [],
-              "borderRadius": 12.5,
-              "borderColor": [
-                138,
-                112,
-                72,
-                150
-              ],
-              "borderAlign": "center"
-            },
-            {
-              "type": "Panel",
               "id": "tab-adventure-plaque",
               "position": "absolute",
               "left": 5.52,
@@ -2768,7 +2721,7 @@
               "height": 40,
               "padding": 0,
               "gap": 0,
-              "borderWidth": 2.2,
+              "borderWidth": 2,
               "borderRadius": 11,
               "backgroundColor": [
                 238,
@@ -2781,154 +2734,14 @@
               "children": [
                 {
                   "type": "Panel",
-                  "id": "tab-adventure-top-gloss",
-                  "position": "absolute",
-                  "left": 2,
-                  "top": 1.5,
-                  "width": 95.36,
-                  "height": 7,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    255,
-                    255,
-                    255,
-                    95
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 6
-                },
-                {
-                  "type": "Panel",
-                  "id": "tab-adventure-bottom-bevel",
-                  "position": "absolute",
-                  "left": 1.5,
-                  "top": 34,
-                  "width": 96.36,
-                  "height": 5,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    192,
-                    114,
-                    34,
-                    115
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 5
-                },
-                {
-                  "type": "Panel",
-                  "id": "tab-adventure-grain-1a",
-                  "position": "absolute",
-                  "left": 8,
-                  "top": 11,
-                  "width": 83.36,
-                  "height": 1.5,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    170,
-                    142,
-                    95,
-                    38
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 1
-                },
-                {
-                  "type": "Panel",
-                  "id": "tab-adventure-grain-1b",
-                  "position": "absolute",
-                  "left": 12,
-                  "top": 12.6,
-                  "width": 62.52,
-                  "height": 1.2,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    255,
-                    253,
-                    244,
-                    75
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 1
-                },
-                {
-                  "type": "Panel",
-                  "id": "tab-adventure-grain-2a",
-                  "position": "absolute",
-                  "left": 14,
-                  "top": 21,
-                  "width": 51.67,
-                  "height": 1.5,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    170,
-                    142,
-                    95,
-                    38
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 1
-                },
-                {
-                  "type": "Panel",
-                  "id": "tab-adventure-grain-3a",
-                  "position": "absolute",
-                  "left": 10,
-                  "top": 30,
-                  "width": 79.36,
-                  "height": 1.5,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    170,
-                    142,
-                    95,
-                    38
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 1
-                },
-                {
-                  "type": "Panel",
-                  "id": "tab-adventure-grain-3b",
-                  "position": "absolute",
-                  "left": 14,
-                  "top": 31.6,
-                  "width": 59.52,
-                  "height": 1.2,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    255,
-                    253,
-                    244,
-                    75
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 1
-                },
-                {
-                  "type": "Panel",
                   "id": "tab-adventure-inner-frame",
                   "position": "absolute",
-                  "left": 3,
-                  "top": 3,
-                  "width": 93.36,
-                  "height": 34,
+                  "left": 3.5,
+                  "top": 3.5,
+                  "width": 92.36,
+                  "height": 33,
                   "padding": 0,
-                  "borderWidth": 1,
+                  "borderWidth": 1.0,
                   "backgroundColor": [
                     0,
                     0,
@@ -2942,7 +2755,7 @@
                     120,
                     96,
                     60,
-                    85
+                    80
                   ],
                   "borderAlign": "center"
                 }
@@ -3043,53 +2856,6 @@
           "children": [
             {
               "type": "Panel",
-              "id": "tab-home-shadow",
-              "position": "absolute",
-              "left": 5.52,
-              "top": 11,
-              "width": 99.36,
-              "height": 40,
-              "padding": 0,
-              "borderWidth": 0,
-              "backgroundColor": [
-                110,
-                86,
-                50,
-                90
-              ],
-              "pointerEvents": "none",
-              "children": [],
-              "borderRadius": 11
-            },
-            {
-              "type": "Panel",
-              "id": "tab-home-rim",
-              "position": "absolute",
-              "left": 4.02,
-              "top": 6.5,
-              "width": 102.36,
-              "height": 43,
-              "padding": 0,
-              "borderWidth": 1.2,
-              "backgroundColor": [
-                255,
-                250,
-                236,
-                235
-              ],
-              "pointerEvents": "none",
-              "children": [],
-              "borderRadius": 12.5,
-              "borderColor": [
-                138,
-                112,
-                72,
-                150
-              ],
-              "borderAlign": "center"
-            },
-            {
-              "type": "Panel",
               "id": "tab-home-plaque",
               "position": "absolute",
               "left": 5.52,
@@ -3098,7 +2864,7 @@
               "height": 40,
               "padding": 0,
               "gap": 0,
-              "borderWidth": 2.2,
+              "borderWidth": 2,
               "borderRadius": 11,
               "backgroundColor": [
                 224,
@@ -3111,154 +2877,14 @@
               "children": [
                 {
                   "type": "Panel",
-                  "id": "tab-home-top-gloss",
-                  "position": "absolute",
-                  "left": 2,
-                  "top": 1.5,
-                  "width": 95.36,
-                  "height": 7,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    255,
-                    255,
-                    255,
-                    95
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 6
-                },
-                {
-                  "type": "Panel",
-                  "id": "tab-home-bottom-bevel",
-                  "position": "absolute",
-                  "left": 1.5,
-                  "top": 34,
-                  "width": 96.36,
-                  "height": 5,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    188,
-                    180,
-                    156,
-                    115
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 5
-                },
-                {
-                  "type": "Panel",
-                  "id": "tab-home-grain-1a",
-                  "position": "absolute",
-                  "left": 8,
-                  "top": 11,
-                  "width": 83.36,
-                  "height": 1.5,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    170,
-                    142,
-                    95,
-                    38
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 1
-                },
-                {
-                  "type": "Panel",
-                  "id": "tab-home-grain-1b",
-                  "position": "absolute",
-                  "left": 12,
-                  "top": 12.6,
-                  "width": 62.52,
-                  "height": 1.2,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    255,
-                    253,
-                    244,
-                    75
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 1
-                },
-                {
-                  "type": "Panel",
-                  "id": "tab-home-grain-2a",
-                  "position": "absolute",
-                  "left": 14,
-                  "top": 21,
-                  "width": 51.67,
-                  "height": 1.5,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    170,
-                    142,
-                    95,
-                    38
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 1
-                },
-                {
-                  "type": "Panel",
-                  "id": "tab-home-grain-3a",
-                  "position": "absolute",
-                  "left": 10,
-                  "top": 30,
-                  "width": 79.36,
-                  "height": 1.5,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    170,
-                    142,
-                    95,
-                    38
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 1
-                },
-                {
-                  "type": "Panel",
-                  "id": "tab-home-grain-3b",
-                  "position": "absolute",
-                  "left": 14,
-                  "top": 31.6,
-                  "width": 59.52,
-                  "height": 1.2,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    255,
-                    253,
-                    244,
-                    75
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 1
-                },
-                {
-                  "type": "Panel",
                   "id": "tab-home-inner-frame",
                   "position": "absolute",
-                  "left": 3,
-                  "top": 3,
-                  "width": 93.36,
-                  "height": 34,
+                  "left": 3.5,
+                  "top": 3.5,
+                  "width": 92.36,
+                  "height": 33,
                   "padding": 0,
-                  "borderWidth": 1,
+                  "borderWidth": 1.0,
                   "backgroundColor": [
                     0,
                     0,
@@ -3272,7 +2898,7 @@
                     120,
                     96,
                     60,
-                    85
+                    80
                   ],
                   "borderAlign": "center"
                 }
@@ -3445,53 +3071,6 @@
           "children": [
             {
               "type": "Panel",
-              "id": "tab-profile-shadow",
-              "position": "absolute",
-              "left": 5.52,
-              "top": 11,
-              "width": 99.36,
-              "height": 40,
-              "padding": 0,
-              "borderWidth": 0,
-              "backgroundColor": [
-                110,
-                86,
-                50,
-                90
-              ],
-              "pointerEvents": "none",
-              "children": [],
-              "borderRadius": 11
-            },
-            {
-              "type": "Panel",
-              "id": "tab-profile-rim",
-              "position": "absolute",
-              "left": 4.02,
-              "top": 6.5,
-              "width": 102.36,
-              "height": 43,
-              "padding": 0,
-              "borderWidth": 1.2,
-              "backgroundColor": [
-                255,
-                250,
-                236,
-                235
-              ],
-              "pointerEvents": "none",
-              "children": [],
-              "borderRadius": 12.5,
-              "borderColor": [
-                138,
-                112,
-                72,
-                150
-              ],
-              "borderAlign": "center"
-            },
-            {
-              "type": "Panel",
               "id": "tab-profile-plaque",
               "position": "absolute",
               "left": 5.52,
@@ -3500,7 +3079,7 @@
               "height": 40,
               "padding": 0,
               "gap": 0,
-              "borderWidth": 2.2,
+              "borderWidth": 2,
               "borderRadius": 11,
               "backgroundColor": [
                 255,
@@ -3513,154 +3092,14 @@
               "children": [
                 {
                   "type": "Panel",
-                  "id": "tab-profile-top-gloss",
-                  "position": "absolute",
-                  "left": 2,
-                  "top": 1.5,
-                  "width": 95.36,
-                  "height": 7,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    255,
-                    255,
-                    255,
-                    95
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 6
-                },
-                {
-                  "type": "Panel",
-                  "id": "tab-profile-bottom-bevel",
-                  "position": "absolute",
-                  "left": 1.5,
-                  "top": 34,
-                  "width": 96.36,
-                  "height": 5,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    216,
-                    192,
-                    145,
-                    115
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 5
-                },
-                {
-                  "type": "Panel",
-                  "id": "tab-profile-grain-1a",
-                  "position": "absolute",
-                  "left": 8,
-                  "top": 11,
-                  "width": 83.36,
-                  "height": 1.5,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    170,
-                    142,
-                    95,
-                    38
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 1
-                },
-                {
-                  "type": "Panel",
-                  "id": "tab-profile-grain-1b",
-                  "position": "absolute",
-                  "left": 12,
-                  "top": 12.6,
-                  "width": 62.52,
-                  "height": 1.2,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    255,
-                    253,
-                    244,
-                    75
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 1
-                },
-                {
-                  "type": "Panel",
-                  "id": "tab-profile-grain-2a",
-                  "position": "absolute",
-                  "left": 14,
-                  "top": 21,
-                  "width": 51.67,
-                  "height": 1.5,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    170,
-                    142,
-                    95,
-                    38
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 1
-                },
-                {
-                  "type": "Panel",
-                  "id": "tab-profile-grain-3a",
-                  "position": "absolute",
-                  "left": 10,
-                  "top": 30,
-                  "width": 79.36,
-                  "height": 1.5,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    170,
-                    142,
-                    95,
-                    38
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 1
-                },
-                {
-                  "type": "Panel",
-                  "id": "tab-profile-grain-3b",
-                  "position": "absolute",
-                  "left": 14,
-                  "top": 31.6,
-                  "width": 59.52,
-                  "height": 1.2,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    255,
-                    253,
-                    244,
-                    75
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 1
-                },
-                {
-                  "type": "Panel",
                   "id": "tab-profile-inner-frame",
                   "position": "absolute",
-                  "left": 3,
-                  "top": 3,
-                  "width": 93.36,
-                  "height": 34,
+                  "left": 3.5,
+                  "top": 3.5,
+                  "width": 92.36,
+                  "height": 33,
                   "padding": 0,
-                  "borderWidth": 1,
+                  "borderWidth": 1.0,
                   "backgroundColor": [
                     0,
                     0,
@@ -3674,7 +3113,7 @@
                     120,
                     96,
                     60,
-                    85
+                    80
                   ],
                   "borderAlign": "center"
                 }
@@ -3775,53 +3214,6 @@
           "children": [
             {
               "type": "Panel",
-              "id": "settings-shadow",
-              "position": "absolute",
-              "left": -2,
-              "top": 11,
-              "width": 44,
-              "height": 40,
-              "padding": 0,
-              "borderWidth": 0,
-              "backgroundColor": [
-                110,
-                86,
-                50,
-                90
-              ],
-              "pointerEvents": "none",
-              "children": [],
-              "borderRadius": 11
-            },
-            {
-              "type": "Panel",
-              "id": "settings-rim",
-              "position": "absolute",
-              "left": -3.5,
-              "top": 6.5,
-              "width": 47,
-              "height": 43,
-              "padding": 0,
-              "borderWidth": 1.2,
-              "backgroundColor": [
-                255,
-                250,
-                236,
-                235
-              ],
-              "pointerEvents": "none",
-              "children": [],
-              "borderRadius": 12.5,
-              "borderColor": [
-                138,
-                112,
-                72,
-                150
-              ],
-              "borderAlign": "center"
-            },
-            {
-              "type": "Panel",
               "id": "settings-plaque",
               "position": "absolute",
               "left": -2,
@@ -3830,7 +3222,7 @@
               "height": 40,
               "padding": 0,
               "gap": 0,
-              "borderWidth": 2.2,
+              "borderWidth": 2,
               "borderRadius": 11,
               "backgroundColor": [
                 255,
@@ -3843,154 +3235,14 @@
               "children": [
                 {
                   "type": "Panel",
-                  "id": "settings-top-gloss",
-                  "position": "absolute",
-                  "left": 2,
-                  "top": 1.5,
-                  "width": 40,
-                  "height": 7,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    255,
-                    255,
-                    255,
-                    95
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 6
-                },
-                {
-                  "type": "Panel",
-                  "id": "settings-bottom-bevel",
-                  "position": "absolute",
-                  "left": 1.5,
-                  "top": 34,
-                  "width": 41,
-                  "height": 5,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    216,
-                    192,
-                    145,
-                    115
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 5
-                },
-                {
-                  "type": "Panel",
-                  "id": "settings-grain-1a",
-                  "position": "absolute",
-                  "left": 8,
-                  "top": 11,
-                  "width": 28,
-                  "height": 1.5,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    170,
-                    142,
-                    95,
-                    38
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 1
-                },
-                {
-                  "type": "Panel",
-                  "id": "settings-grain-1b",
-                  "position": "absolute",
-                  "left": 12,
-                  "top": 12.6,
-                  "width": 21.0,
-                  "height": 1.2,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    255,
-                    253,
-                    244,
-                    75
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 1
-                },
-                {
-                  "type": "Panel",
-                  "id": "settings-grain-2a",
-                  "position": "absolute",
-                  "left": 14,
-                  "top": 21,
-                  "width": 22.88,
-                  "height": 1.5,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    170,
-                    142,
-                    95,
-                    38
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 1
-                },
-                {
-                  "type": "Panel",
-                  "id": "settings-grain-3a",
-                  "position": "absolute",
-                  "left": 10,
-                  "top": 30,
-                  "width": 24,
-                  "height": 1.5,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    170,
-                    142,
-                    95,
-                    38
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 1
-                },
-                {
-                  "type": "Panel",
-                  "id": "settings-grain-3b",
-                  "position": "absolute",
-                  "left": 14,
-                  "top": 31.6,
-                  "width": 18.0,
-                  "height": 1.2,
-                  "padding": 0,
-                  "borderWidth": 0,
-                  "backgroundColor": [
-                    255,
-                    253,
-                    244,
-                    75
-                  ],
-                  "pointerEvents": "none",
-                  "children": [],
-                  "borderRadius": 1
-                },
-                {
-                  "type": "Panel",
                   "id": "settings-inner-frame",
                   "position": "absolute",
-                  "left": 3,
-                  "top": 3,
-                  "width": 38,
-                  "height": 34,
+                  "left": 3.5,
+                  "top": 3.5,
+                  "width": 37,
+                  "height": 33,
                   "padding": 0,
-                  "borderWidth": 1,
+                  "borderWidth": 1.0,
                   "backgroundColor": [
                     0,
                     0,
@@ -4004,7 +3256,7 @@
                     120,
                     96,
                     60,
-                    85
+                    80
                   ],
                   "borderAlign": "center"
                 }

@@ -135,9 +135,9 @@ function M.create(onComplete)
                 children = {
                     -- 标题栏（暖色渐变）
                     UI.Panel {
-                        width = "100%",
+                        alignSelf = "stretch",
+                        marginLeft = 2.5, marginRight = 2.5,
                         height = 80,
-                        backgroundColor = C.paper,
                         borderBottomWidth = 2, borderColor = C.track,
                         flexShrink = 0, paddingHorizontal = 12,
                         justifyContent = "center",

@@ -233,8 +233,7 @@ function M.showView(parentContainer)
                 children = {
                     -- 标题栏（暖色渐变）
                     UI.Panel {
-                        width = "100%", height = s(64),
-                        backgroundColor = C.paper,
+                        alignSelf = "stretch", marginLeft = 2.5, marginRight = 2.5, height = s(64),
                         borderBottomWidth = 2, borderColor = C.track,
                         flexShrink = 0,
                         justifyContent = "center", alignItems = "center",
@@ -316,8 +315,7 @@ function M.showConsent(parentContainer, onAccept)
                 children = {
                     -- 标题栏
                     UI.Panel {
-                        width = "100%", height = s(64),
-                        backgroundColor = C.paper,
+                        alignSelf = "stretch", marginLeft = 2.5, marginRight = 2.5, height = s(64),
                         borderBottomWidth = 2, borderColor = C.track,
                         flexShrink = 0,
                         justifyContent = "center", alignItems = "center",

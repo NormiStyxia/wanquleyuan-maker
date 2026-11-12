@@ -175,15 +175,18 @@ function M.renderPagination(vg, screenW, screenH, totalPages, currentPage, t, fo
     local buttons = {}
     for _, dir in ipairs({-1, 1}) do
         local enabled = dir == -1 and currentPage > 1 or dir == 1 and currentPage < totalPages
+        local x = cx + dir * layout.ARROW_SPREAD - 22
+        nvgSave(vg)
+        if not enabled then nvgGlobalAlpha(vg, 0.45) end
+        Pen.texturedPlaque(vg, x, cy - 22, 44, 44, C.paper, 2.5)
+        nvgBeginPath(vg)
+        nvgMoveTo(vg, x + 22 - dir * 4, cy - 7)
+        nvgLineTo(vg, x + 22 + dir * 4, cy)
+        nvgLineTo(vg, x + 22 - dir * 4, cy + 7)
+        nvgLineCap(vg, NVG_ROUND); nvgLineJoin(vg, NVG_ROUND)
+        nvgStrokeWidth(vg, 3); nvgStrokeColor(vg, Pen.color(C.ink)); nvgStroke(vg)
+        nvgRestore(vg)
         if enabled then
-            local x = cx + dir * layout.ARROW_SPREAD - 22
-            Pen.plaque(vg, x, cy - 22, 44, 44, C.paper, 2.5)
-            nvgBeginPath(vg)
-            nvgMoveTo(vg, x + 22 - dir * 4, cy - 7)
-            nvgLineTo(vg, x + 22 + dir * 4, cy)
-            nvgLineTo(vg, x + 22 - dir * 4, cy + 7)
-            nvgLineCap(vg, NVG_ROUND); nvgLineJoin(vg, NVG_ROUND)
-            nvgStrokeWidth(vg, 3); nvgStrokeColor(vg, Pen.color(C.ink)); nvgStroke(vg)
             -- Density 最低缩放为 0.85；52 个游戏单位仍保留约 44 个逻辑像素的触摸区。
             buttons[dir] = { x = x - 4, y = cy - 26, w = 52, h = 52 }
         end

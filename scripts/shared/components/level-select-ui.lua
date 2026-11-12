@@ -236,7 +236,19 @@ end
 -- 分页指示器
 -- ============================================================================
 
---- 绘制分页指示器（圆点 + 箭头按钮）
+--- 计算固定在整页最大行数下方的分页指示器中心 Y（不随当页关卡数量变化）
+---@param screenH number
+---@param startY number
+---@param rowsPerPage number
+---@param cellSize number
+---@param cellGap number
+---@return number indicatorY
+function M.getPageIndicatorY(screenH, startY, rowsPerPage, cellSize, cellGap)
+    local gridBottom = startY + rowsPerPage * cellSize + (rowsPerPage - 1) * cellGap
+    return math.min(gridBottom + 76, screenH - 36)
+end
+
+--- 绘制分页指示器（圆点 + 对称常驻箭头按钮）
 ---@param vg userdata
 ---@param screenW number
 ---@param y number 指示器垂直中心 Y
@@ -254,7 +266,7 @@ function M.drawPageIndicator(vg, screenW, y, current, total, accentColor)
     local arrowW = M.PAGE_ARROW_W
     local arrowH = M.PAGE_ARROW_H
 
-    -- 圆点
+    -- 圆点严格水平居中
     local dotsW = (total - 1) * dotGap
     local dotsStartX = screenW / 2 - dotsW / 2
     for p = 1, total do
@@ -264,28 +276,23 @@ function M.drawPageIndicator(vg, screenW, y, current, total, accentColor)
         if p == current then
             nvgFillColor(vg, nvgRGBA(ac[1], ac[2], ac[3], 220))
         else
-            nvgFillColor(vg, nvgRGBA(200, 190, 175, 80))
+            nvgFillColor(vg, nvgRGBA(200, 190, 175, 110))
         end
         nvgFill(vg)
     end
 
-    -- 左箭头
-    local prevBtn = nil
-    local prevX = dotsStartX - dotsW / 2 - arrowW - 16
-    if prevX < 8 then prevX = 8 end
-    if current > 1 then
-        Paper.button(vg,prevX,y-arrowH/2,arrowW,arrowH,"<",false,true)
-        prevBtn = { x = prevX, y = y - arrowH / 2, w = arrowW, h = arrowH }
-    end
+    -- 左右翻页按钮对称固定在圆点两侧；边界页置灰保留占位，避免翻页时左右晃动
+    local sideGap = 20
+    local prevX = math.max(8, screenW / 2 - dotsW / 2 - sideGap - arrowW)
+    local nextX = math.min(screenW - 8 - arrowW, screenW / 2 + dotsW / 2 + sideGap)
 
-    -- 右箭头
-    local nextBtn = nil
-    local nextX = dotsStartX + dotsW + dotsW / 2 + 16
-    if nextX + arrowW > screenW - 8 then nextX = screenW - 8 - arrowW end
-    if current < total then
-        Paper.button(vg,nextX,y-arrowH/2,arrowW,arrowH,">",false,true)
-        nextBtn = { x = nextX, y = y - arrowH / 2, w = arrowW, h = arrowH }
-    end
+    local canPrev = current > 1
+    Paper.button(vg, prevX, y - arrowH / 2, arrowW, arrowH, "<", false, canPrev)
+    local prevBtn = canPrev and { x = prevX, y = y - arrowH / 2, w = arrowW, h = arrowH } or nil
+
+    local canNext = current < total
+    Paper.button(vg, nextX, y - arrowH / 2, arrowW, arrowH, ">", false, canNext)
+    local nextBtn = canNext and { x = nextX, y = y - arrowH / 2, w = arrowW, h = arrowH } or nil
 
     return prevBtn, nextBtn
 end

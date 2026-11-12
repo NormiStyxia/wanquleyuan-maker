@@ -138,13 +138,12 @@ function M.draw(vg, screenW, screenH, levels, saveData, afterBg)
         }
     end
 
-    -- 公共分页指示器
-    local pageRows = math.ceil((pageEndIdx - pageStartIdx + 1) / COLS)
-    local indicatorY = startY + pageRows * (CELL_SIZE + CELL_GAP) + 8
+    -- 公共分页指示器（位置固定，不随单页行数变化）
+    local indicatorY = LSU.getPageIndicatorY(screenH, startY, ROWS_PER_PAGE, CELL_SIZE, CELL_GAP)
     local prevBtn, nextBtn = LSU.drawPageIndicator(vg, screenW, indicatorY, currentPage_, totalPages_, THEME_COLOR)
 
     -- 公共底部装饰
-    local footerY = indicatorY + (totalPages_ > 1 and 24 or 0) + 12
+    local footerY = indicatorY + 36
     LSU.drawGarden(vg, screenW, screenH, footerY)
 
     return {

@@ -309,6 +309,19 @@
                           ],
                           "children": []
                         }
+                      ],
+                      "borderRadius": [
+                        24,
+                        24,
+                        0,
+                        0
+                      ],
+                      "borderWidth": 2.667,
+                      "borderColor": [
+                        91,
+                        76,
+                        47,
+                        255
                       ]
                     },
                     {

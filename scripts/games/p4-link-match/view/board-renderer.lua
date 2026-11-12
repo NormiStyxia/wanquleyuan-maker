@@ -30,7 +30,7 @@ function M.calcLayout(screenW, screenH, rows, cols, topOffset, bottomOffset)
     topOffset = topOffset or 70
     bottomOffset = bottomOffset or 75
 
-    local gap=math.max(3,math.min(6,screenW*.009))
+    local gap=math.max(2.5,math.min(4,screenW*.008))
     -- The perimeter is a real route in the puzzle, so reserve half a cell on each side.
     local area=PlayArea.calc(screenW,screenH,rows,cols,topOffset,bottomOffset,{gap=gap,outer=1,footer=218})
     local cellSize=area.cell
@@ -111,13 +111,28 @@ function M.drawBackground(vg, screenW, screenH)
     nvgFill(vg)
 end
 
+--- 绘制单个连连看轻柔圆角格底板
+local function drawTileCell(vg, tx, ty, cellSize, isSelected)
+    local cellR = math.min(7, math.max(4, cellSize * 0.14))
+    nvgBeginPath(vg)
+    nvgRoundedRect(vg, tx, ty, cellSize, cellSize, cellR)
+    if isSelected then
+        nvgFillColor(vg, nvgRGBA(255, 232, 182, 255))
+    else
+        nvgFillColor(vg, nvgRGBA(255, 248, 226, 244))
+    end
+    nvgFill(vg)
+    nvgStrokeColor(vg, isSelected and Pen.color(C.ink) or nvgRGBA(196, 178, 138, 90))
+    nvgStrokeWidth(vg, isSelected and 1.6 or 1.0)
+    nvgStroke(vg)
+end
+
 --- 绘制整个棋盘
 ---@param vg userdata
 ---@param board table Board 实例
 ---@param layout table
 function M.drawBoard(vg, board, layout, time)
     local cellSize = layout.cellSize
-    local r = math.max(4, cellSize * 0.12)
     time=time or (board.elapsedMs or 0)/1000
     local selected=board.selectedPos
     local key=selected and (selected.y*board.cols+selected.x) or nil
@@ -126,7 +141,8 @@ function M.drawBoard(vg, board, layout, time)
     end
     local age=math.max(0,time-(selectionAt_ or time))
 
-    Paper.panel(vg,layout.startX-7,layout.startY-7,layout.gridW+14,layout.gridH+14,{239,226,194,255})
+    -- 棋盘外底托采用单层圆角手绘框，避免与内部格子形成多层平行边框干扰视线
+    Pen.plaque(vg, layout.startX - 7, layout.startY - 7, layout.gridW + 14, layout.gridH + 14, {239, 226, 194, 255}, 2.2, { radius = 12 })
 
     for y = 0, board.rows - 1 do
         for x = 0, board.cols - 1 do
@@ -152,7 +168,7 @@ function M.drawBoard(vg, board, layout, time)
 
                 nvgSave(vg)
 
-                Paper.panel(vg,tx,ty,cellSize,cellSize,isSelected and {255,229,177,255} or C.paper)
+                drawTileCell(vg, tx, ty, cellSize, isSelected)
 
                 -- 图案
                 local artKey = board:getArtKey(x, y)
@@ -218,7 +234,7 @@ function M.drawLinkLine(vg,board,layout)
                 nvgSave(vg); nvgTranslate(vg,cx,cy)
                 nvgScale(vg,math.max(0.01,scale),math.max(0.01,scale))
                 nvgRotate(vg,p*0.1); nvgTranslate(vg,-cx,-cy)
-                Paper.panel(vg,cx-layout.cellSize/2,cy-layout.cellSize/2,layout.cellSize,layout.cellSize)
+                drawTileCell(vg,cx-layout.cellSize/2,cy-layout.cellSize/2,layout.cellSize,false)
                 if tile.artKey then tileRenderer.drawPattern(vg,tile.artKey,cx,cy,layout.cellSize,tile.colorIdx) end
                 nvgRestore(vg)
                 Paper.burst(vg,cx,cy,layout.cellSize,p)
