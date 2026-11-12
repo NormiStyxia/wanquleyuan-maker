@@ -2,13 +2,16 @@
   "$schema": "../schemas/settings.schema.json",
   "sources": {
     "engine": {
-      "tag": "stable"
+      "tag": "latest"
     },
     "engine-res": {
-      "tag": "stable"
+      "tag": "latest"
+    },
+    "urhox-libs": {
+      "tag": "latest"
     },
     "official-res": {
-      "tag": "stable"
+      "tag": "latest"
     }
   },
   "build": {
