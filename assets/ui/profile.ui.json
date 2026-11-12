@@ -525,7 +525,601 @@
           ],
           "pointerEvents": "box-none",
           "overflow": "hidden",
-          "children": []
+          "children": [
+            {
+              "type": "Button",
+              "id": "skin-default",
+              "position": "absolute",
+              "left": 28.6,
+              "top": 14,
+              "width": 76,
+              "height": 98,
+              "padding": 0,
+              "backgroundColor": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "borderWidth": 0,
+              "boxShadow": false,
+              "children": [
+                {
+                  "type": "Panel",
+                  "id": "skin-default-image",
+                  "position": "absolute",
+                  "left": 3,
+                  "top": 3,
+                  "width": 70,
+                  "height": 70,
+                  "backgroundImage": "image/handdrawn/character-previews/default.png",
+                  "backgroundFit": "contain",
+                  "pointerEvents": "none"
+                },
+                {
+                  "type": "Label",
+                  "id": "skin-default-label",
+                  "position": "absolute",
+                  "left": -7,
+                  "top": 79,
+                  "width": 90,
+                  "height": 22,
+                  "text": "默认",
+                  "fontFamily": "sans",
+                  "fontSize": 12,
+                  "fontColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "textAlign": "center",
+                  "verticalAlign": "middle",
+                  "pointerEvents": "none"
+                }
+              ]
+            },
+            {
+              "type": "Button",
+              "id": "skin-sport",
+              "position": "absolute",
+              "left": 118.6,
+              "top": 14,
+              "width": 76,
+              "height": 98,
+              "padding": 0,
+              "backgroundColor": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "borderWidth": 0,
+              "boxShadow": false,
+              "children": [
+                {
+                  "type": "Panel",
+                  "id": "skin-sport-image",
+                  "position": "absolute",
+                  "left": 3,
+                  "top": 3,
+                  "width": 70,
+                  "height": 70,
+                  "backgroundImage": "image/handdrawn/character-previews/sport.png",
+                  "backgroundFit": "contain",
+                  "backgroundImageOpacity": 0.55,
+                  "pointerEvents": "none"
+                },
+                {
+                  "type": "Label",
+                  "id": "skin-sport-label",
+                  "position": "absolute",
+                  "left": -7,
+                  "top": 79,
+                  "width": 90,
+                  "height": 22,
+                  "text": "完成7关",
+                  "fontFamily": "sans",
+                  "fontSize": 11,
+                  "fontColor": [
+                    116,
+                    102,
+                    70,
+                    255
+                  ],
+                  "textAlign": "center",
+                  "verticalAlign": "middle",
+                  "pointerEvents": "none"
+                }
+              ]
+            },
+            {
+              "type": "Button",
+              "id": "skin-chef",
+              "position": "absolute",
+              "left": 208.6,
+              "top": 14,
+              "width": 76,
+              "height": 98,
+              "padding": 0,
+              "backgroundColor": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "borderWidth": 0,
+              "boxShadow": false,
+              "children": [
+                {
+                  "type": "Panel",
+                  "id": "skin-chef-image",
+                  "position": "absolute",
+                  "left": 3,
+                  "top": 3,
+                  "width": 70,
+                  "height": 70,
+                  "backgroundImage": "image/handdrawn/character-previews/chef.png",
+                  "backgroundFit": "contain",
+                  "backgroundImageOpacity": 0.55,
+                  "pointerEvents": "none"
+                },
+                {
+                  "type": "Label",
+                  "id": "skin-chef-label",
+                  "position": "absolute",
+                  "left": -7,
+                  "top": 79,
+                  "width": 90,
+                  "height": 22,
+                  "text": "完成14关",
+                  "fontFamily": "sans",
+                  "fontSize": 11,
+                  "fontColor": [
+                    116,
+                    102,
+                    70,
+                    255
+                  ],
+                  "textAlign": "center",
+                  "verticalAlign": "middle",
+                  "pointerEvents": "none"
+                }
+              ]
+            },
+            {
+              "type": "Button",
+              "id": "skin-suit",
+              "position": "absolute",
+              "left": 298.6,
+              "top": 14,
+              "width": 76,
+              "height": 98,
+              "padding": 0,
+              "backgroundColor": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "borderWidth": 0,
+              "boxShadow": false,
+              "children": [
+                {
+                  "type": "Panel",
+                  "id": "skin-suit-image",
+                  "position": "absolute",
+                  "left": 3,
+                  "top": 3,
+                  "width": 70,
+                  "height": 70,
+                  "backgroundImage": "image/handdrawn/character-previews/suit.png",
+                  "backgroundFit": "contain",
+                  "backgroundImageOpacity": 0.55,
+                  "pointerEvents": "none"
+                },
+                {
+                  "type": "Label",
+                  "id": "skin-suit-label",
+                  "position": "absolute",
+                  "left": -7,
+                  "top": 79,
+                  "width": 90,
+                  "height": 22,
+                  "text": "点击购买",
+                  "fontFamily": "sans",
+                  "fontSize": 11,
+                  "fontColor": [
+                    116,
+                    102,
+                    70,
+                    255
+                  ],
+                  "textAlign": "center",
+                  "verticalAlign": "middle",
+                  "pointerEvents": "none"
+                }
+              ]
+            },
+            {
+              "type": "Button",
+              "id": "skin-astronaut",
+              "position": "absolute",
+              "left": 28.6,
+              "top": 128,
+              "width": 76,
+              "height": 98,
+              "padding": 0,
+              "backgroundColor": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "borderWidth": 0,
+              "boxShadow": false,
+              "children": [
+                {
+                  "type": "Panel",
+                  "id": "skin-astronaut-image",
+                  "position": "absolute",
+                  "left": 3,
+                  "top": 3,
+                  "width": 70,
+                  "height": 70,
+                  "backgroundImage": "image/handdrawn/character-previews/astronaut.png",
+                  "backgroundFit": "contain",
+                  "backgroundImageOpacity": 0.55,
+                  "pointerEvents": "none"
+                },
+                {
+                  "type": "Label",
+                  "id": "skin-astronaut-label",
+                  "position": "absolute",
+                  "left": -7,
+                  "top": 79,
+                  "width": 90,
+                  "height": 22,
+                  "text": "点击购买",
+                  "fontFamily": "sans",
+                  "fontSize": 11,
+                  "fontColor": [
+                    116,
+                    102,
+                    70,
+                    255
+                  ],
+                  "textAlign": "center",
+                  "verticalAlign": "middle",
+                  "pointerEvents": "none"
+                }
+              ]
+            },
+            {
+              "type": "Button",
+              "id": "skin-worker",
+              "position": "absolute",
+              "left": 118.6,
+              "top": 128,
+              "width": 76,
+              "height": 98,
+              "padding": 0,
+              "backgroundColor": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "borderWidth": 0,
+              "boxShadow": false,
+              "children": [
+                {
+                  "type": "Panel",
+                  "id": "skin-worker-image",
+                  "position": "absolute",
+                  "left": 3,
+                  "top": 3,
+                  "width": 70,
+                  "height": 70,
+                  "backgroundImage": "image/handdrawn/character-previews/worker.png",
+                  "backgroundFit": "contain",
+                  "backgroundImageOpacity": 0.55,
+                  "pointerEvents": "none"
+                },
+                {
+                  "type": "Label",
+                  "id": "skin-worker-label",
+                  "position": "absolute",
+                  "left": -7,
+                  "top": 79,
+                  "width": 90,
+                  "height": 22,
+                  "text": "点击购买",
+                  "fontFamily": "sans",
+                  "fontSize": 11,
+                  "fontColor": [
+                    116,
+                    102,
+                    70,
+                    255
+                  ],
+                  "textAlign": "center",
+                  "verticalAlign": "middle",
+                  "pointerEvents": "none"
+                }
+              ]
+            },
+            {
+              "type": "Button",
+              "id": "skin-pirate",
+              "position": "absolute",
+              "left": 208.6,
+              "top": 128,
+              "width": 76,
+              "height": 98,
+              "padding": 0,
+              "backgroundColor": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "borderWidth": 0,
+              "boxShadow": false,
+              "children": [
+                {
+                  "type": "Panel",
+                  "id": "skin-pirate-image",
+                  "position": "absolute",
+                  "left": 3,
+                  "top": 3,
+                  "width": 70,
+                  "height": 70,
+                  "backgroundImage": "image/handdrawn/character-previews/pirate.png",
+                  "backgroundFit": "contain",
+                  "backgroundImageOpacity": 0.55,
+                  "pointerEvents": "none"
+                },
+                {
+                  "type": "Label",
+                  "id": "skin-pirate-label",
+                  "position": "absolute",
+                  "left": -7,
+                  "top": 79,
+                  "width": 90,
+                  "height": 22,
+                  "text": "点击购买",
+                  "fontFamily": "sans",
+                  "fontSize": 11,
+                  "fontColor": [
+                    116,
+                    102,
+                    70,
+                    255
+                  ],
+                  "textAlign": "center",
+                  "verticalAlign": "middle",
+                  "pointerEvents": "none"
+                }
+              ]
+            },
+            {
+              "type": "Button",
+              "id": "skin-detective",
+              "position": "absolute",
+              "left": 298.6,
+              "top": 128,
+              "width": 76,
+              "height": 98,
+              "padding": 0,
+              "backgroundColor": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "borderWidth": 0,
+              "boxShadow": false,
+              "children": [
+                {
+                  "type": "Panel",
+                  "id": "skin-detective-image",
+                  "position": "absolute",
+                  "left": 3,
+                  "top": 3,
+                  "width": 70,
+                  "height": 70,
+                  "backgroundImage": "image/handdrawn/character-previews/detective.png",
+                  "backgroundFit": "contain",
+                  "backgroundImageOpacity": 0.55,
+                  "pointerEvents": "none"
+                },
+                {
+                  "type": "Label",
+                  "id": "skin-detective-label",
+                  "position": "absolute",
+                  "left": -7,
+                  "top": 79,
+                  "width": 90,
+                  "height": 22,
+                  "text": "点击购买",
+                  "fontFamily": "sans",
+                  "fontSize": 11,
+                  "fontColor": [
+                    116,
+                    102,
+                    70,
+                    255
+                  ],
+                  "textAlign": "center",
+                  "verticalAlign": "middle",
+                  "pointerEvents": "none"
+                }
+              ]
+            },
+            {
+              "type": "Button",
+              "id": "skin-artist",
+              "position": "absolute",
+              "left": 28.6,
+              "top": 242,
+              "width": 76,
+              "height": 98,
+              "padding": 0,
+              "backgroundColor": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "borderWidth": 0,
+              "boxShadow": false,
+              "children": [
+                {
+                  "type": "Panel",
+                  "id": "skin-artist-image",
+                  "position": "absolute",
+                  "left": 3,
+                  "top": 3,
+                  "width": 70,
+                  "height": 70,
+                  "backgroundImage": "image/handdrawn/character-previews/artist.png",
+                  "backgroundFit": "contain",
+                  "backgroundImageOpacity": 0.55,
+                  "pointerEvents": "none"
+                },
+                {
+                  "type": "Label",
+                  "id": "skin-artist-label",
+                  "position": "absolute",
+                  "left": -7,
+                  "top": 79,
+                  "width": 90,
+                  "height": 22,
+                  "text": "点击购买",
+                  "fontFamily": "sans",
+                  "fontSize": 11,
+                  "fontColor": [
+                    116,
+                    102,
+                    70,
+                    255
+                  ],
+                  "textAlign": "center",
+                  "verticalAlign": "middle",
+                  "pointerEvents": "none"
+                }
+              ]
+            },
+            {
+              "type": "Button",
+              "id": "skin-ninja",
+              "position": "absolute",
+              "left": 118.6,
+              "top": 242,
+              "width": 76,
+              "height": 98,
+              "padding": 0,
+              "backgroundColor": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "borderWidth": 0,
+              "boxShadow": false,
+              "children": [
+                {
+                  "type": "Panel",
+                  "id": "skin-ninja-image",
+                  "position": "absolute",
+                  "left": 3,
+                  "top": 3,
+                  "width": 70,
+                  "height": 70,
+                  "backgroundImage": "image/handdrawn/character-previews/ninja.png",
+                  "backgroundFit": "contain",
+                  "backgroundImageOpacity": 0.55,
+                  "pointerEvents": "none"
+                },
+                {
+                  "type": "Label",
+                  "id": "skin-ninja-label",
+                  "position": "absolute",
+                  "left": -7,
+                  "top": 79,
+                  "width": 90,
+                  "height": 22,
+                  "text": "点击购买",
+                  "fontFamily": "sans",
+                  "fontSize": 11,
+                  "fontColor": [
+                    116,
+                    102,
+                    70,
+                    255
+                  ],
+                  "textAlign": "center",
+                  "verticalAlign": "middle",
+                  "pointerEvents": "none"
+                }
+              ]
+            },
+            {
+              "type": "Button",
+              "id": "skin-doctor",
+              "position": "absolute",
+              "left": 208.6,
+              "top": 242,
+              "width": 76,
+              "height": 98,
+              "padding": 0,
+              "backgroundColor": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "borderWidth": 0,
+              "boxShadow": false,
+              "children": [
+                {
+                  "type": "Panel",
+                  "id": "skin-doctor-image",
+                  "position": "absolute",
+                  "left": 3,
+                  "top": 3,
+                  "width": 70,
+                  "height": 70,
+                  "backgroundImage": "image/handdrawn/character-previews/doctor.png",
+                  "backgroundFit": "contain",
+                  "backgroundImageOpacity": 0.55,
+                  "pointerEvents": "none"
+                },
+                {
+                  "type": "Label",
+                  "id": "skin-doctor-label",
+                  "position": "absolute",
+                  "left": -7,
+                  "top": 79,
+                  "width": 90,
+                  "height": 22,
+                  "text": "点击购买",
+                  "fontFamily": "sans",
+                  "fontSize": 11,
+                  "fontColor": [
+                    116,
+                    102,
+                    70,
+                    255
+                  ],
+                  "textAlign": "center",
+                  "verticalAlign": "middle",
+                  "pointerEvents": "none"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -663,7 +1257,715 @@
           ],
           "pointerEvents": "box-none",
           "overflow": "hidden",
-          "children": []
+          "children": [
+            {
+              "type": "Panel",
+              "id": "background-grid-rule",
+              "position": "absolute",
+              "left": 24,
+              "top": 0,
+              "width": 355.2,
+              "height": 1.5,
+              "backgroundColor": [
+                221,
+                207,
+                166,
+                255
+              ]
+            },
+            {
+              "type": "Button",
+              "id": "background-default",
+              "position": "absolute",
+              "left": 28.6,
+              "top": 14,
+              "width": 76,
+              "height": 98,
+              "text": "",
+              "padding": 0,
+              "backgroundColor": false,
+              "borderWidth": 0,
+              "boxShadow": false,
+              "children": [
+                {
+                  "type": "Panel",
+                  "id": "background-default-paper",
+                  "position": "absolute",
+                  "left": 0,
+                  "top": 0,
+                  "width": 76,
+                  "height": 76,
+                  "backgroundColor": [
+                    255,
+                    246,
+                    220,
+                    255
+                  ],
+                  "borderRadius": 11,
+                  "borderColor": [
+                    238,
+                    156,
+                    67,
+                    255
+                  ],
+                  "borderWidth": 3
+                },
+                {
+                  "type": "Panel",
+                  "id": "background-default-image",
+                  "position": "absolute",
+                  "left": 22.25,
+                  "top": 3,
+                  "width": 31.5,
+                  "height": 70,
+                  "backgroundColor": false,
+                  "backgroundImage": "image/handdrawn/backgrounds/previews/default.png",
+                  "backgroundFit": "cover"
+                },
+                {
+                  "type": "Label",
+                  "id": "background-default-selected",
+                  "position": "absolute",
+                  "left": 56,
+                  "top": 0,
+                  "width": 20,
+                  "height": 20,
+                  "text": "✓",
+                  "fontFamily": "sans",
+                  "fontSize": 10.5,
+                  "fontColor": [
+                    255,
+                    246,
+                    220,
+                    255
+                  ],
+                  "textAlign": "center",
+                  "verticalAlign": "middle",
+                  "backgroundColor": [
+                    132,
+                    166,
+                    78,
+                    255
+                  ],
+                  "borderRadius": 10
+                },
+                {
+                  "type": "Label",
+                  "id": "background-default-caption",
+                  "position": "absolute",
+                  "left": -7,
+                  "top": 80,
+                  "width": 90,
+                  "height": 20,
+                  "text": "暖阳奶油",
+                  "fontFamily": "sans",
+                  "fontSize": 9,
+                  "fontColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "textAlign": "center",
+                  "verticalAlign": "middle",
+                  "lineHeight": 1
+                }
+              ],
+              "_extraction": {
+                "id": "default",
+                "name": "暖阳奶油",
+                "unlockedSample": true,
+                "selectedSample": true,
+                "action": "保留原Lua：选择/解锁/购买，不在JSON绑定。"
+              }
+            },
+            {
+              "type": "Button",
+              "id": "background-sky_blue",
+              "position": "absolute",
+              "left": 118.6,
+              "top": 14,
+              "width": 76,
+              "height": 98,
+              "text": "",
+              "padding": 0,
+              "backgroundColor": false,
+              "borderWidth": 0,
+              "boxShadow": false,
+              "children": [
+                {
+                  "type": "Panel",
+                  "id": "background-sky_blue-paper",
+                  "position": "absolute",
+                  "left": 0,
+                  "top": 0,
+                  "width": 76,
+                  "height": 76,
+                  "backgroundColor": [
+                    255,
+                    246,
+                    220,
+                    255
+                  ],
+                  "borderRadius": 11,
+                  "borderColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "borderWidth": 2
+                },
+                {
+                  "type": "Panel",
+                  "id": "background-sky_blue-image",
+                  "position": "absolute",
+                  "left": 22.25,
+                  "top": 3,
+                  "width": 31.5,
+                  "height": 70,
+                  "backgroundColor": false,
+                  "backgroundImage": "image/handdrawn/backgrounds/previews/sky_blue.png",
+                  "backgroundFit": "cover"
+                },
+                {
+                  "type": "Label",
+                  "id": "background-sky_blue-caption",
+                  "position": "absolute",
+                  "left": -7,
+                  "top": 80,
+                  "width": 90,
+                  "height": 20,
+                  "text": "晴空蔚蓝",
+                  "fontFamily": "sans",
+                  "fontSize": 9,
+                  "fontColor": [
+                    116,
+                    102,
+                    70,
+                    255
+                  ],
+                  "textAlign": "center",
+                  "verticalAlign": "middle",
+                  "lineHeight": 1
+                }
+              ],
+              "_extraction": {
+                "id": "sky_blue",
+                "name": "晴空蔚蓝",
+                "unlockedSample": true,
+                "selectedSample": false,
+                "action": "保留原Lua：选择/解锁/购买，不在JSON绑定。"
+              }
+            },
+            {
+              "type": "Button",
+              "id": "background-mint_green",
+              "position": "absolute",
+              "left": 208.6,
+              "top": 14,
+              "width": 76,
+              "height": 98,
+              "text": "",
+              "padding": 0,
+              "backgroundColor": false,
+              "borderWidth": 0,
+              "boxShadow": false,
+              "children": [
+                {
+                  "type": "Panel",
+                  "id": "background-mint_green-paper",
+                  "position": "absolute",
+                  "left": 0,
+                  "top": 0,
+                  "width": 76,
+                  "height": 76,
+                  "backgroundColor": [
+                    255,
+                    246,
+                    220,
+                    255
+                  ],
+                  "borderRadius": 11,
+                  "borderColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "borderWidth": 2
+                },
+                {
+                  "type": "Panel",
+                  "id": "background-mint_green-image",
+                  "position": "absolute",
+                  "left": 22.25,
+                  "top": 3,
+                  "width": 31.5,
+                  "height": 70,
+                  "backgroundColor": false,
+                  "backgroundImage": "image/handdrawn/backgrounds/previews/mint_green.png",
+                  "backgroundFit": "cover"
+                },
+                {
+                  "type": "Label",
+                  "id": "background-mint_green-caption",
+                  "position": "absolute",
+                  "left": -7,
+                  "top": 80,
+                  "width": 90,
+                  "height": 20,
+                  "text": "薄荷清风",
+                  "fontFamily": "sans",
+                  "fontSize": 9,
+                  "fontColor": [
+                    116,
+                    102,
+                    70,
+                    255
+                  ],
+                  "textAlign": "center",
+                  "verticalAlign": "middle",
+                  "lineHeight": 1
+                }
+              ],
+              "_extraction": {
+                "id": "mint_green",
+                "name": "薄荷清风",
+                "unlockedSample": true,
+                "selectedSample": false,
+                "action": "保留原Lua：选择/解锁/购买，不在JSON绑定。"
+              }
+            },
+            {
+              "type": "Button",
+              "id": "background-sunset_glow",
+              "position": "absolute",
+              "left": 298.6,
+              "top": 14,
+              "width": 76,
+              "height": 98,
+              "text": "",
+              "padding": 0,
+              "backgroundColor": false,
+              "borderWidth": 0,
+              "boxShadow": false,
+              "children": [
+                {
+                  "type": "Panel",
+                  "id": "background-sunset_glow-paper",
+                  "position": "absolute",
+                  "left": 0,
+                  "top": 0,
+                  "width": 76,
+                  "height": 76,
+                  "backgroundColor": [
+                    255,
+                    246,
+                    220,
+                    255
+                  ],
+                  "borderRadius": 11,
+                  "borderColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "borderWidth": 2
+                },
+                {
+                  "type": "Panel",
+                  "id": "background-sunset_glow-image",
+                  "position": "absolute",
+                  "left": 22.25,
+                  "top": 3,
+                  "width": 31.5,
+                  "height": 70,
+                  "backgroundColor": false,
+                  "backgroundImage": "image/handdrawn/backgrounds/previews/sunset_glow.png",
+                  "backgroundFit": "cover"
+                },
+                {
+                  "type": "Panel",
+                  "id": "background-sunset_glow-tint",
+                  "position": "absolute",
+                  "left": 0,
+                  "top": 0,
+                  "width": 76,
+                  "height": 76,
+                  "backgroundColor": [
+                    255,
+                    246,
+                    220,
+                    90
+                  ],
+                  "borderRadius": 11
+                },
+                {
+                  "type": "Panel",
+                  "id": "background-sunset_glow-lock",
+                  "position": "absolute",
+                  "left": 26,
+                  "top": 26,
+                  "width": 24,
+                  "height": 26,
+                  "backgroundColor": false,
+                  "backgroundImage": "ui/art/map-lock.png",
+                  "backgroundFit": "contain"
+                },
+                {
+                  "type": "Label",
+                  "id": "background-sunset_glow-caption",
+                  "position": "absolute",
+                  "left": -7,
+                  "top": 80,
+                  "width": 90,
+                  "height": 20,
+                  "text": "通关第7关",
+                  "fontFamily": "sans",
+                  "fontSize": 8.25,
+                  "fontColor": [
+                    116,
+                    102,
+                    70,
+                    255
+                  ],
+                  "textAlign": "center",
+                  "verticalAlign": "middle",
+                  "lineHeight": 1
+                }
+              ],
+              "_extraction": {
+                "id": "sunset_glow",
+                "name": "夕阳余晖",
+                "unlockedSample": false,
+                "selectedSample": false,
+                "action": "保留原Lua：选择/解锁/购买，不在JSON绑定。"
+              }
+            },
+            {
+              "type": "Button",
+              "id": "background-lavender",
+              "position": "absolute",
+              "left": 28.6,
+              "top": 128,
+              "width": 76,
+              "height": 98,
+              "text": "",
+              "padding": 0,
+              "backgroundColor": false,
+              "borderWidth": 0,
+              "boxShadow": false,
+              "children": [
+                {
+                  "type": "Panel",
+                  "id": "background-lavender-paper",
+                  "position": "absolute",
+                  "left": 0,
+                  "top": 0,
+                  "width": 76,
+                  "height": 76,
+                  "backgroundColor": [
+                    255,
+                    246,
+                    220,
+                    255
+                  ],
+                  "borderRadius": 11,
+                  "borderColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "borderWidth": 2
+                },
+                {
+                  "type": "Panel",
+                  "id": "background-lavender-image",
+                  "position": "absolute",
+                  "left": 22.25,
+                  "top": 3,
+                  "width": 31.5,
+                  "height": 70,
+                  "backgroundColor": false,
+                  "backgroundImage": "image/handdrawn/backgrounds/previews/lavender.png",
+                  "backgroundFit": "cover"
+                },
+                {
+                  "type": "Panel",
+                  "id": "background-lavender-tint",
+                  "position": "absolute",
+                  "left": 0,
+                  "top": 0,
+                  "width": 76,
+                  "height": 76,
+                  "backgroundColor": [
+                    255,
+                    246,
+                    220,
+                    90
+                  ],
+                  "borderRadius": 11
+                },
+                {
+                  "type": "Panel",
+                  "id": "background-lavender-lock",
+                  "position": "absolute",
+                  "left": 26,
+                  "top": 26,
+                  "width": 24,
+                  "height": 26,
+                  "backgroundColor": false,
+                  "backgroundImage": "ui/art/map-lock.png",
+                  "backgroundFit": "contain"
+                },
+                {
+                  "type": "Label",
+                  "id": "background-lavender-caption",
+                  "position": "absolute",
+                  "left": -7,
+                  "top": 80,
+                  "width": 90,
+                  "height": 20,
+                  "text": "通关第14关",
+                  "fontFamily": "sans",
+                  "fontSize": 8.25,
+                  "fontColor": [
+                    116,
+                    102,
+                    70,
+                    255
+                  ],
+                  "textAlign": "center",
+                  "verticalAlign": "middle",
+                  "lineHeight": 1
+                }
+              ],
+              "_extraction": {
+                "id": "lavender",
+                "name": "薰衣紫梦",
+                "unlockedSample": false,
+                "selectedSample": false,
+                "action": "保留原Lua：选择/解锁/购买，不在JSON绑定。"
+              }
+            },
+            {
+              "type": "Button",
+              "id": "background-cherry_blossom",
+              "position": "absolute",
+              "left": 118.6,
+              "top": 128,
+              "width": 76,
+              "height": 98,
+              "text": "",
+              "padding": 0,
+              "backgroundColor": false,
+              "borderWidth": 0,
+              "boxShadow": false,
+              "children": [
+                {
+                  "type": "Panel",
+                  "id": "background-cherry_blossom-paper",
+                  "position": "absolute",
+                  "left": 0,
+                  "top": 0,
+                  "width": 76,
+                  "height": 76,
+                  "backgroundColor": [
+                    255,
+                    246,
+                    220,
+                    255
+                  ],
+                  "borderRadius": 11,
+                  "borderColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "borderWidth": 2
+                },
+                {
+                  "type": "Panel",
+                  "id": "background-cherry_blossom-image",
+                  "position": "absolute",
+                  "left": 22.25,
+                  "top": 3,
+                  "width": 31.5,
+                  "height": 70,
+                  "backgroundColor": false,
+                  "backgroundImage": "image/handdrawn/backgrounds/previews/cherry_blossom.png",
+                  "backgroundFit": "cover"
+                },
+                {
+                  "type": "Panel",
+                  "id": "background-cherry_blossom-tint",
+                  "position": "absolute",
+                  "left": 0,
+                  "top": 0,
+                  "width": 76,
+                  "height": 76,
+                  "backgroundColor": [
+                    255,
+                    246,
+                    220,
+                    90
+                  ],
+                  "borderRadius": 11
+                },
+                {
+                  "type": "Panel",
+                  "id": "background-cherry_blossom-lock",
+                  "position": "absolute",
+                  "left": 26,
+                  "top": 26,
+                  "width": 24,
+                  "height": 26,
+                  "backgroundColor": false,
+                  "backgroundImage": "ui/art/map-lock.png",
+                  "backgroundFit": "contain"
+                },
+                {
+                  "type": "Label",
+                  "id": "background-cherry_blossom-caption",
+                  "position": "absolute",
+                  "left": -7,
+                  "top": 80,
+                  "width": 90,
+                  "height": 20,
+                  "text": "通关第21关",
+                  "fontFamily": "sans",
+                  "fontSize": 8.25,
+                  "fontColor": [
+                    116,
+                    102,
+                    70,
+                    255
+                  ],
+                  "textAlign": "center",
+                  "verticalAlign": "middle",
+                  "lineHeight": 1
+                }
+              ],
+              "_extraction": {
+                "id": "cherry_blossom",
+                "name": "樱花漫舞",
+                "unlockedSample": false,
+                "selectedSample": false,
+                "action": "保留原Lua：选择/解锁/购买，不在JSON绑定。"
+              }
+            },
+            {
+              "type": "Button",
+              "id": "background-golden_autumn",
+              "position": "absolute",
+              "left": 208.6,
+              "top": 128,
+              "width": 76,
+              "height": 98,
+              "text": "",
+              "padding": 0,
+              "backgroundColor": false,
+              "borderWidth": 0,
+              "boxShadow": false,
+              "children": [
+                {
+                  "type": "Panel",
+                  "id": "background-golden_autumn-paper",
+                  "position": "absolute",
+                  "left": 0,
+                  "top": 0,
+                  "width": 76,
+                  "height": 76,
+                  "backgroundColor": [
+                    255,
+                    246,
+                    220,
+                    255
+                  ],
+                  "borderRadius": 11,
+                  "borderColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "borderWidth": 2
+                },
+                {
+                  "type": "Panel",
+                  "id": "background-golden_autumn-image",
+                  "position": "absolute",
+                  "left": 22.25,
+                  "top": 3,
+                  "width": 31.5,
+                  "height": 70,
+                  "backgroundColor": false,
+                  "backgroundImage": "image/handdrawn/backgrounds/previews/golden_autumn.png",
+                  "backgroundFit": "cover"
+                },
+                {
+                  "type": "Panel",
+                  "id": "background-golden_autumn-tint",
+                  "position": "absolute",
+                  "left": 0,
+                  "top": 0,
+                  "width": 76,
+                  "height": 76,
+                  "backgroundColor": [
+                    255,
+                    246,
+                    220,
+                    90
+                  ],
+                  "borderRadius": 11
+                },
+                {
+                  "type": "Panel",
+                  "id": "background-golden_autumn-lock",
+                  "position": "absolute",
+                  "left": 26,
+                  "top": 26,
+                  "width": 24,
+                  "height": 26,
+                  "backgroundColor": false,
+                  "backgroundImage": "ui/art/map-lock.png",
+                  "backgroundFit": "contain"
+                },
+                {
+                  "type": "Label",
+                  "id": "background-golden_autumn-caption",
+                  "position": "absolute",
+                  "left": -7,
+                  "top": 80,
+                  "width": 90,
+                  "height": 20,
+                  "text": "通关第28关",
+                  "fontFamily": "sans",
+                  "fontSize": 8.25,
+                  "fontColor": [
+                    116,
+                    102,
+                    70,
+                    255
+                  ],
+                  "textAlign": "center",
+                  "verticalAlign": "middle",
+                  "lineHeight": 1
+                }
+              ],
+              "_extraction": {
+                "id": "golden_autumn",
+                "name": "金秋丰收",
+                "unlockedSample": false,
+                "selectedSample": false,
+                "action": "保留原Lua：选择/解锁/购买，不在JSON绑定。"
+              }
+            }
+          ]
         }
       ]
     },
