@@ -137,10 +137,16 @@ local function refreshState()
         local tab = find("tab-home")
         local lock = find("tab-home-lock")
         local plaque = find("tab-home-plaque")
+        local label = find("tab-home-label")
         if tab then tab:SetDisabled(not unlocked) end
         if lock then lock:SetVisible(not unlocked) end
         if plaque then
             plaque:SetStyle({backgroundColor = unlocked and {238,156,67,255} or {224,220,197,255}})
+        end
+        -- 与主线页底栏一致：未解锁时文字上移给锁图标留位，解锁后居中。
+        if label then
+            label:SetStyle({top = unlocked and 15.25 or 10.25,
+                fontColor = unlocked and {91,76,47,255} or {116,102,70,255}})
         end
     end
     refreshGames()
