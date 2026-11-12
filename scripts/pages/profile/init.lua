@@ -199,7 +199,7 @@ end
 -- ============================================================================
 local BG_PREVIEW_MARGIN = 24   -- 左右边距
 
---- 绘制背景预览区（缩放渲染当前背景 + 装饰粒子）
+--- 绘制背景预览区（缩放渲染当前背景 + 装饰粒子 + 切换回弹与星花特效）
 local function renderBgPreview(vg, screenW, areaTop, areaBottom, t)
     local bgConfig = bgManager.getCurrent()
     if not bgConfig then return end
@@ -207,15 +207,36 @@ local function renderBgPreview(vg, screenW, areaTop, areaBottom, t)
     local previewH=math.max(60,areaBottom-areaTop-48)
     local previewW=previewH*9/20
     local previewX=(screenW-previewW)/2
-    local previewY=areaTop+6
+    local floatY = math.sin(t * 1.6) * 2.2
+    local previewY=areaTop+6+floatY
+
+    local scale = 1.0
+    if switchAnim_ > 0 then
+        local p = 1.0 - (switchAnim_ / SWITCH_DURATION)
+        scale = 0.92 + 0.12 * math.sin(p * math.pi * 0.72)
+    end
+
+    local cx, cy = screenW / 2, previewY + previewH / 2
+    nvgSave(vg)
+    if math.abs(scale - 1.0) > 0.001 then
+        nvgTranslate(vg, cx, cy)
+        nvgScale(vg, scale, scale)
+        nvgTranslate(vg, -cx, -cy)
+    end
     Paper.panel(vg,previewX-3,previewY-3,previewW+6,previewH+6)
     nvgSave(vg)
     nvgIntersectScissor(vg,previewX,previewY,previewW,previewH)
     nvgTranslate(vg,previewX,previewY)
-    local scale=previewW/200
-    nvgScale(vg,scale,scale)
+    local s=previewW/200
+    nvgScale(vg,s,s)
     bgManager.renderBackground(vg,200,200*20/9,t,bgConfig)
     nvgRestore(vg)
+    nvgRestore(vg)
+
+    if switchAnim_ > 0 then
+        local bp = 1.0 - (switchAnim_ / SWITCH_DURATION)
+        Paper.burst(vg, cx, cy, math.max(previewW, previewH) * 0.85, bp)
+    end
 
     -- 底部名称胶囊
     local nameY = previewY + previewH + 14
@@ -227,7 +248,6 @@ local function renderBgPreview(vg, screenW, areaTop, areaBottom, t)
     if nameW < 1 then nameW = #bgName * 14 * 0.5 end
     local pillW = nameW + 28
     local pillH = 28
-    local cx = screenW / 2
 
     Pen.plaque(vg,cx-pillW/2,nameY-pillH/2,pillW,pillH,C.paper,1.5)
     nvgFillColor(vg,Pen.color(C.ink))
@@ -344,6 +364,11 @@ local function renderPreview(vg, screenW, areaTop, areaBottom, t)
     StoryPaper.portrait(vg,previewImg_,cx-previewSize/2,previewY,previewSize,previewSize)
 
     nvgRestore(vg)
+
+    if switchAnim_ > 0 then
+        local bp = 1.0 - (switchAnim_ / SWITCH_DURATION)
+        Paper.burst(vg, cx, previewY + previewSize / 2, previewSize * 0.9, bp)
+    end
 
     -- 皮肤名称胶囊（预览图下方）
     local nameY = previewY + previewSize + 16

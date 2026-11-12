@@ -71,7 +71,7 @@ local function drawLock(vg, cx, cy, s)
 end
 
 --- 显式启用的手绘皮肤；点击区域和路由 ID 沿用原契约。
-local function renderHanddrawn(vg, screenW, screenH, activeTab, fontFace, lockedTabs)
+local function renderHanddrawn(vg, screenW, screenH, activeTab, fontFace, lockedTabs, t)
     local c = Art.colors
     local y = screenH - TabBar.HEIGHT
     nvgBeginPath(vg); nvgRect(vg, 0, y, screenW, TabBar.HEIGHT)
@@ -89,19 +89,21 @@ local function renderHanddrawn(vg, screenW, screenH, activeTab, fontFace, locked
     for i, tab in ipairs(TABS) do
         local cx = (i - 0.5) * tabW
         local locked = lockedTabs and lockedTabs[tab.id] or false
-        local fill = tab.id == activeTab and c.orange or c.paper
-        Pen.texturedPlaque(vg, cx - tabW * 0.45, y + 8, tabW * 0.9, 40,
+        local isActive = (tab.id == activeTab)
+        local fill = isActive and c.orange or c.paper
+        local lift = isActive and (-math.abs(math.sin((t or 0) * 2.8)) * 1.4) or 0
+        Pen.texturedPlaque(vg, cx - tabW * 0.45, y + 8 + lift, tabW * 0.9, 40,
             locked and {224, 220, 197, 255} or fill, 2)
         nvgFontSize(vg, size)
         nvgFillColor(vg, Pen.color(locked and c.muted or c.ink))
-        nvgText(vg, cx, y + (locked and 23 or 28), tab.label)
+        nvgText(vg, cx, y + (locked and 23 or 28) + lift, tab.label)
         if locked then drawLock(vg, cx, y + 39, 7) end
         hits.tabs[i] = { id = tab.id, locked = locked, x = (i - 1) * tabW,
             y = y, w = tabW, h = TabBar.HEIGHT }
     end
     local gearCx = screenW - GEAR_MARGIN - GEAR_SIZE / 2
     Pen.texturedPlaque(vg, gearCx - 22, y + 8, 44, 40, c.paper, 2)
-    drawGear(vg, gearCx, y + 28, 0, c.ink, c.paper)
+    drawGear(vg, gearCx, y + 28, t or 0, c.ink, c.paper)
     return hits
 end
 
@@ -116,7 +118,7 @@ end
 ---@return table hitAreas 点击区域
 function TabBar.render(vg, screenW, screenH, activeTab, t, fontFace, lockedTabs, style)
     if style == "handdrawn" or (type(style) == "table" and style.handdrawn) then
-        return renderHanddrawn(vg, screenW, screenH, activeTab, fontFace, lockedTabs)
+        return renderHanddrawn(vg, screenW, screenH, activeTab, fontFace, lockedTabs, t)
     end
     local barH = TabBar.HEIGHT
     local barY = screenH - barH

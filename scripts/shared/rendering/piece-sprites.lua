@@ -42,6 +42,15 @@ end
 function M.draw(vg,key,cx,cy,size,alpha)
     return M.rect(vg,key,cx,cy,size,size,alpha)
 end
+function M.drawUI(vg,key,cx,cy,width,height,alpha)
+    if width<=0 or height<=0 or (alpha or 1)<=0 then return true end
+    local image=handle(vg,root..key..'.png')
+    if not image or image<0 then return false end
+    local x,y=cx-width/2,cy-height/2
+    nvgBeginPath(vg); nvgRect(vg,x,y,width,height)
+    nvgFillPaint(vg,nvgImagePattern(vg,x,y,width,height,0,image,alpha or 1)); nvgFill(vg)
+    return true
+end
 function M.pattern(vg,key,cx,cy,size,colorIndex,mode)
     local index=((colorIndex or 1)-1)%24+1
     local flip=false

@@ -10,6 +10,7 @@ local BackgroundManager = require("shared.background-manager")
 local Storyline = require("modules.storyline.init")
 local PlayTimeGuard = require("shared.utils.play-time-guard")
 local AntiAddictionPopup = require("shared.components.anti-addiction-popup")
+local Sprites = require("shared.rendering.piece-sprites")
 local uiTap = require("shared.utils.ui-tap")
 local logger = require("shared.utils.logger")
 
@@ -168,20 +169,52 @@ end
 local HomeDynamicLayer = UI.Panel:Extend("HomeDynamicLayer")
 function HomeDynamicLayer:Render(vg)
     if not active_ then return end
+    local rect = document_:GetAbsoluteLayout()
+    nvgSave(vg)
+    nvgTranslate(vg, rect.x, rect.y)
+    -- 顶部标题栏两侧轻柔漂浮的手绘云朵花环点缀
+    local cloudBobL = math.sin(animTime_ * 1.8) * 3.0
+    local cloudBobR = math.cos(animTime_ * 1.8 + 1.2) * 3.0
+    Sprites.drawUI(vg, "transition-cloud", 52, 68 + cloudBobL, 72, 48, 0.88)
+    Sprites.drawUI(vg, "transition-cloud", designW_ - 52, 72 + cloudBobR, 72, 48, 0.88)
+    nvgRestore(vg)
+
     local mascot = find("home-mascot")
     if mascot then
-        local rect = mascot:GetAbsoluteLayout()
-        local root = document_:GetAbsoluteLayout()
-        FoxMascot.render(vg, root.x + designW_, root.y + designH_, 56, {
-            handdrawn = true, size = rect.w, x = rect.x, y = rect.y,
+        local mRect = mascot:GetAbsoluteLayout()
+        FoxMascot.render(vg, rect.x + designW_, rect.y + designH_, 56, {
+            handdrawn = true, size = mRect.w, x = mRect.x, y = mRect.y,
             drawPortrait = false, bubbleBottomInset = 72,
         })
     end
-    local rect = document_:GetAbsoluteLayout()
     nvgSave(vg)
     nvgTranslate(vg, rect.x, rect.y)
     PlayTimeGuard.renderOverlay(vg, designW_, designH_, "sans", animTime_)
     nvgRestore(vg)
+end
+
+local GAME_ICON_IDS = {
+    "p1-puzzle-land-icon",
+    "p2-memory-flip-icon",
+    "p3-match-3-icon",
+    "p4-link-match-icon",
+}
+
+local function updateIdleAnimations()
+    -- 四张玩法卡片内的手绘图标错峰轻柔浮动
+    for i, iconId in ipairs(GAME_ICON_IDS) do
+        local icon = find(iconId)
+        if icon then
+            local bob = math.sin(animTime_ * 2.6 + (i - 1) * 1.15) * 2.2
+            icon:SetStyle({ top = 15 + bob })
+        end
+    end
+    -- 吉祥物轻微呼吸浮动
+    local mascot = find("home-mascot")
+    if mascot then
+        local mBob = math.sin(animTime_ * 2.0) * 2.0
+        mascot:SetStyle({ top = 676 + mBob })
+    end
 end
 
 function M.setActive(active)
@@ -270,6 +303,7 @@ function M.create(params)
         FoxMascot.update(dt)
         fitCanvas()
         refreshState()
+        updateIdleAnimations()
     end)
     M.setActive(true)
     logger.info(MODULE, "create", "loaded " .. RESOURCE .. "; games=" .. #gameRegistry.getGameList())

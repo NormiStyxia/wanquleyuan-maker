@@ -2,9 +2,12 @@
 local Fx = require("shared.components.celebration-effects")
 local Paper = require("shared.components.game-paper")
 local Pen = require("shared.components.handdrawn")
+local Sprites = require("shared.rendering.piece-sprites")
 local C = Paper.colors
 local M = {}
 local celebration_ = nil
+local lastFailDrawAt_ = -10
+local failOpenAt_ = 0
 
 function M.startCelebration(w,h,opts)
     opts=opts or {}
@@ -91,25 +94,40 @@ function M.drawCleared(vg,screenW,screenH,opts)
     end
     local w=math.min(320,screenW-32)
     local rows,statsH=statRows(vg,stats,w-48)
-    local h=154+statsH+(opts.isNewBest and 24 or 0)+#defs*44+(#defs-1)*10+28
+    local headerExtra = 54
+    local h=154+headerExtra+statsH+(opts.isNewBest and 24 or 0)+#defs*44+(#defs-1)*10+28
     local x,y=(screenW-w)/2,(screenH-h)/2+shift
     nvgBeginPath(vg); nvgRect(vg,0,0,screenW,screenH)
     nvgFillColor(vg,nvgRGBA(63,56,36,math.floor(120*alpha))); nvgFill(vg)
     if alpha<=0.01 then return {} end
     nvgSave(vg); nvgGlobalAlpha(vg,alpha)
     Paper.panel(vg,x,y,w,h)
-    Paper.text(vg,screenW/2,y+32,opts.storylineMode and "关卡完成！" or "通关！",26)
+    local now = GetTime and GetTime():GetElapsedTime() or elapsed
+    local hopY = -math.abs(math.sin(now * 5.2)) * 3.5
+    Sprites.drawUI(vg, "fox-cheer", screenW / 2, y + 42 + hopY, 72, 72, alpha)
+    Paper.text(vg,screenW/2,y+32+headerExtra,opts.storylineMode and "关卡完成！" or "通关！",25)
     local rank=opts.ratingValue or 1
     if opts.ratingType=="rank" then
         if opts.storylineMode then rank="S" end
-        Paper.text(vg,screenW/2,y+86,tostring(rank),44,C.green)
+        Paper.text(vg,screenW/2,y+86+headerExtra,tostring(rank),42,C.green)
     else
         if opts.storylineMode then rank=3 end
-        for i=1,3 do star(vg,screenW/2+(i-2)*42,y+85,17,i<=rank) end
+        for i=1,3 do
+            local sx, sy = screenW/2+(i-2)*42, y+85+headerExtra
+            local starAge = math.max(0, elapsed - (0.18 + (i - 1) * 0.11))
+            local sp = math.min(1, starAge / 0.22)
+            local sScale = sp >= 1 and (1 + math.sin(now * 3.5 + i) * 0.04) or (0.3 + 0.85 * math.sin(sp * math.pi * 0.65))
+            nvgSave(vg)
+            nvgTranslate(vg, sx, sy)
+            nvgScale(vg, sScale, sScale)
+            nvgTranslate(vg, -sx, -sy)
+            star(vg, sx, sy, 17, i<=rank)
+            nvgRestore(vg)
+        end
     end
-    local sy=y+132
+    local sy=y+132+headerExtra
     if opts.isNewBest then
-        Paper.text(vg,screenW/2,y+115,"新纪录！",14,C.green); sy=sy+24
+        Paper.text(vg,screenW/2,y+115+headerExtra,"新纪录！",14,C.green); sy=sy+24
     end
     for _,row in ipairs(rows) do
         local stat=row.stat
@@ -132,13 +150,33 @@ end
 
 function M.drawFailed(vg,screenW,screenH,opts)
     opts=opts or {}
+    local now = GetTime and GetTime():GetElapsedTime() or 1
+    if now - lastFailDrawAt_ > 0.12 then
+        failOpenAt_ = now
+    end
+    lastFailDrawAt_ = now
+    local age = math.max(0, now - failOpenAt_)
+    local p = math.min(1, age / 0.22)
+    local c1 = 1.70158
+    local tm1 = p - 1
+    local spring = p >= 1 and 1 or (1 + (c1 + 1) * tm1 * tm1 * tm1 + c1 * tm1 * tm1)
+    local scale = 0.90 + 0.10 * spring
+
+    local headerExtra = 52
     local w=math.min(320,screenW-32)
-    local h=opts.subMessage and 298 or 270
+    local h=(opts.subMessage and 298 or 270) + headerExtra
     local x,y=(screenW-w)/2,(screenH-h)/2
+    local cx, cy = screenW / 2, screenH / 2
     nvgBeginPath(vg); nvgRect(vg,0,0,screenW,screenH)
-    nvgFillColor(vg,nvgRGBA(63,56,36,120)); nvgFill(vg)
+    nvgFillColor(vg,nvgRGBA(63,56,36,math.floor(120 * math.min(1, p * 1.4)))); nvgFill(vg)
+    nvgSave(vg)
+    nvgTranslate(vg, cx, cy)
+    nvgScale(vg, scale, scale)
+    nvgTranslate(vg, -cx, -cy)
     Paper.panel(vg,x,y,w,h)
-    Paper.text(vg,screenW/2,y+34,opts.title or "时间到！",26)
+    local bobY = math.sin(now * 2.8) * 2.0
+    Sprites.drawUI(vg, "fox-rest", screenW / 2, y + 44 + bobY, 68, 68, 1.0)
+    Paper.text(vg,screenW/2,y+34+headerExtra,opts.title or "时间到！",25)
     -- 按实际文本宽度缩字号，目标较长时仍留左右内边距。
     local function message(text,py,size,color)
         nvgFontFace(vg,"sans"); nvgFontSize(vg,size)
@@ -146,8 +184,10 @@ function M.drawFailed(vg,screenW,screenH,opts)
         if width>w-40 then size=size*(w-40)/width end
         Paper.text(vg,screenW/2,py,text,size,color)
     end
-    message(opts.message or "",y+86,17,C.ink)
-    if opts.subMessage then message(opts.subMessage,y+116,15,C.muted) end
-    return buttons(vg,{{"再试一次","retry"},{"返回","back"}},x,y,w,h,1,true)
+    message(opts.message or "",y+82+headerExtra,17,C.ink)
+    if opts.subMessage then message(opts.subMessage,y+112+headerExtra,15,C.muted) end
+    local hits = buttons(vg,{{"再试一次","retry"},{"返回","back"}},x,y,w,h,1,true)
+    nvgRestore(vg)
+    return hits
 end
 return M

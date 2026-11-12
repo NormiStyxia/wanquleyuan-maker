@@ -127,9 +127,13 @@ function M.drawProgress(vg, screenW, y, completed, total, fillColorFrom, fillCol
 
     Pen.plaque(vg,padX,barY,barW,barH,C.track,1)
     if ratio>0 then
-        nvgSave(vg);nvgIntersectScissor(vg,padX,barY,barW*math.min(1,ratio),barH)
+        local fillW = barW * math.min(1, ratio)
+        nvgSave(vg);nvgIntersectScissor(vg,padX,barY,fillW,barH)
         Pen.plaque(vg,padX,barY,barW,barH,C.green,0)
         nvgRestore(vg)
+        local now = GetTime and GetTime():GetElapsedTime() or 0
+        local tipR = 3.2 + math.sin(now * 4.0) * 0.5
+        Pen.circle(vg, padX + math.max(r, fillW - r), barY + r, tipR, C.orange, 1.2, C.ink)
     end
 end
 
@@ -194,11 +198,13 @@ function M.drawStarRow(vg, cx, cy, earned, total, starSize)
     local gap = starSize + 2
     local totalW = total * gap - 2
     local startX = cx - totalW / 2 + gap / 2
+    local now = GetTime and GetTime():GetElapsedTime() or 0
 
     for i = 1, total do
         local sx = startX + (i - 1) * gap
         local active = i <= earned
-        M.drawMiniStar(vg, sx, cy, starSize / 2, starSize * 0.22, active)
+        local pulse = active and (1.0 + math.sin(now * 3.2 + i * 1.1 + cx * 0.03) * 0.07) or 1.0
+        M.drawMiniStar(vg, sx, cy, (starSize / 2) * pulse, (starSize * 0.22) * pulse, active)
     end
 end
 
@@ -269,12 +275,21 @@ function M.drawPageIndicator(vg, screenW, y, current, total, accentColor)
     -- 圆点严格水平居中
     local dotsW = (total - 1) * dotGap
     local dotsStartX = screenW / 2 - dotsW / 2
+    local now = GetTime and GetTime():GetElapsedTime() or 0
     for p = 1, total do
         local dx = dotsStartX + (p - 1) * dotGap
-        nvgBeginPath(vg)
-        nvgCircle(vg, dx, y, dotR)
         if p == current then
-            nvgFillColor(vg, nvgRGBA(ac[1], ac[2], ac[3], 220))
+            local haloR = dotR + 2.5 + math.sin(now * 3.5) * 0.6
+            nvgBeginPath(vg)
+            nvgCircle(vg, dx, y, haloR)
+            nvgStrokeColor(vg, nvgRGBA(ac[1], ac[2], ac[3], 110))
+            nvgStrokeWidth(vg, 1.5)
+            nvgStroke(vg)
+        end
+        nvgBeginPath(vg)
+        nvgCircle(vg, dx, y, p == current and (dotR + 0.8) or dotR)
+        if p == current then
+            nvgFillColor(vg, nvgRGBA(ac[1], ac[2], ac[3], 235))
         else
             nvgFillColor(vg, nvgRGBA(200, 190, 175, 110))
         end

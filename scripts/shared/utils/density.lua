@@ -94,6 +94,10 @@ end
 --- 结束 NanoVG 帧（与 beginFrame 配对）
 ---@param vg userdata NanoVG 上下文
 function M.endFrame(vg)
+    local ok, ScreenTransition = pcall(require, "shared.components.screen-transition")
+    if ok and ScreenTransition and ScreenTransition.isAnimating() then
+        ScreenTransition.renderNanoVG(vg, cachedGameW_, cachedGameH_)
+    end
     nvgRestore(vg)
     nvgEndFrame(vg)
 end

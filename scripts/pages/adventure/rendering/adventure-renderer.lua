@@ -80,27 +80,40 @@ end
 function M.renderHeader(vg, screenW, t, headerH)
     local w = math.min(screenW * 0.64, (headerH - 8) * 1331 / 477)
     local h = w * 477 / 1331
-    if not drawImage(vg, images_.logo, (screenW - w) / 2, (headerH - h) / 2, w, h) then
-        Pen.plaque(vg, screenW / 2 - 110, 12, 220, headerH - 24, C.paper, 3)
-        Pen.text(vg, screenW / 2, headerH / 2, "玩趣乐园", 30)
+    local bob = math.sin((t or 0) * 2.2) * 1.5
+    if not drawImage(vg, images_.logo, (screenW - w) / 2, (headerH - h) / 2 + bob, w, h) then
+        Pen.plaque(vg, screenW / 2 - 110, 12 + bob, 220, headerH - 24, C.paper, 3)
+        Pen.text(vg, screenW / 2, headerH / 2 + bob, "玩趣乐园", 30)
     end
 end
 
 function M.renderChapterTitle(vg, screenW, pageStart, pageEnd, t, headerH, chapterH, currentPage, chapterState)
     if currentPage ~= chapterState.lastDisplayedPage then
+        chapterState.pageDir = (chapterState.lastDisplayedPage and currentPage < chapterState.lastDisplayedPage) and -1 or 1
         chapterState.fadeAlpha = 0
         chapterState.lastDisplayedPage = currentPage
     end
-    chapterState.fadeAlpha = math.min(1, chapterState.fadeAlpha + 2.5 / 60)
+    chapterState.fadeAlpha = math.min(1, chapterState.fadeAlpha + 3.2 / 60)
+    local p = chapterState.fadeAlpha
+    local c1 = 1.70158
+    local tm1 = p - 1
+    local spring = p >= 1 and 1 or (1 + (c1 + 1) * tm1 * tm1 * tm1 + c1 * tm1 * tm1)
+    local slideX = (chapterState.pageDir or 1) * (1 - spring) * 16
+    local scale = 0.92 + 0.08 * spring
     local text = chapterDefs.CHAPTERS[chapterDefs.getChapterForNode(pageStart)].name
     local w = math.min(screenW - 48, 254)
-    nvgSave(vg); nvgGlobalAlpha(vg, chapterState.fadeAlpha)
-    Pen.plaque(vg, (screenW - w) / 2, headerH + 1, w, chapterH - 6, C.paper, 2.5)
-    Pen.text(vg, screenW / 2, headerH + (chapterH - 4) / 2, text, 16)
+    local cx, cy = screenW / 2 + slideX, headerH + (chapterH - 4) / 2
+    nvgSave(vg)
+    nvgGlobalAlpha(vg, math.min(1, p * 1.4))
+    nvgTranslate(vg, cx, cy)
+    nvgScale(vg, scale, scale)
+    nvgTranslate(vg, -cx, -cy)
+    Pen.plaque(vg, cx - w / 2, headerH + 1, w, chapterH - 6, C.paper, 2.5)
+    Pen.text(vg, cx, cy, text, 16)
     nvgRestore(vg)
 end
 
-function M.renderPagePaths(vg, nodes, pageStart, pageEnd, screenW, areaTop, areaH, pageNodeCount, nodeRadius, rowSpacing)
+function M.renderPagePaths(vg, nodes, pageStart, pageEnd, screenW, areaTop, areaH, pageNodeCount, nodeRadius, rowSpacing, t)
     for i = pageStart, pageEnd - 1 do
         local x1, y1 = layout.getPageNodePosition(i - pageStart + 1, screenW, areaTop, areaH, pageNodeCount, nodeRadius, rowSpacing)
         local x2, y2 = layout.getPageNodePosition(i - pageStart + 2, screenW, areaTop, areaH, pageNodeCount, nodeRadius, rowSpacing)
@@ -112,29 +125,52 @@ function M.renderPagePaths(vg, nodes, pageStart, pageEnd, screenW, areaTop, area
             nvgStrokeColor(vg, Pen.color(pass == 1 and C.muted or C.track)); nvgStroke(vg)
         end
         if nodes[i].state == "done" then
-            -- 已走过的小路加一枚草绿路标；保留路径本身的平涂质感。
-            Pen.circle(vg, (x1 + x2) / 2, (y1 + y2) / 2, 3, C.green, 1, C.green)
+            -- 已走过的小路加一枚带呼吸律动的草绿路标；保留路径本身的平涂质感。
+            local pulse = 3.0 + math.sin((t or 0) * 3.5 + i) * 0.45
+            Pen.circle(vg, (x1 + x2) / 2, (y1 + y2) / 2, pulse, C.green, 1, C.green)
         end
     end
 end
 
-function M.renderNode(vg, node, globalIdx, localIdx, screenW, areaTop, areaH, pageNodeCount, t, r, rowSpacing, npcImages, nodeHitAreas, nodeHitCount)
+function M.renderNode(vg, node, globalIdx, localIdx, screenW, areaTop, areaH, pageNodeCount, t, r, rowSpacing, npcImages, nodeHitAreas, nodeHitCount, chapterAlpha)
     local cx, cy = layout.getPageNodePosition(localIdx, screenW, areaTop, areaH, pageNodeCount, r, rowSpacing)
     local state, data = node.state, node.node
     local locked = state == "locked"
     local ink = locked and C.muted or C.ink
     local fill = locked and {225, 221, 191, 255} or (state == "current" and {255, 222, 152, 255} or C.paper)
+
+    -- 章节切换时节点错峰弹簧浮现
+    local nodeScale = 1.0
+    if chapterAlpha and chapterAlpha < 1.0 then
+        local delay = (localIdx - 1) * 0.06
+        local np = math.max(0, math.min(1, (chapterAlpha - delay) / (1.0 - delay * 0.7)))
+        local c1 = 1.70158
+        local tm1 = np - 1
+        local nSpring = np >= 1 and 1 or (1 + (c1 + 1) * tm1 * tm1 * tm1 + c1 * tm1 * tm1)
+        nodeScale = 0.86 + 0.14 * nSpring
+    elseif state == "current" then
+        nodeScale = 1.0 + math.sin((t or 0) * 3.4) * 0.025
+    end
+
+    nvgSave(vg)
+    if math.abs(nodeScale - 1.0) > 0.001 then
+        nvgTranslate(vg, cx, cy)
+        nvgScale(vg, nodeScale, nodeScale)
+        nvgTranslate(vg, -cx, -cy)
+    end
+
     if state == "current" then
-        Pen.circle(vg, cx, cy, r + 5 + math.sin(t * 2) * 0.6, nil, 2, C.orange)
+        Pen.circle(vg, cx, cy, r + 5 + math.sin(t * 3.2) * 1.4, nil, 2.2, C.orange)
     end
     Pen.circle(vg, cx, cy, r, fill, 2.8, ink)
     if locked then
         drawLock(vg, cx, cy, r * 1.2)
     else
         local image = npcImages[data.npc.role]
-        -- 圆框先画，透明角色后画；头顶稍微探出，脚底仍停在框内。
+        -- 圆框先画，透明角色后画；头顶稍微探出，脚底仍停在框内，带轻柔呼吸浮动。
         local px,py,size=layout.getPortraitBox(cx,cy,r)
-        if not drawImage(vg,image,px,py,size,size) then
+        local portraitBob = math.sin((t or 0) * 2.6 + localIdx * 0.9) * 1.2
+        if not drawImage(vg,image,px,py+portraitBob,size,size) then
             Pen.text(vg, cx, cy, tostring(globalIdx), r * 0.8)
         end
     end
@@ -162,6 +198,8 @@ function M.renderNode(vg, node, globalIdx, localIdx, screenW, areaTop, areaH, pa
     local tagSize = math.min(12, titleSize - 2)
     -- 玩法只作为次级说明；文字顶部与标题牌底部保留约 8px 空隙。
     Pen.text(vg, cx, cy + r + 36, typeName, tagSize, C.ink)
+
+    nvgRestore(vg)
 
     nodeHitCount = nodeHitCount + 1
     local hit = nodeHitAreas[nodeHitCount] or {}
@@ -227,10 +265,10 @@ function M.renderMap(vg, screenW, screenH, t, currentPage, npcImages, nodeHitAre
     local r, spacing = layoutCache.nodeRadius, layoutCache.rowSpacing
     M.renderHeader(vg, screenW, t, layoutCache.headerH)
     M.renderChapterTitle(vg, screenW, pageStart, pageEnd, t, layoutCache.headerH, layoutCache.chapterH, currentPage, chapterState)
-    M.renderPagePaths(vg, nodes, pageStart, pageEnd, screenW, top, areaH, count, r, spacing)
+    M.renderPagePaths(vg, nodes, pageStart, pageEnd, screenW, top, areaH, count, r, spacing, t)
     local hitCount = 0
     for i = pageStart, pageEnd do
-        hitCount = M.renderNode(vg, nodes[i], i, i - pageStart + 1, screenW, top, areaH, count, t, r, spacing, npcImages, nodeHitAreas, hitCount)
+        hitCount = M.renderNode(vg, nodes[i], i, i - pageStart + 1, screenW, top, areaH, count, t, r, spacing, npcImages, nodeHitAreas, hitCount, chapterState.fadeAlpha)
     end
     if currentPage == totalPages then M.renderAllCompleted(vg, screenW, top, areaH, t) end
     FoxMascot.render(vg, screenW, screenH, TabBar.HEIGHT, layout.getFoxOptions(screenH))
