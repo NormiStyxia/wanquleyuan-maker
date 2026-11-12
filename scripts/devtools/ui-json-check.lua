@@ -24,6 +24,12 @@ local function loadNext()
     UI.Layout()
     local b = root:GetLayout()
     V.assert(b.w > 0 and b.h > 0, name .. " 有有效布局尺寸")
+    if name == "profile" then
+        local skins = instance:Find("profile-skin-grid")
+        local backgrounds = instance:Find("profile-background-grid")
+        V.assert(skins ~= nil and #skins:GetChildren() >= 11, "装扮页包含11套角色缩略图")
+        V.assert(backgrounds ~= nil and #backgrounds:GetChildren() >= 7, "装扮页包含7套背景缩略图")
+    end
     print("[UI资源验证] " .. name .. " " .. tostring(b.w) .. "x" .. tostring(b.h))
 end
 for i = 1, #files do V.atFrame(i * 3 + 6, loadNext) end

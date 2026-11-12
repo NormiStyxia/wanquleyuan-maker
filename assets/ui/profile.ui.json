@@ -508,6 +508,24 @@
               "pointerEvents": "none"
             }
           ]
+        },
+        {
+          "type": "Panel",
+          "id": "profile-skin-grid",
+          "position": "absolute",
+          "left": 0,
+          "top": 394,
+          "width": "100%",
+          "height": 446,
+          "backgroundColor": [
+            255,
+            246,
+            220,
+            255
+          ],
+          "pointerEvents": "box-none",
+          "overflow": "hidden",
+          "children": []
         }
       ]
     },
@@ -527,7 +545,127 @@
         0
       ],
       "pointerEvents": "box-none",
-      "children": []
+      "children": [
+        {
+          "type": "Panel",
+          "id": "profile-background-preview-shadow",
+          "position": "absolute",
+          "left": 154.15,
+          "top": 150,
+          "width": 96.9,
+          "height": 208,
+          "backgroundColor": [
+            151,
+            123,
+            78,
+            45
+          ],
+          "borderRadius": 11,
+          "pointerEvents": "none"
+        },
+        {
+          "type": "Panel",
+          "id": "profile-background-preview-frame",
+          "position": "absolute",
+          "left": 153.15,
+          "top": 147,
+          "width": 96.9,
+          "height": 208,
+          "backgroundColor": [
+            255,
+            246,
+            220,
+            255
+          ],
+          "borderWidth": 2.3,
+          "borderColor": [
+            91,
+            76,
+            47,
+            255
+          ],
+          "borderAlign": "center",
+          "borderRadius": 11,
+          "pointerEvents": "none"
+        },
+        {
+          "type": "Panel",
+          "id": "profile-background-preview",
+          "position": "absolute",
+          "left": 156.15,
+          "top": 150,
+          "width": 90.9,
+          "height": 202,
+          "backgroundImage": "image/handdrawn/backgrounds/previews/default.png",
+          "backgroundFit": "cover",
+          "pointerEvents": "none"
+        },
+        {
+          "type": "Panel",
+          "id": "profile-background-name-pill",
+          "position": "absolute",
+          "left": 159.6,
+          "top": 352,
+          "width": 84,
+          "height": 28,
+          "backgroundColor": [
+            255,
+            246,
+            220,
+            255
+          ],
+          "borderWidth": 1.5,
+          "borderColor": [
+            91,
+            76,
+            47,
+            255
+          ],
+          "borderRadius": 8.4,
+          "pointerEvents": "none",
+          "children": [
+            {
+              "type": "Label",
+              "id": "profile-background-name",
+              "position": "absolute",
+              "left": 0,
+              "top": 0,
+              "width": 84,
+              "height": 28,
+              "text": "暖阳奶油",
+              "fontFamily": "sans",
+              "fontSize": 14,
+              "fontColor": [
+                91,
+                76,
+                47,
+                255
+              ],
+              "textAlign": "center",
+              "verticalAlign": "middle",
+              "pointerEvents": "none"
+            }
+          ]
+        },
+        {
+          "type": "Panel",
+          "id": "profile-background-grid",
+          "position": "absolute",
+          "left": 0,
+          "top": 394,
+          "width": "100%",
+          "height": 446,
+          "backgroundColor": [
+            255,
+            246,
+            220,
+            255
+          ],
+          "pointerEvents": "box-none",
+          "overflow": "hidden",
+          "children": []
+        }
+      ]
     },
     {
       "type": "Panel",
