@@ -68,7 +68,27 @@ local function click(r,touch)
     local offset=math.max(0,(graphics:GetWidth()/scale-w)/2)
     clickPhysical((r.x+r.w/2+offset)*scale,(r.y+r.h/2)*scale,touch)
 end
+local function clickWidget(id,touch)
+    local widget=UI.GetRoot():FindById(id)
+    V.assert(widget~=nil,"JSON控件可达 "..id)
+    if not widget then return end
+    local b=widget:GetAbsoluteLayoutForHitTest()
+    local canvas=UI.GetRoot():FindById("home-document-canvas")
+    local scale=UI.GetScale()
+    local x,y=b.x+b.w/2,b.y+b.h/2
+    if canvas then
+        local origin=canvas:GetAbsoluteLayoutForHitTest()
+        local factor=canvas.props.scale or 1
+        x=origin.x+(x-origin.x)*factor
+        y=origin.y+(y-origin.y)*factor
+    end
+    clickPhysical(x*scale,y*scale,touch)
+end
 local function tab(id)
+    if Router.getCurrent()=="home" then
+        clickWidget("tab-"..id)
+        return
+    end
     local hits=tabs[Router.getCurrent()]
     if hits then for _,r in ipairs(hits.tabs) do if r.id==id then click(r);return end end end
     V.assert(false,"页签可达 "..id)
@@ -97,10 +117,8 @@ for index,name in ipairs(names) do
     local play=require("games."..name..".screens.gameplay")
     V.atFrame(at,function()
         V.assert(Router.getCurrent()=="home","大厅恢复 "..name)
-        V.assert(#cards==4,"大厅四个真实入口均绘制")
-        local entry
-        for _,r in pairs(cards) do if r.config.gameId==name then entry=r;break end end
-        click(entry,index%2==0)
+        V.assert(UI.GetRoot():FindById("home-page")~=nil,"大厅挂载JSON文档根")
+        clickWidget("game-"..name,index%2==0)
         V.assert(Router.getCurrent()=="game" and Container.isRunning(),"真实卡片进入adapter "..name)
         V.assert(Container.getGameConfig() and Container.getGameConfig().gameId==name,"进入的玩法身份正确 "..name)
         V.assert(Router.getStackDepth()==2,"游戏压栈保留来源大厅")
@@ -151,7 +169,7 @@ V.atFrame(232,function()
     tab("home")
 end)
 V.atFrame(242,function()
-    click(tabs.home and tabs.home.settings)
+    clickWidget("tab-settings")
 end)
 V.atFrame(248,function()
     local scroll=UI.GetRoot():FindById("settings-scroll")
