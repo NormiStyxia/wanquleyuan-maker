@@ -31,7 +31,7 @@
               "id": "settings-card",
               "width": "92%",
               "maxWidth": 604,
-              "height": "88%",
+              "height": "94%",
               "backgroundColor": [
                 255,
                 246,
@@ -54,7 +54,7 @@
                   "type": "Panel",
                   "id": "settings-header",
                   "width": "100%",
-                  "height": 92,
+                  "height": 72,
                   "flexShrink": 0,
                   "backgroundColor": [
                     221,
@@ -100,11 +100,11 @@
                       "type": "Panel",
                       "id": "settings-content",
                       "width": "100%",
-                      "padding": 28,
-                      "flexShrink": 0,
+                      "padding": 20,
+                      "flexShrink": 1,
                       "flexDirection": "column",
                       "alignItems": "center",
-                      "gap": 22.667,
+                      "gap": 12,
                       "children": [
                         {
                           "type": "Panel",
@@ -124,10 +124,10 @@
                             255
                           ],
                           "borderRadius": 13.333,
-                          "padding": 22.667,
-                          "paddingTop": 20,
-                          "paddingBottom": 20,
-                          "gap": 13.333,
+                          "padding": 16,
+                          "paddingTop": 12,
+                          "paddingBottom": 12,
+                          "gap": 8,
                           "children": [
                             {
                               "type": "Panel",
@@ -170,7 +170,7 @@
                               "type": "Panel",
                               "id": "settings-bgm-slider",
                               "width": "100%",
-                              "height": 62.667,
+                              "height": 44,
                               "justifyContent": "center",
                               "children": [
                                 {
@@ -179,7 +179,7 @@
                                   "position": "absolute",
                                   "left": 16.667,
                                   "right": 16.667,
-                                  "top": 26,
+                                  "top": 16.667,
                                   "height": 10.667,
                                   "backgroundColor": [
                                     221,
@@ -240,7 +240,8 @@
                                 }
                               ]
                             }
-                          ]
+                          ],
+                          "flexShrink": 0
                         },
                         {
                           "type": "Panel",
@@ -260,10 +261,10 @@
                             255
                           ],
                           "borderRadius": 13.333,
-                          "padding": 22.667,
-                          "paddingTop": 20,
-                          "paddingBottom": 20,
-                          "gap": 13.333,
+                          "padding": 16,
+                          "paddingTop": 12,
+                          "paddingBottom": 12,
+                          "gap": 8,
                           "children": [
                             {
                               "type": "Panel",
@@ -306,7 +307,7 @@
                               "type": "Panel",
                               "id": "settings-sfx-slider",
                               "width": "100%",
-                              "height": 62.667,
+                              "height": 44,
                               "justifyContent": "center",
                               "children": [
                                 {
@@ -315,7 +316,7 @@
                                   "position": "absolute",
                                   "left": 16.667,
                                   "right": 16.667,
-                                  "top": 26,
+                                  "top": 16.667,
                                   "height": 10.667,
                                   "backgroundColor": [
                                     221,
@@ -376,7 +377,8 @@
                                 }
                               ]
                             }
-                          ]
+                          ],
+                          "flexShrink": 0
                         },
                         {
                           "type": "Panel",
@@ -396,12 +398,12 @@
                             255
                           ],
                           "borderRadius": 20,
-                          "padding": 22.667,
-                          "paddingTop": 20,
-                          "paddingBottom": 20,
+                          "padding": 16,
+                          "paddingTop": 12,
+                          "paddingBottom": 12,
                           "flexDirection": "row",
                           "alignItems": "center",
-                          "gap": 16,
+                          "gap": 8,
                           "children": [
                             {
                               "type": "Panel",
@@ -454,7 +456,8 @@
                                 }
                               ]
                             }
-                          ]
+                          ],
+                          "flexShrink": 0
                         },
                         {
                           "type": "Panel",
@@ -474,10 +477,10 @@
                             255
                           ],
                           "borderRadius": 20,
-                          "padding": 22.667,
-                          "paddingTop": 20,
-                          "paddingBottom": 20,
-                          "gap": 13.333,
+                          "padding": 16,
+                          "paddingTop": 12,
+                          "paddingBottom": 12,
+                          "gap": 8,
                           "children": [
                             {
                               "type": "Panel",
@@ -610,10 +613,10 @@
                               "id": "settings-age-open",
                               "text": "测试账号年龄",
                               "width": "100%",
-                              "height": 65.333,
-                              "minHeight": 58.667,
+                              "height": 52,
+                              "minHeight": 44,
                               "fontFamily": "sans",
-                              "fontSize": 21.333,
+                              "fontSize": 20,
                               "fontWeight": "bold",
                               "textColor": [
                                 91,
@@ -640,183 +643,235 @@
                               "pressedBoxShadow": false,
                               "flexShrink": 0
                             }
+                          ],
+                          "flexShrink": 0
+                        },
+                        {
+                          "type": "Panel",
+                          "id": "settings-actions-1",
+                          "width": "100%",
+                          "flexDirection": "row",
+                          "gap": 12,
+                          "alignItems": "stretch",
+                          "flexShrink": 0,
+                          "children": [
+                            {
+                              "type": "Button",
+                              "id": "settings-privacy-policy",
+                              "text": "隐私政策",
+                              "height": 64,
+                              "fontFamily": "sans",
+                              "fontSize": 20,
+                              "fontWeight": "bold",
+                              "textColor": [
+                                91,
+                                76,
+                                47,
+                                255
+                              ],
+                              "backgroundColor": [
+                                255,
+                                246,
+                                220,
+                                255
+                              ],
+                              "borderRadius": 13.333,
+                              "borderWidth": 2.667,
+                              "borderColor": [
+                                91,
+                                76,
+                                47,
+                                255
+                              ],
+                              "boxShadow": false,
+                              "hoverBoxShadow": false,
+                              "pressedBoxShadow": false,
+                              "flexShrink": 0,
+                              "flexGrow": 1,
+                              "flexBasis": 0,
+                              "minWidth": 0,
+                              "paddingHorizontal": 8
+                            },
+                            {
+                              "type": "Button",
+                              "id": "settings-logout",
+                              "text": "退出登录",
+                              "height": 64,
+                              "fontFamily": "sans",
+                              "fontSize": 20,
+                              "fontWeight": "bold",
+                              "textColor": [
+                                91,
+                                76,
+                                47,
+                                255
+                              ],
+                              "backgroundColor": [
+                                255,
+                                246,
+                                220,
+                                255
+                              ],
+                              "borderRadius": 13.333,
+                              "borderWidth": 2.667,
+                              "borderColor": [
+                                91,
+                                76,
+                                47,
+                                255
+                              ],
+                              "boxShadow": false,
+                              "hoverBoxShadow": false,
+                              "pressedBoxShadow": false,
+                              "flexShrink": 0,
+                              "flexGrow": 1,
+                              "flexBasis": 0,
+                              "minWidth": 0,
+                              "paddingHorizontal": 8
+                            }
                           ]
                         },
                         {
-                          "type": "Button",
-                          "id": "settings-privacy-policy",
-                          "text": "隐私政策",
+                          "type": "Panel",
+                          "id": "settings-actions-2",
                           "width": "100%",
-                          "height": 68,
-                          "fontFamily": "sans",
-                          "fontSize": 24,
-                          "fontWeight": "bold",
-                          "textColor": [
-                            91,
-                            76,
-                            47,
-                            255
-                          ],
-                          "backgroundColor": [
-                            255,
-                            246,
-                            220,
-                            255
-                          ],
-                          "borderRadius": 13.333,
-                          "borderWidth": 2.667,
-                          "borderColor": [
-                            91,
-                            76,
-                            47,
-                            255
-                          ],
-                          "boxShadow": false,
-                          "hoverBoxShadow": false,
-                          "pressedBoxShadow": false,
-                          "flexShrink": 0
-                        },
-                        {
-                          "type": "Button",
-                          "id": "settings-logout",
-                          "text": "退出登录",
-                          "width": "100%",
-                          "height": 68,
-                          "fontFamily": "sans",
-                          "fontSize": 24,
-                          "fontWeight": "bold",
-                          "textColor": [
-                            91,
-                            76,
-                            47,
-                            255
-                          ],
-                          "backgroundColor": [
-                            255,
-                            246,
-                            220,
-                            255
-                          ],
-                          "borderRadius": 13.333,
-                          "borderWidth": 2.667,
-                          "borderColor": [
-                            91,
-                            76,
-                            47,
-                            255
-                          ],
-                          "boxShadow": false,
-                          "hoverBoxShadow": false,
-                          "pressedBoxShadow": false,
-                          "flexShrink": 0
-                        },
-                        {
-                          "type": "Button",
-                          "id": "settings-extra-7",
-                          "text": "解锁所有关卡",
-                          "width": "100%",
-                          "height": 68,
-                          "fontFamily": "sans",
-                          "fontSize": 24,
-                          "fontWeight": "bold",
-                          "textColor": [
-                            91,
-                            76,
-                            47,
-                            255
-                          ],
-                          "backgroundColor": [
-                            245,
-                            180,
-                            103,
-                            255
-                          ],
-                          "borderRadius": 13.333,
-                          "borderWidth": 2.667,
-                          "borderColor": [
-                            91,
-                            76,
-                            47,
-                            255
-                          ],
-                          "boxShadow": false,
-                          "hoverBoxShadow": false,
-                          "pressedBoxShadow": false,
-                          "flexShrink": 0
-                        },
-                        {
-                          "type": "Button",
-                          "id": "settings-extra-8",
-                          "text": "清空存档（重新开始）",
-                          "width": "100%",
-                          "height": 68,
-                          "fontFamily": "sans",
-                          "fontSize": 24,
-                          "fontWeight": "bold",
-                          "textColor": [
-                            91,
-                            76,
-                            47,
-                            255
-                          ],
-                          "backgroundColor": [
-                            250,
-                            140,
-                            140,
-                            255
-                          ],
-                          "borderRadius": 13.333,
-                          "borderWidth": 2.667,
-                          "borderColor": [
-                            91,
-                            76,
-                            47,
-                            255
-                          ],
-                          "boxShadow": false,
-                          "hoverBoxShadow": false,
-                          "pressedBoxShadow": false,
-                          "flexShrink": 0
-                        },
-                        {
-                          "type": "Button",
-                          "id": "settings-close",
-                          "text": "关闭",
-                          "width": "100%",
-                          "height": 72,
-                          "fontFamily": "sans",
-                          "fontSize": 26.667,
-                          "fontWeight": "bold",
-                          "textColor": [
-                            91,
-                            76,
-                            47,
-                            255
-                          ],
-                          "backgroundColor": [
-                            238,
-                            156,
-                            67,
-                            255
-                          ],
-                          "borderRadius": 13.333,
-                          "borderWidth": 2.667,
-                          "borderColor": [
-                            91,
-                            76,
-                            47,
-                            255
-                          ],
-                          "boxShadow": false,
-                          "hoverBoxShadow": false,
-                          "pressedBoxShadow": false,
-                          "flexShrink": 0
+                          "flexDirection": "row",
+                          "gap": 12,
+                          "alignItems": "stretch",
+                          "flexShrink": 0,
+                          "children": [
+                            {
+                              "type": "Button",
+                              "id": "settings-extra-7",
+                              "text": "解锁所有关卡",
+                              "height": 72,
+                              "fontFamily": "sans",
+                              "fontSize": 20,
+                              "fontWeight": "bold",
+                              "textColor": [
+                                91,
+                                76,
+                                47,
+                                255
+                              ],
+                              "backgroundColor": [
+                                245,
+                                180,
+                                103,
+                                255
+                              ],
+                              "borderRadius": 13.333,
+                              "borderWidth": 2.667,
+                              "borderColor": [
+                                91,
+                                76,
+                                47,
+                                255
+                              ],
+                              "boxShadow": false,
+                              "hoverBoxShadow": false,
+                              "pressedBoxShadow": false,
+                              "flexShrink": 0,
+                              "flexGrow": 1,
+                              "flexBasis": 0,
+                              "minWidth": 0,
+                              "paddingHorizontal": 8
+                            },
+                            {
+                              "type": "Button",
+                              "id": "settings-extra-8",
+                              "text": "清空存档（重新开始）",
+                              "height": 72,
+                              "fontFamily": "sans",
+                              "fontSize": 20,
+                              "fontWeight": "bold",
+                              "textColor": [
+                                91,
+                                76,
+                                47,
+                                255
+                              ],
+                              "backgroundColor": [
+                                250,
+                                140,
+                                140,
+                                255
+                              ],
+                              "borderRadius": 13.333,
+                              "borderWidth": 2.667,
+                              "borderColor": [
+                                91,
+                                76,
+                                47,
+                                255
+                              ],
+                              "boxShadow": false,
+                              "hoverBoxShadow": false,
+                              "pressedBoxShadow": false,
+                              "flexShrink": 0,
+                              "flexGrow": 1,
+                              "flexBasis": 0,
+                              "minWidth": 0,
+                              "paddingHorizontal": 8
+                            }
+                          ]
                         }
-                      ]
+                      ],
+                      "flexGrow": 1,
+                      "minHeight": 0
+                    }
+                  ],
+                  "minHeight": 0,
+                  "flexShrink": 1
+                },
+                {
+                  "type": "Panel",
+                  "id": "settings-footer",
+                  "width": "100%",
+                  "paddingHorizontal": 20,
+                  "paddingTop": 8,
+                  "paddingBottom": 20,
+                  "flexShrink": 0,
+                  "children": [
+                    {
+                      "type": "Button",
+                      "id": "settings-close",
+                      "text": "关闭",
+                      "width": "100%",
+                      "height": 60,
+                      "fontFamily": "sans",
+                      "fontSize": 26.667,
+                      "fontWeight": "bold",
+                      "textColor": [
+                        91,
+                        76,
+                        47,
+                        255
+                      ],
+                      "backgroundColor": [
+                        238,
+                        156,
+                        67,
+                        255
+                      ],
+                      "borderRadius": 13.333,
+                      "borderWidth": 2.667,
+                      "borderColor": [
+                        91,
+                        76,
+                        47,
+                        255
+                      ],
+                      "boxShadow": false,
+                      "hoverBoxShadow": false,
+                      "pressedBoxShadow": false,
+                      "flexShrink": 0,
+                      "minHeight": 44
                     }
                   ]
                 }
-              ]
+              ],
+              "minHeight": 0
             },
             {
               "type": "Panel",
