@@ -90,8 +90,8 @@ local function renderHanddrawn(vg, screenW, screenH, activeTab, fontFace, locked
         local cx = (i - 0.5) * tabW
         local locked = lockedTabs and lockedTabs[tab.id] or false
         local fill = tab.id == activeTab and c.orange or c.paper
-        Pen.plaque(vg, cx - tabW * 0.45, y + 8, tabW * 0.9, 40,
-            locked and {224, 220, 197, 255} or fill, 2)
+        Pen.texturedPlaque(vg, cx - tabW * 0.45, y + 8, tabW * 0.9, 40,
+            locked and {224, 220, 197, 255} or fill, 2.2, { shadowOffset = 3 })
         nvgFontSize(vg, size)
         nvgFillColor(vg, Pen.color(locked and c.muted or c.ink))
         nvgText(vg, cx, y + (locked and 23 or 28), tab.label)
@@ -100,7 +100,7 @@ local function renderHanddrawn(vg, screenW, screenH, activeTab, fontFace, locked
             y = y, w = tabW, h = TabBar.HEIGHT }
     end
     local gearCx = screenW - GEAR_MARGIN - GEAR_SIZE / 2
-    Pen.plaque(vg, gearCx - 22, y + 8, 44, 40, c.paper, 2)
+    Pen.texturedPlaque(vg, gearCx - 22, y + 8, 44, 40, c.paper, 2.2, { shadowOffset = 3 })
     drawGear(vg, gearCx, y + 28, 0, c.ink, c.paper)
     return hits
 end

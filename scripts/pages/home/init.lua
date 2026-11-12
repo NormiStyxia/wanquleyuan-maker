@@ -137,11 +137,15 @@ local function refreshState()
         local tab = find("tab-home")
         local lock = find("tab-home-lock")
         local plaque = find("tab-home-plaque")
+        local bevel = find("tab-home-bottom-bevel")
         local label = find("tab-home-label")
         if tab then tab:SetDisabled(not unlocked) end
         if lock then lock:SetVisible(not unlocked) end
         if plaque then
             plaque:SetStyle({backgroundColor = unlocked and {238,156,67,255} or {224,220,197,255}})
+        end
+        if bevel then
+            bevel:SetStyle({backgroundColor = unlocked and {192,114,34,115} or {188,180,156,115}})
         end
         -- 与主线页底栏一致：未解锁时文字上移给锁图标留位，解锁后居中。
         if label then
