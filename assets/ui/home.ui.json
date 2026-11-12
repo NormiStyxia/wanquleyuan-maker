@@ -14,153 +14,6 @@
   ],
   "overflow": "hidden",
   "pointerEvents": "box-none",
-  "_extraction": {
-    "source": [
-      "scripts/pages/home/init.lua",
-      "scripts/shared/components/game-card.lua:drawTile",
-      "scripts/shared/components/page-header.lua:PRESET_HOME/render",
-      "scripts/shared/components/game-paper.lua",
-      "scripts/shared/components/handdrawn.lua",
-      "scripts/shared/components/fox-mascot.lua",
-      "scripts/shared/components/tab-bar.lua:renderHanddrawn",
-      "scripts/shared/constants/layout.lua",
-      "scripts/shared/constants/art.lua",
-      "scripts/shared/constants/colors.lua",
-      "scripts/modules/game-registry/init.lua",
-      "scripts/config/games/p1-puzzle-land.lua",
-      "scripts/config/games/p2-memory-flip.lua",
-      "scripts/config/games/p3-match-3.lua",
-      "scripts/config/games/p4-link-match.lua",
-      "scripts/shared/background-manager.lua",
-      "scripts/shared/outfit-manager.lua"
-    ],
-    "schemaSource": [
-      "urhox-libs/UI/Core/UILoader.lua:createWidget",
-      "urhox-libs/UI/Core/Widget.lua",
-      "urhox-libs/UI/Widgets/Label.lua",
-      "urhox-libs/UI/Widgets/Button.lua"
-    ],
-    "viewport": {
-      "source": "scripts/shared/utils/density.lua:beginFrame/getFactor",
-      "sourceViewport": [
-        540,
-        1200
-      ],
-      "assumedDPR": 1,
-      "densityReferenceHeight": 896,
-      "densityFactor": 1.3392857142857142,
-      "effectiveSize": [
-        403.2,
-        896
-      ],
-      "offsetX": 0,
-      "formula": "factor=clamp((physicalH/DPR)/896,0.85,2.5); scale=DPR*factor; fullW=physicalW/scale; fullH=physicalH/scale; gameW=min(fullW,fullH/1.2); offsetX=(fullW-gameW)/2",
-      "editorCanvas": "403.2 x 896 effective NVG units, not 540 x 1200 raw coordinates. Physical presentation scales every unit by1200/896 at the assumed viewport.",
-      "runtimeRoot": "Original Router placeholder: width=100%,flexGrow=1,flexBasis=0. Full-screen JSON root may become width=100%,height=100% after a future Density adapter; no entry/adapter changes made."
-    },
-    "fonts": [
-      {
-        "sourceFaces": [
-          "menu",
-          "fox-mascot"
-        ],
-        "path": "Fonts/LongZhuTi-Regular.ttf",
-        "jsonFontFamily": "sans",
-        "note": "Source registration remains Lua-owned. Identical glyph metrics need external sans mapping to this source font; no font registration changed."
-      }
-    ],
-    "snapshot": {
-      "backgroundId": "default",
-      "skinId": "default",
-      "gameCount": 4,
-      "activeTab": "home",
-      "story4State": "not done",
-      "mascotState": "settled idle, float offset0, no greeting",
-      "animationTime": 0,
-      "overlay": "PlayTimeGuard unrestricted; settings/anti-addiction popups closed"
-    },
-    "layout": {
-      "titleStart": "MENU_START_Y+MENU_TITLE_GAP=16+30=46; titleY=curY+28=74",
-      "titlePlate": "w=min(W-40,max(136,utf8.len(title)*30+44))=164; rectangle[119.6,50,164,48]",
-      "subtitle": "center=[W/2,117],font14",
-      "gridY": "74+30*0.8+34+MENU_GRID_GAP=146",
-      "tile": "min((W-24*2-16)/2,H*0.28)=169.6",
-      "gridOffsetX": "24+((W-48)-(tile*2+16))/2=24",
-      "grid": "2cols,2rows; x=gridOffsetX+col*(tile+16); y=146+row*(tile+16)",
-      "icon": "size=min(98,tile*0.54)=91.584; center=[tile/2,tile*0.34]",
-      "text": "title centerY=tile*0.69,size=min(18,tile*0.12)=18; subtitle centerY=tile*0.85,size=min(12,tile*0.078)=12",
-      "mascot": "size=H<720 and100 or128; x=-21; y=H-56-4-size+sin(t*FOX_FLOAT_SPEED)*2; snapshot y708; drawn BEFORE tabs",
-      "mascotHitTest": "Source handleClickAt calls hitTest without size options, so input uses default160 versus render128. Not silently corrected here.",
-      "greeting": "Transient and omitted from settled snapshot. textX=foxX+size+6; textBottom=foxY+size-4-72; maxW=max(60,min(180,W-textX-16)); measured via NVG/kinsoku; needs Lua state machine.",
-      "bar": "bottom=0,height=56 effective units; page barY=840"
-    },
-    "gameOrder": {
-      "frozen": [
-        "p1-puzzle-land",
-        "p4-link-match",
-        "p3-match-3",
-        "p2-memory-flip"
-      ],
-      "sort": "sortWeight descending only:100,75,75,70. p3/p4 have equal75 and table.sort is unstable; frozen valid Lua introsort order is p1,p4,p3,p2, not a portable secondary sort contract.",
-      "badges": "None: source configs do not enable isNew/isHot."
-    },
-    "bindings": [
-      {
-        "id": "home-background",
-        "fields": [
-          "backgroundImage",
-          "backgroundColor"
-        ],
-        "lua": "bgManager.getCurrent().themeImage / .colors.base",
-        "source": "scripts/shared/background-manager.lua:BACKGROUNDS/getCurrent/renderBackground",
-        "default": "image/handdrawn/backgrounds/default.png",
-        "fit": "cover centered"
-      },
-      {
-        "id": "home-mascot",
-        "field": "backgroundImage",
-        "lua": "OutfitManager.getTexturePath()",
-        "source": "scripts/shared/outfit-manager.lua:SKINS/getTexturePath; scripts/shared/components/fox-mascot.lua:render",
-        "default": "Textures/character/fox.png"
-      },
-      {
-        "idPattern": "game-{gameId}",
-        "lua": "gameRegistry.getGameList(); Router.push('game',{gameConfig=config}) after restriction check",
-        "source": "scripts/pages/home/init.lua:renderGrid/handleClickAt",
-        "fields": [
-          "paper fill by registry index",
-          "icon.backgroundImage=Art.gameIcons[config.gameId]",
-          "title.text=config.title",
-          "subtitle.text=config.subtitle"
-        ]
-      },
-      {
-        "id": "bottom-tabs",
-        "component": "ui/bottom-tabs.ui.json",
-        "source": "scripts/shared/components/tab-bar.lua:renderHanddrawn",
-        "lua": "activeTab=home; lockedTabs=Storyline.getNodeState('story-4')~='done' and {home=true} or nil"
-      }
-    ],
-    "layerOrder": [
-      "selected background",
-      "header shadow + paper + title + subtitle",
-      "game cards: shadow,paper,icon,title,subtitle,optional badge",
-      "fox portrait then transient greeting",
-      "bottom tabs",
-      "PlayTimeGuard overlay when restricted (omitted)",
-      "UI settings/anti-addiction popup when open (omitted)"
-    ],
-    "limitations": [
-      "Static extraction only; existing Lua/route/input/cloud/gameplay unchanged. Metadata describes bindings but does not execute them.",
-      "Pen.plaque quadratic corners approximated by rounded Panel11; fills, centered stroke widths, bounds and offset shadows follow source.",
-      "Only Panel/Label/Button; images assets-relative. No new images, callback code or invented NanoVG JSON schema.",
-      "Numeric403.2x896 canvas; width percentages and bottom56 fixed retained. Other sizes require recomputing recorded min/floor/text-measure formulas.",
-      "sans metrics may differ from source font. Buttons have no callbacks; UI theme may still affect inherited properties.",
-      "Transient greeting/random chat, animation, restrictions and modal overlays remain Lua-owned, not fabricated visible permanent controls.",
-      "Bottom tabs are an independent built-in-Widget copy, not a custom component requiring entry registration. Gear/lock contour approximations documented in bottom-tabs.ui.json.",
-      "JSON/reference validation only; no build or runtime screenshot."
-    ]
-  },
   "children": [
     {
       "type": "Panel",
@@ -272,624 +125,635 @@
     },
     {
       "type": "Panel",
-      "id": "home-game-grid",
+      "id": "group",
       "position": "absolute",
-      "left": 0,
-      "top": 146,
-      "width": "100%",
-      "height": 355.2,
-      "backgroundColor": [
-        0,
-        0,
-        0,
-        0
-      ],
-      "pointerEvents": "box-none",
+      "width": 403,
+      "height": 355,
+      "backgroundColor": false,
       "children": [
         {
-          "type": "Button",
-          "id": "game-p1-puzzle-land",
+          "type": "Panel",
+          "id": "home-game-grid",
           "position": "absolute",
-          "left": 24.0,
-          "top": 0.0,
-          "width": 169.6,
-          "height": 169.6,
-          "padding": 0,
-          "paddingHorizontal": 0,
-          "borderWidth": 0,
-          "borderRadius": 0,
+          "left": 0,
+          "top": 91,
+          "width": "100%",
+          "height": 355.2,
           "backgroundColor": [
             0,
             0,
             0,
             0
           ],
-          "hoverBackgroundColor": [
-            0,
-            0,
-            0,
-            0
-          ],
-          "pressedBackgroundColor": [
-            0,
-            0,
-            0,
-            0
-          ],
-          "boxShadow": false,
-          "hoverBoxShadow": false,
-          "pressedBoxShadow": false,
-          "backgroundGradient": false,
-          "decorations": false,
+          "pointerEvents": "box-none",
           "children": [
             {
-              "type": "Panel",
-              "id": "p1-puzzle-land-shadow",
+              "type": "Button",
+              "id": "game-p1-puzzle-land",
               "position": "absolute",
-              "left": 1,
-              "top": 3,
-              "width": 169.6,
-              "height": 169.6,
-              "padding": 0,
-              "borderWidth": 0,
-              "backgroundColor": [
-                151,
-                123,
-                78,
-                45
-              ],
-              "pointerEvents": "none",
-              "borderRadius": 11
-            },
-            {
-              "type": "Panel",
-              "id": "p1-puzzle-land-paper",
-              "position": "absolute",
-              "left": 0,
+              "left": 24,
               "top": 0,
               "width": 169.6,
               "height": 169.6,
               "padding": 0,
-              "borderWidth": 2.3,
-              "backgroundColor": [
-                246,
-                216,
-                165,
-                255
-              ],
-              "pointerEvents": "none",
-              "borderRadius": 11,
-              "borderColor": [
-                91,
-                76,
-                47,
-                255
-              ],
-              "borderAlign": "center"
-            },
-            {
-              "type": "Panel",
-              "id": "p1-puzzle-land-icon",
-              "position": "absolute",
-              "left": 39.008,
-              "top": 11.872,
-              "width": 91.584,
-              "height": 91.584,
-              "padding": 0,
+              "paddingHorizontal": 0,
               "borderWidth": 0,
+              "borderRadius": 0,
               "backgroundColor": [
                 0,
                 0,
                 0,
                 0
               ],
-              "pointerEvents": "none",
-              "backgroundImage": "image/handdrawn/game-icons/box.png",
-              "backgroundFit": "contain"
+              "hoverBackgroundColor": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "pressedBackgroundColor": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "boxShadow": false,
+              "hoverBoxShadow": false,
+              "pressedBoxShadow": false,
+              "backgroundGradient": false,
+              "decorations": false,
+              "children": [
+                {
+                  "type": "Panel",
+                  "id": "p1-puzzle-land-shadow",
+                  "position": "absolute",
+                  "left": 1,
+                  "top": 3,
+                  "width": 169.6,
+                  "height": 169.6,
+                  "padding": 0,
+                  "borderWidth": 0,
+                  "backgroundColor": [
+                    151,
+                    123,
+                    78,
+                    45
+                  ],
+                  "pointerEvents": "none",
+                  "borderRadius": 11
+                },
+                {
+                  "type": "Panel",
+                  "id": "p1-puzzle-land-paper",
+                  "position": "absolute",
+                  "left": 0,
+                  "top": 0,
+                  "width": 169.6,
+                  "height": 169.6,
+                  "padding": 0,
+                  "borderWidth": 2.3,
+                  "backgroundColor": [
+                    246,
+                    216,
+                    165,
+                    255
+                  ],
+                  "pointerEvents": "none",
+                  "borderRadius": 11,
+                  "borderColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "borderAlign": "center"
+                },
+                {
+                  "type": "Panel",
+                  "id": "p1-puzzle-land-icon",
+                  "position": "absolute",
+                  "left": 39.008,
+                  "top": 11.872,
+                  "width": 91.584,
+                  "height": 91.584,
+                  "padding": 0,
+                  "borderWidth": 0,
+                  "backgroundColor": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "pointerEvents": "none",
+                  "backgroundImage": "image/handdrawn/game-icons/box.png",
+                  "backgroundFit": "contain"
+                },
+                {
+                  "type": "Label",
+                  "id": "p1-puzzle-land-title",
+                  "position": "absolute",
+                  "left": 6,
+                  "top": 103.024,
+                  "width": 157.6,
+                  "height": 28,
+                  "text": "推箱子",
+                  "fontFamily": "sans",
+                  "fontSize": 18,
+                  "fontWeight": "normal",
+                  "fontColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "textAlign": "center",
+                  "verticalAlign": "middle",
+                  "lineHeight": 1,
+                  "pointerEvents": "none"
+                },
+                {
+                  "type": "Label",
+                  "id": "p1-puzzle-land-subtitle",
+                  "position": "absolute",
+                  "left": 6,
+                  "top": 130.16,
+                  "width": 157.6,
+                  "height": 28,
+                  "text": "经典益智闯关",
+                  "fontFamily": "sans",
+                  "fontSize": 12,
+                  "fontWeight": "normal",
+                  "fontColor": [
+                    116,
+                    102,
+                    70,
+                    255
+                  ],
+                  "textAlign": "center",
+                  "verticalAlign": "middle",
+                  "lineHeight": 1,
+                  "pointerEvents": "none"
+                }
+              ]
             },
             {
-              "type": "Label",
-              "id": "p1-puzzle-land-title",
+              "type": "Button",
+              "id": "game-p4-link-match",
               "position": "absolute",
-              "left": 6,
-              "top": 103.024,
-              "width": 157.6,
-              "height": 28,
-              "text": "推箱子",
-              "fontFamily": "sans",
-              "fontSize": 18,
-              "fontWeight": "normal",
-              "fontColor": [
-                91,
-                76,
-                47,
-                255
-              ],
-              "textAlign": "center",
-              "verticalAlign": "middle",
-              "lineHeight": 1,
-              "pointerEvents": "none"
-            },
-            {
-              "type": "Label",
-              "id": "p1-puzzle-land-subtitle",
-              "position": "absolute",
-              "left": 6,
-              "top": 130.16,
-              "width": 157.6,
-              "height": 28,
-              "text": "经典益智闯关",
-              "fontFamily": "sans",
-              "fontSize": 12,
-              "fontWeight": "normal",
-              "fontColor": [
-                116,
-                102,
-                70,
-                255
-              ],
-              "textAlign": "center",
-              "verticalAlign": "middle",
-              "lineHeight": 1,
-              "pointerEvents": "none"
-            }
-          ]
-        },
-        {
-          "type": "Button",
-          "id": "game-p4-link-match",
-          "position": "absolute",
-          "left": 209.6,
-          "top": 0.0,
-          "width": 169.6,
-          "height": 169.6,
-          "padding": 0,
-          "paddingHorizontal": 0,
-          "borderWidth": 0,
-          "borderRadius": 0,
-          "backgroundColor": [
-            0,
-            0,
-            0,
-            0
-          ],
-          "hoverBackgroundColor": [
-            0,
-            0,
-            0,
-            0
-          ],
-          "pressedBackgroundColor": [
-            0,
-            0,
-            0,
-            0
-          ],
-          "boxShadow": false,
-          "hoverBoxShadow": false,
-          "pressedBoxShadow": false,
-          "backgroundGradient": false,
-          "decorations": false,
-          "children": [
-            {
-              "type": "Panel",
-              "id": "p4-link-match-shadow",
-              "position": "absolute",
-              "left": 1,
-              "top": 3,
-              "width": 169.6,
-              "height": 169.6,
-              "padding": 0,
-              "borderWidth": 0,
-              "backgroundColor": [
-                151,
-                123,
-                78,
-                45
-              ],
-              "pointerEvents": "none",
-              "borderRadius": 11
-            },
-            {
-              "type": "Panel",
-              "id": "p4-link-match-paper",
-              "position": "absolute",
-              "left": 0,
+              "left": 209.6,
               "top": 0,
               "width": 169.6,
               "height": 169.6,
               "padding": 0,
-              "borderWidth": 2.3,
-              "backgroundColor": [
-                220,
-                232,
-                196,
-                255
-              ],
-              "pointerEvents": "none",
-              "borderRadius": 11,
-              "borderColor": [
-                91,
-                76,
-                47,
-                255
-              ],
-              "borderAlign": "center"
-            },
-            {
-              "type": "Panel",
-              "id": "p4-link-match-icon",
-              "position": "absolute",
-              "left": 39.008,
-              "top": 11.872,
-              "width": 91.584,
-              "height": 91.584,
-              "padding": 0,
+              "paddingHorizontal": 0,
               "borderWidth": 0,
+              "borderRadius": 0,
               "backgroundColor": [
                 0,
                 0,
                 0,
                 0
               ],
-              "pointerEvents": "none",
-              "backgroundImage": "image/handdrawn/game-icons/link.png",
-              "backgroundFit": "contain"
+              "hoverBackgroundColor": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "pressedBackgroundColor": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "boxShadow": false,
+              "hoverBoxShadow": false,
+              "pressedBoxShadow": false,
+              "backgroundGradient": false,
+              "decorations": false,
+              "children": [
+                {
+                  "type": "Panel",
+                  "id": "p4-link-match-shadow",
+                  "position": "absolute",
+                  "left": 1,
+                  "top": 3,
+                  "width": 169.6,
+                  "height": 169.6,
+                  "padding": 0,
+                  "borderWidth": 0,
+                  "backgroundColor": [
+                    151,
+                    123,
+                    78,
+                    45
+                  ],
+                  "pointerEvents": "none",
+                  "borderRadius": 11
+                },
+                {
+                  "type": "Panel",
+                  "id": "p4-link-match-paper",
+                  "position": "absolute",
+                  "left": 0,
+                  "top": 0,
+                  "width": 169.6,
+                  "height": 169.6,
+                  "padding": 0,
+                  "borderWidth": 2.3,
+                  "backgroundColor": [
+                    220,
+                    232,
+                    196,
+                    255
+                  ],
+                  "pointerEvents": "none",
+                  "borderRadius": 11,
+                  "borderColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "borderAlign": "center"
+                },
+                {
+                  "type": "Panel",
+                  "id": "p4-link-match-icon",
+                  "position": "absolute",
+                  "left": 39.008,
+                  "top": 11.872,
+                  "width": 91.584,
+                  "height": 91.584,
+                  "padding": 0,
+                  "borderWidth": 0,
+                  "backgroundColor": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "pointerEvents": "none",
+                  "backgroundImage": "image/handdrawn/game-icons/link.png",
+                  "backgroundFit": "contain"
+                },
+                {
+                  "type": "Label",
+                  "id": "p4-link-match-title",
+                  "position": "absolute",
+                  "left": 6,
+                  "top": 103.024,
+                  "width": 157.6,
+                  "height": 28,
+                  "text": "连连看",
+                  "fontFamily": "sans",
+                  "fontSize": 18,
+                  "fontWeight": "normal",
+                  "fontColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "textAlign": "center",
+                  "verticalAlign": "middle",
+                  "lineHeight": 1,
+                  "pointerEvents": "none"
+                },
+                {
+                  "type": "Label",
+                  "id": "p4-link-match-subtitle",
+                  "position": "absolute",
+                  "left": 6,
+                  "top": 130.16,
+                  "width": 157.6,
+                  "height": 28,
+                  "text": "找到相同图案，连线消除",
+                  "fontFamily": "sans",
+                  "fontSize": 12,
+                  "fontWeight": "normal",
+                  "fontColor": [
+                    116,
+                    102,
+                    70,
+                    255
+                  ],
+                  "textAlign": "center",
+                  "verticalAlign": "middle",
+                  "lineHeight": 1,
+                  "pointerEvents": "none"
+                }
+              ]
             },
             {
-              "type": "Label",
-              "id": "p4-link-match-title",
+              "type": "Button",
+              "id": "game-p3-match-3",
               "position": "absolute",
-              "left": 6,
-              "top": 103.024,
-              "width": 157.6,
-              "height": 28,
-              "text": "连连看",
-              "fontFamily": "sans",
-              "fontSize": 18,
-              "fontWeight": "normal",
-              "fontColor": [
-                91,
-                76,
-                47,
-                255
-              ],
-              "textAlign": "center",
-              "verticalAlign": "middle",
-              "lineHeight": 1,
-              "pointerEvents": "none"
-            },
-            {
-              "type": "Label",
-              "id": "p4-link-match-subtitle",
-              "position": "absolute",
-              "left": 6,
-              "top": 130.16,
-              "width": 157.6,
-              "height": 28,
-              "text": "找到相同图案，连线消除",
-              "fontFamily": "sans",
-              "fontSize": 12,
-              "fontWeight": "normal",
-              "fontColor": [
-                116,
-                102,
-                70,
-                255
-              ],
-              "textAlign": "center",
-              "verticalAlign": "middle",
-              "lineHeight": 1,
-              "pointerEvents": "none"
-            }
-          ]
-        },
-        {
-          "type": "Button",
-          "id": "game-p3-match-3",
-          "position": "absolute",
-          "left": 24.0,
-          "top": 185.6,
-          "width": 169.6,
-          "height": 169.6,
-          "padding": 0,
-          "paddingHorizontal": 0,
-          "borderWidth": 0,
-          "borderRadius": 0,
-          "backgroundColor": [
-            0,
-            0,
-            0,
-            0
-          ],
-          "hoverBackgroundColor": [
-            0,
-            0,
-            0,
-            0
-          ],
-          "pressedBackgroundColor": [
-            0,
-            0,
-            0,
-            0
-          ],
-          "boxShadow": false,
-          "hoverBoxShadow": false,
-          "pressedBoxShadow": false,
-          "backgroundGradient": false,
-          "decorations": false,
-          "children": [
-            {
-              "type": "Panel",
-              "id": "p3-match-3-shadow",
-              "position": "absolute",
-              "left": 1,
-              "top": 3,
+              "left": 24,
+              "top": 185.6,
               "width": 169.6,
               "height": 169.6,
               "padding": 0,
+              "paddingHorizontal": 0,
               "borderWidth": 0,
-              "backgroundColor": [
-                151,
-                123,
-                78,
-                45
-              ],
-              "pointerEvents": "none",
-              "borderRadius": 11
-            },
-            {
-              "type": "Panel",
-              "id": "p3-match-3-paper",
-              "position": "absolute",
-              "left": 0,
-              "top": 0,
-              "width": 169.6,
-              "height": 169.6,
-              "padding": 0,
-              "borderWidth": 2.3,
-              "backgroundColor": [
-                242,
-                226,
-                166,
-                255
-              ],
-              "pointerEvents": "none",
-              "borderRadius": 11,
-              "borderColor": [
-                91,
-                76,
-                47,
-                255
-              ],
-              "borderAlign": "center"
-            },
-            {
-              "type": "Panel",
-              "id": "p3-match-3-icon",
-              "position": "absolute",
-              "left": 39.008,
-              "top": 11.872,
-              "width": 91.584,
-              "height": 91.584,
-              "padding": 0,
-              "borderWidth": 0,
+              "borderRadius": 0,
               "backgroundColor": [
                 0,
                 0,
                 0,
                 0
               ],
-              "pointerEvents": "none",
-              "backgroundImage": "image/handdrawn/game-icons/match3.png",
-              "backgroundFit": "contain"
+              "hoverBackgroundColor": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "pressedBackgroundColor": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "boxShadow": false,
+              "hoverBoxShadow": false,
+              "pressedBoxShadow": false,
+              "backgroundGradient": false,
+              "decorations": false,
+              "children": [
+                {
+                  "type": "Panel",
+                  "id": "p3-match-3-shadow",
+                  "position": "absolute",
+                  "left": 1,
+                  "top": 3,
+                  "width": 169.6,
+                  "height": 169.6,
+                  "padding": 0,
+                  "borderWidth": 0,
+                  "backgroundColor": [
+                    151,
+                    123,
+                    78,
+                    45
+                  ],
+                  "pointerEvents": "none",
+                  "borderRadius": 11
+                },
+                {
+                  "type": "Panel",
+                  "id": "p3-match-3-paper",
+                  "position": "absolute",
+                  "left": 0,
+                  "top": 0,
+                  "width": 169.6,
+                  "height": 169.6,
+                  "padding": 0,
+                  "borderWidth": 2.3,
+                  "backgroundColor": [
+                    242,
+                    226,
+                    166,
+                    255
+                  ],
+                  "pointerEvents": "none",
+                  "borderRadius": 11,
+                  "borderColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "borderAlign": "center"
+                },
+                {
+                  "type": "Panel",
+                  "id": "p3-match-3-icon",
+                  "position": "absolute",
+                  "left": 39.008,
+                  "top": 11.872,
+                  "width": 91.584,
+                  "height": 91.584,
+                  "padding": 0,
+                  "borderWidth": 0,
+                  "backgroundColor": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "pointerEvents": "none",
+                  "backgroundImage": "image/handdrawn/game-icons/match3.png",
+                  "backgroundFit": "contain"
+                },
+                {
+                  "type": "Label",
+                  "id": "p3-match-3-title",
+                  "position": "absolute",
+                  "left": 6,
+                  "top": 103.024,
+                  "width": 157.6,
+                  "height": 28,
+                  "text": "消消乐",
+                  "fontFamily": "sans",
+                  "fontSize": 18,
+                  "fontWeight": "normal",
+                  "fontColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "textAlign": "center",
+                  "verticalAlign": "middle",
+                  "lineHeight": 1,
+                  "pointerEvents": "none"
+                },
+                {
+                  "type": "Label",
+                  "id": "p3-match-3-subtitle",
+                  "position": "absolute",
+                  "left": 6,
+                  "top": 130.16,
+                  "width": 157.6,
+                  "height": 28,
+                  "text": "交换方块，连消通关",
+                  "fontFamily": "sans",
+                  "fontSize": 12,
+                  "fontWeight": "normal",
+                  "fontColor": [
+                    116,
+                    102,
+                    70,
+                    255
+                  ],
+                  "textAlign": "center",
+                  "verticalAlign": "middle",
+                  "lineHeight": 1,
+                  "pointerEvents": "none"
+                }
+              ]
             },
             {
-              "type": "Label",
-              "id": "p3-match-3-title",
+              "type": "Button",
+              "id": "game-p2-memory-flip",
               "position": "absolute",
-              "left": 6,
-              "top": 103.024,
-              "width": 157.6,
-              "height": 28,
-              "text": "消消乐",
-              "fontFamily": "sans",
-              "fontSize": 18,
-              "fontWeight": "normal",
-              "fontColor": [
-                91,
-                76,
-                47,
-                255
-              ],
-              "textAlign": "center",
-              "verticalAlign": "middle",
-              "lineHeight": 1,
-              "pointerEvents": "none"
-            },
-            {
-              "type": "Label",
-              "id": "p3-match-3-subtitle",
-              "position": "absolute",
-              "left": 6,
-              "top": 130.16,
-              "width": 157.6,
-              "height": 28,
-              "text": "交换方块，连消通关",
-              "fontFamily": "sans",
-              "fontSize": 12,
-              "fontWeight": "normal",
-              "fontColor": [
-                116,
-                102,
-                70,
-                255
-              ],
-              "textAlign": "center",
-              "verticalAlign": "middle",
-              "lineHeight": 1,
-              "pointerEvents": "none"
-            }
-          ]
-        },
-        {
-          "type": "Button",
-          "id": "game-p2-memory-flip",
-          "position": "absolute",
-          "left": 209.6,
-          "top": 185.6,
-          "width": 169.6,
-          "height": 169.6,
-          "padding": 0,
-          "paddingHorizontal": 0,
-          "borderWidth": 0,
-          "borderRadius": 0,
-          "backgroundColor": [
-            0,
-            0,
-            0,
-            0
-          ],
-          "hoverBackgroundColor": [
-            0,
-            0,
-            0,
-            0
-          ],
-          "pressedBackgroundColor": [
-            0,
-            0,
-            0,
-            0
-          ],
-          "boxShadow": false,
-          "hoverBoxShadow": false,
-          "pressedBoxShadow": false,
-          "backgroundGradient": false,
-          "decorations": false,
-          "children": [
-            {
-              "type": "Panel",
-              "id": "p2-memory-flip-shadow",
-              "position": "absolute",
-              "left": 1,
-              "top": 3,
+              "left": 209.6,
+              "top": 185.6,
               "width": 169.6,
               "height": 169.6,
               "padding": 0,
+              "paddingHorizontal": 0,
               "borderWidth": 0,
-              "backgroundColor": [
-                151,
-                123,
-                78,
-                45
-              ],
-              "pointerEvents": "none",
-              "borderRadius": 11
-            },
-            {
-              "type": "Panel",
-              "id": "p2-memory-flip-paper",
-              "position": "absolute",
-              "left": 0,
-              "top": 0,
-              "width": 169.6,
-              "height": 169.6,
-              "padding": 0,
-              "borderWidth": 2.3,
-              "backgroundColor": [
-                227,
-                216,
-                230,
-                255
-              ],
-              "pointerEvents": "none",
-              "borderRadius": 11,
-              "borderColor": [
-                91,
-                76,
-                47,
-                255
-              ],
-              "borderAlign": "center"
-            },
-            {
-              "type": "Panel",
-              "id": "p2-memory-flip-icon",
-              "position": "absolute",
-              "left": 39.008,
-              "top": 11.872,
-              "width": 91.584,
-              "height": 91.584,
-              "padding": 0,
-              "borderWidth": 0,
+              "borderRadius": 0,
               "backgroundColor": [
                 0,
                 0,
                 0,
                 0
               ],
-              "pointerEvents": "none",
-              "backgroundImage": "image/handdrawn/game-icons/memory.png",
-              "backgroundFit": "contain"
-            },
-            {
-              "type": "Label",
-              "id": "p2-memory-flip-title",
-              "position": "absolute",
-              "left": 6,
-              "top": 103.024,
-              "width": 157.6,
-              "height": 28,
-              "text": "记忆翻牌",
-              "fontFamily": "sans",
-              "fontSize": 18,
-              "fontWeight": "normal",
-              "fontColor": [
-                91,
-                76,
-                47,
-                255
+              "hoverBackgroundColor": [
+                0,
+                0,
+                0,
+                0
               ],
-              "textAlign": "center",
-              "verticalAlign": "middle",
-              "lineHeight": 1,
-              "pointerEvents": "none"
-            },
-            {
-              "type": "Label",
-              "id": "p2-memory-flip-subtitle",
-              "position": "absolute",
-              "left": 6,
-              "top": 130.16,
-              "width": 157.6,
-              "height": 28,
-              "text": "翻开并配对所有卡牌",
-              "fontFamily": "sans",
-              "fontSize": 12,
-              "fontWeight": "normal",
-              "fontColor": [
-                116,
-                102,
-                70,
-                255
+              "pressedBackgroundColor": [
+                0,
+                0,
+                0,
+                0
               ],
-              "textAlign": "center",
-              "verticalAlign": "middle",
-              "lineHeight": 1,
-              "pointerEvents": "none"
+              "boxShadow": false,
+              "hoverBoxShadow": false,
+              "pressedBoxShadow": false,
+              "backgroundGradient": false,
+              "decorations": false,
+              "children": [
+                {
+                  "type": "Panel",
+                  "id": "p2-memory-flip-shadow",
+                  "position": "absolute",
+                  "left": 1,
+                  "top": 3,
+                  "width": 169.6,
+                  "height": 169.6,
+                  "padding": 0,
+                  "borderWidth": 0,
+                  "backgroundColor": [
+                    151,
+                    123,
+                    78,
+                    45
+                  ],
+                  "pointerEvents": "none",
+                  "borderRadius": 11
+                },
+                {
+                  "type": "Panel",
+                  "id": "p2-memory-flip-paper",
+                  "position": "absolute",
+                  "left": 0,
+                  "top": 0,
+                  "width": 169.6,
+                  "height": 169.6,
+                  "padding": 0,
+                  "borderWidth": 2.3,
+                  "backgroundColor": [
+                    227,
+                    216,
+                    230,
+                    255
+                  ],
+                  "pointerEvents": "none",
+                  "borderRadius": 11,
+                  "borderColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "borderAlign": "center"
+                },
+                {
+                  "type": "Panel",
+                  "id": "p2-memory-flip-icon",
+                  "position": "absolute",
+                  "left": 39.008,
+                  "top": 11.872,
+                  "width": 91.584,
+                  "height": 91.584,
+                  "padding": 0,
+                  "borderWidth": 0,
+                  "backgroundColor": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "pointerEvents": "none",
+                  "backgroundImage": "image/handdrawn/game-icons/memory.png",
+                  "backgroundFit": "contain"
+                },
+                {
+                  "type": "Label",
+                  "id": "p2-memory-flip-title",
+                  "position": "absolute",
+                  "left": 6,
+                  "top": 103.024,
+                  "width": 157.6,
+                  "height": 28,
+                  "text": "记忆翻牌",
+                  "fontFamily": "sans",
+                  "fontSize": 18,
+                  "fontWeight": "normal",
+                  "fontColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "textAlign": "center",
+                  "verticalAlign": "middle",
+                  "lineHeight": 1,
+                  "pointerEvents": "none"
+                },
+                {
+                  "type": "Label",
+                  "id": "p2-memory-flip-subtitle",
+                  "position": "absolute",
+                  "left": 6,
+                  "top": 130.16,
+                  "width": 157.6,
+                  "height": 28,
+                  "text": "翻开并配对所有卡牌",
+                  "fontFamily": "sans",
+                  "fontSize": 12,
+                  "fontWeight": "normal",
+                  "fontColor": [
+                    116,
+                    102,
+                    70,
+                    255
+                  ],
+                  "textAlign": "center",
+                  "verticalAlign": "middle",
+                  "lineHeight": 1,
+                  "pointerEvents": "none"
+                }
+              ]
             }
           ]
         }
-      ]
+      ],
+      "top": 146
     },
     {
       "type": "Panel",
       "id": "home-mascot",
       "position": "absolute",
-      "left": -21,
-      "bottom": 60,
+      "left": 8,
+      "bottom": 94,
       "width": 128,
       "height": 128,
       "backgroundImage": "Textures/character/fox.png",
