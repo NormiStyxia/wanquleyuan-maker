@@ -1,0 +1,159 @@
+{
+    "version": 2,
+    "script": "devtools/ui-json-preview.lua",
+    "result": "FAIL",
+    "duration_ms": 6352,
+    "frames_completed": 145,
+    "phases": {
+        "load": {
+            "result": "PASS",
+            "errors": []
+        },
+        "init": {
+            "result": "PASS",
+            "errors": []
+        },
+        "run": {
+            "result": "FAIL",
+            "errors": [
+                {
+                    "category": "resource",
+                    "message": "[2026-11-12 14_53_40_634][45] ERROR: Could not find resource ui/adventure.ui.json",
+                    "frame": 9
+                },
+                {
+                    "category": "resource",
+                    "message": "[2026-11-12 14_53_40_683][48] ERROR: Could not find resource ui/adventure-chapter-2.ui.json",
+                    "frame": 12
+                },
+                {
+                    "category": "resource",
+                    "message": "[2026-11-12 14_53_40_733][51] ERROR: Could not find resource ui/adventure-chapter-3.ui.json",
+                    "frame": 15
+                },
+                {
+                    "category": "resource",
+                    "message": "[2026-11-12 14_53_40_783][54] ERROR: Could not find resource ui/adventure-chapter-4.ui.json",
+                    "frame": 18
+                },
+                {
+                    "category": "resource",
+                    "message": "[2026-11-12 14_53_40_833][57] ERROR: Could not find resource ui/adventure-chapter-5.ui.json",
+                    "frame": 21
+                },
+                {
+                    "category": "resource",
+                    "message": "[2026-11-12 14_53_40_883][60] ERROR: Could not find resource ui/adventure-reference.ui.json",
+                    "frame": 24
+                },
+                {
+                    "category": "engine",
+                    "message": "Frame time spike: 111.166ms (threshold: 100ms)",
+                    "frame": 28
+                },
+                {
+                    "category": "engine",
+                    "message": "Frame time spike: 600.045ms (threshold: 100ms)",
+                    "frame": 29
+                },
+                {
+                    "category": "resource",
+                    "message": "[2026-11-12 14_53_41_661][66] ERROR: Could not find resource ui/profile.ui.json",
+                    "frame": 30
+                },
+                {
+                    "category": "engine",
+                    "message": "Frame time spike: 124.594ms (threshold: 100ms)",
+                    "frame": 37
+                },
+                {
+                    "category": "engine",
+                    "message": "Frame time spike: 316.271ms (threshold: 100ms)",
+                    "frame": 47
+                },
+                {
+                    "category": "resource",
+                    "message": "[2026-11-12 14_53_43_307][130] ERROR: Could not find resource ui/adventure-reference.ui.json",
+                    "frame": 94
+                }
+            ]
+        },
+        "scene": {
+            "result": "PASS",
+            "errors": [],
+            "node_count": 0,
+            "component_count": 0,
+            "scene_exists": false
+        }
+    },
+    "state_snapshots": [
+        {
+            "frame": 1,
+            "phase": "init",
+            "nodes": 0,
+            "components": 0,
+            "hash": 0,
+            "frame_time_ms": 341.17999267578127
+        },
+        {
+            "frame": 10,
+            "phase": "run",
+            "nodes": 0,
+            "components": 0,
+            "hash": 0,
+            "frame_time_ms": 16.59000015258789
+        },
+        {
+            "frame": 72,
+            "phase": "run",
+            "nodes": 0,
+            "components": 0,
+            "hash": 0,
+            "frame_time_ms": 16.618999481201173
+        },
+        {
+            "frame": 145,
+            "phase": "run",
+            "nodes": 0,
+            "components": 0,
+            "hash": 0,
+            "frame_time_ms": 16.612998962402345
+        }
+    ],
+    "scene_stalled": true,
+    "max_frame_time_ms": 600.0449829101563,
+    "update_defined": false,
+    "component_census": {},
+    "test_result": "FAILED",
+    "test_assertions": {
+        "total": 68,
+        "passed": 60,
+        "failed": 8
+    },
+    "test_issues": [
+        "adventure 能被 UI.LoadJSON 加载：Failed to load file: ui/adventure.ui.json",
+        "adventure-chapter-2 能被 UI.LoadJSON 加载：Failed to load file: ui/adventure-chapter-2.ui.json",
+        "adventure-chapter-3 能被 UI.LoadJSON 加载：Failed to load file: ui/adventure-chapter-3.ui.json",
+        "adventure-chapter-4 能被 UI.LoadJSON 加载：Failed to load file: ui/adventure-chapter-4.ui.json",
+        "adventure-chapter-5 能被 UI.LoadJSON 加载：Failed to load file: ui/adventure-chapter-5.ui.json",
+        "adventure-reference 能被 UI.LoadJSON 加载：Failed to load file: ui/adventure-reference.ui.json",
+        "profile 能被 UI.LoadJSON 加载：Failed to load file: ui/profile.ui.json",
+        "参考地图可重复加载：Failed to load file: ui/adventure-reference.ui.json"
+    ],
+    "missing_resources": [
+        "ui/adventure.ui.json",
+        "ui/adventure-chapter-2.ui.json",
+        "ui/adventure-chapter-3.ui.json",
+        "ui/adventure-chapter-4.ui.json",
+        "ui/adventure-chapter-5.ui.json",
+        "ui/adventure-reference.ui.json",
+        "ui/profile.ui.json"
+    ],
+    "missing_engine_resources": [],
+    "summary": {
+        "lua_errors": 0,
+        "resource_errors": 8,
+        "engine_errors": 4,
+        "total_errors": 12
+    }
+}

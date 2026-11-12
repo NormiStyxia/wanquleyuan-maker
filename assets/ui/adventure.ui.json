@@ -1,0 +1,3864 @@
+{
+  "type": "Panel",
+  "id": "adventure",
+  "position": "relative",
+  "width": 403.2,
+  "height": 896,
+  "padding": 0,
+  "gap": 0,
+  "borderWidth": 0,
+  "borderRadius": 0,
+  "backgroundColor": [
+    255,
+    246,
+    220,
+    255
+  ],
+  "boxShadow": false,
+  "pointerEvents": "box-none",
+  "children": [
+    {
+      "type": "Panel",
+      "id": "title-logo",
+      "position": "absolute",
+      "left": 84.40503144654087,
+      "top": 4.0,
+      "width": 234.38993710691824,
+      "height": 84.0,
+      "padding": 0,
+      "gap": 0,
+      "borderWidth": 0,
+      "borderRadius": 0,
+      "backgroundColor": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "boxShadow": false,
+      "pointerEvents": "none",
+      "children": [],
+      "backgroundImage": "image/handdrawn/title-logo.png",
+      "backgroundFit": "fill"
+    },
+    {
+      "type": "Panel",
+      "id": "chapter-plaque",
+      "position": "absolute",
+      "left": 74.6,
+      "top": 93,
+      "width": 254,
+      "height": 30,
+      "padding": 0,
+      "gap": 0,
+      "borderWidth": 2.5,
+      "borderRadius": 9.0,
+      "backgroundColor": [
+        255,
+        246,
+        220,
+        255
+      ],
+      "boxShadow": false,
+      "pointerEvents": "none",
+      "children": [],
+      "borderAlign": "center",
+      "borderColor": [
+        91,
+        76,
+        47,
+        255
+      ]
+    },
+    {
+      "type": "Label",
+      "id": "chapter-title",
+      "position": "absolute",
+      "left": 201.6,
+      "top": 96.0,
+      "translateX": -121.0,
+      "width": 242,
+      "height": 24.0,
+      "text": "第一章：入门之旅",
+      "fontFamily": "sans",
+      "fontSize": 12.0,
+      "minFontSize": 12.0,
+      "fontWeight": "normal",
+      "fontColor": [
+        91,
+        76,
+        47,
+        255
+      ],
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "lineHeight": 1,
+      "whiteSpace": "nowrap",
+      "padding": 0,
+      "borderWidth": 0,
+      "backgroundColor": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pointerEvents": "none",
+      "children": []
+    },
+    {
+      "type": "Panel",
+      "id": "road-1",
+      "position": "absolute",
+      "left": 98.864,
+      "top": 177.2,
+      "width": 205.472,
+      "height": 89.80000000000001,
+      "padding": 0,
+      "gap": 0,
+      "borderWidth": 0,
+      "borderRadius": 0,
+      "backgroundColor": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "boxShadow": false,
+      "pointerEvents": "none",
+      "children": [],
+      "backgroundImage": "ui/art/adventure-road-1.png",
+      "backgroundFit": "fill"
+    },
+    {
+      "type": "Panel",
+      "id": "road-2",
+      "position": "absolute",
+      "left": 98.864,
+      "top": 247.0,
+      "width": 205.472,
+      "height": 89.79999999999995,
+      "padding": 0,
+      "gap": 0,
+      "borderWidth": 0,
+      "borderRadius": 0,
+      "backgroundColor": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "boxShadow": false,
+      "pointerEvents": "none",
+      "children": [],
+      "backgroundImage": "ui/art/adventure-road-2.png",
+      "backgroundFit": "fill"
+    },
+    {
+      "type": "Panel",
+      "id": "road-3",
+      "position": "absolute",
+      "left": 98.864,
+      "top": 316.79999999999995,
+      "width": 205.472,
+      "height": 89.80000000000001,
+      "padding": 0,
+      "gap": 0,
+      "borderWidth": 0,
+      "borderRadius": 0,
+      "backgroundColor": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "boxShadow": false,
+      "pointerEvents": "none",
+      "children": [],
+      "backgroundImage": "ui/art/adventure-road-3.png",
+      "backgroundFit": "fill"
+    },
+    {
+      "type": "Panel",
+      "id": "road-4",
+      "position": "absolute",
+      "left": 98.864,
+      "top": 386.59999999999997,
+      "width": 205.472,
+      "height": 89.80000000000001,
+      "padding": 0,
+      "gap": 0,
+      "borderWidth": 0,
+      "borderRadius": 0,
+      "backgroundColor": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "boxShadow": false,
+      "pointerEvents": "none",
+      "children": [],
+      "backgroundImage": "ui/art/adventure-road-4.png",
+      "backgroundFit": "fill"
+    },
+    {
+      "type": "Panel",
+      "id": "road-5",
+      "position": "absolute",
+      "left": 98.864,
+      "top": 456.4,
+      "width": 205.472,
+      "height": 89.80000000000007,
+      "padding": 0,
+      "gap": 0,
+      "borderWidth": 0,
+      "borderRadius": 0,
+      "backgroundColor": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "boxShadow": false,
+      "pointerEvents": "none",
+      "children": [],
+      "backgroundImage": "ui/art/adventure-road-5.png",
+      "backgroundFit": "fill"
+    },
+    {
+      "type": "Panel",
+      "id": "road-6",
+      "position": "absolute",
+      "left": 98.864,
+      "top": 526.2,
+      "width": 205.472,
+      "height": 89.79999999999995,
+      "padding": 0,
+      "gap": 0,
+      "borderWidth": 0,
+      "borderRadius": 0,
+      "backgroundColor": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "boxShadow": false,
+      "pointerEvents": "none",
+      "children": [],
+      "backgroundImage": "ui/art/adventure-road-6.png",
+      "backgroundFit": "fill"
+    },
+    {
+      "type": "Panel",
+      "id": "story-1-group",
+      "position": "absolute",
+      "left": 0,
+      "top": 138.0,
+      "width": "100%",
+      "height": 133.2,
+      "padding": 0,
+      "gap": 0,
+      "borderWidth": 0,
+      "borderRadius": 0,
+      "backgroundColor": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "boxShadow": false,
+      "pointerEvents": "box-none",
+      "children": [
+        {
+          "type": "Button",
+          "id": "story-1",
+          "position": "absolute",
+          "left": "27%",
+          "top": 0,
+          "width": 98.39999999999999,
+          "height": 98.39999999999999,
+          "padding": 0,
+          "gap": 0,
+          "borderWidth": 0,
+          "borderRadius": 0,
+          "backgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "boxShadow": false,
+          "pointerEvents": "auto",
+          "children": [
+            {
+              "type": "Panel",
+              "id": "story-1-current-ring",
+              "position": "absolute",
+              "left": 4.199999999999996,
+              "top": 4.199999999999996,
+              "width": 90,
+              "height": 90,
+              "padding": 0,
+              "gap": 0,
+              "borderWidth": 2,
+              "borderRadius": 0,
+              "backgroundColor": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "boxShadow": false,
+              "pointerEvents": "none",
+              "children": [],
+              "shape": "circle",
+              "borderAlign": "center",
+              "borderColor": [
+                238,
+                156,
+                67,
+                255
+              ]
+            },
+            {
+              "type": "Panel",
+              "id": "story-1-disc",
+              "position": "absolute",
+              "left": 9.199999999999996,
+              "top": 9.199999999999996,
+              "width": 80,
+              "height": 80,
+              "padding": 0,
+              "gap": 0,
+              "borderWidth": 2.8,
+              "borderRadius": 0,
+              "backgroundColor": [
+                255,
+                222,
+                152,
+                255
+              ],
+              "boxShadow": false,
+              "pointerEvents": "none",
+              "children": [],
+              "shape": "circle",
+              "borderAlign": "center",
+              "borderColor": [
+                91,
+                76,
+                47,
+                255
+              ]
+            },
+            {
+              "type": "Panel",
+              "id": "story-1-portrait",
+              "position": "absolute",
+              "left": 2.5714285714285694,
+              "top": -3.8285714285714363,
+              "width": 93.25714285714285,
+              "height": 93.25714285714285,
+              "padding": 0,
+              "gap": 0,
+              "borderWidth": 0,
+              "borderRadius": 0,
+              "backgroundColor": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "boxShadow": false,
+              "pointerEvents": "none",
+              "children": [],
+              "backgroundImage": "Textures/character/owl.png",
+              "backgroundFit": "fill"
+            },
+            {
+              "type": "Panel",
+              "id": "story-1-badge",
+              "position": "absolute",
+              "left": -0.3999999999999986,
+              "top": 10.799999999999994,
+              "width": 24,
+              "height": 24,
+              "padding": 0,
+              "gap": 0,
+              "borderWidth": 1.8,
+              "borderRadius": 0,
+              "backgroundColor": [
+                238,
+                156,
+                67,
+                255
+              ],
+              "boxShadow": false,
+              "pointerEvents": "none",
+              "children": [],
+              "shape": "circle",
+              "borderAlign": "center",
+              "borderColor": [
+                91,
+                76,
+                47,
+                255
+              ]
+            },
+            {
+              "type": "Label",
+              "id": "story-1-number",
+              "position": "absolute",
+              "left": 11.600000000000001,
+              "top": 14.549999999999994,
+              "translateX": -12.0,
+              "width": 24,
+              "height": 16.5,
+              "text": "1",
+              "fontFamily": "sans",
+              "fontSize": 8.25,
+              "minFontSize": 8.25,
+              "fontWeight": "normal",
+              "fontColor": [
+                91,
+                76,
+                47,
+                255
+              ],
+              "textAlign": "center",
+              "verticalAlign": "middle",
+              "lineHeight": 1,
+              "whiteSpace": "nowrap",
+              "padding": 0,
+              "borderWidth": 0,
+              "backgroundColor": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "pointerEvents": "none",
+              "children": []
+            }
+          ],
+          "text": "",
+          "paddingHorizontal": 0,
+          "paddingVertical": 0,
+          "hoverBackgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pressedBackgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "disabledBackgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "hoverBoxShadow": false,
+          "pressedBoxShadow": false,
+          "disabledBoxShadow": false,
+          "decorations": false,
+          "backgroundGradient": false,
+          "translateX": -49.199999999999996
+        },
+        {
+          "type": "Panel",
+          "id": "story-1-title-plaque",
+          "position": "absolute",
+          "left": "27%",
+          "top": 88.19999999999999,
+          "width": 124.0,
+          "height": 23,
+          "padding": 0,
+          "gap": 0,
+          "borderWidth": 2,
+          "borderRadius": 6.8999999999999995,
+          "backgroundColor": [
+            255,
+            222,
+            152,
+            255
+          ],
+          "boxShadow": false,
+          "pointerEvents": "none",
+          "children": [],
+          "borderAlign": "center",
+          "borderColor": [
+            91,
+            76,
+            47,
+            255
+          ],
+          "translateX": -62.0
+        },
+        {
+          "type": "Label",
+          "id": "story-1-title",
+          "position": "absolute",
+          "left": "27%",
+          "top": 88.19999999999999,
+          "translateX": -58.0,
+          "width": 116.0,
+          "height": 22,
+          "text": "慧慧的花园课堂",
+          "fontFamily": "sans",
+          "fontSize": 12.0,
+          "minFontSize": 12.0,
+          "fontWeight": "normal",
+          "fontColor": [
+            91,
+            76,
+            47,
+            255
+          ],
+          "textAlign": "center",
+          "verticalAlign": "middle",
+          "lineHeight": 1,
+          "whiteSpace": "nowrap",
+          "padding": 0,
+          "borderWidth": 0,
+          "backgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pointerEvents": "none",
+          "children": []
+        },
+        {
+          "type": "Label",
+          "id": "story-1-game-type",
+          "position": "absolute",
+          "left": "27%",
+          "top": 116.19999999999999,
+          "translateX": -88.736,
+          "width": 177.472,
+          "height": 18.0,
+          "text": "推箱子",
+          "fontFamily": "sans",
+          "fontSize": 9.0,
+          "minFontSize": 9.0,
+          "fontWeight": "normal",
+          "fontColor": [
+            91,
+            76,
+            47,
+            255
+          ],
+          "textAlign": "center",
+          "verticalAlign": "middle",
+          "lineHeight": 1,
+          "whiteSpace": "nowrap",
+          "padding": 0,
+          "borderWidth": 0,
+          "backgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pointerEvents": "none",
+          "children": []
+        }
+      ]
+    },
+    {
+      "type": "Panel",
+      "id": "story-2-group",
+      "position": "absolute",
+      "left": 0,
+      "top": 207.8,
+      "width": "100%",
+      "height": 133.2,
+      "padding": 0,
+      "gap": 0,
+      "borderWidth": 0,
+      "borderRadius": 0,
+      "backgroundColor": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "boxShadow": false,
+      "pointerEvents": "box-none",
+      "children": [
+        {
+          "type": "Button",
+          "id": "story-2",
+          "position": "absolute",
+          "left": "73%",
+          "top": 0,
+          "width": 98.39999999999999,
+          "height": 98.39999999999999,
+          "padding": 0,
+          "gap": 0,
+          "borderWidth": 0,
+          "borderRadius": 0,
+          "backgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "boxShadow": false,
+          "pointerEvents": "auto",
+          "children": [
+            {
+              "type": "Panel",
+              "id": "story-2-disc",
+              "position": "absolute",
+              "left": 9.199999999999996,
+              "top": 9.199999999999996,
+              "width": 80,
+              "height": 80,
+              "padding": 0,
+              "gap": 0,
+              "borderWidth": 2.8,
+              "borderRadius": 0,
+              "backgroundColor": [
+                225,
+                221,
+                191,
+                255
+              ],
+              "boxShadow": false,
+              "pointerEvents": "none",
+              "children": [],
+              "shape": "circle",
+              "borderAlign": "center",
+              "borderColor": [
+                116,
+                102,
+                70,
+                255
+              ]
+            },
+            {
+              "type": "Panel",
+              "id": "story-2-lock",
+              "position": "absolute",
+              "left": 25.199999999999996,
+              "top": 25.199999999999996,
+              "width": 48.0,
+              "height": 48.0,
+              "padding": 0,
+              "gap": 0,
+              "borderWidth": 0,
+              "borderRadius": 0,
+              "backgroundColor": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "boxShadow": false,
+              "pointerEvents": "none",
+              "children": [],
+              "backgroundImage": "ui/art/map-lock.png",
+              "backgroundFit": "fill"
+            },
+            {
+              "type": "Panel",
+              "id": "story-2-badge",
+              "position": "absolute",
+              "left": -0.3999999999999986,
+              "top": 10.799999999999994,
+              "width": 24,
+              "height": 24,
+              "padding": 0,
+              "gap": 0,
+              "borderWidth": 1.8,
+              "borderRadius": 0,
+              "backgroundColor": [
+                255,
+                246,
+                220,
+                255
+              ],
+              "boxShadow": false,
+              "pointerEvents": "none",
+              "children": [],
+              "shape": "circle",
+              "borderAlign": "center",
+              "borderColor": [
+                116,
+                102,
+                70,
+                255
+              ]
+            },
+            {
+              "type": "Label",
+              "id": "story-2-number",
+              "position": "absolute",
+              "left": 11.600000000000001,
+              "top": 14.549999999999994,
+              "translateX": -12.0,
+              "width": 24,
+              "height": 16.5,
+              "text": "2",
+              "fontFamily": "sans",
+              "fontSize": 8.25,
+              "minFontSize": 8.25,
+              "fontWeight": "normal",
+              "fontColor": [
+                116,
+                102,
+                70,
+                255
+              ],
+              "textAlign": "center",
+              "verticalAlign": "middle",
+              "lineHeight": 1,
+              "whiteSpace": "nowrap",
+              "padding": 0,
+              "borderWidth": 0,
+              "backgroundColor": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "pointerEvents": "none",
+              "children": []
+            }
+          ],
+          "text": "",
+          "paddingHorizontal": 0,
+          "paddingVertical": 0,
+          "hoverBackgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pressedBackgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "disabledBackgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "hoverBoxShadow": false,
+          "pressedBoxShadow": false,
+          "disabledBoxShadow": false,
+          "decorations": false,
+          "backgroundGradient": false,
+          "translateX": -49.199999999999996
+        },
+        {
+          "type": "Panel",
+          "id": "story-2-title-plaque",
+          "position": "absolute",
+          "left": "73%",
+          "top": 88.19999999999999,
+          "width": 140.0,
+          "height": 23,
+          "padding": 0,
+          "gap": 0,
+          "borderWidth": 2,
+          "borderRadius": 6.8999999999999995,
+          "backgroundColor": [
+            225,
+            221,
+            191,
+            255
+          ],
+          "boxShadow": false,
+          "pointerEvents": "none",
+          "children": [],
+          "borderAlign": "center",
+          "borderColor": [
+            116,
+            102,
+            70,
+            255
+          ],
+          "translateX": -70.0
+        },
+        {
+          "type": "Label",
+          "id": "story-2-title",
+          "position": "absolute",
+          "left": "73%",
+          "top": 88.19999999999999,
+          "translateX": -66.0,
+          "width": 132.0,
+          "height": 22,
+          "text": "泡泡的星光捉迷藏",
+          "fontFamily": "sans",
+          "fontSize": 12.0,
+          "minFontSize": 12.0,
+          "fontWeight": "normal",
+          "fontColor": [
+            116,
+            102,
+            70,
+            255
+          ],
+          "textAlign": "center",
+          "verticalAlign": "middle",
+          "lineHeight": 1,
+          "whiteSpace": "nowrap",
+          "padding": 0,
+          "borderWidth": 0,
+          "backgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pointerEvents": "none",
+          "children": []
+        },
+        {
+          "type": "Label",
+          "id": "story-2-game-type",
+          "position": "absolute",
+          "left": "73%",
+          "top": 116.19999999999999,
+          "translateX": -88.736,
+          "width": 177.472,
+          "height": 18.0,
+          "text": "记忆翻牌",
+          "fontFamily": "sans",
+          "fontSize": 9.0,
+          "minFontSize": 9.0,
+          "fontWeight": "normal",
+          "fontColor": [
+            91,
+            76,
+            47,
+            255
+          ],
+          "textAlign": "center",
+          "verticalAlign": "middle",
+          "lineHeight": 1,
+          "whiteSpace": "nowrap",
+          "padding": 0,
+          "borderWidth": 0,
+          "backgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pointerEvents": "none",
+          "children": []
+        }
+      ]
+    },
+    {
+      "type": "Panel",
+      "id": "story-3-group",
+      "position": "absolute",
+      "left": 0,
+      "top": 277.59999999999997,
+      "width": "100%",
+      "height": 133.2,
+      "padding": 0,
+      "gap": 0,
+      "borderWidth": 0,
+      "borderRadius": 0,
+      "backgroundColor": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "boxShadow": false,
+      "pointerEvents": "box-none",
+      "children": [
+        {
+          "type": "Button",
+          "id": "story-3",
+          "position": "absolute",
+          "left": "27%",
+          "top": 0,
+          "width": 98.39999999999999,
+          "height": 98.39999999999999,
+          "padding": 0,
+          "gap": 0,
+          "borderWidth": 0,
+          "borderRadius": 0,
+          "backgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "boxShadow": false,
+          "pointerEvents": "auto",
+          "children": [
+            {
+              "type": "Panel",
+              "id": "story-3-disc",
+              "position": "absolute",
+              "left": 9.199999999999996,
+              "top": 9.199999999999996,
+              "width": 80,
+              "height": 80,
+              "padding": 0,
+              "gap": 0,
+              "borderWidth": 2.8,
+              "borderRadius": 0,
+              "backgroundColor": [
+                225,
+                221,
+                191,
+                255
+              ],
+              "boxShadow": false,
+              "pointerEvents": "none",
+              "children": [],
+              "shape": "circle",
+              "borderAlign": "center",
+              "borderColor": [
+                116,
+                102,
+                70,
+                255
+              ]
+            },
+            {
+              "type": "Panel",
+              "id": "story-3-lock",
+              "position": "absolute",
+              "left": 25.199999999999996,
+              "top": 25.199999999999996,
+              "width": 48.0,
+              "height": 48.0,
+              "padding": 0,
+              "gap": 0,
+              "borderWidth": 0,
+              "borderRadius": 0,
+              "backgroundColor": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "boxShadow": false,
+              "pointerEvents": "none",
+              "children": [],
+              "backgroundImage": "ui/art/map-lock.png",
+              "backgroundFit": "fill"
+            },
+            {
+              "type": "Panel",
+              "id": "story-3-badge",
+              "position": "absolute",
+              "left": -0.3999999999999986,
+              "top": 10.799999999999994,
+              "width": 24,
+              "height": 24,
+              "padding": 0,
+              "gap": 0,
+              "borderWidth": 1.8,
+              "borderRadius": 0,
+              "backgroundColor": [
+                255,
+                246,
+                220,
+                255
+              ],
+              "boxShadow": false,
+              "pointerEvents": "none",
+              "children": [],
+              "shape": "circle",
+              "borderAlign": "center",
+              "borderColor": [
+                116,
+                102,
+                70,
+                255
+              ]
+            },
+            {
+              "type": "Label",
+              "id": "story-3-number",
+              "position": "absolute",
+              "left": 11.600000000000001,
+              "top": 14.549999999999994,
+              "translateX": -12.0,
+              "width": 24,
+              "height": 16.5,
+              "text": "3",
+              "fontFamily": "sans",
+              "fontSize": 8.25,
+              "minFontSize": 8.25,
+              "fontWeight": "normal",
+              "fontColor": [
+                116,
+                102,
+                70,
+                255
+              ],
+              "textAlign": "center",
+              "verticalAlign": "middle",
+              "lineHeight": 1,
+              "whiteSpace": "nowrap",
+              "padding": 0,
+              "borderWidth": 0,
+              "backgroundColor": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "pointerEvents": "none",
+              "children": []
+            }
+          ],
+          "text": "",
+          "paddingHorizontal": 0,
+          "paddingVertical": 0,
+          "hoverBackgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pressedBackgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "disabledBackgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "hoverBoxShadow": false,
+          "pressedBoxShadow": false,
+          "disabledBoxShadow": false,
+          "decorations": false,
+          "backgroundGradient": false,
+          "translateX": -49.199999999999996
+        },
+        {
+          "type": "Panel",
+          "id": "story-3-title-plaque",
+          "position": "absolute",
+          "left": "27%",
+          "top": 88.19999999999999,
+          "width": 92.0,
+          "height": 23,
+          "padding": 0,
+          "gap": 0,
+          "borderWidth": 2,
+          "borderRadius": 6.8999999999999995,
+          "backgroundColor": [
+            225,
+            221,
+            191,
+            255
+          ],
+          "boxShadow": false,
+          "pointerEvents": "none",
+          "children": [],
+          "borderAlign": "center",
+          "borderColor": [
+            116,
+            102,
+            70,
+            255
+          ],
+          "translateX": -46.0
+        },
+        {
+          "type": "Label",
+          "id": "story-3-title",
+          "position": "absolute",
+          "left": "27%",
+          "top": 88.19999999999999,
+          "translateX": -42.0,
+          "width": 84.0,
+          "height": 22,
+          "text": "糖糖的花园",
+          "fontFamily": "sans",
+          "fontSize": 12.0,
+          "minFontSize": 12.0,
+          "fontWeight": "normal",
+          "fontColor": [
+            116,
+            102,
+            70,
+            255
+          ],
+          "textAlign": "center",
+          "verticalAlign": "middle",
+          "lineHeight": 1,
+          "whiteSpace": "nowrap",
+          "padding": 0,
+          "borderWidth": 0,
+          "backgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pointerEvents": "none",
+          "children": []
+        },
+        {
+          "type": "Label",
+          "id": "story-3-game-type",
+          "position": "absolute",
+          "left": "27%",
+          "top": 116.19999999999999,
+          "translateX": -88.736,
+          "width": 177.472,
+          "height": 18.0,
+          "text": "消消乐",
+          "fontFamily": "sans",
+          "fontSize": 9.0,
+          "minFontSize": 9.0,
+          "fontWeight": "normal",
+          "fontColor": [
+            91,
+            76,
+            47,
+            255
+          ],
+          "textAlign": "center",
+          "verticalAlign": "middle",
+          "lineHeight": 1,
+          "whiteSpace": "nowrap",
+          "padding": 0,
+          "borderWidth": 0,
+          "backgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pointerEvents": "none",
+          "children": []
+        }
+      ]
+    },
+    {
+      "type": "Panel",
+      "id": "story-4-group",
+      "position": "absolute",
+      "left": 0,
+      "top": 347.4,
+      "width": "100%",
+      "height": 133.2,
+      "padding": 0,
+      "gap": 0,
+      "borderWidth": 0,
+      "borderRadius": 0,
+      "backgroundColor": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "boxShadow": false,
+      "pointerEvents": "box-none",
+      "children": [
+        {
+          "type": "Button",
+          "id": "story-4",
+          "position": "absolute",
+          "left": "73%",
+          "top": 0,
+          "width": 98.39999999999999,
+          "height": 98.39999999999999,
+          "padding": 0,
+          "gap": 0,
+          "borderWidth": 0,
+          "borderRadius": 0,
+          "backgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "boxShadow": false,
+          "pointerEvents": "auto",
+          "children": [
+            {
+              "type": "Panel",
+              "id": "story-4-disc",
+              "position": "absolute",
+              "left": 9.199999999999996,
+              "top": 9.199999999999996,
+              "width": 80,
+              "height": 80,
+              "padding": 0,
+              "gap": 0,
+              "borderWidth": 2.8,
+              "borderRadius": 0,
+              "backgroundColor": [
+                225,
+                221,
+                191,
+                255
+              ],
+              "boxShadow": false,
+              "pointerEvents": "none",
+              "children": [],
+              "shape": "circle",
+              "borderAlign": "center",
+              "borderColor": [
+                116,
+                102,
+                70,
+                255
+              ]
+            },
+            {
+              "type": "Panel",
+              "id": "story-4-lock",
+              "position": "absolute",
+              "left": 25.199999999999996,
+              "top": 25.199999999999996,
+              "width": 48.0,
+              "height": 48.0,
+              "padding": 0,
+              "gap": 0,
+              "borderWidth": 0,
+              "borderRadius": 0,
+              "backgroundColor": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "boxShadow": false,
+              "pointerEvents": "none",
+              "children": [],
+              "backgroundImage": "ui/art/map-lock.png",
+              "backgroundFit": "fill"
+            },
+            {
+              "type": "Panel",
+              "id": "story-4-badge",
+              "position": "absolute",
+              "left": -0.3999999999999986,
+              "top": 10.799999999999994,
+              "width": 24,
+              "height": 24,
+              "padding": 0,
+              "gap": 0,
+              "borderWidth": 1.8,
+              "borderRadius": 0,
+              "backgroundColor": [
+                255,
+                246,
+                220,
+                255
+              ],
+              "boxShadow": false,
+              "pointerEvents": "none",
+              "children": [],
+              "shape": "circle",
+              "borderAlign": "center",
+              "borderColor": [
+                116,
+                102,
+                70,
+                255
+              ]
+            },
+            {
+              "type": "Label",
+              "id": "story-4-number",
+              "position": "absolute",
+              "left": 11.600000000000001,
+              "top": 14.549999999999994,
+              "translateX": -12.0,
+              "width": 24,
+              "height": 16.5,
+              "text": "4",
+              "fontFamily": "sans",
+              "fontSize": 8.25,
+              "minFontSize": 8.25,
+              "fontWeight": "normal",
+              "fontColor": [
+                116,
+                102,
+                70,
+                255
+              ],
+              "textAlign": "center",
+              "verticalAlign": "middle",
+              "lineHeight": 1,
+              "whiteSpace": "nowrap",
+              "padding": 0,
+              "borderWidth": 0,
+              "backgroundColor": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "pointerEvents": "none",
+              "children": []
+            }
+          ],
+          "text": "",
+          "paddingHorizontal": 0,
+          "paddingVertical": 0,
+          "hoverBackgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pressedBackgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "disabledBackgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "hoverBoxShadow": false,
+          "pressedBoxShadow": false,
+          "disabledBoxShadow": false,
+          "decorations": false,
+          "backgroundGradient": false,
+          "translateX": -49.199999999999996
+        },
+        {
+          "type": "Panel",
+          "id": "story-4-title-plaque",
+          "position": "absolute",
+          "left": "73%",
+          "top": 88.19999999999999,
+          "width": 124.0,
+          "height": 23,
+          "padding": 0,
+          "gap": 0,
+          "borderWidth": 2,
+          "borderRadius": 6.8999999999999995,
+          "backgroundColor": [
+            225,
+            221,
+            191,
+            255
+          ],
+          "boxShadow": false,
+          "pointerEvents": "none",
+          "children": [],
+          "borderAlign": "center",
+          "borderColor": [
+            116,
+            102,
+            70,
+            255
+          ],
+          "translateX": -62.0
+        },
+        {
+          "type": "Label",
+          "id": "story-4-title",
+          "position": "absolute",
+          "left": "73%",
+          "top": 88.19999999999999,
+          "translateX": -58.0,
+          "width": 116.0,
+          "height": 22,
+          "text": "豆豆的花园配对",
+          "fontFamily": "sans",
+          "fontSize": 12.0,
+          "minFontSize": 12.0,
+          "fontWeight": "normal",
+          "fontColor": [
+            116,
+            102,
+            70,
+            255
+          ],
+          "textAlign": "center",
+          "verticalAlign": "middle",
+          "lineHeight": 1,
+          "whiteSpace": "nowrap",
+          "padding": 0,
+          "borderWidth": 0,
+          "backgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pointerEvents": "none",
+          "children": []
+        },
+        {
+          "type": "Label",
+          "id": "story-4-game-type",
+          "position": "absolute",
+          "left": "73%",
+          "top": 116.19999999999999,
+          "translateX": -88.736,
+          "width": 177.472,
+          "height": 18.0,
+          "text": "连连看",
+          "fontFamily": "sans",
+          "fontSize": 9.0,
+          "minFontSize": 9.0,
+          "fontWeight": "normal",
+          "fontColor": [
+            91,
+            76,
+            47,
+            255
+          ],
+          "textAlign": "center",
+          "verticalAlign": "middle",
+          "lineHeight": 1,
+          "whiteSpace": "nowrap",
+          "padding": 0,
+          "borderWidth": 0,
+          "backgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pointerEvents": "none",
+          "children": []
+        }
+      ]
+    },
+    {
+      "type": "Panel",
+      "id": "story-5-group",
+      "position": "absolute",
+      "left": 0,
+      "top": 417.2,
+      "width": "100%",
+      "height": 133.2,
+      "padding": 0,
+      "gap": 0,
+      "borderWidth": 0,
+      "borderRadius": 0,
+      "backgroundColor": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "boxShadow": false,
+      "pointerEvents": "box-none",
+      "children": [
+        {
+          "type": "Button",
+          "id": "story-5",
+          "position": "absolute",
+          "left": "27%",
+          "top": 0,
+          "width": 98.39999999999999,
+          "height": 98.39999999999999,
+          "padding": 0,
+          "gap": 0,
+          "borderWidth": 0,
+          "borderRadius": 0,
+          "backgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "boxShadow": false,
+          "pointerEvents": "auto",
+          "children": [
+            {
+              "type": "Panel",
+              "id": "story-5-disc",
+              "position": "absolute",
+              "left": 9.199999999999996,
+              "top": 9.199999999999996,
+              "width": 80,
+              "height": 80,
+              "padding": 0,
+              "gap": 0,
+              "borderWidth": 2.8,
+              "borderRadius": 0,
+              "backgroundColor": [
+                225,
+                221,
+                191,
+                255
+              ],
+              "boxShadow": false,
+              "pointerEvents": "none",
+              "children": [],
+              "shape": "circle",
+              "borderAlign": "center",
+              "borderColor": [
+                116,
+                102,
+                70,
+                255
+              ]
+            },
+            {
+              "type": "Panel",
+              "id": "story-5-lock",
+              "position": "absolute",
+              "left": 25.199999999999996,
+              "top": 25.199999999999996,
+              "width": 48.0,
+              "height": 48.0,
+              "padding": 0,
+              "gap": 0,
+              "borderWidth": 0,
+              "borderRadius": 0,
+              "backgroundColor": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "boxShadow": false,
+              "pointerEvents": "none",
+              "children": [],
+              "backgroundImage": "ui/art/map-lock.png",
+              "backgroundFit": "fill"
+            },
+            {
+              "type": "Panel",
+              "id": "story-5-badge",
+              "position": "absolute",
+              "left": -0.3999999999999986,
+              "top": 10.799999999999994,
+              "width": 24,
+              "height": 24,
+              "padding": 0,
+              "gap": 0,
+              "borderWidth": 1.8,
+              "borderRadius": 0,
+              "backgroundColor": [
+                255,
+                246,
+                220,
+                255
+              ],
+              "boxShadow": false,
+              "pointerEvents": "none",
+              "children": [],
+              "shape": "circle",
+              "borderAlign": "center",
+              "borderColor": [
+                116,
+                102,
+                70,
+                255
+              ]
+            },
+            {
+              "type": "Label",
+              "id": "story-5-number",
+              "position": "absolute",
+              "left": 11.600000000000001,
+              "top": 14.549999999999994,
+              "translateX": -12.0,
+              "width": 24,
+              "height": 16.5,
+              "text": "5",
+              "fontFamily": "sans",
+              "fontSize": 8.25,
+              "minFontSize": 8.25,
+              "fontWeight": "normal",
+              "fontColor": [
+                116,
+                102,
+                70,
+                255
+              ],
+              "textAlign": "center",
+              "verticalAlign": "middle",
+              "lineHeight": 1,
+              "whiteSpace": "nowrap",
+              "padding": 0,
+              "borderWidth": 0,
+              "backgroundColor": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "pointerEvents": "none",
+              "children": []
+            }
+          ],
+          "text": "",
+          "paddingHorizontal": 0,
+          "paddingVertical": 0,
+          "hoverBackgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pressedBackgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "disabledBackgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "hoverBoxShadow": false,
+          "pressedBoxShadow": false,
+          "disabledBoxShadow": false,
+          "decorations": false,
+          "backgroundGradient": false,
+          "translateX": -49.199999999999996
+        },
+        {
+          "type": "Panel",
+          "id": "story-5-title-plaque",
+          "position": "absolute",
+          "left": "27%",
+          "top": 88.19999999999999,
+          "width": 124.0,
+          "height": 23,
+          "padding": 0,
+          "gap": 0,
+          "borderWidth": 2,
+          "borderRadius": 6.8999999999999995,
+          "backgroundColor": [
+            225,
+            221,
+            191,
+            255
+          ],
+          "boxShadow": false,
+          "pointerEvents": "none",
+          "children": [],
+          "borderAlign": "center",
+          "borderColor": [
+            116,
+            102,
+            70,
+            255
+          ],
+          "translateX": -62.0
+        },
+        {
+          "type": "Label",
+          "id": "story-5-title",
+          "position": "absolute",
+          "left": "27%",
+          "top": 88.19999999999999,
+          "translateX": -58.0,
+          "width": 116.0,
+          "height": 22,
+          "text": "慧慧的冰面谜题",
+          "fontFamily": "sans",
+          "fontSize": 12.0,
+          "minFontSize": 12.0,
+          "fontWeight": "normal",
+          "fontColor": [
+            116,
+            102,
+            70,
+            255
+          ],
+          "textAlign": "center",
+          "verticalAlign": "middle",
+          "lineHeight": 1,
+          "whiteSpace": "nowrap",
+          "padding": 0,
+          "borderWidth": 0,
+          "backgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pointerEvents": "none",
+          "children": []
+        },
+        {
+          "type": "Label",
+          "id": "story-5-game-type",
+          "position": "absolute",
+          "left": "27%",
+          "top": 116.19999999999999,
+          "translateX": -88.736,
+          "width": 177.472,
+          "height": 18.0,
+          "text": "推箱子",
+          "fontFamily": "sans",
+          "fontSize": 9.0,
+          "minFontSize": 9.0,
+          "fontWeight": "normal",
+          "fontColor": [
+            91,
+            76,
+            47,
+            255
+          ],
+          "textAlign": "center",
+          "verticalAlign": "middle",
+          "lineHeight": 1,
+          "whiteSpace": "nowrap",
+          "padding": 0,
+          "borderWidth": 0,
+          "backgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pointerEvents": "none",
+          "children": []
+        }
+      ]
+    },
+    {
+      "type": "Panel",
+      "id": "story-6-group",
+      "position": "absolute",
+      "left": 0,
+      "top": 487.00000000000006,
+      "width": "100%",
+      "height": 133.2,
+      "padding": 0,
+      "gap": 0,
+      "borderWidth": 0,
+      "borderRadius": 0,
+      "backgroundColor": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "boxShadow": false,
+      "pointerEvents": "box-none",
+      "children": [
+        {
+          "type": "Button",
+          "id": "story-6",
+          "position": "absolute",
+          "left": "73%",
+          "top": 0,
+          "width": 98.39999999999999,
+          "height": 98.39999999999999,
+          "padding": 0,
+          "gap": 0,
+          "borderWidth": 0,
+          "borderRadius": 0,
+          "backgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "boxShadow": false,
+          "pointerEvents": "auto",
+          "children": [
+            {
+              "type": "Panel",
+              "id": "story-6-disc",
+              "position": "absolute",
+              "left": 9.199999999999996,
+              "top": 9.199999999999996,
+              "width": 80,
+              "height": 80,
+              "padding": 0,
+              "gap": 0,
+              "borderWidth": 2.8,
+              "borderRadius": 0,
+              "backgroundColor": [
+                225,
+                221,
+                191,
+                255
+              ],
+              "boxShadow": false,
+              "pointerEvents": "none",
+              "children": [],
+              "shape": "circle",
+              "borderAlign": "center",
+              "borderColor": [
+                116,
+                102,
+                70,
+                255
+              ]
+            },
+            {
+              "type": "Panel",
+              "id": "story-6-lock",
+              "position": "absolute",
+              "left": 25.199999999999996,
+              "top": 25.199999999999996,
+              "width": 48.0,
+              "height": 48.0,
+              "padding": 0,
+              "gap": 0,
+              "borderWidth": 0,
+              "borderRadius": 0,
+              "backgroundColor": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "boxShadow": false,
+              "pointerEvents": "none",
+              "children": [],
+              "backgroundImage": "ui/art/map-lock.png",
+              "backgroundFit": "fill"
+            },
+            {
+              "type": "Panel",
+              "id": "story-6-badge",
+              "position": "absolute",
+              "left": -0.3999999999999986,
+              "top": 10.799999999999994,
+              "width": 24,
+              "height": 24,
+              "padding": 0,
+              "gap": 0,
+              "borderWidth": 1.8,
+              "borderRadius": 0,
+              "backgroundColor": [
+                255,
+                246,
+                220,
+                255
+              ],
+              "boxShadow": false,
+              "pointerEvents": "none",
+              "children": [],
+              "shape": "circle",
+              "borderAlign": "center",
+              "borderColor": [
+                116,
+                102,
+                70,
+                255
+              ]
+            },
+            {
+              "type": "Label",
+              "id": "story-6-number",
+              "position": "absolute",
+              "left": 11.600000000000001,
+              "top": 14.549999999999994,
+              "translateX": -12.0,
+              "width": 24,
+              "height": 16.5,
+              "text": "6",
+              "fontFamily": "sans",
+              "fontSize": 8.25,
+              "minFontSize": 8.25,
+              "fontWeight": "normal",
+              "fontColor": [
+                116,
+                102,
+                70,
+                255
+              ],
+              "textAlign": "center",
+              "verticalAlign": "middle",
+              "lineHeight": 1,
+              "whiteSpace": "nowrap",
+              "padding": 0,
+              "borderWidth": 0,
+              "backgroundColor": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "pointerEvents": "none",
+              "children": []
+            }
+          ],
+          "text": "",
+          "paddingHorizontal": 0,
+          "paddingVertical": 0,
+          "hoverBackgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pressedBackgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "disabledBackgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "hoverBoxShadow": false,
+          "pressedBoxShadow": false,
+          "disabledBoxShadow": false,
+          "decorations": false,
+          "backgroundGradient": false,
+          "translateX": -49.199999999999996
+        },
+        {
+          "type": "Panel",
+          "id": "story-6-title-plaque",
+          "position": "absolute",
+          "left": "73%",
+          "top": 88.19999999999999,
+          "width": 124.0,
+          "height": 23,
+          "padding": 0,
+          "gap": 0,
+          "borderWidth": 2,
+          "borderRadius": 6.8999999999999995,
+          "backgroundColor": [
+            225,
+            221,
+            191,
+            255
+          ],
+          "boxShadow": false,
+          "pointerEvents": "none",
+          "children": [],
+          "borderAlign": "center",
+          "borderColor": [
+            116,
+            102,
+            70,
+            255
+          ],
+          "translateX": -62.0
+        },
+        {
+          "type": "Label",
+          "id": "story-6-title",
+          "position": "absolute",
+          "left": "73%",
+          "top": 88.19999999999999,
+          "translateX": -58.0,
+          "width": 116.0,
+          "height": 22,
+          "text": "糖糖的糖果风暴",
+          "fontFamily": "sans",
+          "fontSize": 12.0,
+          "minFontSize": 12.0,
+          "fontWeight": "normal",
+          "fontColor": [
+            116,
+            102,
+            70,
+            255
+          ],
+          "textAlign": "center",
+          "verticalAlign": "middle",
+          "lineHeight": 1,
+          "whiteSpace": "nowrap",
+          "padding": 0,
+          "borderWidth": 0,
+          "backgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pointerEvents": "none",
+          "children": []
+        },
+        {
+          "type": "Label",
+          "id": "story-6-game-type",
+          "position": "absolute",
+          "left": "73%",
+          "top": 116.19999999999999,
+          "translateX": -88.736,
+          "width": 177.472,
+          "height": 18.0,
+          "text": "消消乐",
+          "fontFamily": "sans",
+          "fontSize": 9.0,
+          "minFontSize": 9.0,
+          "fontWeight": "normal",
+          "fontColor": [
+            91,
+            76,
+            47,
+            255
+          ],
+          "textAlign": "center",
+          "verticalAlign": "middle",
+          "lineHeight": 1,
+          "whiteSpace": "nowrap",
+          "padding": 0,
+          "borderWidth": 0,
+          "backgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pointerEvents": "none",
+          "children": []
+        }
+      ]
+    },
+    {
+      "type": "Panel",
+      "id": "story-7-group",
+      "position": "absolute",
+      "left": 0,
+      "top": 556.8,
+      "width": "100%",
+      "height": 133.2,
+      "padding": 0,
+      "gap": 0,
+      "borderWidth": 0,
+      "borderRadius": 0,
+      "backgroundColor": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "boxShadow": false,
+      "pointerEvents": "box-none",
+      "children": [
+        {
+          "type": "Button",
+          "id": "story-7",
+          "position": "absolute",
+          "left": "27%",
+          "top": 0,
+          "width": 98.39999999999999,
+          "height": 98.39999999999999,
+          "padding": 0,
+          "gap": 0,
+          "borderWidth": 0,
+          "borderRadius": 0,
+          "backgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "boxShadow": false,
+          "pointerEvents": "auto",
+          "children": [
+            {
+              "type": "Panel",
+              "id": "story-7-disc",
+              "position": "absolute",
+              "left": 9.199999999999996,
+              "top": 9.199999999999996,
+              "width": 80,
+              "height": 80,
+              "padding": 0,
+              "gap": 0,
+              "borderWidth": 2.8,
+              "borderRadius": 0,
+              "backgroundColor": [
+                225,
+                221,
+                191,
+                255
+              ],
+              "boxShadow": false,
+              "pointerEvents": "none",
+              "children": [],
+              "shape": "circle",
+              "borderAlign": "center",
+              "borderColor": [
+                116,
+                102,
+                70,
+                255
+              ]
+            },
+            {
+              "type": "Panel",
+              "id": "story-7-lock",
+              "position": "absolute",
+              "left": 25.199999999999996,
+              "top": 25.199999999999996,
+              "width": 48.0,
+              "height": 48.0,
+              "padding": 0,
+              "gap": 0,
+              "borderWidth": 0,
+              "borderRadius": 0,
+              "backgroundColor": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "boxShadow": false,
+              "pointerEvents": "none",
+              "children": [],
+              "backgroundImage": "ui/art/map-lock.png",
+              "backgroundFit": "fill"
+            },
+            {
+              "type": "Panel",
+              "id": "story-7-badge",
+              "position": "absolute",
+              "left": -0.3999999999999986,
+              "top": 10.799999999999994,
+              "width": 24,
+              "height": 24,
+              "padding": 0,
+              "gap": 0,
+              "borderWidth": 1.8,
+              "borderRadius": 0,
+              "backgroundColor": [
+                255,
+                246,
+                220,
+                255
+              ],
+              "boxShadow": false,
+              "pointerEvents": "none",
+              "children": [],
+              "shape": "circle",
+              "borderAlign": "center",
+              "borderColor": [
+                116,
+                102,
+                70,
+                255
+              ]
+            },
+            {
+              "type": "Label",
+              "id": "story-7-number",
+              "position": "absolute",
+              "left": 11.600000000000001,
+              "top": 14.549999999999994,
+              "translateX": -12.0,
+              "width": 24,
+              "height": 16.5,
+              "text": "7",
+              "fontFamily": "sans",
+              "fontSize": 8.25,
+              "minFontSize": 8.25,
+              "fontWeight": "normal",
+              "fontColor": [
+                116,
+                102,
+                70,
+                255
+              ],
+              "textAlign": "center",
+              "verticalAlign": "middle",
+              "lineHeight": 1,
+              "whiteSpace": "nowrap",
+              "padding": 0,
+              "borderWidth": 0,
+              "backgroundColor": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "pointerEvents": "none",
+              "children": []
+            }
+          ],
+          "text": "",
+          "paddingHorizontal": 0,
+          "paddingVertical": 0,
+          "hoverBackgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pressedBackgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "disabledBackgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "hoverBoxShadow": false,
+          "pressedBoxShadow": false,
+          "disabledBoxShadow": false,
+          "decorations": false,
+          "backgroundGradient": false,
+          "translateX": -49.199999999999996
+        },
+        {
+          "type": "Panel",
+          "id": "story-7-title-plaque",
+          "position": "absolute",
+          "left": "27%",
+          "top": 88.19999999999999,
+          "width": 124.0,
+          "height": 23,
+          "padding": 0,
+          "gap": 0,
+          "borderWidth": 2,
+          "borderRadius": 6.8999999999999995,
+          "backgroundColor": [
+            225,
+            221,
+            191,
+            255
+          ],
+          "boxShadow": false,
+          "pointerEvents": "none",
+          "children": [],
+          "borderAlign": "center",
+          "borderColor": [
+            116,
+            102,
+            70,
+            255
+          ],
+          "translateX": -62.0
+        },
+        {
+          "type": "Label",
+          "id": "story-7-title",
+          "position": "absolute",
+          "left": "27%",
+          "top": 88.19999999999999,
+          "translateX": -58.0,
+          "width": 116.0,
+          "height": 22,
+          "text": "泡泡的记忆迷宫",
+          "fontFamily": "sans",
+          "fontSize": 12.0,
+          "minFontSize": 12.0,
+          "fontWeight": "normal",
+          "fontColor": [
+            116,
+            102,
+            70,
+            255
+          ],
+          "textAlign": "center",
+          "verticalAlign": "middle",
+          "lineHeight": 1,
+          "whiteSpace": "nowrap",
+          "padding": 0,
+          "borderWidth": 0,
+          "backgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pointerEvents": "none",
+          "children": []
+        },
+        {
+          "type": "Label",
+          "id": "story-7-game-type",
+          "position": "absolute",
+          "left": "27%",
+          "top": 116.19999999999999,
+          "translateX": -88.736,
+          "width": 177.472,
+          "height": 18.0,
+          "text": "记忆翻牌",
+          "fontFamily": "sans",
+          "fontSize": 9.0,
+          "minFontSize": 9.0,
+          "fontWeight": "normal",
+          "fontColor": [
+            91,
+            76,
+            47,
+            255
+          ],
+          "textAlign": "center",
+          "verticalAlign": "middle",
+          "lineHeight": 1,
+          "whiteSpace": "nowrap",
+          "padding": 0,
+          "borderWidth": 0,
+          "backgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pointerEvents": "none",
+          "children": []
+        }
+      ]
+    },
+    {
+      "type": "Button",
+      "id": "fox-chat",
+      "position": "absolute",
+      "left": 0,
+      "top": 708,
+      "width": 128,
+      "height": 128,
+      "padding": 0,
+      "gap": 0,
+      "borderWidth": 0,
+      "borderRadius": 0,
+      "backgroundColor": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "boxShadow": false,
+      "pointerEvents": "auto",
+      "children": [
+        {
+          "type": "Panel",
+          "id": "fox-portrait",
+          "position": "absolute",
+          "left": 0,
+          "top": 0,
+          "width": 128,
+          "height": 128,
+          "padding": 0,
+          "gap": 0,
+          "borderWidth": 0,
+          "borderRadius": 0,
+          "backgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "boxShadow": false,
+          "pointerEvents": "none",
+          "children": [],
+          "backgroundImage": "Textures/character/fox.png",
+          "backgroundFit": "fill"
+        }
+      ],
+      "text": "",
+      "paddingHorizontal": 0,
+      "paddingVertical": 0,
+      "hoverBackgroundColor": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pressedBackgroundColor": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "disabledBackgroundColor": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "hoverBoxShadow": false,
+      "pressedBoxShadow": false,
+      "disabledBoxShadow": false,
+      "decorations": false,
+      "backgroundGradient": false
+    },
+    {
+      "type": "Button",
+      "id": "page-next",
+      "position": "absolute",
+      "left": 299.08,
+      "top": 778,
+      "width": 52,
+      "height": 52,
+      "padding": 0,
+      "gap": 0,
+      "borderWidth": 0,
+      "borderRadius": 0,
+      "backgroundColor": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "boxShadow": false,
+      "pointerEvents": "auto",
+      "children": [
+        {
+          "type": "Panel",
+          "id": "page-next-plaque",
+          "position": "absolute",
+          "left": 4,
+          "top": 4,
+          "width": 44,
+          "height": 44,
+          "padding": 0,
+          "gap": 0,
+          "borderWidth": 2.5,
+          "borderRadius": 11,
+          "backgroundColor": [
+            255,
+            246,
+            220,
+            255
+          ],
+          "boxShadow": false,
+          "pointerEvents": "none",
+          "children": [],
+          "borderAlign": "center",
+          "borderColor": [
+            91,
+            76,
+            47,
+            255
+          ]
+        },
+        {
+          "type": "Panel",
+          "id": "page-next-icon",
+          "position": "absolute",
+          "left": 18,
+          "top": 17,
+          "width": 16,
+          "height": 18,
+          "padding": 0,
+          "gap": 0,
+          "borderWidth": 0,
+          "borderRadius": 0,
+          "backgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "boxShadow": false,
+          "pointerEvents": "none",
+          "children": [],
+          "backgroundImage": "ui/art/page-next.png",
+          "backgroundFit": "fill"
+        }
+      ],
+      "text": "",
+      "paddingHorizontal": 0,
+      "paddingVertical": 0,
+      "hoverBackgroundColor": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pressedBackgroundColor": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "disabledBackgroundColor": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "hoverBoxShadow": false,
+      "pressedBoxShadow": false,
+      "disabledBoxShadow": false,
+      "decorations": false,
+      "backgroundGradient": false
+    },
+    {
+      "type": "Panel",
+      "id": "page-dot-1",
+      "position": "absolute",
+      "left": 232.07999999999998,
+      "top": 800,
+      "width": 8,
+      "height": 8,
+      "padding": 0,
+      "gap": 0,
+      "borderWidth": 1.5,
+      "borderRadius": 0,
+      "backgroundColor": [
+        238,
+        156,
+        67,
+        255
+      ],
+      "boxShadow": false,
+      "pointerEvents": "none",
+      "children": [],
+      "shape": "circle",
+      "borderAlign": "center",
+      "borderColor": [
+        116,
+        102,
+        70,
+        255
+      ]
+    },
+    {
+      "type": "Panel",
+      "id": "page-dot-2",
+      "position": "absolute",
+      "left": 245.07999999999998,
+      "top": 800,
+      "width": 8,
+      "height": 8,
+      "padding": 0,
+      "gap": 0,
+      "borderWidth": 1.5,
+      "borderRadius": 0,
+      "backgroundColor": [
+        255,
+        246,
+        220,
+        255
+      ],
+      "boxShadow": false,
+      "pointerEvents": "none",
+      "children": [],
+      "shape": "circle",
+      "borderAlign": "center",
+      "borderColor": [
+        116,
+        102,
+        70,
+        255
+      ]
+    },
+    {
+      "type": "Panel",
+      "id": "page-dot-3",
+      "position": "absolute",
+      "left": 258.08,
+      "top": 800,
+      "width": 8,
+      "height": 8,
+      "padding": 0,
+      "gap": 0,
+      "borderWidth": 1.5,
+      "borderRadius": 0,
+      "backgroundColor": [
+        255,
+        246,
+        220,
+        255
+      ],
+      "boxShadow": false,
+      "pointerEvents": "none",
+      "children": [],
+      "shape": "circle",
+      "borderAlign": "center",
+      "borderColor": [
+        116,
+        102,
+        70,
+        255
+      ]
+    },
+    {
+      "type": "Panel",
+      "id": "page-dot-4",
+      "position": "absolute",
+      "left": 271.08,
+      "top": 800,
+      "width": 8,
+      "height": 8,
+      "padding": 0,
+      "gap": 0,
+      "borderWidth": 1.5,
+      "borderRadius": 0,
+      "backgroundColor": [
+        255,
+        246,
+        220,
+        255
+      ],
+      "boxShadow": false,
+      "pointerEvents": "none",
+      "children": [],
+      "shape": "circle",
+      "borderAlign": "center",
+      "borderColor": [
+        116,
+        102,
+        70,
+        255
+      ]
+    },
+    {
+      "type": "Panel",
+      "id": "page-dot-5",
+      "position": "absolute",
+      "left": 284.08,
+      "top": 800,
+      "width": 8,
+      "height": 8,
+      "padding": 0,
+      "gap": 0,
+      "borderWidth": 1.5,
+      "borderRadius": 0,
+      "backgroundColor": [
+        255,
+        246,
+        220,
+        255
+      ],
+      "boxShadow": false,
+      "pointerEvents": "none",
+      "children": [],
+      "shape": "circle",
+      "borderAlign": "center",
+      "borderColor": [
+        116,
+        102,
+        70,
+        255
+      ]
+    },
+    {
+      "type": "Panel",
+      "id": "bottom-tabs",
+      "position": "absolute",
+      "left": 0,
+      "width": "100%",
+      "height": 56,
+      "padding": 0,
+      "gap": 0,
+      "borderWidth": 0,
+      "borderRadius": 0,
+      "backgroundColor": [
+        255,
+        246,
+        220,
+        255
+      ],
+      "boxShadow": false,
+      "pointerEvents": "box-none",
+      "children": [
+        {
+          "type": "Panel",
+          "id": "tab-top-rule",
+          "position": "absolute",
+          "left": 0,
+          "top": -1.25,
+          "width": "100%",
+          "height": 2.5,
+          "padding": 0,
+          "gap": 0,
+          "borderWidth": 0,
+          "borderRadius": 0,
+          "backgroundColor": [
+            91,
+            76,
+            47,
+            255
+          ],
+          "boxShadow": false,
+          "pointerEvents": "none",
+          "children": []
+        },
+        {
+          "type": "Button",
+          "id": "tab-adventure",
+          "position": "absolute",
+          "left": 0.0,
+          "top": 0,
+          "width": 110.39999999999999,
+          "height": 56,
+          "padding": 0,
+          "gap": 0,
+          "borderWidth": 0,
+          "borderRadius": 0,
+          "backgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "boxShadow": false,
+          "pointerEvents": "auto",
+          "children": [
+            {
+              "type": "Panel",
+              "id": "tab-adventure-plaque",
+              "position": "absolute",
+              "left": 5.52,
+              "top": 8,
+              "width": 99.36,
+              "height": 40,
+              "padding": 0,
+              "gap": 0,
+              "borderWidth": 2,
+              "borderRadius": 11,
+              "backgroundColor": [
+                238,
+                156,
+                67,
+                255
+              ],
+              "boxShadow": false,
+              "pointerEvents": "none",
+              "children": [],
+              "borderAlign": "center",
+              "borderColor": [
+                91,
+                76,
+                47,
+                255
+              ]
+            },
+            {
+              "type": "Label",
+              "id": "tab-adventure-label",
+              "position": "absolute",
+              "left": 55.199999999999996,
+              "top": 15.25,
+              "translateX": -45.68,
+              "width": 91.36,
+              "height": 25.5,
+              "text": "主线模式",
+              "fontFamily": "sans",
+              "fontSize": 12.75,
+              "minFontSize": 12.75,
+              "fontWeight": "normal",
+              "fontColor": [
+                91,
+                76,
+                47,
+                255
+              ],
+              "textAlign": "center",
+              "verticalAlign": "middle",
+              "lineHeight": 1,
+              "whiteSpace": "nowrap",
+              "padding": 0,
+              "borderWidth": 0,
+              "backgroundColor": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "pointerEvents": "none",
+              "children": []
+            }
+          ],
+          "text": "",
+          "paddingHorizontal": 0,
+          "paddingVertical": 0,
+          "hoverBackgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pressedBackgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "disabledBackgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "hoverBoxShadow": false,
+          "pressedBoxShadow": false,
+          "disabledBoxShadow": false,
+          "decorations": false,
+          "backgroundGradient": false,
+          "disabled": false
+        },
+        {
+          "type": "Button",
+          "id": "tab-home",
+          "position": "absolute",
+          "left": 110.39999999999999,
+          "top": 0,
+          "width": 110.39999999999999,
+          "height": 56,
+          "padding": 0,
+          "gap": 0,
+          "borderWidth": 0,
+          "borderRadius": 0,
+          "backgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "boxShadow": false,
+          "pointerEvents": "auto",
+          "children": [
+            {
+              "type": "Panel",
+              "id": "tab-home-plaque",
+              "position": "absolute",
+              "left": 5.52,
+              "top": 8,
+              "width": 99.36,
+              "height": 40,
+              "padding": 0,
+              "gap": 0,
+              "borderWidth": 2,
+              "borderRadius": 11,
+              "backgroundColor": [
+                224,
+                220,
+                197,
+                255
+              ],
+              "boxShadow": false,
+              "pointerEvents": "none",
+              "children": [],
+              "borderAlign": "center",
+              "borderColor": [
+                91,
+                76,
+                47,
+                255
+              ]
+            },
+            {
+              "type": "Label",
+              "id": "tab-home-label",
+              "position": "absolute",
+              "left": 55.199999999999996,
+              "top": 10.25,
+              "translateX": -45.68,
+              "width": 91.36,
+              "height": 25.5,
+              "text": "自由模式",
+              "fontFamily": "sans",
+              "fontSize": 12.75,
+              "minFontSize": 12.75,
+              "fontWeight": "normal",
+              "fontColor": [
+                116,
+                102,
+                70,
+                255
+              ],
+              "textAlign": "center",
+              "verticalAlign": "middle",
+              "lineHeight": 1,
+              "whiteSpace": "nowrap",
+              "padding": 0,
+              "borderWidth": 0,
+              "backgroundColor": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "pointerEvents": "none",
+              "children": []
+            },
+            {
+              "type": "Panel",
+              "id": "tab-home-lock-shackle",
+              "position": "absolute",
+              "left": 52.959999999999994,
+              "top": 35.78,
+              "width": 4.48,
+              "height": 4.48,
+              "padding": 0,
+              "gap": 0,
+              "borderWidth": 2,
+              "borderRadius": 2.24,
+              "backgroundColor": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "boxShadow": false,
+              "pointerEvents": "none",
+              "children": [],
+              "borderBottomWidth": 0,
+              "borderAlign": "center",
+              "borderColor": [
+                160,
+                150,
+                140,
+                200
+              ]
+            },
+            {
+              "type": "Panel",
+              "id": "tab-home-lock-body",
+              "position": "absolute",
+              "left": 51.699999999999996,
+              "top": 38.02,
+              "width": 7,
+              "height": 4.9,
+              "padding": 0,
+              "gap": 0,
+              "borderWidth": 0,
+              "borderRadius": 1.5,
+              "backgroundColor": [
+                160,
+                150,
+                140,
+                200
+              ],
+              "boxShadow": false,
+              "pointerEvents": "none",
+              "children": []
+            }
+          ],
+          "text": "",
+          "paddingHorizontal": 0,
+          "paddingVertical": 0,
+          "hoverBackgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pressedBackgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "disabledBackgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "hoverBoxShadow": false,
+          "pressedBoxShadow": false,
+          "disabledBoxShadow": false,
+          "decorations": false,
+          "backgroundGradient": false,
+          "disabled": true
+        },
+        {
+          "type": "Button",
+          "id": "tab-profile",
+          "position": "absolute",
+          "left": 220.79999999999998,
+          "top": 0,
+          "width": 110.39999999999999,
+          "height": 56,
+          "padding": 0,
+          "gap": 0,
+          "borderWidth": 0,
+          "borderRadius": 0,
+          "backgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "boxShadow": false,
+          "pointerEvents": "auto",
+          "children": [
+            {
+              "type": "Panel",
+              "id": "tab-profile-plaque",
+              "position": "absolute",
+              "left": 5.52,
+              "top": 8,
+              "width": 99.36,
+              "height": 40,
+              "padding": 0,
+              "gap": 0,
+              "borderWidth": 2,
+              "borderRadius": 11,
+              "backgroundColor": [
+                255,
+                246,
+                220,
+                255
+              ],
+              "boxShadow": false,
+              "pointerEvents": "none",
+              "children": [],
+              "borderAlign": "center",
+              "borderColor": [
+                91,
+                76,
+                47,
+                255
+              ]
+            },
+            {
+              "type": "Label",
+              "id": "tab-profile-label",
+              "position": "absolute",
+              "left": 55.199999999999996,
+              "top": 15.25,
+              "translateX": -45.68,
+              "width": 91.36,
+              "height": 25.5,
+              "text": "装扮",
+              "fontFamily": "sans",
+              "fontSize": 12.75,
+              "minFontSize": 12.75,
+              "fontWeight": "normal",
+              "fontColor": [
+                91,
+                76,
+                47,
+                255
+              ],
+              "textAlign": "center",
+              "verticalAlign": "middle",
+              "lineHeight": 1,
+              "whiteSpace": "nowrap",
+              "padding": 0,
+              "borderWidth": 0,
+              "backgroundColor": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "pointerEvents": "none",
+              "children": []
+            }
+          ],
+          "text": "",
+          "paddingHorizontal": 0,
+          "paddingVertical": 0,
+          "hoverBackgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pressedBackgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "disabledBackgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "hoverBoxShadow": false,
+          "pressedBoxShadow": false,
+          "disabledBoxShadow": false,
+          "decorations": false,
+          "backgroundGradient": false,
+          "disabled": false
+        },
+        {
+          "type": "Button",
+          "id": "tab-settings",
+          "position": "absolute",
+          "left": 351.2,
+          "top": 0,
+          "width": 52,
+          "height": 56,
+          "padding": 0,
+          "gap": 0,
+          "borderWidth": 0,
+          "borderRadius": 0,
+          "backgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "boxShadow": false,
+          "pointerEvents": "auto",
+          "children": [
+            {
+              "type": "Panel",
+              "id": "settings-plaque",
+              "position": "absolute",
+              "left": -2,
+              "top": 8,
+              "width": 44,
+              "height": 40,
+              "padding": 0,
+              "gap": 0,
+              "borderWidth": 2,
+              "borderRadius": 11,
+              "backgroundColor": [
+                255,
+                246,
+                220,
+                255
+              ],
+              "boxShadow": false,
+              "pointerEvents": "none",
+              "children": [],
+              "borderAlign": "center",
+              "borderColor": [
+                91,
+                76,
+                47,
+                255
+              ]
+            },
+            {
+              "type": "Panel",
+              "id": "settings-gear",
+              "position": "absolute",
+              "left": 8,
+              "top": 16,
+              "width": 24,
+              "height": 24,
+              "padding": 0,
+              "gap": 0,
+              "borderWidth": 0,
+              "borderRadius": 0,
+              "backgroundColor": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "boxShadow": false,
+              "pointerEvents": "none",
+              "children": [],
+              "backgroundImage": "ui/art/settings-gear.png",
+              "backgroundFit": "fill"
+            }
+          ],
+          "text": "",
+          "paddingHorizontal": 0,
+          "paddingVertical": 0,
+          "hoverBackgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pressedBackgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "disabledBackgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "hoverBoxShadow": false,
+          "pressedBoxShadow": false,
+          "disabledBoxShadow": false,
+          "decorations": false,
+          "backgroundGradient": false
+        }
+      ],
+      "bottom": 0
+    }
+  ],
+  "overflow": "hidden",
+  "fontFamily": "sans",
+  "backgroundImage": "image/handdrawn/adventure-garden.png",
+  "backgroundFit": "cover",
+  "_extraction": {
+    "sources": [
+      "scripts/pages/adventure/rendering/adventure-renderer.lua",
+      "scripts/pages/adventure/layout/adaptive-layout.lua",
+      "scripts/pages/adventure/data/chapter-definitions.lua",
+      "scripts/config/storyline.lua",
+      "scripts/shared/components/tab-bar.lua",
+      "scripts/shared/constants/art.lua",
+      "scripts/shared/components/handdrawn.lua",
+      "scripts/shared/components/fox-mascot.lua",
+      "scripts/shared/utils/density.lua"
+    ],
+    "sourceMetadata": {
+      "scripts/pages/adventure/rendering/adventure-renderer.lua": {
+        "resourceRoot": "scripts",
+        "readOnlyExtraction": true
+      },
+      "scripts/pages/adventure/layout/adaptive-layout.lua": {
+        "resourceRoot": "scripts",
+        "readOnlyExtraction": true
+      },
+      "scripts/pages/adventure/data/chapter-definitions.lua": {
+        "resourceRoot": "scripts",
+        "readOnlyExtraction": true
+      },
+      "scripts/config/storyline.lua": {
+        "resourceRoot": "scripts",
+        "readOnlyExtraction": true
+      },
+      "scripts/shared/components/tab-bar.lua": {
+        "resourceRoot": "scripts",
+        "readOnlyExtraction": true
+      },
+      "scripts/shared/constants/art.lua": {
+        "resourceRoot": "scripts",
+        "readOnlyExtraction": true
+      },
+      "scripts/shared/components/handdrawn.lua": {
+        "resourceRoot": "scripts",
+        "readOnlyExtraction": true
+      },
+      "scripts/shared/components/fox-mascot.lua": {
+        "resourceRoot": "scripts",
+        "readOnlyExtraction": true
+      },
+      "scripts/shared/utils/density.lua": {
+        "resourceRoot": "scripts",
+        "readOnlyExtraction": true
+      }
+    },
+    "schemaSource": [
+      "urhox-libs/UI/Core/UILoader.lua",
+      "urhox-libs/UI/Core/Widget.lua",
+      "urhox-libs/UI/Widgets/Label.lua",
+      "urhox-libs/UI/Widgets/Button.lua"
+    ],
+    "kind": "Standalone editable extraction only; no Lua loading, callbacks or save operations",
+    "snapshot": {
+      "sourceViewport": [
+        540,
+        1200
+      ],
+      "assumedDPR": 1,
+      "effectiveCanvas": [
+        403.2,
+        896
+      ],
+      "densityFactor": 1.3392857142857142,
+      "chapter": 1,
+      "chapterTitle": "第一章：入门之旅",
+      "pageStart": 1,
+      "pageEnd": 7,
+      "animationTime": 0,
+      "chapterFadeAlpha": 1,
+      "foxBubbleState": "idle",
+      "backgroundId": "default",
+      "foxOutfit": "default",
+      "homeTabLocked": true,
+      "progress": "new player: story-1=current; all other nodes=locked. Viewing later chapters does not unlock nodes"
+    },
+    "fonts": [
+      {
+        "family": "sans",
+        "sourceFaces": [
+          "adv",
+          "fox-mascot"
+        ],
+        "path": "Fonts/LongZhuTi-Regular.ttf",
+        "weight": "normal",
+        "registration": "metadata only; preview host must bind sans to original font"
+      }
+    ],
+    "typography": {
+      "fontSizeUnit": "UI pt",
+      "conversion": "fontSize=sourceNanoVGSize*0.75; Theme.FontSize multiplies by 4/3",
+      "measurement": "Original font measured via Pillow FreeType at 64x precision; single-line title-width rule follows renderer"
+    },
+    "layout": {
+      "density": "factor=clamp((physicalH/DPR)/896,0.85,2.5); scale=DPR*factor; H=physicalH/scale; fullW=physicalW/scale; W=min(fullW,H/1.2); offsetX=(fullW-W)/2",
+      "regions": "header=H<720 ? 76 : 92; chapter=36; fox=H<720 ? 100 : 128; footer=56+fox+10",
+      "headerH": 92,
+      "chapterH": 36,
+      "footerH": 194,
+      "areaTop": 128,
+      "areaH": 574,
+      "nodeRadius": 40,
+      "rowSpacing": 69.8,
+      "foxSize": 128,
+      "radiusFormula": "clamp(floor(((areaH-24)/ceil(count/2)-44-6)/2.18),16,42)",
+      "spacingFormula": "(areaH-24-radius*2.18-44)/(count-1)",
+      "nodePosition": "cx=W*(oddLocalIndex ? .27 : .73); cy=areaTop+12+radius*1.18+(localIndex-1)*rowSpacing",
+      "portrait": "size=r*2.04/(448/512); x=cx-size/2; y=cy+r*.86-size*(480/512)",
+      "pagination": "cx=max(196,W*.65); cy=H-56-36; arrows cx+dir*63; plaque44x44; hit52x52; dots gap13 radius4",
+      "fox": "x=0;y=H-56-4-size+sin(animTime*FLOAT_SPEED)*2; idle at t=0"
+    },
+    "nodes": [
+      {
+        "id": "story-1",
+        "globalIndex": 1,
+        "localIndex": 1,
+        "title": "慧慧的花园课堂",
+        "subtitle": "在花园中学会推箱子",
+        "gameType": "p1-puzzle-land",
+        "gameTypeName": "推箱子",
+        "npcRole": "owl",
+        "unlockAfter": null,
+        "state": "current",
+        "center": [
+          108.864,
+          187.2
+        ],
+        "radius": 40,
+        "sourceHitRadius": 49.199999999999996,
+        "titleSourceFontSize": 16,
+        "titleWidth": 124.0,
+        "gameTypeSourceFontSize": 12
+      },
+      {
+        "id": "story-2",
+        "globalIndex": 2,
+        "localIndex": 2,
+        "title": "泡泡的星光捉迷藏",
+        "subtitle": "在星光下翻开卡片找配对",
+        "gameType": "p2-memory-flip",
+        "gameTypeName": "记忆翻牌",
+        "npcRole": "cat",
+        "unlockAfter": "story-1",
+        "state": "locked",
+        "center": [
+          294.336,
+          257.0
+        ],
+        "radius": 40,
+        "sourceHitRadius": 49.199999999999996,
+        "titleSourceFontSize": 16,
+        "titleWidth": 140.0,
+        "gameTypeSourceFontSize": 12
+      },
+      {
+        "id": "story-3",
+        "globalIndex": 3,
+        "localIndex": 3,
+        "title": "糖糖的花园",
+        "subtitle": "消除方块装扮花园",
+        "gameType": "p3-match-3",
+        "gameTypeName": "消消乐",
+        "npcRole": "rabbit",
+        "unlockAfter": "story-2",
+        "state": "locked",
+        "center": [
+          108.864,
+          326.79999999999995
+        ],
+        "radius": 40,
+        "sourceHitRadius": 49.199999999999996,
+        "titleSourceFontSize": 16,
+        "titleWidth": 92.0,
+        "gameTypeSourceFontSize": 12
+      },
+      {
+        "id": "story-4",
+        "globalIndex": 4,
+        "localIndex": 4,
+        "title": "豆豆的花园配对",
+        "subtitle": "在花园中找到相同图案连起来",
+        "gameType": "p4-link-match",
+        "gameTypeName": "连连看",
+        "npcRole": "raccoon",
+        "unlockAfter": "story-3",
+        "state": "locked",
+        "center": [
+          294.336,
+          396.59999999999997
+        ],
+        "radius": 40,
+        "sourceHitRadius": 49.199999999999996,
+        "titleSourceFontSize": 16,
+        "titleWidth": 124.0,
+        "gameTypeSourceFontSize": 12
+      },
+      {
+        "id": "story-5",
+        "globalIndex": 5,
+        "localIndex": 5,
+        "title": "慧慧的冰面谜题",
+        "subtitle": "冰面上箱子会滑行",
+        "gameType": "p1-puzzle-land",
+        "gameTypeName": "推箱子",
+        "npcRole": "owl",
+        "unlockAfter": "story-4",
+        "state": "locked",
+        "center": [
+          108.864,
+          466.4
+        ],
+        "radius": 40,
+        "sourceHitRadius": 49.199999999999996,
+        "titleSourceFontSize": 16,
+        "titleWidth": 124.0,
+        "gameTypeSourceFontSize": 12
+      },
+      {
+        "id": "story-6",
+        "globalIndex": 6,
+        "localIndex": 6,
+        "title": "糖糖的糖果风暴",
+        "subtitle": "更多颜色更高目标",
+        "gameType": "p3-match-3",
+        "gameTypeName": "消消乐",
+        "npcRole": "rabbit",
+        "unlockAfter": "story-5",
+        "state": "locked",
+        "center": [
+          294.336,
+          536.2
+        ],
+        "radius": 40,
+        "sourceHitRadius": 49.199999999999996,
+        "titleSourceFontSize": 16,
+        "titleWidth": 124.0,
+        "gameTypeSourceFontSize": 12
+      },
+      {
+        "id": "story-7",
+        "globalIndex": 7,
+        "localIndex": 7,
+        "title": "泡泡的记忆迷宫",
+        "subtitle": "更多卡片更短时间",
+        "gameType": "p2-memory-flip",
+        "gameTypeName": "记忆翻牌",
+        "npcRole": "cat",
+        "unlockAfter": "story-6",
+        "state": "locked",
+        "center": [
+          108.864,
+          606.0
+        ],
+        "radius": 40,
+        "sourceHitRadius": 49.199999999999996,
+        "titleSourceFontSize": 16,
+        "titleWidth": 124.0,
+        "gameTypeSourceFontSize": 12
+      }
+    ],
+    "roads": [
+      {
+        "id": "road-1",
+        "image": "ui/art/adventure-road-1.png",
+        "cubic": [
+          108.864,
+          187.2,
+          108.864,
+          232.57,
+          294.336,
+          211.63,
+          294.336,
+          257.0
+        ],
+        "strokes": [
+          {
+            "width": 17,
+            "color": [
+              116,
+              102,
+              70,
+              255
+            ]
+          },
+          {
+            "width": 12,
+            "color": [
+              221,
+              207,
+              166,
+              255
+            ]
+          }
+        ],
+        "lineCap": "round",
+        "rasterScale": 4,
+        "doneMarker": {
+          "condition": "Storyline.getNodeState('story-1')=='done'",
+          "radius": 3,
+          "color": [
+            132,
+            166,
+            78,
+            255
+          ]
+        }
+      },
+      {
+        "id": "road-2",
+        "image": "ui/art/adventure-road-2.png",
+        "cubic": [
+          294.336,
+          257.0,
+          294.336,
+          302.37,
+          108.864,
+          281.42999999999995,
+          108.864,
+          326.79999999999995
+        ],
+        "strokes": [
+          {
+            "width": 17,
+            "color": [
+              116,
+              102,
+              70,
+              255
+            ]
+          },
+          {
+            "width": 12,
+            "color": [
+              221,
+              207,
+              166,
+              255
+            ]
+          }
+        ],
+        "lineCap": "round",
+        "rasterScale": 4,
+        "doneMarker": {
+          "condition": "Storyline.getNodeState('story-2')=='done'",
+          "radius": 3,
+          "color": [
+            132,
+            166,
+            78,
+            255
+          ]
+        }
+      },
+      {
+        "id": "road-3",
+        "image": "ui/art/adventure-road-3.png",
+        "cubic": [
+          108.864,
+          326.79999999999995,
+          108.864,
+          372.16999999999996,
+          294.336,
+          351.22999999999996,
+          294.336,
+          396.59999999999997
+        ],
+        "strokes": [
+          {
+            "width": 17,
+            "color": [
+              116,
+              102,
+              70,
+              255
+            ]
+          },
+          {
+            "width": 12,
+            "color": [
+              221,
+              207,
+              166,
+              255
+            ]
+          }
+        ],
+        "lineCap": "round",
+        "rasterScale": 4,
+        "doneMarker": {
+          "condition": "Storyline.getNodeState('story-3')=='done'",
+          "radius": 3,
+          "color": [
+            132,
+            166,
+            78,
+            255
+          ]
+        }
+      },
+      {
+        "id": "road-4",
+        "image": "ui/art/adventure-road-4.png",
+        "cubic": [
+          294.336,
+          396.59999999999997,
+          294.336,
+          441.96999999999997,
+          108.864,
+          421.03,
+          108.864,
+          466.4
+        ],
+        "strokes": [
+          {
+            "width": 17,
+            "color": [
+              116,
+              102,
+              70,
+              255
+            ]
+          },
+          {
+            "width": 12,
+            "color": [
+              221,
+              207,
+              166,
+              255
+            ]
+          }
+        ],
+        "lineCap": "round",
+        "rasterScale": 4,
+        "doneMarker": {
+          "condition": "Storyline.getNodeState('story-4')=='done'",
+          "radius": 3,
+          "color": [
+            132,
+            166,
+            78,
+            255
+          ]
+        }
+      },
+      {
+        "id": "road-5",
+        "image": "ui/art/adventure-road-5.png",
+        "cubic": [
+          108.864,
+          466.4,
+          108.864,
+          511.77,
+          294.336,
+          490.83000000000004,
+          294.336,
+          536.2
+        ],
+        "strokes": [
+          {
+            "width": 17,
+            "color": [
+              116,
+              102,
+              70,
+              255
+            ]
+          },
+          {
+            "width": 12,
+            "color": [
+              221,
+              207,
+              166,
+              255
+            ]
+          }
+        ],
+        "lineCap": "round",
+        "rasterScale": 4,
+        "doneMarker": {
+          "condition": "Storyline.getNodeState('story-5')=='done'",
+          "radius": 3,
+          "color": [
+            132,
+            166,
+            78,
+            255
+          ]
+        }
+      },
+      {
+        "id": "road-6",
+        "image": "ui/art/adventure-road-6.png",
+        "cubic": [
+          294.336,
+          536.2,
+          294.336,
+          581.57,
+          108.864,
+          560.63,
+          108.864,
+          606.0
+        ],
+        "strokes": [
+          {
+            "width": 17,
+            "color": [
+              116,
+              102,
+              70,
+              255
+            ]
+          },
+          {
+            "width": 12,
+            "color": [
+              221,
+              207,
+              166,
+              255
+            ]
+          }
+        ],
+        "lineCap": "round",
+        "rasterScale": 4,
+        "doneMarker": {
+          "condition": "Storyline.getNodeState('story-6')=='done'",
+          "radius": 3,
+          "color": [
+            132,
+            166,
+            78,
+            255
+          ]
+        }
+      }
+    ],
+    "bindings": [
+      {
+        "id": "story-1",
+        "action": "existing adventure node-hit handler: locked feedback or enter preDialogue/game",
+        "stateSource": "Storyline.getNodeList()",
+        "state": "current",
+        "callbacksImplemented": false
+      },
+      {
+        "id": "story-2",
+        "action": "existing adventure node-hit handler: locked feedback or enter preDialogue/game",
+        "stateSource": "Storyline.getNodeList()",
+        "state": "locked",
+        "callbacksImplemented": false
+      },
+      {
+        "id": "story-3",
+        "action": "existing adventure node-hit handler: locked feedback or enter preDialogue/game",
+        "stateSource": "Storyline.getNodeList()",
+        "state": "locked",
+        "callbacksImplemented": false
+      },
+      {
+        "id": "story-4",
+        "action": "existing adventure node-hit handler: locked feedback or enter preDialogue/game",
+        "stateSource": "Storyline.getNodeList()",
+        "state": "locked",
+        "callbacksImplemented": false
+      },
+      {
+        "id": "story-5",
+        "action": "existing adventure node-hit handler: locked feedback or enter preDialogue/game",
+        "stateSource": "Storyline.getNodeList()",
+        "state": "locked",
+        "callbacksImplemented": false
+      },
+      {
+        "id": "story-6",
+        "action": "existing adventure node-hit handler: locked feedback or enter preDialogue/game",
+        "stateSource": "Storyline.getNodeList()",
+        "state": "locked",
+        "callbacksImplemented": false
+      },
+      {
+        "id": "story-7",
+        "action": "existing adventure node-hit handler: locked feedback or enter preDialogue/game",
+        "stateSource": "Storyline.getNodeList()",
+        "state": "locked",
+        "callbacksImplemented": false
+      },
+      {
+        "id": "page-next",
+        "action": "currentPage += 1",
+        "callbacksImplemented": false
+      },
+      {
+        "id": "fox-chat",
+        "action": "FoxMascot.notifyChat()",
+        "callbacksImplemented": false
+      },
+      {
+        "id": "tab-adventure",
+        "action": "Router.replace('adventure') unless already active",
+        "callbacksImplemented": false
+      },
+      {
+        "id": "tab-home",
+        "action": "Router.replace('home') only after story-4 done",
+        "disabled": true,
+        "callbacksImplemented": false
+      },
+      {
+        "id": "tab-profile",
+        "action": "Router.replace('profile')",
+        "callbacksImplemented": false
+      },
+      {
+        "id": "tab-settings",
+        "action": "settingsHelper_.open(pageContainer_)",
+        "callbacksImplemented": false
+      }
+    ],
+    "hiddenLogic": [
+      {
+        "id": "all-completed",
+        "text": "全园通关啦！",
+        "condition": "currentPage==totalPages and Storyline.isAllCompleted()",
+        "sourcePosition": [
+          "W/2",
+          "areaTop+4"
+        ],
+        "sourceFontSize": 13
+      },
+      {
+        "id": "syncing-hint",
+        "text": "同步中…",
+        "condition": "Storyline.isSyncing()",
+        "sourcePosition": [
+          "W-48",
+          "headerH-6"
+        ],
+        "sourceFontSize": 11
+      },
+      {
+        "id": "background-tint",
+        "condition": "bgManager.getCurrentId() ~= 'default'",
+        "color": "current background base RGB with alpha100"
+      },
+      {
+        "id": "fox-bubble",
+        "condition": "FoxMascot state ~= 'idle'",
+        "source": "shared/components/fox-mascot.lua",
+        "bubbleBottomInset": 76.8,
+        "defaultVisible": false
+      }
+    ],
+    "limitations": [
+      "No executable bindings or entry integration; dynamic states remain owned by Lua.",
+      "Frozen source-formula snapshot: percentage columns and bottom tab anchor stay editable, but resizing does not rerun Lua min/max/floor.",
+      "Pen.plaque quadratic corners and slightly asymmetric Pen.circle Beziers approximated with editable rounded rectangles/circles; colors, centered stroke bounds and separate text retained.",
+      "Only road Beziers and existing icons are transparent PNG; all text, labels, plaques, portraits and buttons are editable independent nodes.",
+      "Circular source hit zones use rectangular Button bounds; exact radii recorded per node; no callbacks supplied.",
+      "Hidden completion/sync/tint/chat states are metadata, not fictitious visible content."
+    ]
+  }
+}
