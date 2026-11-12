@@ -163,171 +163,47 @@
             },
             {
               "type": "Panel",
-              "id": "splash-bottom-stack",
+              "id": "splash-bottom-anchor",
               "position": "absolute",
-              "left": "50%",
+              "left": 0,
+              "right": 0,
               "bottom": 42.667,
-              "width": 637.333,
-              "maxWidth": "100%",
-              "flexDirection": "column",
               "alignItems": "center",
-              "flexShrink": 0,
-              "gap": 18.667,
               "pointerEvents": "box-none",
               "children": [
                 {
                   "type": "Panel",
-                  "id": "splash-prepare",
-                  "width": "100%",
-                  "height": 48,
-                  "minHeight": 48,
-                  "flexShrink": 0,
-                  "pointerEvents": "none",
-                  "children": [
-                    {
-                      "type": "Label",
-                      "id": "splash-enter-hint",
-                      "position": "absolute",
-                      "left": 0,
-                      "top": 0,
-                      "width": "100%",
-                      "height": 48,
-                      "minHeight": 48,
-                      "text": "点击屏幕进入游戏",
-                      "fontFamily": "sans",
-                      "fontSize": 26.667,
-                      "lineHeight": 1.35,
-                      "whiteSpace": "nowrap",
-                      "fontColor": [
-                        91,
-                        76,
-                        47,
-                        255
-                      ],
-                      "textAlign": "center",
-                      "verticalAlign": "middle",
-                      "flexShrink": 0,
-                      "opacity": 1,
-                      "children": []
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "splash-progress-track",
-                      "position": "absolute",
-                      "left": 125.333,
-                      "top": 18.667,
-                      "width": 386.667,
-                      "height": 10.667,
-                      "minHeight": 10.667,
-                      "visible": false,
-                      "backgroundColor": [
-                        221,
-                        207,
-                        166,
-                        255
-                      ],
-                      "borderColor": [
-                        91,
-                        76,
-                        47,
-                        255
-                      ],
-                      "borderWidth": 2,
-                      "borderRadius": 5.333,
-                      "overflow": "hidden",
-                      "children": [
-                        {
-                          "type": "Panel",
-                          "id": "splash-progress-fill",
-                          "width": 382.667,
-                          "height": "100%",
-                          "backgroundColor": [
-                            132,
-                            166,
-                            78,
-                            255
-                          ],
-                          "borderRadius": 4,
-                          "children": []
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "Panel",
-                  "id": "splash-footer",
-                  "width": "100%",
-                  "padding": 21.333,
-                  "paddingBottom": 32,
-                  "gap": 13.333,
-                  "borderRadius": 26.667,
-                  "backgroundColor": [
-                    255,
-                    246,
-                    220,
-                    245
-                  ],
-                  "borderWidth": 2.667,
-                  "borderColor": [
-                    91,
-                    76,
-                    47,
-                    255
-                  ],
+                  "id": "splash-bottom-stack",
+                  "width": "92%",
+                  "maxWidth": 637.333,
+                  "minWidth": 0,
                   "flexDirection": "column",
                   "alignItems": "center",
                   "flexShrink": 0,
+                  "gap": 18.667,
                   "pointerEvents": "box-none",
                   "children": [
                     {
                       "type": "Panel",
-                      "id": "splash-age-entry",
-                      "width": 303.023,
-                      "maxWidth": "100%",
-                      "height": 69.333,
-                      "paddingTop": 6.667,
-                      "paddingBottom": 6.667,
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                      "flexDirection": "row",
-                      "alignItems": "center",
-                      "justifyContent": "center",
-                      "borderRadius": 16,
-                      "borderWidth": 2,
-                      "borderColor": [
-                        91,
-                        76,
-                        47,
-                        255
-                      ],
-                      "backgroundColor": [
-                        255,
-                        246,
-                        220,
-                        255
-                      ],
+                      "id": "splash-prepare",
+                      "width": "100%",
+                      "height": 48,
+                      "minHeight": 48,
                       "flexShrink": 0,
+                      "pointerEvents": "none",
                       "children": [
                         {
-                          "type": "Panel",
-                          "id": "splash-age-icon",
-                          "width": 41.333,
-                          "height": 52,
-                          "marginRight": 12,
-                          "backgroundImage": "image/cadpa-8plus.jpg",
-                          "backgroundFit": "contain",
-                          "pointerEvents": "none",
-                          "children": []
-                        },
-                        {
                           "type": "Label",
-                          "id": "splash-age-text",
-                          "width": 214.667,
-                          "height": 41.333,
-                          "text": "适龄提示 8+  >",
+                          "id": "splash-enter-hint",
+                          "position": "absolute",
+                          "left": 0,
+                          "top": 0,
+                          "width": "100%",
+                          "height": 48,
+                          "minHeight": 48,
+                          "text": "点击屏幕进入游戏",
                           "fontFamily": "sans",
-                          "fontSize": 22.667,
+                          "fontSize": 26.667,
                           "lineHeight": 1.35,
                           "whiteSpace": "nowrap",
                           "fontColor": [
@@ -336,56 +212,158 @@
                             47,
                             255
                           ],
+                          "textAlign": "center",
+                          "verticalAlign": "middle",
+                          "flexShrink": 0,
+                          "opacity": 1,
                           "children": []
+                        },
+                        {
+                          "type": "Panel",
+                          "id": "splash-progress-track",
+                          "position": "absolute",
+                          "left": 125.333,
+                          "top": 18.667,
+                          "width": 386.667,
+                          "height": 10.667,
+                          "minHeight": 10.667,
+                          "visible": false,
+                          "backgroundColor": [
+                            221,
+                            207,
+                            166,
+                            255
+                          ],
+                          "borderColor": [
+                            91,
+                            76,
+                            47,
+                            255
+                          ],
+                          "borderWidth": 2,
+                          "borderRadius": 5.333,
+                          "overflow": "hidden",
+                          "children": [
+                            {
+                              "type": "Panel",
+                              "id": "splash-progress-fill",
+                              "width": 382.667,
+                              "height": "100%",
+                              "backgroundColor": [
+                                132,
+                                166,
+                                78,
+                                255
+                              ],
+                              "borderRadius": 4,
+                              "children": []
+                            }
+                          ]
                         }
                       ]
                     },
                     {
-                      "type": "Label",
-                      "id": "splash-health-title",
+                      "type": "Panel",
+                      "id": "splash-footer",
                       "width": "100%",
-                      "height": 38.667,
-                      "minHeight": 38.667,
-                      "text": "健康游戏忠告",
-                      "fontFamily": "sans",
-                      "fontSize": 21.333,
-                      "lineHeight": 1.35,
-                      "whiteSpace": "nowrap",
-                      "fontWeight": "bold",
-                      "fontColor": [
+                      "padding": 21.333,
+                      "paddingBottom": 32,
+                      "gap": 13.333,
+                      "borderRadius": 26.667,
+                      "backgroundColor": [
+                        255,
+                        246,
+                        220,
+                        245
+                      ],
+                      "borderWidth": 2.667,
+                      "borderColor": [
                         91,
                         76,
                         47,
                         255
                       ],
-                      "textAlign": "center",
-                      "flexShrink": 0,
-                      "children": []
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "splash-health-body",
-                      "width": "100%",
                       "flexDirection": "column",
                       "alignItems": "center",
                       "flexShrink": 0,
-                      "gap": 5.333,
+                      "pointerEvents": "box-none",
                       "children": [
                         {
+                          "type": "Panel",
+                          "id": "splash-age-entry",
+                          "width": 303.023,
+                          "maxWidth": "100%",
+                          "height": 69.333,
+                          "paddingTop": 6.667,
+                          "paddingBottom": 6.667,
+                          "paddingLeft": 16,
+                          "paddingRight": 16,
+                          "flexDirection": "row",
+                          "alignItems": "center",
+                          "justifyContent": "center",
+                          "borderRadius": 16,
+                          "borderWidth": 2,
+                          "borderColor": [
+                            91,
+                            76,
+                            47,
+                            255
+                          ],
+                          "backgroundColor": [
+                            255,
+                            246,
+                            220,
+                            255
+                          ],
+                          "flexShrink": 0,
+                          "children": [
+                            {
+                              "type": "Panel",
+                              "id": "splash-age-icon",
+                              "width": 41.333,
+                              "height": 52,
+                              "marginRight": 12,
+                              "backgroundImage": "image/cadpa-8plus.jpg",
+                              "backgroundFit": "contain",
+                              "pointerEvents": "none",
+                              "children": []
+                            },
+                            {
+                              "type": "Label",
+                              "id": "splash-age-text",
+                              "width": 214.667,
+                              "height": 41.333,
+                              "text": "适龄提示 8+  >",
+                              "fontFamily": "sans",
+                              "fontSize": 22.667,
+                              "lineHeight": 1.35,
+                              "whiteSpace": "nowrap",
+                              "fontColor": [
+                                91,
+                                76,
+                                47,
+                                255
+                              ],
+                              "children": []
+                            }
+                          ]
+                        },
+                        {
                           "type": "Label",
-                          "id": "splash-health-line-1",
+                          "id": "splash-health-title",
                           "width": "100%",
                           "height": 38.667,
                           "minHeight": 38.667,
-                          "text": "抵制不良游戏，拒绝盗版游戏。",
+                          "text": "健康游戏忠告",
                           "fontFamily": "sans",
                           "fontSize": 21.333,
                           "lineHeight": 1.35,
                           "whiteSpace": "nowrap",
+                          "fontWeight": "bold",
                           "fontColor": [
-                            116,
-                            102,
-                            70,
+                            91,
+                            76,
+                            47,
                             255
                           ],
                           "textAlign": "center",
@@ -393,74 +371,105 @@
                           "children": []
                         },
                         {
-                          "type": "Label",
-                          "id": "splash-health-line-2",
+                          "type": "Panel",
+                          "id": "splash-health-body",
                           "width": "100%",
-                          "height": 38.667,
-                          "minHeight": 38.667,
-                          "text": "注意自我保护，谨防受骗上当。",
-                          "fontFamily": "sans",
-                          "fontSize": 21.333,
-                          "lineHeight": 1.35,
-                          "whiteSpace": "nowrap",
-                          "fontColor": [
-                            116,
-                            102,
-                            70,
-                            255
-                          ],
-                          "textAlign": "center",
+                          "flexDirection": "column",
+                          "alignItems": "center",
                           "flexShrink": 0,
-                          "children": []
-                        },
-                        {
-                          "type": "Label",
-                          "id": "splash-health-line-3",
-                          "width": "100%",
-                          "height": 38.667,
-                          "minHeight": 38.667,
-                          "text": "适度游戏益脑，沉迷游戏伤身。",
-                          "fontFamily": "sans",
-                          "fontSize": 21.333,
-                          "lineHeight": 1.35,
-                          "whiteSpace": "nowrap",
-                          "fontColor": [
-                            116,
-                            102,
-                            70,
-                            255
-                          ],
-                          "textAlign": "center",
-                          "flexShrink": 0,
-                          "children": []
-                        },
-                        {
-                          "type": "Label",
-                          "id": "splash-health-line-4",
-                          "width": "100%",
-                          "height": 38.667,
-                          "minHeight": 38.667,
-                          "text": "合理安排时间，享受健康生活。",
-                          "fontFamily": "sans",
-                          "fontSize": 21.333,
-                          "lineHeight": 1.35,
-                          "whiteSpace": "nowrap",
-                          "fontColor": [
-                            116,
-                            102,
-                            70,
-                            255
-                          ],
-                          "textAlign": "center",
-                          "flexShrink": 0,
-                          "children": []
+                          "gap": 5.333,
+                          "children": [
+                            {
+                              "type": "Label",
+                              "id": "splash-health-line-1",
+                              "width": "100%",
+                              "height": 38.667,
+                              "minHeight": 38.667,
+                              "text": "抵制不良游戏，拒绝盗版游戏。",
+                              "fontFamily": "sans",
+                              "fontSize": 21.333,
+                              "lineHeight": 1.35,
+                              "whiteSpace": "nowrap",
+                              "fontColor": [
+                                116,
+                                102,
+                                70,
+                                255
+                              ],
+                              "textAlign": "center",
+                              "flexShrink": 0,
+                              "children": []
+                            },
+                            {
+                              "type": "Label",
+                              "id": "splash-health-line-2",
+                              "width": "100%",
+                              "height": 38.667,
+                              "minHeight": 38.667,
+                              "text": "注意自我保护，谨防受骗上当。",
+                              "fontFamily": "sans",
+                              "fontSize": 21.333,
+                              "lineHeight": 1.35,
+                              "whiteSpace": "nowrap",
+                              "fontColor": [
+                                116,
+                                102,
+                                70,
+                                255
+                              ],
+                              "textAlign": "center",
+                              "flexShrink": 0,
+                              "children": []
+                            },
+                            {
+                              "type": "Label",
+                              "id": "splash-health-line-3",
+                              "width": "100%",
+                              "height": 38.667,
+                              "minHeight": 38.667,
+                              "text": "适度游戏益脑，沉迷游戏伤身。",
+                              "fontFamily": "sans",
+                              "fontSize": 21.333,
+                              "lineHeight": 1.35,
+                              "whiteSpace": "nowrap",
+                              "fontColor": [
+                                116,
+                                102,
+                                70,
+                                255
+                              ],
+                              "textAlign": "center",
+                              "flexShrink": 0,
+                              "children": []
+                            },
+                            {
+                              "type": "Label",
+                              "id": "splash-health-line-4",
+                              "width": "100%",
+                              "height": 38.667,
+                              "minHeight": 38.667,
+                              "text": "合理安排时间，享受健康生活。",
+                              "fontFamily": "sans",
+                              "fontSize": 21.333,
+                              "lineHeight": 1.35,
+                              "whiteSpace": "nowrap",
+                              "fontColor": [
+                                116,
+                                102,
+                                70,
+                                255
+                              ],
+                              "textAlign": "center",
+                              "flexShrink": 0,
+                              "children": []
+                            }
+                          ]
                         }
                       ]
                     }
                   ]
                 }
-              ],
-              "marginLeft": -318.667
+              ]
             }
           ]
         }

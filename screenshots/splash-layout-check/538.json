@@ -1,0 +1,90 @@
+{
+    "version": 2,
+    "script": "tests/e2e/splash-layout-check-scene.lua",
+    "result": "FAIL",
+    "duration_ms": 6162,
+    "frames_completed": 140,
+    "phases": {
+        "load": {
+            "result": "PASS",
+            "errors": []
+        },
+        "init": {
+            "result": "PASS",
+            "errors": []
+        },
+        "run": {
+            "result": "FAIL",
+            "errors": [
+                {
+                    "category": "engine",
+                    "message": "Frame time spike: 353.737ms (threshold: 100ms)",
+                    "frame": 68
+                }
+            ]
+        },
+        "scene": {
+            "result": "PASS",
+            "errors": [],
+            "node_count": 0,
+            "component_count": 0,
+            "scene_exists": false
+        }
+    },
+    "state_snapshots": [
+        {
+            "frame": 1,
+            "phase": "init",
+            "nodes": 0,
+            "components": 0,
+            "hash": 0,
+            "frame_time_ms": 817.8670043945313
+        },
+        {
+            "frame": 10,
+            "phase": "run",
+            "nodes": 0,
+            "components": 0,
+            "hash": 0,
+            "frame_time_ms": 16.621000289916993
+        },
+        {
+            "frame": 70,
+            "phase": "run",
+            "nodes": 0,
+            "components": 0,
+            "hash": 0,
+            "frame_time_ms": 16.62700080871582
+        },
+        {
+            "frame": 140,
+            "phase": "run",
+            "nodes": 0,
+            "components": 0,
+            "hash": 0,
+            "frame_time_ms": 16.714000701904298
+        }
+    ],
+    "scene_stalled": true,
+    "max_frame_time_ms": 353.73699951171877,
+    "update_defined": false,
+    "component_census": {},
+    "test_result": "FAILED",
+    "test_assertions": {
+        "total": 76,
+        "passed": 74,
+        "failed": 2
+    },
+    "test_issues": [
+        "正常安全区 底部容器居中: 247.5000 not within 1.0000 of 269.0000",
+        "非零安全区 底部容器居中: 248.5000 not within 1.0000 of 269.0000"
+    ],
+    "missing_resources": [],
+    "missing_engine_resources": [],
+    "summary": {
+        "lua_errors": 0,
+        "resource_errors": 0,
+        "engine_errors": 1,
+        "total_errors": 1
+    }
+}
