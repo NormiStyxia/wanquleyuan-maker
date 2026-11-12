@@ -1,0 +1,123 @@
+{
+    "version": 2,
+    "script": "tests/e2e/ui-flow-scene.lua",
+    "result": "FAIL",
+    "duration_ms": 9615,
+    "frames_completed": 285,
+    "phases": {
+        "load": {
+            "result": "PASS",
+            "errors": []
+        },
+        "init": {
+            "result": "PASS",
+            "errors": []
+        },
+        "run": {
+            "result": "FAIL",
+            "errors": [
+                {
+                    "category": "engine",
+                    "message": "Frame time spike: 886.527ms (threshold: 100ms)",
+                    "frame": 2
+                },
+                {
+                    "category": "engine",
+                    "message": "Frame time spike: 168.676ms (threshold: 100ms)",
+                    "frame": 9
+                },
+                {
+                    "category": "engine",
+                    "message": "Frame time spike: 206.903ms (threshold: 100ms)",
+                    "frame": 150
+                },
+                {
+                    "category": "engine",
+                    "message": "Frame time spike: 350.732ms (threshold: 100ms)",
+                    "frame": 214
+                }
+            ]
+        },
+        "scene": {
+            "result": "PASS",
+            "errors": [],
+            "node_count": 0,
+            "component_count": 0,
+            "scene_exists": false
+        }
+    },
+    "state_snapshots": [
+        {
+            "frame": 1,
+            "phase": "init",
+            "nodes": 0,
+            "components": 0,
+            "hash": 0,
+            "frame_time_ms": 862.9760131835938
+        },
+        {
+            "frame": 10,
+            "phase": "run",
+            "nodes": 0,
+            "components": 0,
+            "hash": 0,
+            "frame_time_ms": 16.62700080871582
+        },
+        {
+            "frame": 142,
+            "phase": "run",
+            "nodes": 0,
+            "components": 0,
+            "hash": 0,
+            "frame_time_ms": 16.5989990234375
+        },
+        {
+            "frame": 285,
+            "phase": "run",
+            "nodes": 0,
+            "components": 0,
+            "hash": 0,
+            "frame_time_ms": 16.591001510620118
+        }
+    ],
+    "scene_stalled": true,
+    "max_frame_time_ms": 886.5269775390625,
+    "update_defined": false,
+    "component_census": {},
+    "test_result": "FAILED",
+    "test_assertions": {
+        "total": 198,
+        "passed": 178,
+        "failed": 20
+    },
+    "test_issues": [
+        "真实卡片进入adapter p2-memory-flip",
+        "进入的玩法身份正确 p2-memory-flip",
+        "游戏压栈保留来源大厅",
+        "选关由adapter渲染 p2-memory-flip",
+        "真实关卡已渲染 p2-memory-flip",
+        "容器暂停有效 p2-memory-flip",
+        "容器恢复有效 p2-memory-flip",
+        "Escape打开真实暂停层 p2-memory-flip",
+        "实际绘制的点击区存在",
+        "实际绘制的点击区存在",
+        "真实卡片进入adapter p3-match-3",
+        "进入的玩法身份正确 p3-match-3",
+        "游戏压栈保留来源大厅",
+        "选关由adapter渲染 p3-match-3",
+        "真实关卡已渲染 p3-match-3",
+        "容器暂停有效 p3-match-3",
+        "容器恢复有效 p3-match-3",
+        "Escape打开真实暂停层 p3-match-3",
+        "实际绘制的点击区存在",
+        "实际绘制的点击区存在"
+    ],
+    "missing_resources": [],
+    "missing_engine_resources": [],
+    "summary": {
+        "lua_errors": 0,
+        "resource_errors": 0,
+        "engine_errors": 4,
+        "total_errors": 4
+    }
+}

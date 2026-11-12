@@ -216,6 +216,17 @@ function M.create(params)
         backgroundColor = {0,0,0,255}, children = {canvas_},
     }
 
+    -- 编辑器允许可见溢出的分组；让命中范围跟随子网格，避免分组边界截掉下排按钮。
+    local grid = find("home-game-grid")
+    if grid and grid.parent and grid.parent.props.overflow ~= "hidden" then
+        local group = grid.parent
+        local originalHitTest = group.HitTest
+        group:SetStyle({pointerEvents = "box-none"})
+        group.HitTest = function(self, x, y)
+            return originalHitTest(self, x, y) or grid:HitTest(x, y)
+        end
+    end
+
     for _, button in ipairs(instance_:FindAll("Button")) do
         local id = button.props.id or ""
         if id:sub(1, 5) == "game-" then
