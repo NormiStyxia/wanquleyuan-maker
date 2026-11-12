@@ -11,6 +11,9 @@ function Start()
     local receiver = node:CreateScriptObject("LuaScriptObject")
     receiver:SubscribeToEvent("Update", function()
         frames = frames + 1
-        if frames == 20 then Router.replace("home") end
+        if frames == 20 then
+            require("shared.components.health-advisory").dismiss()
+            Router.replace("home")
+        end
     end)
 end
