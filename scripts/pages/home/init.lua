@@ -276,6 +276,8 @@ function M.destroy()
     if receiver_ then receiver_:UnsubscribeFromAllEvents() end
     receiver_, eventNode_ = nil, nil
     -- 只释放首页的独立树，不替换 main 的全局 UI 根或其他覆盖层。
+    -- JSON 图标由 UI.ImageCache 绑定全局 UI 上下文；切页不销毁共享上下文或释放共享句柄。
+    -- GameCard.release 仅用于旧手绘卡片自有上下文销毁前，不能套用到这里。
     if canvas_ then canvas_:Destroy() end
     instance_, document_, canvas_, pageContainer_ = nil, nil, nil, nil
     widgets_ = {}

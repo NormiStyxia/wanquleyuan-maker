@@ -8,6 +8,53 @@ local Density=require("shared.utils.density")
 local Health=require("shared.components.health-advisory")
 local Bg=require("shared.background-manager")
 local state=WANQU_UI_FLOW
+-- 保留远端的真实引擎图标所有权检查；JSON 首页改为共享 UI 上下文，另测独立卡片上下文释放。
+local Art=require("shared.constants.art")
+local ImageCache=require("urhox-libs/UI/Core/ImageCache")
+local Card=require("shared.components.game-card")
+local iconPaths={}
+for _,path in pairs(Art.gameIcons) do iconPaths[path]=true end
+local iconOwners,iconContexts,iconReleases={},0,0
+local createImage,deleteImage,deleteContext=nvgCreateImage,nvgDeleteImage,nvgDelete
+nvgCreateImage=function(vg,path,flags)
+    local image=createImage(vg,path,flags)
+    if iconPaths[path] and image and image>0 then
+        if not iconOwners[vg] then iconOwners[vg]={};iconContexts=iconContexts+1 end
+        V.assert(iconOwners[vg][image]==nil,"当前上下文没有重复加载大厅图标")
+        iconOwners[vg][image]=path
+    end
+    return image
+end
+nvgDeleteImage=function(vg,image)
+    if iconOwners[vg] and iconOwners[vg][image] then
+        iconOwners[vg][image]=nil;iconReleases=iconReleases+1
+    end
+    return deleteImage(vg,image)
+end
+nvgDelete=function(vg)
+    if iconOwners[vg] then
+        V.assert(next(iconOwners[vg])==nil,"销毁独立上下文前已释放全部图标并清空缓存")
+        iconOwners[vg]=nil
+    end
+    return deleteContext(vg)
+end
+local sharedContext=UI.GetNVGContext()
+local sharedImages,homeVisits={},0
+local function assertHomeIcons()
+    homeVisits=homeVisits+1
+    V.assert(UI.GetNVGContext()==sharedContext,"切页及游戏进出保留全局UI上下文")
+    for gameId,path in pairs(Art.gameIcons) do
+        local widget=UI.GetRoot():FindById(gameId.."-icon")
+        V.assert(widget and widget.props.backgroundImage==path,"JSON卡片保留独立手绘图标 "..gameId)
+        V.assert(ImageCache.IsLoaded(path),"JSON图标实际加载成功 "..gameId)
+        local image=ImageCache.Get(path)
+        sharedImages[path]=sharedImages[path] or image
+        V.assert(image==sharedImages[path] and iconOwners[sharedContext] and iconOwners[sharedContext][image]==path,
+            "JSON图标仍归属原图片而非复用的字体句柄 "..gameId)
+        local w,h=nvgImageSize(sharedContext,image)
+        V.assert(w>0 and h>0,"JSON图标纹理仍可访问 "..gameId)
+    end
+end
 local names={"p1-puzzle-land","p2-memory-flip","p3-match-3","p4-link-match"}
 local tabs,selects,gameDraws,pauseHits={},{},{},nil
 local tabRender=require("shared.components.tab-bar").render
@@ -112,6 +159,7 @@ for index,name in ipairs(names) do
     V.atFrame(at,function()
         V.assert(Router.getCurrent()=="home","大厅恢复 "..name)
         V.assert(UI.GetRoot():FindById("home-page")~=nil,"大厅挂载JSON文档根")
+        assertHomeIcons()
         clickWidget("game-"..name,index%2==0)
         V.assert(Router.getCurrent()=="game" and Container.isRunning(),"真实卡片进入adapter "..name)
         V.assert(Container.getGameConfig() and Container.getGameConfig().gameId==name,"进入的玩法身份正确 "..name)
@@ -225,5 +273,60 @@ V.atFrame(282,function()
     V.assert(root:FindById("tab-home").props.disabled==false,"已通关第4关时解除JSON自由页签静态禁用")
     state.restoreHomeDynamic()
     print("[UIFlow] finished JSON home/router/adapter path; saves and cloud isolated")
+    tab("adventure")
+end)
+-- replace 重建 JSON 树但保留 UI 上下文；四玩法 push/pop 和反复切页都要覆盖。
+-- 从 292 帧开始，避免覆盖本地 282 帧的动态状态回归。
+for round=0,7 do
+    V.atFrame(292+round*20,function() tab("home") end)
+    V.atFrame(302+round*20,function()
+        V.assert(Router.getCurrent()=="home","重建大厅可达")
+        assertHomeIcons()
+        tab(round%2==0 and "profile" or "adventure")
+    end)
+end
+-- 旧手绘卡片仍保留远端 release 修复；用十个真实独立上下文检查40张图的释放。
+---@type NVGContextWrapper
+local cardContext
+local cardRounds,cardDraws=0,0
+function UIFlow_HandleCardRender(eventType,eventData)
+    Density.beginFrame(cardContext)
+    for _,name in ipairs(names) do Card.drawGameIcon(cardContext,32,32,32,name) end
+    Density.endFrame(cardContext)
+    cardDraws=cardDraws+1
+end
+V.atFrame(452,function()
+    local loaded=0
+    for _ in pairs(iconOwners[sharedContext] or {}) do loaded=loaded+1 end
+    V.assert(homeVisits==12,"四玩法入口及八次大厅重建均校验图标")
+    V.assert(iconContexts==1 and loaded==4,"JSON大厅仅共享UI上下文加载四张图，不跨上下文复用")
+    V.assert(iconReleases==0,"切页不误删共享UI图标")
+    cardContext=nvgCreate(1)
+    SubscribeToEvent(cardContext,"NanoVGRender","UIFlow_HandleCardRender")
+end)
+for round=0,9 do
+    V.atFrame(462+round*10,function()
+        local loaded=0
+        for _ in pairs(iconOwners[cardContext] or {}) do loaded=loaded+1 end
+        V.assert(loaded==4,"独立上下文重新加载四个手绘图标")
+        Card.release(cardContext)
+        V.assert(next(iconOwners[cardContext] or {})==nil,"release清空当前上下文全部图标所有权")
+        Card.release(cardContext)
+        nvgDelete(cardContext)
+        cardRounds=cardRounds+1
+        if round<9 then
+            cardContext=nvgCreate(1)
+            SubscribeToEvent(cardContext,"NanoVGRender","UIFlow_HandleCardRender")
+        end
+    end)
+end
+V.atFrame(562,function()
+    V.assert(cardRounds==10 and cardDraws>=10,"十次独立上下文均实际绘制图标")
+    V.assert(iconContexts==11,"共享UI及十次独立卡片上下文分别加载图标")
+    V.assert(iconReleases==40,"四十个独立图标均在所属上下文销毁前释放且重复release安全")
+    V.assert(next(iconOwners)==sharedContext and next(iconOwners,sharedContext)==nil,"独立上下文无遗留所有权，只保留全局UI缓存")
+    V.assert(#state.errors==0 and #state.imageFailures==0,"反复切页后无业务错误或图片加载失败")
+    nvgCreateImage,nvgDeleteImage,nvgDelete=createImage,deleteImage,deleteContext
+    print("[UIFlow] icon lifecycle contexts="..iconContexts.." released="..iconReleases)
     V.finish()
 end)

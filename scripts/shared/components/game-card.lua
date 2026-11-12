@@ -10,6 +10,16 @@ local Art = require("shared.constants.art")
 local iconImages_ = setmetatable({}, {__mode = "k"})
 local M = {}
 
+--- 必须在所属 NanoVG 上下文销毁前调用；底层上下文地址可能被下一页复用。
+function M.release(vg)
+    if not vg then return end
+    local images = iconImages_[vg]
+    iconImages_[vg] = nil
+    for _, image in pairs(images or {}) do
+        if image then nvgDeleteImage(vg, image) end
+    end
+end
+
 -- 游戏图标类型映射（替代原 Emoji 映射）
 local ICON_TYPES = {
     ["p1-puzzle-land"]  = "box",
@@ -446,6 +456,7 @@ end
 ---@param config table 游戏配置
 ---@param index number 瓷砖索引（1-based，用于选择主题色）
 function M.drawTile(vg, x, y, size, config, index)
+    ---@type number[][]
     local fills={{246,216,165,255},{220,232,196,255},{242,226,166,255},{227,216,230,255}}
     Paper.panel(vg,x,y,size,size,fills[((index-1)%#fills)+1])
     local centerX=x+size/2
