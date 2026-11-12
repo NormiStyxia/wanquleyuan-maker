@@ -9,17 +9,11 @@ local Health=require("shared.components.health-advisory")
 local Bg=require("shared.background-manager")
 local state=WANQU_UI_FLOW
 local names={"p1-puzzle-land","p2-memory-flip","p3-match-3","p4-link-match"}
-local tabs,cards,selects,gameDraws,pauseHits={},{},{},{},nil
+local tabs,selects,gameDraws,pauseHits={},{},{},nil
 local tabRender=require("shared.components.tab-bar").render
 require("shared.components.tab-bar").render=function(vg,w,h,active,...)
     local hits=tabRender(vg,w,h,active,...)
     tabs[active]=hits;return hits
-end
-local card=require("shared.components.game-card")
-local drawTile=card.drawTile
-card.drawTile=function(vg,x,y,size,config,index)
-    cards[index]={x=x,y=y,w=size,h=size,config=config}
-    return drawTile(vg,x,y,size,config,index)
 end
 for index,name in ipairs(names) do
     local select=require("games."..name..".screens.level-select")
