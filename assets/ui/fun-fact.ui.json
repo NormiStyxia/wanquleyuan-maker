@@ -1,0 +1,32 @@
+{
+  "type": "Panel",
+  "id": "fun-fact-page",
+  "width": 403.2,
+  "height": 896,
+  "fontFamily": "sans",
+  "backgroundColor": [63, 56, 36, 100],
+  "justifyContent": "center",
+  "alignItems": "center",
+  "_extraction": {
+    "sources": ["scripts/modules/dialogue/fun-fact.lua:M.render", "scripts/shared/components/story-paper.lua", "scripts/shared/components/handdrawn.lua", "scripts/shared/utils/density.lua", "scripts/shared/utils/kinsoku.lua", "scripts/pages/adventure/init.lua:NPC_TEXTURES/M.create", "scripts/config/storyline.lua:story-1.funFact", "scripts/shared/constants/art.lua"],
+    "snapshot": {"inputWidth": 540, "inputHeight": 1200, "dpr": 1, "width": 403.2, "height": 896, "coordinateSpace": "Density game canvas", "densityFactor": 1.3392857142857142, "safeArea": {"left": 0, "top": 0, "right": 0, "bottom": 0}, "fadeIn_": 1, "data_": {"speaker": "慧慧", "text": "猫头鹰的脖子可以转动270度哦！"}},
+    "fonts": [{"family": "sans", "sourceFamily": "adv", "path": "Fonts/LongZhuTi-Regular.ttf", "weight": "normal"}],
+    "typography": {"sourceUnit": "NanoVG px in Density canvas", "targetUnit": "UI pt", "conversion": "fontSize=sourcePixelSize*0.75; UI applies4/3", "heading": {"sourcePx": 22, "fontSize": 16.5}, "subtitle": {"sourcePx": 13, "fontSize": 9.75}, "body": {"sourcePx": 18, "fontSize": 13.5, "lineHeightPx": 27}, "button": {"sourcePx": 17, "fontSize": 12.75}, "measurement": "Offline original-font character advances with source kinsoku rules; sample fits on one line at textW=326.944."},
+    "coordinates": {"density": "factor=clamp((1200/dpr)/896,0.85,2.5)=1.3392857142857142; canvas=403.2x896", "safe": "Paper.safeArea converts UI insets by UI.GetScale()/(dpr*Density.getFactor()); no safe inset in this sample", "card": "margin=clamp(403.2*0.04,14,22)=16.128; cardW=min(380,403.2-2*margin)=370.944; cardX=16.128; textW=cardW-44=326.944; textH=1*27=27; cardH=22+88+22+textH+26+52+22=259; cardY=safe.top+(896-safe.top-safe.bottom-cardH)/2+(1-fadeIn_)*20=318.5", "contents": "portrait=(cardX+22,cardY+22,80,88); title=(cardX+118,cardY+37); subtitle=(cardX+118,cardY+71); rule=(cardX+22,cardY+120,textW); paragraph=(cardX+22,cardY+132); button=((cardW-120)/2,cardH-22-52,120,52) relative to card"},
+    "bindings": {"fun-fact-portrait": "SPEAKER_ROLES[data_.speaker], then npcImages_[role] or foxImage_; owl sample uses Textures/character/owl.png", "fun-fact-subtitle": "(data_.speaker or '伙伴')..'的小知识'", "fun-fact-body": "data_.text -> kinsoku.wrapNvg; source story-1.funFact retained verbatim", "fun-fact-card": "card height follows wrapped text count; opacity=fadeIn_; vertical slide=(1-fadeIn_)*20"},
+    "responsiveConstraints": ["Card centered within safe area; width maximum380; source clamped margin retained in coordinates; numeric sample width370.944.", "Root is effective Density canvas, not physical540x1200; engine pixel scaling remains Lua.", "Card height and paragraph rows recalculate from live text width."],
+    "behaviorsRemainLua": ["M.show/stop/isActive", "0.25-second fade-in via fadeIn_=min(1,fadeIn_+dt*4)", "handleClick closes on any click, inside card or outside; not only the visible button", "onShow/onDismissSound/onDismiss callbacks", "NPC and active outfit texture selection", "Density/safe-area and kinsoku recomputation"],
+    "limitations": ["Overlay only; underlying adventure page is not part of this independent asset.", "Handdrawn Pen.plaque irregular outlines/shadow and curved Paper.rule are approximated with ordinary Panel geometry. No NanoVG command objects are invented.", "One actual data sample is shown, not all storyline facts."]
+  },
+  "children": [
+    {"type": "Panel", "id": "fun-fact-card-shadow", "position": "absolute", "left": 18.128, "top": 323.5, "width": 370.944, "height": 259, "backgroundColor": [151, 123, 78, 70], "children": []},
+    {"type": "Panel", "id": "fun-fact-card", "width": 370.944, "maxWidth": 380, "height": 259, "backgroundColor": [255, 246, 220, 255], "borderColor": [91, 76, 47, 255], "borderWidth": 2.5, "children": [
+      {"type": "Panel", "id": "fun-fact-portrait", "position": "absolute", "left": 22, "top": 22, "width": 80, "height": 88, "backgroundImage": "Textures/character/owl.png", "backgroundFit": "contain", "children": []},
+      {"type": "Label", "id": "fun-fact-title", "position": "absolute", "left": 118, "top": 37, "width": 230, "height": 30.8, "text": "你知道吗？", "fontFamily": "sans", "fontSize": 16.5, "fontColor": [91, 76, 47, 255], "verticalAlign": "top", "children": []},
+      {"type": "Label", "id": "fun-fact-subtitle", "position": "absolute", "left": 118, "top": 71, "width": 230, "height": 18.2, "text": "慧慧的小知识", "fontFamily": "sans", "fontSize": 9.75, "fontColor": [116, 102, 70, 255], "verticalAlign": "top", "children": []},
+      {"type": "Panel", "id": "fun-fact-rule", "position": "absolute", "left": 22, "top": 120, "width": 326.944, "height": 1.5, "backgroundColor": [221, 207, 166, 255], "children": []},
+      {"type": "Label", "id": "fun-fact-body", "position": "absolute", "left": 22, "top": 132, "width": 326.944, "height": 27, "text": "猫头鹰的脖子可以转动270度哦！", "fontFamily": "sans", "fontSize": 13.5, "lineHeight": 1.5, "whiteSpace": "normal", "fontColor": [91, 76, 47, 255], "verticalAlign": "top", "children": []},
+      {"type": "Button", "id": "fun-fact-dismiss", "position": "absolute", "left": 125.472, "top": 185, "width": 120, "height": 52, "text": "记住啦！", "fontFamily": "sans", "fontSize": 12.75, "backgroundColor": [238, 156, 67, 255], "textColor": [91, 76, 47, 255], "borderColor": [91, 76, 47, 255], "borderWidth": 2, "borderRadius": 0, "boxShadow": false, "children": []}
+    ]}
+  ]
+}

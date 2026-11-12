@@ -1,0 +1,70 @@
+{
+  "type": "Panel", "id": "purchase-popup", "width": 403.2, "height": 896,
+  "backgroundColor": [0, 0, 0, 150],
+  "_extraction": {
+    "source": "scripts/shared/components/purchase-popup.lua",
+    "dependencies": ["scripts/shared/outfit-manager.lua", "scripts/shared/components/game-paper.lua", "scripts/shared/components/story-paper.lua", "scripts/shared/components/handdrawn.lua", "scripts/shared/constants/art.lua"],
+    "designViewport": {"width": 540, "height": 1200, "dpr": 1},
+    "canvas": {"width": 403.2, "height": 896, "note": "DPR1经Density后的raw NanoVG逻辑画布稳定帧。"},
+    "fonts": [{"family": "sans", "sourceAliases": ["sans", "profile"], "path": "Fonts/LongZhuTi-Regular.ttf"}],
+    "typography": "fontSize=源NVG像素字号×0.75；UI默认4/3转换后匹配原像素大小。",
+    "layoutFormula": "popW=min(280,screenW-40),popH=344，blocked时190；每阶段独立居中。BTN_W=110,BTN_H=44,GAP=16，双按钮距卡底24。",
+    "dynamicVariables": {"phase_": "confirm", "skinId_": "suit", "skinData_.name": "西装", "skinImage_": "Textures/character/skins/fox_suit.png", "price": 3, "contentAlpha": 1, "spendingBlockMsg_": null, "cloudAgeBlocked": false},
+    "sampleProvenance": "suit是OutfitManager真实付费皮肤，getPrice=3。默认预览confirm阶段；同一JSON包含payment/blocked隐藏Panel。",
+    "alternativeStates": {"purchase-confirm": "visible=true", "purchase-payment": "visible=false；切换两Panel显隐查看模拟支付页面", "purchase-blocked": "visible=false；年龄拦截独立190高纸卡", "purchase-spending-warning": "visible=false；确认页消费限额错误样例"},
+    "behaviorsRemainInLua": ["年龄及消费额度拦截", "确认/模拟支付/禁止付费状态机", "OutfitManager.purchaseSkin及购买回调", "图片句柄生命周期", "取消返回逻辑", "音效、hitTest、渐显"],
+    "limitations": ["仅静态设计资源，不接入支付，不序列化回调。", "手绘纸边转11像素圆角Panel；源色、卡片尺寸、图片contain保留。", "源blocked说明文字及限额文本未做自动换行；保持源13px大小。"]
+  },
+  "children": [
+    {
+      "type": "Panel", "id": "purchase-confirm", "width": "100%", "height": "100%", "justifyContent": "center", "alignItems": "center",
+      "children": [
+        {"type": "Panel", "id": "purchase-confirm-card", "width": 280, "height": 344, "children": [
+          {"type": "Panel", "position": "absolute", "left": 1, "top": 3, "width": 280, "height": 344, "backgroundColor": [151, 123, 78, 45], "borderRadius": 11},
+          {"type": "Panel", "position": "absolute", "left": 0, "top": 0, "width": 280, "height": 344, "backgroundColor": [255, 246, 220, 255], "borderRadius": 11, "borderWidth": 2.3, "borderAlign": "center", "borderColor": [91, 76, 47, 255]},
+          {"type": "Label", "id": "purchase-confirm-title", "position": "absolute", "left": 0, "top": 15, "width": 280, "height": 34, "text": "确认购买", "fontFamily": "sans", "fontSize": 16.5, "fontColor": [80, 55, 35, 255], "textAlign": "center", "verticalAlign": "middle", "lineHeight": 1},
+          {"type": "Panel", "id": "purchase-confirm-rule", "position": "absolute", "left": 24, "top": 53.5, "width": 232, "height": 1, "backgroundColor": [230, 220, 210, 153]},
+          {"type": "Panel", "id": "purchase-skin-image-suit", "position": "absolute", "left": 90, "top": 70, "width": 100, "height": 100, "backgroundColor": false, "backgroundImage": "Textures/character/skins/fox_suit.png", "backgroundFit": "contain"},
+          {"type": "Label", "id": "purchase-skin-name", "position": "absolute", "left": 0, "top": 173, "width": 280, "height": 26, "text": "西装", "fontFamily": "sans", "fontSize": 13.5, "fontColor": [100, 75, 50, 255], "textAlign": "center", "verticalAlign": "middle", "lineHeight": 1},
+          {"type": "Label", "id": "purchase-price", "position": "absolute", "left": 0, "top": 200, "width": 280, "height": 28, "text": "售价：3 元", "fontFamily": "sans", "fontSize": 15, "fontColor": [230, 100, 40, 255], "textAlign": "center", "verticalAlign": "middle", "lineHeight": 1},
+          {"type": "Label", "id": "purchase-spending-warning", "visible": false, "position": "absolute", "left": -40, "top": 228, "width": 360, "height": 20, "text": "8周岁以下用户不允许充值消费", "fontFamily": "sans", "fontSize": 9.75, "fontColor": [220, 60, 40, 255], "textAlign": "center", "verticalAlign": "middle", "lineHeight": 1},
+          {"type": "Button", "id": "purchase-cancel", "position": "absolute", "left": 22, "top": 276, "width": 110, "height": 44, "text": "取消", "fontFamily": "sans", "fontSize": 12, "textColor": [91, 76, 47, 255], "backgroundColor": [255, 246, 220, 255], "borderRadius": 11, "borderWidth": 2, "borderAlign": "center", "borderColor": [91, 76, 47, 255], "boxShadow": false, "hoverBoxShadow": false, "pressedBoxShadow": false, "padding": 0},
+          {"type": "Button", "id": "purchase-confirm-submit", "position": "absolute", "left": 148, "top": 276, "width": 110, "height": 44, "text": "确认购买", "fontFamily": "sans", "fontSize": 12, "textColor": [91, 76, 47, 255], "backgroundColor": [238, 156, 67, 255], "borderRadius": 11, "borderWidth": 2, "borderAlign": "center", "borderColor": [91, 76, 47, 255], "boxShadow": false, "hoverBoxShadow": false, "pressedBoxShadow": false, "padding": 0}
+        ]}
+      ]
+    },
+    {
+      "type": "Panel", "id": "purchase-payment", "visible": false, "position": "absolute", "left": 0, "top": 0, "width": "100%", "height": "100%", "justifyContent": "center", "alignItems": "center",
+      "children": [
+        {"type": "Panel", "id": "purchase-payment-card", "width": 280, "height": 344, "children": [
+          {"type": "Panel", "position": "absolute", "left": 1, "top": 3, "width": 280, "height": 344, "backgroundColor": [151, 123, 78, 45], "borderRadius": 11},
+          {"type": "Panel", "position": "absolute", "left": 0, "top": 0, "width": 280, "height": 344, "backgroundColor": [255, 246, 220, 255], "borderRadius": 11, "borderWidth": 2.3, "borderAlign": "center", "borderColor": [91, 76, 47, 255]},
+          {"type": "Panel", "id": "purchase-payment-header-rule", "position": "absolute", "left": 20, "top": 49, "width": 240, "height": 2, "backgroundColor": [91, 76, 47, 255]},
+          {"type": "Label", "id": "purchase-payment-title", "position": "absolute", "left": 0, "top": 12, "width": 280, "height": 28, "text": "支付页面", "fontFamily": "sans", "fontSize": 15, "fontColor": [91, 76, 47, 255], "textAlign": "center", "verticalAlign": "middle", "lineHeight": 1},
+          {"type": "Label", "id": "purchase-payment-product-label", "position": "absolute", "left": 0, "top": 59, "width": 280, "height": 22, "text": "商品", "fontFamily": "sans", "fontSize": 11.25, "fontColor": [120, 120, 130, 255], "textAlign": "center", "verticalAlign": "middle", "lineHeight": 1},
+          {"type": "Label", "id": "purchase-payment-product-name", "position": "absolute", "left": 0, "top": 81, "width": 280, "height": 26, "text": "西装 皮肤", "fontFamily": "sans", "fontSize": 13.5, "fontColor": [60, 50, 40, 255], "textAlign": "center", "verticalAlign": "middle", "lineHeight": 1},
+          {"type": "Panel", "id": "purchase-payment-info-rule", "position": "absolute", "left": 30, "top": 117.5, "width": 220, "height": 1, "backgroundColor": [230, 230, 235, 255]},
+          {"type": "Label", "id": "purchase-payment-amount-label", "position": "absolute", "left": 0, "top": 131, "width": 280, "height": 22, "text": "支付金额", "fontFamily": "sans", "fontSize": 11.25, "fontColor": [120, 120, 130, 255], "textAlign": "center", "verticalAlign": "middle", "lineHeight": 1},
+          {"type": "Label", "id": "purchase-payment-amount", "position": "absolute", "left": 0, "top": 156, "width": 280, "height": 44, "text": "¥ 3.00", "fontFamily": "sans", "fontSize": 24, "fontColor": [230, 80, 30, 255], "textAlign": "center", "verticalAlign": "middle", "lineHeight": 1},
+          {"type": "Button", "id": "purchase-payment-cancel", "position": "absolute", "left": 22, "top": 276, "width": 110, "height": 44, "text": "取消", "fontFamily": "sans", "fontSize": 12, "textColor": [91, 76, 47, 255], "backgroundColor": [255, 246, 220, 255], "borderRadius": 11, "borderWidth": 2, "borderAlign": "center", "borderColor": [91, 76, 47, 255], "boxShadow": false, "padding": 0},
+          {"type": "Button", "id": "purchase-payment-submit", "position": "absolute", "left": 148, "top": 276, "width": 110, "height": 44, "text": "确认支付", "fontFamily": "sans", "fontSize": 12, "textColor": [91, 76, 47, 255], "backgroundColor": [238, 156, 67, 255], "borderRadius": 11, "borderWidth": 2, "borderAlign": "center", "borderColor": [91, 76, 47, 255], "boxShadow": false, "padding": 0}
+        ]}
+      ]
+    },
+    {
+      "type": "Panel", "id": "purchase-blocked", "visible": false, "position": "absolute", "left": 0, "top": 0, "width": "100%", "height": "100%", "justifyContent": "center", "alignItems": "center",
+      "children": [
+        {"type": "Panel", "id": "purchase-blocked-card", "width": 280, "height": 190, "children": [
+          {"type": "Panel", "position": "absolute", "left": 1, "top": 3, "width": 280, "height": 190, "backgroundColor": [151, 123, 78, 45], "borderRadius": 11},
+          {"type": "Panel", "position": "absolute", "left": 0, "top": 0, "width": 280, "height": 190, "backgroundColor": [255, 246, 220, 255], "borderRadius": 11, "borderWidth": 2.3, "borderAlign": "center", "borderColor": [91, 76, 47, 255]},
+          {"type": "Panel", "id": "purchase-blocked-icon", "position": "absolute", "left": 122, "top": 26, "width": 36, "height": 36, "borderRadius": 18, "backgroundColor": [255, 230, 228, 255], "borderWidth": 1.5, "borderColor": [230, 120, 110, 178], "children": [
+            {"type": "Label", "id": "purchase-blocked-exclamation", "position": "absolute", "left": 0, "top": 1, "width": 36, "height": 36, "text": "!", "fontFamily": "sans", "fontSize": 18, "fontColor": [220, 80, 60, 255], "textAlign": "center", "verticalAlign": "middle", "lineHeight": 1}
+          ]},
+          {"type": "Label", "id": "purchase-blocked-title", "position": "absolute", "left": 0, "top": 73, "width": 280, "height": 30, "text": "禁止游戏付费服务", "fontFamily": "sans", "fontSize": 15.75, "fontColor": [130, 45, 40, 255], "textAlign": "center", "verticalAlign": "middle", "lineHeight": 1},
+          {"type": "Label", "id": "purchase-blocked-description", "position": "absolute", "left": -40, "top": 106, "width": 360, "height": 20, "text": "根据账号年龄限制，当前无法使用付费服务", "fontFamily": "sans", "fontSize": 9.75, "fontColor": [150, 140, 130, 255], "textAlign": "center", "verticalAlign": "middle", "lineHeight": 1},
+          {"type": "Button", "id": "purchase-blocked-known", "position": "absolute", "left": 70, "top": 124, "width": 140, "height": 44, "text": "知道了", "fontFamily": "sans", "fontSize": 12, "textColor": [91, 76, 47, 255], "backgroundColor": [238, 156, 67, 255], "borderRadius": 11, "borderWidth": 2, "borderAlign": "center", "borderColor": [91, 76, 47, 255], "boxShadow": false, "padding": 0}
+        ]}
+      ]
+    }
+  ]
+}

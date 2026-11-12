@@ -1,0 +1,135 @@
+{
+  "type": "Panel", "id": "game-link", "width": 403.2, "height": 896,
+  "backgroundColor": false, "borderWidth": 0, "boxShadow": false, "pointerEvents": "none", "fontFamily": "sans",
+  "children": [
+    {
+      "type": "Panel", "id": "background", "position": "absolute", "left": 0, "top": 0, "width": "100%", "height": "100%",
+      "backgroundColor": [255, 248, 238, 255], "backgroundImage": "image/handdrawn/backgrounds/default.png", "backgroundFit": "cover", "pointerEvents": "none",
+      "_extraction": {"source": "scripts/shared/background-manager.lua:getBackgroundForLevel/renderBackground", "selection": "Initial default player background with no level override. Existing artwork, not a flattened gameplay screenshot."}
+    },
+    {
+      "type": "Panel", "id": "scenery-top", "position": "absolute", "left": "52%", "translateX": -95, "top": 120.542176, "width": 190, "height": 95,
+      "backgroundColor": false, "backgroundImage": "image/handdrawn/pieces/scenes/garden-top.png", "backgroundFit": "fill", "pointerEvents": "none",
+      "_extraction": {"formula": "upperStart=116; upperEnd=board.y-16; visible=upperEnd-upperStart>=32; width=min(W*.48,190,(upperEnd-upperStart)*2); height=width/2; cx=W*.52; cy=(upperStart+upperEnd)/2; left=cx-width/2; top=cy-height/2", "retainedLuaAnimation": "Neutral rotation snapshot; sin(time*1.2)*.012 radians around top hanging point stays in Lua."}
+    },
+    {
+      "type": "Panel", "id": "scenery-bottom", "position": "absolute", "left": "72%", "translateX": -92.736, "top": 673.290176, "width": 185.472, "height": 123.648,
+      "backgroundColor": false, "backgroundImage": "image/handdrawn/pieces/scenes/garden-bottom.png", "backgroundFit": "fill", "pointerEvents": "none",
+      "_extraction": {"formula": "lowerStart=board.y+board.h+20; lowerEnd=H-48; visible=lowerEnd-lowerStart>=46; width=min(W*.46,190,(lowerEnd-lowerStart)*1.5); height=width*2/3; cx=W*.72; cy=(lowerStart+lowerEnd)/2; left=cx-width/2; top=cy-height/2", "retainedLuaAnimation": "Neutral scale snapshot; bottom-anchored breathing sin(time*1.35+1.1)*.007 stays in Lua."}
+    },
+    {
+      "type": "Panel", "id": "hud-paper", "position": "absolute", "left": 0, "top": 0, "width": "100%", "height": 54,
+      "backgroundColor": [255, 246, 220, 255], "borderWidth": 0, "boxShadow": false, "pointerEvents": "none"
+    },
+    {
+      "type": "Panel", "id": "hud-rule", "position": "absolute", "left": 0, "top": 51.85, "width": "100%", "height": 2.3,
+      "backgroundColor": [91, 76, 47, 255], "pointerEvents": "none",
+      "_extraction": {"formula": "Paper.hud: 2.3-wide stroke centered at y=TOP_BAR_H-1."}
+    },
+    {
+      "type": "Label", "id": "level-title", "position": "absolute", "left": "25%", "top": 8, "width": "50%", "height": 22,
+      "text": "关卡1  5x6", "fontFamily": "sans", "fontSize": 12.75, "fontColor": [91, 76, 47, 255],
+      "textAlign": "center", "verticalAlign": "middle", "lineHeight": 1, "pointerEvents": "none",
+      "_extraction": {"rawFontSize": 17, "anchorFormula": "(W/2,TOP_BAR_H/2-8)", "bindingNotImplemented": "levelData_.title or (levelId:gsub('^L','关卡')..'  '..cols..'x'..rows)", "labelBox": "Text container implements source point anchor; it is not a newly inferred source width constraint."}
+    },
+    {
+      "type": "Label", "id": "remaining-time", "position": "absolute", "left": "25%", "top": 25, "width": "50%", "height": 26,
+      "text": "0:40", "fontFamily": "sans", "fontSize": 15, "fontColor": [91, 76, 47, 255],
+      "textAlign": "center", "verticalAlign": "middle", "lineHeight": 1, "pointerEvents": "none",
+      "_extraction": {"rawFontSize": 20, "anchorFormula": "(W/2,TOP_BAR_H/2+11)", "bindingNotImplemented": "formatTime(board:getRemainTime()); floor seconds, string.format('%d:%02d',minutes,seconds)", "warning": {"when": "remain<=15", "color": [230, 80, 60], "alphaFormula": "floor(255*(sin(remain*pi*2)*.3+.7))"}}
+    },
+    {
+      "type": "Label", "id": "remaining-pairs-caption", "position": "absolute", "left": 16, "top": 12, "width": 64, "height": 18,
+      "text": "剩余", "fontFamily": "sans", "fontSize": 9.75, "fontColor": [116, 102, 70, 255],
+      "textAlign": "left", "verticalAlign": "middle", "lineHeight": 1, "pointerEvents": "none", "_extraction": {"rawFontSize": 13, "anchorFormula": "(16,TOP_BAR_H/2-6)"}
+    },
+    {
+      "type": "Label", "id": "remaining-pairs-value", "position": "absolute", "left": 16, "top": 25, "width": 64, "height": 24,
+      "text": "15对", "fontFamily": "sans", "fontSize": 13.5, "fontColor": [91, 76, 47, 255],
+      "textAlign": "left", "verticalAlign": "middle", "lineHeight": 1, "pointerEvents": "none", "_extraction": {"rawFontSize": 18, "anchorFormula": "(16,TOP_BAR_H/2+10)", "bindingNotImplemented": "floor(board.remainPairs)..'对'"}
+    },
+    {
+      "type": "Label", "id": "rating-caption", "visible": false, "position": "absolute", "right": 16, "top": 12, "width": 64, "height": 18,
+      "text": "评级", "fontFamily": "sans", "fontSize": 9.75, "fontColor": [116, 102, 70, 255],
+      "textAlign": "right", "verticalAlign": "middle", "lineHeight": 1, "pointerEvents": "none",
+      "_extraction": {"rawFontSize": 13, "anchorFormula": "(W-16,TOP_BAR_H/2-6)", "visibleWhen": "board.timerStarted and not board.cleared and not board.failed"}
+    },
+    {
+      "type": "Panel", "id": "rating-lua-dynamic-region", "visible": false, "position": "absolute", "right": 9, "top": 30, "width": 48, "height": 14,
+      "backgroundColor": false, "borderWidth": 0, "boxShadow": false, "pointerEvents": "none", "children": [],
+      "_extraction": {"preserveLuaDynamicLayer": true, "visibleWhen": "board.timerStarted and not board.cleared and not board.failed", "formula": "starR=7; starGap=17; starBaseX=W-16-starGap; centers=starBaseX+(si-2)*starGap; starY=TOP_BAR_H/2+10", "rating": "elapsed=board.elapsedMs/1000; 3 stars if elapsed<=rankTime.a, 2 if <=rankTime.b, else 1", "colors": {"active": [255, 215, 0, 255], "empty": [200, 195, 185, 255]}, "retained": "Original five-point mini-star polygons; no substitute font glyphs or vector JSON."}
+    },
+    {
+      "type": "Panel", "id": "board-frame-shadow", "position": "absolute", "left": 43.3424, "top": 232.084352, "width": 318.5152, "height": 380.144,
+      "backgroundColor": [151, 123, 78, 45], "borderWidth": 0, "borderRadius": 11, "boxShadow": false, "pointerEvents": "none"
+    },
+    {
+      "type": "Panel", "id": "board-frame", "position": "absolute", "left": 42.3424, "top": 229.084352, "width": 318.5152, "height": 380.144,
+      "backgroundColor": [239, 226, 194, 255], "borderWidth": 2.3, "borderAlign": "center", "borderColor": [91, 76, 47, 255], "borderRadius": 11, "boxShadow": false, "pointerEvents": "none",
+      "_extraction": {"source": "scripts/games/p4-link-match/view/board-renderer.lua:drawBoard", "formula": "Paper.panel(board.x-7,board.y-7,board.w+14,board.h+14,{239,226,194,255}); shadow at frame+(1,3)."}
+    },
+    {
+      "type": "Panel", "id": "board-lua-dynamic-region", "position": "absolute", "left": 49.3424, "top": 236.084352, "width": 304.5152, "height": 366.144,
+      "backgroundColor": false, "borderWidth": 0, "boxShadow": false, "pointerEvents": "none", "children": [],
+      "_extraction": {"role": "Independent empty region reserved for existing Lua tile drawing.", "preserveLuaDynamicLayer": true, "rows": 6, "cols": 5, "cellSize": 58, "gap": 3.6288, "retained": ["tile artwork and cell content", "selection and hint flashing", "matching/elimination animations", "click handling and pathfinding"], "source": "scripts/games/p4-link-match/view/board-renderer.lua:drawBoard"}
+    },
+    {
+      "type": "Panel", "id": "route-lua-dynamic-region", "position": "absolute", "left": 18.528, "top": 205.269952, "width": 366.144, "height": 427.7728,
+      "backgroundColor": false, "borderWidth": 0, "boxShadow": false, "pointerEvents": "none", "children": [],
+      "_extraction": {"role": "Transparent route extent, deliberately extends outside the tile rectangle; never clips Lua links to board frame.", "preserveLuaDynamicLayer": true, "formula": "routePad=outer*(cell+gap)/2=30.8144; bounds=(board.x-routePad,board.y-routePad,board.w+routePad*2,board.h+routePad*2)", "retained": "drawLinkLine outside-perimeter routes, shuffle overlay and path animation; no tile/path logic in JSON."}
+    },
+    {
+      "type": "Button", "id": "back-button", "position": "absolute", "left": 10, "top": 60, "width": 50, "height": 44,
+      "text": "返回", "fontFamily": "sans", "fontSize": 12, "textColor": [91, 76, 47, 255],
+      "backgroundColor": [255, 246, 220, 255], "backgroundGradient": {"direction": "to-bottom", "from": [255, 246, 220, 255], "to": [255, 246, 220, 255]}, "borderWidth": 2, "borderAlign": "center", "borderColor": [91, 76, 47, 255], "borderRadius": 11,
+      "padding": 0, "paddingHorizontal": 0, "boxShadow": false, "pointerEvents": "none", "_extraction": {"rawFontSize": 16, "actionNotBound": "back"}
+    },
+    {
+      "type": "Button", "id": "pause-button", "position": "absolute", "left": 66, "top": 60, "width": 50, "height": 44,
+      "text": "暂停", "fontFamily": "sans", "fontSize": 12, "textColor": [91, 76, 47, 255],
+      "backgroundColor": [255, 246, 220, 255], "backgroundGradient": {"direction": "to-bottom", "from": [255, 246, 220, 255], "to": [255, 246, 220, 255]}, "borderWidth": 2, "borderAlign": "center", "borderColor": [91, 76, 47, 255], "borderRadius": 11,
+      "padding": 0, "paddingHorizontal": 0, "boxShadow": false, "pointerEvents": "none", "_extraction": {"rawFontSize": 16, "actionNotBound": "pause"}
+    },
+    {
+      "type": "Button", "id": "shuffle-button", "position": "absolute", "left": 122, "top": 60, "width": 50, "height": 44,
+      "text": "洗牌2", "fontFamily": "sans", "fontSize": 12, "textColor": [91, 76, 47, 255],
+      "backgroundColor": [255, 246, 220, 255], "backgroundGradient": {"direction": "to-bottom", "from": [255, 246, 220, 255], "to": [255, 246, 220, 255]}, "borderWidth": 2, "borderAlign": "center", "borderColor": [91, 76, 47, 255], "borderRadius": 11,
+      "padding": 0, "paddingHorizontal": 0, "boxShadow": false, "pointerEvents": "none",
+      "_extraction": {"rawFontSize": 16, "actionNotBound": "shuffle", "bindingNotImplemented": "'洗牌'..board:getRemainShuffles()", "enabledWhen": "board:getRemainShuffles()>0 and State.canClick(board.sm)", "sourceDisabledAlpha": 0.5}
+    },
+    {
+      "type": "Panel", "id": "time-progress", "visible": false, "position": "absolute", "left": 32, "right": 32, "bottom": 24, "height": 12,
+      "backgroundColor": [221, 207, 166, 255], "borderWidth": 1.5, "borderAlign": "center", "borderColor": [91, 76, 47, 255], "borderRadius": 3.6, "boxShadow": false, "pointerEvents": "none",
+      "children": [
+        {
+          "type": "Panel", "id": "time-progress-fill", "position": "absolute", "left": 0, "top": 0, "width": "100%", "height": 12,
+          "backgroundColor": [132, 166, 78, 255], "borderWidth": 0, "borderRadius": 3.6, "boxShadow": false, "pointerEvents": "none",
+          "_extraction": {"snapshotRatio": 1, "formula": "ratio=clamp(board:getRemainTime()/board.timeLimit,0,1); fillW=(W-64)*ratio; source clips full plaque rather than rounding a shortened plaque.", "lowTimeColor": "remain<=10: {220,50,40}; remain<=30: t=(remain-10)/20; pulse=sin(animTime*4)*.5+.5; blend=t+(1-t)*pulse; {floor(240-20*(1-blend)),floor(180*blend+50*(1-blend)),40}", "limitation": "Initial hidden/full fill snapshot only; runtime clipped leading edge and pulse remain Lua."}
+        },
+        {
+          "type": "Label", "id": "time-progress-text", "position": "absolute", "left": 0, "top": -19, "width": "100%", "height": 18,
+          "text": "0:40", "fontFamily": "sans", "fontSize": 9.75, "fontColor": [132, 166, 78, 200],
+          "textAlign": "center", "verticalAlign": "middle", "lineHeight": 1, "pointerEvents": "none", "_extraction": {"rawFontSize": 13, "anchorFormula": "(W/2,barY-10)", "bindingNotImplemented": "formatTime(board:getRemainTime())"}
+        }
+      ],
+      "_extraction": {"visibleWhen": "board.timerStarted and not board.cleared", "formula": "barH=12; margin=32; totalW=W-64; barX=32; barY=H-12-24; Pen.plaque r=min(11,barH*.3,totalW*.3)=3.6", "snapshotTotalWidth": 339.2, "snapshotBarY": 860, "retainedLuaDynamicLayer": "+1s floating bonus text: t=1-timeBonusTimer; y=barY-14-t*28; alpha=floor(255*(1-t)); rawFontSize=16*(1+t*.06)."}
+    }
+  ],
+  "_extraction": {
+    "kind": "static-gameplay-hud-extraction",
+    "baseline": {"physicalWidth": 540, "physicalHeight": 1200, "dpr": 1, "effectiveWidth": 403.2, "effectiveHeight": 896},
+    "density": {"source": "scripts/shared/utils/density.lua", "formula": "factor=clamp((physicalH/dpr)/896,.85,2.5); scale=dpr*factor; fullW=physicalW/scale; H=physicalH/scale; W=min(fullW,H*(1/1.2)); offsetX=(fullW-W)/2", "factor": 1.3392857142857142, "offsetX": 0},
+    "fonts": [{"fontFamily": "sans", "originalPath": "Fonts/LongZhuTi-Regular.ttf", "source": "scripts/games/p4-link-match/adapter.lua:247", "conversion": "fontSize=raw NanoVG font size*0.75 to compensate default UI Theme.FontSize 4/3 conversion. Original sizes recorded per text node."}],
+    "snapshot": {"levelId": "L1", "rows": 6, "cols": 5, "remainPairs": 15, "timeLimit": 40, "elapsedMs": 0, "remainShuffles": 2, "timerStarted": false, "paused": false, "cleared": false, "failed": false, "backgroundId": "default", "sceneryTransform": "neutral rotation and scale"},
+    "sources": ["scripts/games/p4-link-match/screens/gameplay.lua", "scripts/games/p4-link-match/view/hud-renderer.lua", "scripts/games/p4-link-match/view/board-renderer.lua", "scripts/games/p4-link-match/data/levels.lua", "scripts/games/p4-link-match/logic/board.lua", "scripts/games/p4-link-match/adapter.lua", "scripts/shared/layout/game-board.lua", "scripts/shared/constants/layout.lua", "scripts/shared/constants/colors.lua", "scripts/shared/constants/art.lua", "scripts/shared/components/game-paper.lua", "scripts/shared/components/handdrawn.lua", "scripts/shared/background-manager.lua", "scripts/shared/rendering/game-scenery.lua", "scripts/shared/rendering/piece-sprites.lua", "scripts/shared/utils/density.lua"],
+    "layout": {
+      "shared": "side=max(16,min(24,W*.045)); footer=min(options.footer or 184,H*.36); gap=options.gap or 3; outer=options.outer or 0; availableW=W-side*2; availableH=max(1,H-top-max(bottom or 0,footer)); cell=max(1,floor(min((availableW-gap*(cols-1))/(cols+outer),(availableH-gap*(rows-1))/(rows+outer),options.maxCell or infinity))); width=cell*cols+gap*(cols-1); height=cell*rows+gap*(rows-1); routePad=outer*(cell+gap)/2; slack=max(0,availableH-height-routePad*2); x=(W-width)/2; y=top+routePad+slack*.66",
+      "boardArguments": "rows=6; cols=5; top=TOP_BAR_H(54)+BOARD_TOP_PADDING(64); bottom=BOARD_BOTTOM_PADDING(50); gap=max(3,min(6,W*.009)); options={gap=gap,outer=1,footer=218}; preserve real outside route half-cell margin",
+      "buttons": "btnW=50; btnH=44; gap=6; x=10+(i-1)*(50+6); y=TOP_BAR_H+6; labels/actions=返回/back,暂停/pause,洗牌..remainShuffles/shuffle; BOTTOM_BAR_H=0",
+      "constraints": "Source percentages retained for screen spans and centered text/scenery anchors, absolute 32px margins/bottom24 retained for time bar. Complex min/floor and board-relative positions evaluated at effective canvas. Text boxes preserve source point anchors, not a redesigned layout."
+    },
+    "preserveLuaDynamicLayer": true,
+    "notPresentInSourceHud": ["restart/reset button (restart is keyboard/result flow only)", "hint button (logic has hints but drawBottom exposes back/pause/shuffle only)"],
+    "limits": ["Static UI data only: no Lua changes, integration, callbacks, state, timer, pathfinder or playable board.", "Initial timerStarted=false means original time bar/rating are hidden; their existing controls and formulas are retained as hidden data, not forced visible.", "Live board and outside routing, shuffling/bonus/star animations, afterBg mascot and pause/result/celebration overlays remain Lua.", "Paper plaque quadratic curves approximated by supported borderRadius. No invented NanoVG JSON commands, new imagery or screenshot flattening.", "Future integration must reconcile raw NanoVG-before-UI rendering order; a separately drawn raw board cannot appear above this UI background automatically.", "Resize and state updates require reevaluation/binding of documented formulas and original sans font registration with default pixel-mode conversion. No build/runtime screenshot was performed."]
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "type": "Panel", "id": "settings-popup", "width": 540, "height": 1200,
+  "backgroundColor": [0, 0, 0, 160], "justifyContent": "center", "alignItems": "center",
+  "_extraction": {
+    "source": "scripts/shared/components/settings-popup.lua",
+    "designViewport": {"width": 540, "height": 1200, "dpr": 1},
+    "canvas": {"width": 540, "height": 1200, "note": "原生UI逻辑设计快照，不套用raw NanoVG的Density画布。"},
+    "layoutFormula": "refreshUIScale: clamp(min(logW,logH)/500,1,2)=1.08; s(v)=floor(v*1.08)。主卡width=92%, maxWidth=s(420)=453,height=88%=1056；居中。",
+    "fonts": [{"family": "sans", "path": "Fonts/LongZhuTi-Regular.ttf", "source": "scripts/main.lua UI.Init fonts"}],
+    "typography": "保留源UI的s(fontSize)数值和bold；fontFamily是已注册别名，不是字体文件路径。PaperUI.button使用textColor=Art.colors.ink，源fontColor不会控制按钮文字。",
+    "dependencies": ["scripts/shared/components/paper-ui.lua", "scripts/shared/constants/art.lua", "scripts/shared/constants/colors.lua", "scripts/shared/settings-save.lua", "scripts/shared/cloud-age.lua", "scripts/config/compliance.lua"],
+    "dynamicVariables": {"bgmPct": 35, "sfxPct": 100, "complianceEnabled": false, "statusText": "外部正式系统接管", "ageBand": null, "ageStatus": "未设置", "useCloudAge": true, "opts.extraButtons": "home/adventure的makeDevButtons两项样例"},
+    "behaviorsRemainInLua": ["音量滑动和百分比更新", "settingsSave存档", "年龄选择及云存档", "隐私政策子弹窗", "退出登录", "扩展按钮确认及清档/解锁", "所有点击音效、关闭及回调"],
+    "alternativeStates": {"settings-age-overlay": "默认visible=false；编辑器打开年龄选择预览", "settings-confirm-overlay": "默认visible=false；解锁确认样例，清档时标题/说明/按钮由Lua替换"},
+    "limitations": ["ScrollView转Panel保留settings-scroll和布局约束，编辑器预览不滚动；home/adventure扩展按钮样例使底部内容可能超出裁切区，关闭按钮节点仍保留可编辑，滚动行为留Lua。", "Slider/Toggle拆为Panel静态轨道和滑块；只可编辑外观，拖动/切换仍由Lua实现。", "隐私政策正文属于独立组件，未将其混入本设置主弹窗。"]
+  },
+  "children": [
+    {
+      "type": "Panel", "id": "settings-card", "width": "92%", "maxWidth": 453, "height": "88%",
+      "backgroundColor": [255, 246, 220, 255], "borderRadius": 12, "borderWidth": 2, "borderColor": [91, 76, 47, 255], "overflow": "hidden", "flexDirection": "column", "alignItems": "center",
+      "children": [
+        {
+          "type": "Panel", "id": "settings-header", "width": "100%", "height": 69, "flexShrink": 0,
+          "backgroundColor": [221, 207, 166, 255], "borderBottomWidth": 2, "borderColor": [91, 76, 47, 255], "justifyContent": "center", "alignItems": "center",
+          "children": [{"type": "Label", "id": "settings-title", "text": "设置", "fontFamily": "sans", "fontSize": 28, "fontColor": [91, 76, 47, 255], "fontWeight": "bold"}]
+        },
+        {
+          "type": "Panel", "id": "settings-scroll", "width": "100%", "flexGrow": 1, "flexBasis": 0, "overflow": "hidden",
+          "children": [
+            {
+              "type": "Panel", "id": "settings-content", "width": "100%", "padding": 21, "flexShrink": 0, "flexDirection": "column", "alignItems": "center", "gap": 17,
+              "children": [
+                {
+                  "type": "Panel", "id": "settings-bgm-card", "width": "100%", "backgroundColor": [255, 245, 230, 255], "borderWidth": 1.5, "borderColor": [91, 76, 47, 255], "borderRadius": 10, "padding": 17, "paddingTop": 15, "paddingBottom": 15, "gap": 10,
+                  "children": [
+                    {"type": "Panel", "width": "100%", "flexDirection": "row", "justifyContent": "space-between", "alignItems": "center", "children": [
+                      {"type": "Label", "id": "settings-bgm-label", "text": "背景音乐", "fontFamily": "sans", "fontSize": 18, "fontColor": [91, 76, 47, 255], "fontWeight": "bold"},
+                      {"type": "Label", "id": "settings-bgm-value", "text": "35%", "fontFamily": "sans", "fontSize": 18, "fontColor": [238, 156, 67, 255], "fontWeight": "bold"}
+                    ]},
+                    {"type": "Panel", "id": "settings-bgm-slider", "width": "100%", "height": 47, "justifyContent": "center", "children": [
+                      {"type": "Panel", "id": "settings-bgm-track", "position": "absolute", "left": 12.5, "right": 12.5, "top": 19.5, "height": 8, "backgroundColor": [221, 207, 166, 255], "borderRadius": 4, "borderWidth": 1.5, "borderColor": [91, 76, 47, 255], "children": [
+                        {"type": "Panel", "id": "settings-bgm-fill", "position": "absolute", "left": 0, "top": 0, "width": "35%", "height": 8, "backgroundColor": [132, 166, 78, 255], "borderRadius": 4},
+                        {"type": "Panel", "id": "settings-bgm-thumb", "position": "absolute", "left": "35%", "top": -8.5, "translateX": -12.5, "width": 25, "height": 25, "backgroundColor": [255, 246, 220, 255], "borderRadius": 12.5, "borderWidth": 2, "borderColor": [91, 76, 47, 255]}
+                      ]}
+                    ]}
+                  ]
+                },
+                {
+                  "type": "Panel", "id": "settings-sfx-card", "width": "100%", "backgroundColor": [237, 241, 216, 255], "borderWidth": 1.5, "borderColor": [91, 76, 47, 255], "borderRadius": 10, "padding": 17, "paddingTop": 15, "paddingBottom": 15, "gap": 10,
+                  "children": [
+                    {"type": "Panel", "width": "100%", "flexDirection": "row", "justifyContent": "space-between", "alignItems": "center", "children": [
+                      {"type": "Label", "id": "settings-sfx-label", "text": "游戏音效", "fontFamily": "sans", "fontSize": 18, "fontColor": [91, 76, 47, 255], "fontWeight": "bold"},
+                      {"type": "Label", "id": "settings-sfx-value", "text": "100%", "fontFamily": "sans", "fontSize": 18, "fontColor": [238, 156, 67, 255], "fontWeight": "bold"}
+                    ]},
+                    {"type": "Panel", "id": "settings-sfx-slider", "width": "100%", "height": 47, "justifyContent": "center", "children": [
+                      {"type": "Panel", "id": "settings-sfx-track", "position": "absolute", "left": 12.5, "right": 12.5, "top": 19.5, "height": 8, "backgroundColor": [221, 207, 166, 255], "borderRadius": 4, "borderWidth": 1.5, "borderColor": [91, 76, 47, 255], "children": [
+                        {"type": "Panel", "id": "settings-sfx-fill", "position": "absolute", "left": 0, "top": 0, "width": "100%", "height": 8, "backgroundColor": [132, 166, 78, 255], "borderRadius": 4},
+                        {"type": "Panel", "id": "settings-sfx-thumb", "position": "absolute", "left": "100%", "top": -8.5, "translateX": -12.5, "width": 25, "height": 25, "backgroundColor": [255, 246, 220, 255], "borderRadius": 12.5, "borderWidth": 2, "borderColor": [91, 76, 47, 255]}
+                      ]}
+                    ]}
+                  ]
+                },
+                {
+                  "type": "Panel", "id": "settings-protection-card", "width": "100%", "backgroundColor": [230, 248, 238, 255], "borderWidth": 1.5, "borderColor": [91, 76, 47, 255], "borderRadius": 15, "padding": 17, "paddingTop": 15, "paddingBottom": 15, "flexDirection": "row", "alignItems": "center", "gap": 12,
+                  "children": [
+                    {"type": "Panel", "id": "settings-protection-indicator", "width": 10, "height": 10, "borderRadius": 5, "backgroundColor": [132, 166, 78, 255]},
+                    {"type": "Panel", "flexGrow": 1, "flexBasis": 0, "flexShrink": 1, "gap": 2, "children": [
+                      {"type": "Label", "id": "settings-protection-title", "text": "防沉迷保护", "fontFamily": "sans", "fontSize": 18, "fontColor": [91, 76, 47, 255], "fontWeight": "bold"},
+                      {"type": "Label", "id": "settings-protection-desc", "text": "外部正式系统接管", "width": "100%", "whiteSpace": "normal", "fontFamily": "sans", "fontSize": 14, "fontColor": [116, 102, 70, 255]}
+                    ]}
+                  ]
+                },
+                {
+                  "type": "Panel", "id": "settings-age-status-card", "width": "100%", "backgroundColor": [221, 207, 166, 255], "borderWidth": 1.5, "borderColor": [91, 76, 47, 255], "borderRadius": 15, "padding": 17, "paddingTop": 15, "paddingBottom": 15, "gap": 10,
+                  "children": [
+                    {"type": "Panel", "width": "100%", "gap": 4, "children": [
+                      {"type": "Label", "id": "settings-age-title", "width": "100%", "whiteSpace": "normal", "text": "云存档年龄（测试）", "fontFamily": "sans", "fontSize": 18, "fontColor": [91, 76, 47, 255], "fontWeight": "bold"},
+                      {"type": "Label", "id": "settings-age-status", "text": "当前档位：未设置", "width": "100%", "whiteSpace": "normal", "fontFamily": "sans", "fontSize": 14, "fontColor": [116, 102, 70, 255]}
+                    ]},
+                    {"type": "Panel", "width": "100%", "flexDirection": "row", "justifyContent": "space-between", "alignItems": "center", "gap": 12, "children": [
+                      {"type": "Panel", "flexGrow": 1, "flexBasis": 0, "flexShrink": 1, "gap": 2, "children": [
+                        {"type": "Label", "id": "settings-age-toggle-label", "text": "使用云存档年龄", "fontFamily": "sans", "fontSize": 16, "fontColor": [91, 76, 47, 255]},
+                        {"type": "Label", "id": "settings-age-desc", "text": "开启后，未实名/未满8 将禁止装扮购买", "width": "100%", "whiteSpace": "normal", "fontFamily": "sans", "fontSize": 12, "fontColor": [116, 102, 70, 255]}
+                      ]},
+                      {"type": "Panel", "id": "settings-age-toggle", "width": 47, "height": 47, "flexShrink": 0, "justifyContent": "center", "children": [
+                        {"type": "Panel", "id": "settings-age-toggle-track", "width": 47, "height": 25, "backgroundColor": [132, 166, 78, 255], "borderRadius": 12.5, "children": [
+                          {"type": "Panel", "id": "settings-age-toggle-thumb", "position": "absolute", "left": 24, "top": 2, "width": 21, "height": 21, "borderRadius": 10.5, "backgroundColor": [255, 246, 220, 255]}
+                        ]}
+                      ]}
+                    ]},
+                    {"type": "Button", "id": "settings-age-open", "text": "测试账号年龄", "width": "100%", "height": 49, "minHeight": 44, "fontFamily": "sans", "fontSize": 16, "fontWeight": "bold", "textColor": [91, 76, 47, 255], "backgroundColor": [255, 246, 220, 255], "borderRadius": 10, "borderWidth": 2, "borderColor": [91, 76, 47, 255], "boxShadow": false, "hoverBoxShadow": false, "pressedBoxShadow": false, "flexShrink": 0}
+                  ]
+                },
+                {"type": "Button", "id": "settings-privacy-policy", "text": "隐私政策", "width": "100%", "height": 51, "fontFamily": "sans", "fontSize": 18, "fontWeight": "bold", "textColor": [91, 76, 47, 255], "backgroundColor": [255, 246, 220, 255], "borderRadius": 10, "borderWidth": 2, "borderColor": [91, 76, 47, 255], "boxShadow": false, "hoverBoxShadow": false, "pressedBoxShadow": false, "flexShrink": 0},
+                {"type": "Button", "id": "settings-logout", "text": "退出登录", "width": "100%", "height": 51, "fontFamily": "sans", "fontSize": 18, "fontWeight": "bold", "textColor": [91, 76, 47, 255], "backgroundColor": [255, 246, 220, 255], "borderRadius": 10, "borderWidth": 2, "borderColor": [91, 76, 47, 255], "boxShadow": false, "hoverBoxShadow": false, "pressedBoxShadow": false, "flexShrink": 0},
+                {"type": "Button", "id": "settings-extra-7", "text": "解锁所有关卡", "width": "100%", "height": 51, "fontFamily": "sans", "fontSize": 18, "fontWeight": "bold", "textColor": [91, 76, 47, 255], "backgroundColor": [245, 180, 103, 255], "borderRadius": 10, "borderWidth": 2, "borderColor": [91, 76, 47, 255], "boxShadow": false, "hoverBoxShadow": false, "pressedBoxShadow": false, "flexShrink": 0},
+                {"type": "Button", "id": "settings-extra-8", "text": "清空存档（重新开始）", "width": "100%", "height": 51, "fontFamily": "sans", "fontSize": 18, "fontWeight": "bold", "textColor": [91, 76, 47, 255], "backgroundColor": [250, 140, 140, 255], "borderRadius": 10, "borderWidth": 2, "borderColor": [91, 76, 47, 255], "boxShadow": false, "hoverBoxShadow": false, "pressedBoxShadow": false, "flexShrink": 0},
+                {"type": "Button", "id": "settings-close", "text": "关闭", "width": "100%", "height": 54, "fontFamily": "sans", "fontSize": 20, "fontWeight": "bold", "textColor": [91, 76, 47, 255], "backgroundColor": [238, 156, 67, 255], "borderRadius": 10, "borderWidth": 2, "borderColor": [91, 76, 47, 255], "boxShadow": false, "hoverBoxShadow": false, "pressedBoxShadow": false, "flexShrink": 0}
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Panel", "id": "settings-age-overlay", "visible": false, "position": "absolute", "left": 0, "top": 0, "width": "100%", "height": "100%", "backgroundColor": [0, 0, 0, 180], "justifyContent": "center", "alignItems": "center",
+      "children": [
+        {"type": "Panel", "id": "settings-age-card", "width": "90%", "maxWidth": 388, "height": "88%", "maxHeight": 496, "padding": 21, "backgroundColor": [255, 246, 220, 255], "borderRadius": 12, "borderWidth": 2.5, "borderColor": [91, 76, 47, 255], "alignItems": "center", "gap": 8, "boxShadow": false, "children": [
+          {"type": "Label", "id": "settings-age-picker-title", "text": "设置账号年龄", "width": "100%", "whiteSpace": "normal", "textAlign": "center", "fontFamily": "sans", "fontSize": 20, "fontColor": [91, 76, 47, 255], "fontWeight": "bold", "marginBottom": 6},
+          {"type": "Label", "id": "settings-age-picker-description", "text": "选择后将保存到云存档，用于测试付费限制", "width": "100%", "whiteSpace": "normal", "textAlign": "center", "fontFamily": "sans", "fontSize": 12, "fontColor": [116, 102, 70, 255], "marginBottom": 6},
+          {"type": "Panel", "id": "settings-age-scroll", "width": "100%", "flexGrow": 1, "flexBasis": 0, "overflow": "hidden", "children": [
+            {"type": "Panel", "width": "100%", "padding": 2, "gap": 6, "flexShrink": 0, "children": [
+              {"type": "Button", "id": "settings-age-option-unverified", "text": "未实名", "width": "100%", "height": 49, "fontFamily": "sans", "fontSize": 17, "fontWeight": "bold", "textColor": [91, 76, 47, 255], "backgroundColor": [255, 246, 220, 255], "borderRadius": 10, "borderWidth": 2, "borderColor": [91, 76, 47, 255], "boxShadow": false},
+              {"type": "Button", "id": "settings-age-option-under8", "text": "未满8", "width": "100%", "height": 49, "fontFamily": "sans", "fontSize": 17, "fontWeight": "bold", "textColor": [91, 76, 47, 255], "backgroundColor": [255, 246, 220, 255], "borderRadius": 10, "borderWidth": 2, "borderColor": [91, 76, 47, 255], "boxShadow": false},
+              {"type": "Button", "id": "settings-age-option-8to12", "text": "8到12", "width": "100%", "height": 49, "fontFamily": "sans", "fontSize": 17, "fontWeight": "bold", "textColor": [91, 76, 47, 255], "backgroundColor": [255, 246, 220, 255], "borderRadius": 10, "borderWidth": 2, "borderColor": [91, 76, 47, 255], "boxShadow": false},
+              {"type": "Button", "id": "settings-age-option-12to16", "text": "12到16", "width": "100%", "height": 49, "fontFamily": "sans", "fontSize": 17, "fontWeight": "bold", "textColor": [91, 76, 47, 255], "backgroundColor": [255, 246, 220, 255], "borderRadius": 10, "borderWidth": 2, "borderColor": [91, 76, 47, 255], "boxShadow": false},
+              {"type": "Button", "id": "settings-age-option-18plus", "text": "满18", "width": "100%", "height": 49, "fontFamily": "sans", "fontSize": 17, "fontWeight": "bold", "textColor": [91, 76, 47, 255], "backgroundColor": [255, 246, 220, 255], "borderRadius": 10, "borderWidth": 2, "borderColor": [91, 76, 47, 255], "boxShadow": false}
+            ]}
+          ]},
+          {"type": "Button", "id": "settings-age-cancel", "text": "取消", "width": "100%", "height": 49, "fontFamily": "sans", "fontSize": 17, "fontWeight": "bold", "textColor": [91, 76, 47, 255], "backgroundColor": [255, 246, 220, 255], "borderRadius": 10, "borderWidth": 2, "borderColor": [91, 76, 47, 255], "boxShadow": false}
+        ]}
+      ]
+    },
+    {
+      "type": "Panel", "id": "settings-confirm-overlay", "visible": false, "position": "absolute", "left": 0, "top": 0, "width": "100%", "height": "100%", "backgroundColor": [0, 0, 0, 160], "justifyContent": "center", "alignItems": "center",
+      "children": [
+        {"type": "Panel", "id": "settings-confirm-card", "width": "90%", "maxWidth": 388, "padding": 21, "backgroundColor": [255, 246, 220, 255], "borderRadius": 12, "borderWidth": 2.5, "borderColor": [91, 76, 47, 255], "alignItems": "center", "gap": 12, "boxShadow": false, "children": [
+          {"type": "Panel", "width": 51, "height": 51, "borderRadius": 10, "backgroundColor": [255, 240, 220, 255], "justifyContent": "center", "alignItems": "center", "marginBottom": 4, "children": [{"type": "Label", "text": "!", "fontFamily": "sans", "fontSize": 28, "fontColor": [238, 156, 67, 255], "fontWeight": "bold"}]},
+          {"type": "Label", "id": "settings-confirm-title", "text": "确认解锁所有关卡？", "width": "100%", "whiteSpace": "normal", "fontFamily": "sans", "fontSize": 20, "fontColor": [91, 76, 47, 255], "fontWeight": "bold", "textAlign": "center"},
+          {"type": "Label", "id": "settings-confirm-desc", "text": "将完成所有主线关卡，并将自由模式所有关卡记为1星通关。", "width": "100%", "whiteSpace": "normal", "fontFamily": "sans", "fontSize": 15, "fontColor": [116, 102, 70, 255], "textAlign": "center", "marginBottom": 4},
+          {"type": "Panel", "width": "100%", "flexDirection": "row", "gap": 12, "marginTop": 4, "children": [
+            {"type": "Button", "id": "settings-confirm-cancel", "text": "取消", "flexGrow": 1, "flexBasis": 0, "height": 49, "fontFamily": "sans", "fontSize": 18, "fontWeight": "bold", "textColor": [91, 76, 47, 255], "backgroundColor": [255, 246, 220, 255], "borderRadius": 10, "borderWidth": 2, "borderColor": [91, 76, 47, 255], "boxShadow": false},
+            {"type": "Button", "id": "settings-confirm-submit", "text": "确认解锁", "flexGrow": 1, "flexBasis": 0, "height": 49, "fontFamily": "sans", "fontSize": 18, "fontWeight": "bold", "textColor": [91, 76, 47, 255], "backgroundColor": [238, 156, 67, 255], "borderRadius": 10, "borderWidth": 2, "borderColor": [91, 76, 47, 255], "boxShadow": false}
+          ]}
+        ]}
+      ]
+    }
+  ]
+}

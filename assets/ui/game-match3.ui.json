@@ -1,0 +1,125 @@
+{
+  "type": "Panel", "id": "game-match3", "width": 403.2, "height": 896,
+  "backgroundColor": false, "borderWidth": 0, "boxShadow": false, "pointerEvents": "none", "fontFamily": "sans",
+  "children": [
+    {
+      "type": "Panel", "id": "background", "position": "absolute", "left": 0, "top": 0, "width": "100%", "height": "100%",
+      "backgroundColor": [255, 248, 238, 255], "backgroundImage": "image/handdrawn/backgrounds/default.png", "backgroundFit": "cover", "pointerEvents": "none",
+      "_extraction": {"source": "scripts/shared/background-manager.lua:getBackgroundForLevel/renderBackground", "selection": "Default player background, no level override; existing background artwork, not a gameplay screenshot."}
+    },
+    {
+      "type": "Panel", "id": "scenery-top", "position": "absolute", "left": "52%", "translateX": -95, "top": 136.74, "width": 190, "height": 95,
+      "backgroundColor": false, "backgroundImage": "image/handdrawn/pieces/scenes/garden-top.png", "backgroundFit": "fill", "pointerEvents": "none",
+      "_extraction": {"formula": "upperStart=116; upperEnd=board.y-16; visible=upperEnd-upperStart>=32; width=min(W*.48,190,(upperEnd-upperStart)*2); height=width/2; cx=W*.52; cy=(upperStart+upperEnd)/2; left=cx-width/2; top=cy-height/2", "retainedLuaAnimation": "Neutral rotation snapshot; sin(time*1.2)*.012 radians around hanging point stays in Lua."}
+    },
+    {
+      "type": "Panel", "id": "scenery-bottom", "position": "absolute", "left": "72%", "translateX": -92.736, "top": 689.416, "width": 185.472, "height": 123.648,
+      "backgroundColor": false, "backgroundImage": "image/handdrawn/pieces/scenes/garden-bottom.png", "backgroundFit": "fill", "pointerEvents": "none",
+      "_extraction": {"formula": "lowerStart=board.y+board.h+20; lowerEnd=H-48; visible=lowerEnd-lowerStart>=46; width=min(W*.46,190,(lowerEnd-lowerStart)*1.5); height=width*2/3; cx=W*.72; cy=(lowerStart+lowerEnd)/2; left=cx-width/2; top=cy-height/2", "retainedLuaAnimation": "Neutral scale snapshot; bottom-anchored breathing sin(time*1.35+1.1)*.007 stays in Lua."}
+    },
+    {
+      "type": "Panel", "id": "hud-paper", "position": "absolute", "left": 0, "top": 0, "width": "100%", "height": 54,
+      "backgroundColor": [255, 246, 220, 255], "borderWidth": 0, "boxShadow": false, "pointerEvents": "none"
+    },
+    {
+      "type": "Panel", "id": "hud-rule", "position": "absolute", "left": 0, "top": 51.85, "width": "100%", "height": 2.3,
+      "backgroundColor": [91, 76, 47, 255], "pointerEvents": "none",
+      "_extraction": {"formula": "Paper.hud 2.3-wide horizontal stroke centered on y=TOP_BAR_H-1."}
+    },
+    {
+      "type": "Label", "id": "level-title", "position": "absolute", "left": "25%", "top": 4, "width": "50%", "height": 20,
+      "text": "关卡1  90秒", "fontFamily": "sans", "fontSize": 11.25, "fontColor": [91, 76, 47, 200],
+      "textAlign": "center", "verticalAlign": "middle", "lineHeight": 1, "pointerEvents": "none",
+      "_extraction": {"rawFontSize": 15, "anchorFormula": "(W/2,14)", "bindingNotImplemented": "levelData_.title or (levelId:gsub('^L','关卡')..'  '..timeLimit..'秒')", "labelBox": "Text box preserves center/middle source point, not a new source width constraint."}
+    },
+    {
+      "type": "Label", "id": "time-caption", "position": "absolute", "left": 14, "top": 6, "width": 64, "height": 16,
+      "text": "时间", "fontFamily": "sans", "fontSize": 9, "fontColor": [116, 102, 70, 255],
+      "textAlign": "left", "verticalAlign": "middle", "lineHeight": 1, "pointerEvents": "none", "_extraction": {"rawFontSize": 12, "anchor": [14, 14]}
+    },
+    {
+      "type": "Label", "id": "time-value", "position": "absolute", "left": 14, "top": 21, "width": 64, "height": 26,
+      "text": "90", "fontFamily": "sans", "fontSize": 15, "fontColor": [91, 76, 47, 255],
+      "textAlign": "left", "verticalAlign": "middle", "lineHeight": 1, "pointerEvents": "none",
+      "_extraction": {"rawFontSize": 20, "anchor": [14, 34], "bindingNotImplemented": "tostring(ceil(board.remainTime))", "warningColorWhenRemainTimeAtMost10": [255, 100, 80, 255]}
+    },
+    {
+      "type": "Label", "id": "score-caption", "position": "absolute", "right": 14, "top": 6, "width": 64, "height": 16,
+      "text": "分数", "fontFamily": "sans", "fontSize": 9, "fontColor": [116, 102, 70, 255],
+      "textAlign": "right", "verticalAlign": "middle", "lineHeight": 1, "pointerEvents": "none", "_extraction": {"rawFontSize": 12, "anchorFormula": "(W-14,14)"}
+    },
+    {
+      "type": "Label", "id": "score-value", "position": "absolute", "right": 14, "top": 21, "width": 80, "height": 26,
+      "text": "0", "fontFamily": "sans", "fontSize": 15, "fontColor": [91, 76, 47, 255],
+      "textAlign": "right", "verticalAlign": "middle", "lineHeight": 1, "pointerEvents": "none", "_extraction": {"rawFontSize": 20, "anchorFormula": "(W-14,34)", "bindingNotImplemented": "tostring(board.score)"}
+    },
+    {
+      "type": "Panel", "id": "goal-progress-track", "position": "absolute", "left": "30%", "top": 29, "width": "40%", "maxWidth": 180, "height": 6,
+      "backgroundColor": [255, 255, 255, 40], "borderRadius": 3, "borderWidth": 0, "boxShadow": false, "pointerEvents": "none",
+      "children": [
+        {
+          "type": "Panel", "id": "goal-progress-fill", "visible": false, "position": "absolute", "left": 0, "top": 0, "width": 6, "height": 6,
+          "backgroundColor": [100, 220, 140, 230], "borderRadius": 3, "borderWidth": 0, "boxShadow": false, "pointerEvents": "none",
+          "_extraction": {"snapshotRatio": 0, "visibleWhen": "board:getGoalRatio()>0", "formula": "fillW=max(barH,barW*min(1,board:getGoalRatio())); fill=starProgress and Colors.star.active or {100,220,140}, alpha=230", "starProgressColor": [255, 215, 0, 230]}
+        }
+      ],
+      "_extraction": {"formula": "barY=29; barW=min(180,W*.4); barH=6; barX=(W-barW)/2; radius=3", "snapshotBarWidth": 161.28, "limitation": "30% left exactly centers the 40% width at this snapshot. Above W=450 the source min(180,...) centering must be reevaluated, not stretched."}
+    },
+    {
+      "type": "Label", "id": "goal-progress-text", "position": "absolute", "left": "25%", "top": 37, "width": "50%", "height": 16,
+      "text": "目标：0 / 600", "fontFamily": "sans", "fontSize": 8.25, "fontColor": [91, 76, 47, 255],
+      "textAlign": "center", "verticalAlign": "middle", "lineHeight": 1, "pointerEvents": "none",
+      "_extraction": {"rawFontSize": 11, "anchorFormula": "(W/2,barY+barH+10)", "bindingNotImplemented": "hudRenderer._formatGoalText(board) or star-progress text after goal met", "variants": ["目标：score / targetScore", "收集：颜色 current/count", "直线/爆炸/彩虹 current/targetCount", "距nextStar星还需 needed 分", "★★★"], "starProgressFontColor": [255, 215, 0, 255]}
+    },
+    {
+      "type": "Panel", "id": "board-frame-shadow", "position": "absolute", "left": 13.6, "top": 265.48, "width": 378, "height": 378,
+      "backgroundColor": [151, 123, 78, 45], "borderWidth": 0, "borderRadius": 11, "boxShadow": false, "pointerEvents": "none"
+    },
+    {
+      "type": "Panel", "id": "board-frame", "position": "absolute", "left": 12.6, "top": 262.48, "width": 378, "height": 378,
+      "backgroundColor": [239, 226, 194, 255], "borderWidth": 2.3, "borderAlign": "center", "borderColor": [91, 76, 47, 255], "borderRadius": 11, "boxShadow": false, "pointerEvents": "none",
+      "_extraction": {"source": "scripts/games/p3-match-3/view/board-renderer.lua:draw", "formula": "Paper.panel(board.x-6,board.y-6,board.w+12,board.h+12,{239,226,194,255}); shadow offset=(1,3)", "retainedLuaBehavior": "Source board frame participates in particleFx screen shake; this JSON frame is a static neutral snapshot."}
+    },
+    {
+      "type": "Panel", "id": "board-lua-dynamic-region", "position": "absolute", "left": 18.6, "top": 268.48, "width": 366, "height": 366,
+      "backgroundColor": false, "borderWidth": 0, "boxShadow": false, "pointerEvents": "none", "children": [],
+      "_extraction": {"role": "Independent empty reserved region; all live board drawing remains Lua.", "preserveLuaDynamicLayer": true, "rows": 8, "cols": 8, "cellSize": 44, "gap": 2, "retained": ["grid cell backgrounds", "tiles/specials/ice/stones", "selection", "swap/shake/eliminate/fall animation", "combo text and particles", "match logic, input and scoring"]}
+    },
+    {
+      "type": "Button", "id": "back-button", "position": "absolute", "left": 12, "top": 62, "width": 56, "height": 44,
+      "text": "返回", "fontFamily": "sans", "fontSize": 12, "textColor": [91, 76, 47, 255],
+      "backgroundColor": [255, 246, 220, 255], "backgroundGradient": {"direction": "to-bottom", "from": [255, 246, 220, 255], "to": [255, 246, 220, 255]}, "borderWidth": 2, "borderAlign": "center", "borderColor": [91, 76, 47, 255], "borderRadius": 11,
+      "padding": 0, "paddingHorizontal": 0, "boxShadow": false, "pointerEvents": "none", "_extraction": {"rawFontSize": 16, "actionNotBound": "back"}
+    },
+    {
+      "type": "Button", "id": "pause-button", "position": "absolute", "left": 76, "top": 62, "width": 56, "height": 44,
+      "text": "暂停", "fontFamily": "sans", "fontSize": 12, "textColor": [91, 76, 47, 255],
+      "backgroundColor": [255, 246, 220, 255], "backgroundGradient": {"direction": "to-bottom", "from": [255, 246, 220, 255], "to": [255, 246, 220, 255]}, "borderWidth": 2, "borderAlign": "center", "borderColor": [91, 76, 47, 255], "borderRadius": 11,
+      "padding": 0, "paddingHorizontal": 0, "boxShadow": false, "pointerEvents": "none", "_extraction": {"rawFontSize": 16, "actionNotBound": "pause"}
+    },
+    {
+      "type": "Button", "id": "finish-button", "visible": false, "position": "absolute", "right": 10, "top": 62, "width": 80, "height": 44,
+      "text": "完成关卡", "fontFamily": "sans", "fontSize": 12, "textColor": [91, 76, 47, 255],
+      "backgroundColor": [238, 156, 67, 255], "backgroundGradient": {"direction": "to-bottom", "from": [238, 156, 67, 255], "to": [238, 156, 67, 255]}, "borderWidth": 2, "borderAlign": "center", "borderColor": [91, 76, 47, 255], "borderRadius": 11,
+      "padding": 0, "paddingHorizontal": 0, "boxShadow": false, "pointerEvents": "none",
+      "_extraction": {"rawFontSize": 16, "actionNotBound": "finish", "visibleWhen": "board.goalReached and not storylineMode_ and not board.cleared and not board.failed", "formula": "x=W-80-10; y=TOP_BAR_H+8; actual Paper.button height=44 (not obsolete btnH=30).", "limitation": "Four source glyphs at raw 16px may overflow the 80px button with this font; original source is not redesigned or auto-shrunk here."}
+    }
+  ],
+  "_extraction": {
+    "kind": "static-gameplay-hud-extraction",
+    "baseline": {"physicalWidth": 540, "physicalHeight": 1200, "dpr": 1, "effectiveWidth": 403.2, "effectiveHeight": 896},
+    "density": {"source": "scripts/shared/utils/density.lua", "formula": "factor=clamp((physicalH/dpr)/896,.85,2.5); scale=dpr*factor; fullW=physicalW/scale; H=physicalH/scale; W=min(fullW,H*(1/1.2)); offsetX=(fullW-W)/2", "factor": 1.3392857142857142, "offsetX": 0},
+    "fonts": [{"fontFamily": "sans", "originalPath": "Fonts/LongZhuTi-Regular.ttf", "source": "scripts/games/p3-match-3/adapter.lua:249", "conversion": "fontSize=raw NanoVG font size*0.75; compensates UI Theme.FontSize 4/3 conversion in default pixel mode; source sizes recorded per text node."}],
+    "snapshot": {"levelId": "L1", "rows": 8, "cols": 8, "remainTime": 90, "score": 0, "goal": {"type": "score", "targetScore": 600}, "goalRatio": 0, "goalReached": false, "paused": false, "backgroundId": "default", "sceneryTransform": "neutral rotation and scale"},
+    "sources": ["scripts/games/p3-match-3/screens/gameplay.lua", "scripts/games/p3-match-3/view/hud-renderer.lua", "scripts/games/p3-match-3/view/board-renderer.lua", "scripts/games/p3-match-3/data/levels.lua", "scripts/games/p3-match-3/logic/board.lua", "scripts/games/p3-match-3/adapter.lua", "scripts/shared/layout/game-board.lua", "scripts/shared/constants/layout.lua", "scripts/shared/constants/colors.lua", "scripts/shared/constants/art.lua", "scripts/shared/components/game-paper.lua", "scripts/shared/components/handdrawn.lua", "scripts/shared/background-manager.lua", "scripts/shared/rendering/game-scenery.lua", "scripts/shared/rendering/piece-sprites.lua", "scripts/shared/utils/density.lua"],
+    "layout": {
+      "shared": "side=max(16,min(24,W*.045)); footer=min(options.footer or 184,H*.36); gap=options.gap or 3; outer=options.outer or 0; availableW=W-side*2; availableH=max(1,H-top-max(bottom or 0,footer)); cell=max(1,floor(min((availableW-gap*(cols-1))/(cols+outer),(availableH-gap*(rows-1))/(rows+outer),options.maxCell or infinity))); width=cell*cols+gap*(cols-1); height=cell*rows+gap*(rows-1); routePad=outer*(cell+gap)/2; slack=max(0,availableH-height-routePad*2); x=(W-width)/2; y=top+routePad+slack*.66",
+      "boardArguments": "rows=8; cols=8; top=TOP_BAR_H(54)+BOARD_TOP_PADDING(64); bottom=BOTTOM_BAR_H(0)+BOARD_BOTTOM_PADDING(50); options={gap=2}; outer=0; footer=184",
+      "buttons": "btnW=56; btnH=44; gap=8; x=12+(i-1)*(56+8); y=TOP_BAR_H+8; labels/actions=返回/back,暂停/pause",
+      "constraints": "Source percentages retained for screen spans and centered text/scenery anchors. min/clamp/floor and board-relative positions evaluated at effective canvas, not stretched to a new aspect ratio. Text containers preserve source anchors."
+    },
+    "preserveLuaDynamicLayer": true,
+    "notPresentInSourceHud": ["restart/reset button (restart keyboard/result action exists but drawBottom contains only back/pause)", "hint button"],
+    "limits": ["New UI data only; existing Lua/entry/gameplay are untouched and do not load this asset. Buttons and goal fill have no bindings or callbacks.", "Live board/effects and afterBg mascot callback remain Lua; conditional finish control is included hidden at the initial state, not made playable.", "Source Paper quadratic corner shapes approximate supported borderRadius=11; no NanoVG JSON draw commands or generated images.", "Future integration must reconcile raw-NanoVG-before-UI rendering order; an independently drawn raw board cannot appear above this UI background automatically.", "Pause/result/celebration overlays remain original Lua and are absent in this non-modal snapshot. Resize and live progress require retained formulas to be reevaluated.", "No build/runtime screenshot was performed; only JSON/source/resource validation."]
+  }
+}

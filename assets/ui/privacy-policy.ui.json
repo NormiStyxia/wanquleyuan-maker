@@ -1,0 +1,1027 @@
+{
+  "type": "Panel",
+  "id": "privacy-policy-page",
+  "width": 540,
+  "height": 1200,
+  "fontFamily": "sans",
+  "children": [
+    {
+      "type": "Panel",
+      "id": "privacy-consent",
+      "position": "absolute",
+      "left": 0,
+      "top": 0,
+      "right": 0,
+      "bottom": 0,
+      "backgroundColor": [
+        63,
+        56,
+        36,
+        150
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "visible": true,
+      "children": [
+        {
+          "type": "Panel",
+          "id": "privacy-card",
+          "width": "90%",
+          "maxWidth": 520,
+          "height": "86%",
+          "backgroundColor": [
+            255,
+            246,
+            220,
+            255
+          ],
+          "borderWidth": 2.5,
+          "borderColor": [
+            91,
+            76,
+            47,
+            255
+          ],
+          "borderRadius": 12,
+          "overflow": "hidden",
+          "flexDirection": "column",
+          "shadowBlur": 0,
+          "children": [
+            {
+              "type": "Panel",
+              "id": "privacy-header",
+              "width": "100%",
+              "height": 69,
+              "backgroundColor": [
+                255,
+                246,
+                220,
+                255
+              ],
+              "borderBottomWidth": 2,
+              "borderColor": [
+                221,
+                207,
+                166,
+                255
+              ],
+              "flexShrink": 0,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "flexDirection": "column",
+              "children": [
+                {
+                  "type": "Label",
+                  "id": "privacy-title",
+                  "text": "用户协议与隐私政策",
+                  "fontSize": 21,
+                  "fontColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "fontWeight": "bold",
+                  "children": [],
+                  "fontFamily": "sans"
+                }
+              ]
+            },
+            {
+              "type": "Panel",
+              "id": "privacy-intro",
+              "width": "100%",
+              "padding": 17,
+              "paddingBottom": 0,
+              "flexShrink": 0,
+              "children": [
+                {
+                  "type": "Label",
+                  "id": "privacy-intro-text",
+                  "text": "请您仔细阅读以下隐私政策，了解我们如何收集、使用和保护您的个人信息。点击「同意并继续」即表示您已阅读并同意本隐私政策。",
+                  "fontSize": 14,
+                  "fontColor": [
+                    116,
+                    102,
+                    70,
+                    255
+                  ],
+                  "width": "100%",
+                  "whiteSpace": "normal",
+                  "flexShrink": 0,
+                  "lineHeight": 1.5,
+                  "children": [],
+                  "fontFamily": "sans"
+                }
+              ]
+            },
+            {
+              "type": "Panel",
+              "id": "privacy-scroll",
+              "width": "100%",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "flexBasis": 0,
+              "padding": 21,
+              "paddingTop": 12,
+              "paddingBottom": 8,
+              "overflow": "hidden",
+              "flexDirection": "column",
+              "children": [
+                {
+                  "type": "Label",
+                  "id": "privacy-section-title-1",
+                  "text": "引言",
+                  "fontSize": 16,
+                  "fontColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "fontWeight": "bold",
+                  "marginTop": 0,
+                  "marginBottom": 4,
+                  "flexShrink": 0,
+                  "children": [],
+                  "fontFamily": "sans"
+                },
+                {
+                  "type": "Label",
+                  "id": "privacy-body-1",
+                  "text": "欢迎使用《玩趣乐园》（以下简称「本游戏」）。我们深知个人信息对您的重要性，并会尽全力保护您的个人信息安全。本隐私政策将帮助您了解我们收集、使用和保护您个人信息的情况。",
+                  "fontSize": 14,
+                  "fontColor": [
+                    100,
+                    80,
+                    60,
+                    255
+                  ],
+                  "width": "100%",
+                  "whiteSpace": "normal",
+                  "flexShrink": 0,
+                  "verticalAlign": "top",
+                  "lineHeight": 1.6,
+                  "children": [],
+                  "fontFamily": "sans"
+                },
+                {
+                  "type": "Label",
+                  "id": "privacy-section-title-2",
+                  "text": "一、我们收集的信息",
+                  "fontSize": 16,
+                  "fontColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "fontWeight": "bold",
+                  "marginTop": 15,
+                  "marginBottom": 4,
+                  "flexShrink": 0,
+                  "children": [],
+                  "fontFamily": "sans"
+                },
+                {
+                  "type": "Label",
+                  "id": "privacy-body-2",
+                  "text": "1. 实名认证信息：姓名和身份证号码，用于未成年人防沉迷系统验证，该信息仅在本地设备存储，不会上传至服务器。\n\n2. 游戏存档数据：关卡进度、分数记录等游戏数据，用于保存您的游戏进度。\n\n3. 设备信息：屏幕分辨率等基本设备参数，用于优化游戏显示效果。\n\n4. 云端存储数据：当您使用云同步功能时，游戏进度会加密上传至云端服务器，以便跨设备同步。",
+                  "fontSize": 14,
+                  "fontColor": [
+                    100,
+                    80,
+                    60,
+                    255
+                  ],
+                  "width": "100%",
+                  "whiteSpace": "normal",
+                  "flexShrink": 0,
+                  "verticalAlign": "top",
+                  "lineHeight": 1.6,
+                  "children": [],
+                  "fontFamily": "sans"
+                },
+                {
+                  "type": "Label",
+                  "id": "privacy-section-title-3",
+                  "text": "二、信息的使用目的",
+                  "fontSize": 16,
+                  "fontColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "fontWeight": "bold",
+                  "marginTop": 15,
+                  "marginBottom": 4,
+                  "flexShrink": 0,
+                  "children": [],
+                  "fontFamily": "sans"
+                },
+                {
+                  "type": "Label",
+                  "id": "privacy-body-3",
+                  "text": "我们收集的信息仅用于以下目的：\n\n1. 提供游戏核心功能（存档、排行榜）\n2. 落实国家防沉迷相关规定\n3. 优化游戏体验和性能\n4. 保障账号安全",
+                  "fontSize": 14,
+                  "fontColor": [
+                    100,
+                    80,
+                    60,
+                    255
+                  ],
+                  "width": "100%",
+                  "whiteSpace": "normal",
+                  "flexShrink": 0,
+                  "verticalAlign": "top",
+                  "lineHeight": 1.6,
+                  "children": [],
+                  "fontFamily": "sans"
+                },
+                {
+                  "type": "Label",
+                  "id": "privacy-section-title-4",
+                  "text": "三、信息存储与保护",
+                  "fontSize": 16,
+                  "fontColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "fontWeight": "bold",
+                  "marginTop": 15,
+                  "marginBottom": 4,
+                  "flexShrink": 0,
+                  "children": [],
+                  "fontFamily": "sans"
+                },
+                {
+                  "type": "Label",
+                  "id": "privacy-body-4",
+                  "text": "1. 实名认证信息仅存储在您的本地设备中，我们不会上传或分享给任何第三方。\n\n2. 云端存档数据采用加密传输和存储，仅您本人可访问。\n\n3. 我们不会向任何第三方出售、出租或以其他方式提供您的个人信息。",
+                  "fontSize": 14,
+                  "fontColor": [
+                    100,
+                    80,
+                    60,
+                    255
+                  ],
+                  "width": "100%",
+                  "whiteSpace": "normal",
+                  "flexShrink": 0,
+                  "verticalAlign": "top",
+                  "lineHeight": 1.6,
+                  "children": [],
+                  "fontFamily": "sans"
+                },
+                {
+                  "type": "Label",
+                  "id": "privacy-section-title-5",
+                  "text": "四、未成年人保护",
+                  "fontSize": 16,
+                  "fontColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "fontWeight": "bold",
+                  "marginTop": 15,
+                  "marginBottom": 4,
+                  "flexShrink": 0,
+                  "children": [],
+                  "fontFamily": "sans"
+                },
+                {
+                  "type": "Label",
+                  "id": "privacy-body-5",
+                  "text": "本游戏严格遵守《关于防止未成年人沉迷网络游戏的通知》等相关法规：\n\n1. 所有用户需完成实名认证\n2. 未成年人仅可在规定时间段内游戏\n3. 未成年人消费受到严格限额控制\n4. 我们鼓励家长参与和监督孩子的游戏行为",
+                  "fontSize": 14,
+                  "fontColor": [
+                    100,
+                    80,
+                    60,
+                    255
+                  ],
+                  "width": "100%",
+                  "whiteSpace": "normal",
+                  "flexShrink": 0,
+                  "verticalAlign": "top",
+                  "lineHeight": 1.6,
+                  "children": [],
+                  "fontFamily": "sans"
+                },
+                {
+                  "type": "Label",
+                  "id": "privacy-section-title-6",
+                  "text": "五、您的权利",
+                  "fontSize": 16,
+                  "fontColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "fontWeight": "bold",
+                  "marginTop": 15,
+                  "marginBottom": 4,
+                  "flexShrink": 0,
+                  "children": [],
+                  "fontFamily": "sans"
+                },
+                {
+                  "type": "Label",
+                  "id": "privacy-body-6",
+                  "text": "您有权：\n\n1. 查看和修改您的个人信息\n2. 删除您的游戏数据（通过设置中的「清空存档」功能）\n3. 撤回同意（撤回后将无法继续使用本游戏）",
+                  "fontSize": 14,
+                  "fontColor": [
+                    100,
+                    80,
+                    60,
+                    255
+                  ],
+                  "width": "100%",
+                  "whiteSpace": "normal",
+                  "flexShrink": 0,
+                  "verticalAlign": "top",
+                  "lineHeight": 1.6,
+                  "children": [],
+                  "fontFamily": "sans"
+                },
+                {
+                  "type": "Label",
+                  "id": "privacy-section-title-7",
+                  "text": "六、政策更新",
+                  "fontSize": 16,
+                  "fontColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "fontWeight": "bold",
+                  "marginTop": 15,
+                  "marginBottom": 4,
+                  "flexShrink": 0,
+                  "children": [],
+                  "fontFamily": "sans"
+                },
+                {
+                  "type": "Label",
+                  "id": "privacy-body-7",
+                  "text": "我们可能会适时更新本隐私政策。如有重大变更，我们将在游戏内通知您。继续使用本游戏即表示您同意更新后的隐私政策。",
+                  "fontSize": 14,
+                  "fontColor": [
+                    100,
+                    80,
+                    60,
+                    255
+                  ],
+                  "width": "100%",
+                  "whiteSpace": "normal",
+                  "flexShrink": 0,
+                  "verticalAlign": "top",
+                  "lineHeight": 1.6,
+                  "children": [],
+                  "fontFamily": "sans"
+                },
+                {
+                  "type": "Label",
+                  "id": "privacy-section-title-8",
+                  "text": "七、联系我们",
+                  "fontSize": 16,
+                  "fontColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "fontWeight": "bold",
+                  "marginTop": 15,
+                  "marginBottom": 4,
+                  "flexShrink": 0,
+                  "children": [],
+                  "fontFamily": "sans"
+                },
+                {
+                  "type": "Label",
+                  "id": "privacy-body-8",
+                  "text": "如您对本隐私政策有任何疑问，可通过 TapTap 游戏页面的反馈渠道与我们联系。",
+                  "fontSize": 14,
+                  "fontColor": [
+                    100,
+                    80,
+                    60,
+                    255
+                  ],
+                  "width": "100%",
+                  "whiteSpace": "normal",
+                  "flexShrink": 0,
+                  "verticalAlign": "top",
+                  "lineHeight": 1.6,
+                  "children": [],
+                  "fontFamily": "sans"
+                }
+              ]
+            },
+            {
+              "type": "Panel",
+              "id": "privacy-footer",
+              "width": "100%",
+              "padding": 17,
+              "paddingTop": 8,
+              "flexShrink": 0,
+              "flexDirection": "row",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "Button",
+                  "id": "privacy-decline",
+                  "text": "不同意",
+                  "fontSize": 17,
+                  "variant": "outline",
+                  "textColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "backgroundColor": [
+                    255,
+                    246,
+                    220,
+                    255
+                  ],
+                  "borderColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "borderWidth": 2,
+                  "borderRadius": 10,
+                  "minHeight": 44,
+                  "flexShrink": 0,
+                  "boxShadow": false,
+                  "hoverBoxShadow": false,
+                  "pressedBoxShadow": false,
+                  "flexGrow": 1,
+                  "flexBasis": 0,
+                  "height": 49,
+                  "fontWeight": "bold",
+                  "children": [],
+                  "fontFamily": "sans"
+                },
+                {
+                  "type": "Button",
+                  "id": "privacy-accept",
+                  "text": "同意并继续",
+                  "fontSize": 17,
+                  "variant": "primary",
+                  "textColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "backgroundColor": [
+                    238,
+                    156,
+                    67,
+                    255
+                  ],
+                  "borderColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "borderWidth": 2,
+                  "borderRadius": 10,
+                  "minHeight": 44,
+                  "flexShrink": 0,
+                  "boxShadow": false,
+                  "hoverBoxShadow": false,
+                  "pressedBoxShadow": false,
+                  "flexGrow": 1,
+                  "flexBasis": 0,
+                  "height": 49,
+                  "fontWeight": "bold",
+                  "children": [],
+                  "fontFamily": "sans"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Panel",
+      "id": "privacy-view",
+      "position": "absolute",
+      "left": 0,
+      "top": 0,
+      "right": 0,
+      "bottom": 0,
+      "backgroundColor": [
+        63,
+        56,
+        36,
+        140
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "visible": false,
+      "children": [
+        {
+          "type": "Panel",
+          "id": "view-privacy-card",
+          "width": "90%",
+          "maxWidth": 520,
+          "height": "86%",
+          "backgroundColor": [
+            255,
+            246,
+            220,
+            255
+          ],
+          "borderWidth": 2.5,
+          "borderColor": [
+            91,
+            76,
+            47,
+            255
+          ],
+          "borderRadius": 12,
+          "overflow": "hidden",
+          "flexDirection": "column",
+          "shadowBlur": 0,
+          "children": [
+            {
+              "type": "Panel",
+              "id": "view-privacy-header",
+              "width": "100%",
+              "height": 69,
+              "backgroundColor": [
+                255,
+                246,
+                220,
+                255
+              ],
+              "borderBottomWidth": 2,
+              "borderColor": [
+                221,
+                207,
+                166,
+                255
+              ],
+              "flexShrink": 0,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "flexDirection": "column",
+              "children": [
+                {
+                  "type": "Label",
+                  "id": "view-privacy-title",
+                  "text": "隐私政策",
+                  "fontSize": 23,
+                  "fontColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "fontWeight": "bold",
+                  "children": [],
+                  "fontFamily": "sans"
+                }
+              ]
+            },
+            {
+              "type": "Panel",
+              "id": "view-privacy-scroll",
+              "width": "100%",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "flexBasis": 0,
+              "padding": 21,
+              "paddingTop": 17,
+              "paddingBottom": 8,
+              "overflow": "hidden",
+              "flexDirection": "column",
+              "children": [
+                {
+                  "type": "Label",
+                  "id": "view-privacy-section-title-1",
+                  "text": "引言",
+                  "fontSize": 16,
+                  "fontColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "fontWeight": "bold",
+                  "marginTop": 0,
+                  "marginBottom": 4,
+                  "flexShrink": 0,
+                  "children": [],
+                  "fontFamily": "sans"
+                },
+                {
+                  "type": "Label",
+                  "id": "view-privacy-body-1",
+                  "text": "欢迎使用《玩趣乐园》（以下简称「本游戏」）。我们深知个人信息对您的重要性，并会尽全力保护您的个人信息安全。本隐私政策将帮助您了解我们收集、使用和保护您个人信息的情况。",
+                  "fontSize": 14,
+                  "fontColor": [
+                    100,
+                    80,
+                    60,
+                    255
+                  ],
+                  "width": "100%",
+                  "whiteSpace": "normal",
+                  "flexShrink": 0,
+                  "verticalAlign": "top",
+                  "lineHeight": 1.6,
+                  "children": [],
+                  "fontFamily": "sans"
+                },
+                {
+                  "type": "Label",
+                  "id": "view-privacy-section-title-2",
+                  "text": "一、我们收集的信息",
+                  "fontSize": 16,
+                  "fontColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "fontWeight": "bold",
+                  "marginTop": 15,
+                  "marginBottom": 4,
+                  "flexShrink": 0,
+                  "children": [],
+                  "fontFamily": "sans"
+                },
+                {
+                  "type": "Label",
+                  "id": "view-privacy-body-2",
+                  "text": "1. 实名认证信息：姓名和身份证号码，用于未成年人防沉迷系统验证，该信息仅在本地设备存储，不会上传至服务器。\n\n2. 游戏存档数据：关卡进度、分数记录等游戏数据，用于保存您的游戏进度。\n\n3. 设备信息：屏幕分辨率等基本设备参数，用于优化游戏显示效果。\n\n4. 云端存储数据：当您使用云同步功能时，游戏进度会加密上传至云端服务器，以便跨设备同步。",
+                  "fontSize": 14,
+                  "fontColor": [
+                    100,
+                    80,
+                    60,
+                    255
+                  ],
+                  "width": "100%",
+                  "whiteSpace": "normal",
+                  "flexShrink": 0,
+                  "verticalAlign": "top",
+                  "lineHeight": 1.6,
+                  "children": [],
+                  "fontFamily": "sans"
+                },
+                {
+                  "type": "Label",
+                  "id": "view-privacy-section-title-3",
+                  "text": "二、信息的使用目的",
+                  "fontSize": 16,
+                  "fontColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "fontWeight": "bold",
+                  "marginTop": 15,
+                  "marginBottom": 4,
+                  "flexShrink": 0,
+                  "children": [],
+                  "fontFamily": "sans"
+                },
+                {
+                  "type": "Label",
+                  "id": "view-privacy-body-3",
+                  "text": "我们收集的信息仅用于以下目的：\n\n1. 提供游戏核心功能（存档、排行榜）\n2. 落实国家防沉迷相关规定\n3. 优化游戏体验和性能\n4. 保障账号安全",
+                  "fontSize": 14,
+                  "fontColor": [
+                    100,
+                    80,
+                    60,
+                    255
+                  ],
+                  "width": "100%",
+                  "whiteSpace": "normal",
+                  "flexShrink": 0,
+                  "verticalAlign": "top",
+                  "lineHeight": 1.6,
+                  "children": [],
+                  "fontFamily": "sans"
+                },
+                {
+                  "type": "Label",
+                  "id": "view-privacy-section-title-4",
+                  "text": "三、信息存储与保护",
+                  "fontSize": 16,
+                  "fontColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "fontWeight": "bold",
+                  "marginTop": 15,
+                  "marginBottom": 4,
+                  "flexShrink": 0,
+                  "children": [],
+                  "fontFamily": "sans"
+                },
+                {
+                  "type": "Label",
+                  "id": "view-privacy-body-4",
+                  "text": "1. 实名认证信息仅存储在您的本地设备中，我们不会上传或分享给任何第三方。\n\n2. 云端存档数据采用加密传输和存储，仅您本人可访问。\n\n3. 我们不会向任何第三方出售、出租或以其他方式提供您的个人信息。",
+                  "fontSize": 14,
+                  "fontColor": [
+                    100,
+                    80,
+                    60,
+                    255
+                  ],
+                  "width": "100%",
+                  "whiteSpace": "normal",
+                  "flexShrink": 0,
+                  "verticalAlign": "top",
+                  "lineHeight": 1.6,
+                  "children": [],
+                  "fontFamily": "sans"
+                },
+                {
+                  "type": "Label",
+                  "id": "view-privacy-section-title-5",
+                  "text": "四、未成年人保护",
+                  "fontSize": 16,
+                  "fontColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "fontWeight": "bold",
+                  "marginTop": 15,
+                  "marginBottom": 4,
+                  "flexShrink": 0,
+                  "children": [],
+                  "fontFamily": "sans"
+                },
+                {
+                  "type": "Label",
+                  "id": "view-privacy-body-5",
+                  "text": "本游戏严格遵守《关于防止未成年人沉迷网络游戏的通知》等相关法规：\n\n1. 所有用户需完成实名认证\n2. 未成年人仅可在规定时间段内游戏\n3. 未成年人消费受到严格限额控制\n4. 我们鼓励家长参与和监督孩子的游戏行为",
+                  "fontSize": 14,
+                  "fontColor": [
+                    100,
+                    80,
+                    60,
+                    255
+                  ],
+                  "width": "100%",
+                  "whiteSpace": "normal",
+                  "flexShrink": 0,
+                  "verticalAlign": "top",
+                  "lineHeight": 1.6,
+                  "children": [],
+                  "fontFamily": "sans"
+                },
+                {
+                  "type": "Label",
+                  "id": "view-privacy-section-title-6",
+                  "text": "五、您的权利",
+                  "fontSize": 16,
+                  "fontColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "fontWeight": "bold",
+                  "marginTop": 15,
+                  "marginBottom": 4,
+                  "flexShrink": 0,
+                  "children": [],
+                  "fontFamily": "sans"
+                },
+                {
+                  "type": "Label",
+                  "id": "view-privacy-body-6",
+                  "text": "您有权：\n\n1. 查看和修改您的个人信息\n2. 删除您的游戏数据（通过设置中的「清空存档」功能）\n3. 撤回同意（撤回后将无法继续使用本游戏）",
+                  "fontSize": 14,
+                  "fontColor": [
+                    100,
+                    80,
+                    60,
+                    255
+                  ],
+                  "width": "100%",
+                  "whiteSpace": "normal",
+                  "flexShrink": 0,
+                  "verticalAlign": "top",
+                  "lineHeight": 1.6,
+                  "children": [],
+                  "fontFamily": "sans"
+                },
+                {
+                  "type": "Label",
+                  "id": "view-privacy-section-title-7",
+                  "text": "六、政策更新",
+                  "fontSize": 16,
+                  "fontColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "fontWeight": "bold",
+                  "marginTop": 15,
+                  "marginBottom": 4,
+                  "flexShrink": 0,
+                  "children": [],
+                  "fontFamily": "sans"
+                },
+                {
+                  "type": "Label",
+                  "id": "view-privacy-body-7",
+                  "text": "我们可能会适时更新本隐私政策。如有重大变更，我们将在游戏内通知您。继续使用本游戏即表示您同意更新后的隐私政策。",
+                  "fontSize": 14,
+                  "fontColor": [
+                    100,
+                    80,
+                    60,
+                    255
+                  ],
+                  "width": "100%",
+                  "whiteSpace": "normal",
+                  "flexShrink": 0,
+                  "verticalAlign": "top",
+                  "lineHeight": 1.6,
+                  "children": [],
+                  "fontFamily": "sans"
+                },
+                {
+                  "type": "Label",
+                  "id": "view-privacy-section-title-8",
+                  "text": "七、联系我们",
+                  "fontSize": 16,
+                  "fontColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "fontWeight": "bold",
+                  "marginTop": 15,
+                  "marginBottom": 4,
+                  "flexShrink": 0,
+                  "children": [],
+                  "fontFamily": "sans"
+                },
+                {
+                  "type": "Label",
+                  "id": "view-privacy-body-8",
+                  "text": "如您对本隐私政策有任何疑问，可通过 TapTap 游戏页面的反馈渠道与我们联系。",
+                  "fontSize": 14,
+                  "fontColor": [
+                    100,
+                    80,
+                    60,
+                    255
+                  ],
+                  "width": "100%",
+                  "whiteSpace": "normal",
+                  "flexShrink": 0,
+                  "verticalAlign": "top",
+                  "lineHeight": 1.6,
+                  "children": [],
+                  "fontFamily": "sans"
+                }
+              ]
+            },
+            {
+              "type": "Panel",
+              "id": "view-privacy-footer",
+              "width": "100%",
+              "padding": 17,
+              "paddingTop": 8,
+              "flexShrink": 0,
+              "flexDirection": "column",
+              "gap": 0,
+              "children": [
+                {
+                  "type": "Button",
+                  "id": "view-privacy-close",
+                  "text": "我知道了",
+                  "fontSize": 18,
+                  "variant": "primary",
+                  "textColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "backgroundColor": [
+                    238,
+                    156,
+                    67,
+                    255
+                  ],
+                  "borderColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "borderWidth": 2,
+                  "borderRadius": 10,
+                  "minHeight": 44,
+                  "flexShrink": 0,
+                  "boxShadow": false,
+                  "hoverBoxShadow": false,
+                  "pressedBoxShadow": false,
+                  "width": "100%",
+                  "height": 49,
+                  "fontWeight": "bold",
+                  "children": [],
+                  "fontFamily": "sans"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "_extraction": {
+    "sources": [
+      "scripts/shared/components/privacy-policy-popup.lua:POLICY_SECTIONS/buildPolicySections/showConsent/showView",
+      "scripts/shared/components/paper-ui.lua",
+      "scripts/shared/constants/art.lua",
+      "scripts/shared/constants/colors.lua",
+      "scripts/main.lua:CreateUI"
+    ],
+    "snapshot": {
+      "width": 540,
+      "height": 1200,
+      "coordinateSpace": "UI base pixels",
+      "uiScale_": 1.08,
+      "visibleMode": "consent",
+      "hiddenMode": "view",
+      "scrollOffset": 0
+    },
+    "fonts": [
+      {
+        "family": "sans",
+        "path": "Fonts/LongZhuTi-Regular.ttf"
+      }
+    ],
+    "typography": {
+      "fontSizeUnit": "UI pt",
+      "renderedPixelFormula": "Theme.FontSize(pt)=pt*4/3 at fontScale1",
+      "sourceUIValuesPreserved": true,
+      "scaledSizes": "s(v)=floor(v*1.08); title20->21pt,view22->23pt,section15->16pt,body13->14pt,action16->17pt"
+    },
+    "coordinates": {
+      "scale": "uiScale_=clamp(min(graphicsWidth/DPR,graphicsHeight/DPR)/500,1,2)=1.08",
+      "card": "width=min(540*0.9,520)=486;height=1200*0.86=1032;centered=(27,84); source percentage/max constraints preserved",
+      "header": "height=s(64)=69; borderBottom2; centered title",
+      "intro": "consent only;padding17,bottom0;body14pt,lineHeight1.5",
+      "scroll": "width100%,flexGrow1,flexBasis0,flexShrink1;padding21,top12 consent or17 view,bottom8",
+      "sections": "title16pt,marginTop15 except first,marginBottom4;body14pt,lineHeight1.6,whiteSpace normal,flexShrink0",
+      "footer": "padding17/top8;button height49;consent row gap12/equal flexGrow1/flexBasis0;view full-width;PaperUI effective radius10 rather than requested25"
+    },
+    "bindings": {
+      "privacy-title": "showConsent: 用户协议与隐私政策; showView: 隐私政策",
+      "privacy-body-1..8": "POLICY_SECTIONS copied verbatim including all8 titles and complete bodies, in both modes",
+      "privacy-accept": "saveAccepted();remove overlay;onAccept()",
+      "privacy-decline": "uiTap then logs, keeps popup visible; does not exit",
+      "view-privacy-close": "source id privacy-close namespaced for uniqueness; removes overlay"
+    },
+    "behaviorsRemainLua": [
+      "ScrollView scrolling and input",
+      "accepted_ persistence in local file and clientCloud",
+      "syncFromCloud callbacks",
+      "uiTap feedback",
+      "showConsent/showView creation and close/accept callbacks",
+      "main compliance gate after health advisory"
+    ],
+    "limitations": [
+      "Only Panel/Label/Button allowed: ScrollView is clipped Panel at offset0. Lower policy sections remain full child Labels, not deleted, but need Lua or restored ScrollView to view.",
+      "Hidden view subtree has view-prefixed ids; toggle visibility to inspect without layering both modes.",
+      "Source policy claims local-only authentication and encrypted cloud storage. Exact source wording is preserved, not independently verified or rewritten as a compliance guarantee."
+    ]
+  }
+}

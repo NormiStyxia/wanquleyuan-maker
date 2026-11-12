@@ -1,0 +1,51 @@
+{
+  "type": "Panel", "id": "result-popup", "width": 403.2, "height": 896,
+  "_extraction": {
+    "source": "scripts/shared/components/result-popup.lua",
+    "sampleSource": "scripts/games/p1-puzzle-land/screens/gameplay.lua",
+    "designViewport": {"width": 540, "height": 1200, "dpr": 1},
+    "canvas": {"width": 403.2, "height": 896, "note": "DPR1经Density后的raw NanoVG逻辑画布。"},
+    "fonts": [{"family": "sans", "path": "Fonts/LongZhuTi-Regular.ttf"}],
+    "typography": "UI默认字号乘4/3；此raw快照fontSize为源NanoVG像素字号×0.75。",
+    "dependencies": ["scripts/shared/components/game-paper.lua", "scripts/shared/components/handdrawn.lua", "scripts/shared/constants/art.lua"],
+    "dynamicVariables": {"ratingType": "stars", "ratingValue": 3, "stats": [{"label": "步数", "value": "1"}], "storylineMode": false, "hasNextLevel": true, "isNewBest": false, "celebration.elapsed": 1, "celebration.dialogAlpha": 1},
+    "sampleProvenance": "推箱子lv-01实际solution=U、recommendedSteps=1；成绩样例1步3星，非虚构占位文本。",
+    "layoutFormula": "w=min(320,screenW-32); stats单行28高；h=154+statsH+(isNewBest?24:0)+buttonCount*44+(buttonCount-1)*10+28，本样例h=362；纸卡居中，动画shift=0。",
+    "alternativeStates": {"result-cleared": "默认显示自由模式通关", "result-failed": "visible=false；来自连连看失败调用，编辑时切换visible查看。失败h=270。", "storylineMode": "标题关卡完成！、强制3星或S、按钮完成关卡/再来一次；仍由Lua按运行数据生成", "rank": "ratingType=rank改绘44px评级，未把不同评级叠在默认星星上"},
+    "behaviorsRemainInLua": ["评级和统计数据计算", "下一关/重试/返回及storyline分支", "新纪录条件及自适应统计换行", "庆祝粒子、淡入、按钮延迟、hitTest"],
+    "limitations": ["只提取纸卡稳定显示帧，纸屑动画不序列化。", "矢量星星用可编辑星形文本符号近似；保留中心位置、橙色和34px包围盒，字体轮廓不等同原五角路径。", "Paper.panel二次曲线边转换成11像素圆角Panel，半透明偏移纸影复用源色值。"]
+  },
+  "children": [
+    {
+      "type": "Panel", "id": "result-cleared", "width": "100%", "height": "100%", "backgroundColor": [63, 56, 36, 120], "justifyContent": "center", "alignItems": "center",
+      "children": [
+        {"type": "Panel", "id": "result-card", "width": 320, "height": 362, "children": [
+          {"type": "Panel", "id": "result-card-shadow", "position": "absolute", "left": 1, "top": 3, "width": 320, "height": 362, "backgroundColor": [151, 123, 78, 45], "borderRadius": 11},
+          {"type": "Panel", "id": "result-card-paper", "position": "absolute", "left": 0, "top": 0, "width": 320, "height": 362, "backgroundColor": [255, 246, 220, 255], "borderRadius": 11, "borderWidth": 2.3, "borderAlign": "center", "borderColor": [91, 76, 47, 255]},
+          {"type": "Label", "id": "result-title", "position": "absolute", "left": 0, "top": 13, "width": 320, "height": 38, "text": "通关！", "fontFamily": "sans", "fontSize": 19.5, "fontColor": [91, 76, 47, 255], "textAlign": "center", "verticalAlign": "middle", "lineHeight": 1},
+          {"type": "Label", "id": "result-star-1", "position": "absolute", "left": 101, "top": 68, "width": 34, "height": 34, "text": "★", "fontFamily": "sans", "fontSize": 25.5, "fontColor": [238, 156, 67, 255], "textAlign": "center", "verticalAlign": "middle", "lineHeight": 1},
+          {"type": "Label", "id": "result-star-2", "position": "absolute", "left": 143, "top": 68, "width": 34, "height": 34, "text": "★", "fontFamily": "sans", "fontSize": 25.5, "fontColor": [238, 156, 67, 255], "textAlign": "center", "verticalAlign": "middle", "lineHeight": 1},
+          {"type": "Label", "id": "result-star-3", "position": "absolute", "left": 185, "top": 68, "width": 34, "height": 34, "text": "★", "fontFamily": "sans", "fontSize": 25.5, "fontColor": [238, 156, 67, 255], "textAlign": "center", "verticalAlign": "middle", "lineHeight": 1},
+          {"type": "Label", "id": "result-stat-steps-label", "position": "absolute", "left": 24, "top": 118, "width": 136, "height": 28, "text": "步数", "fontFamily": "sans", "fontSize": 11.25, "fontColor": [116, 102, 70, 255], "textAlign": "left", "verticalAlign": "middle", "lineHeight": 1},
+          {"type": "Label", "id": "result-stat-steps-value", "position": "absolute", "left": 160, "top": 118, "width": 136, "height": 28, "text": "1", "fontFamily": "sans", "fontSize": 12.75, "fontColor": [91, 76, 47, 255], "textAlign": "right", "verticalAlign": "middle", "lineHeight": 1},
+          {"type": "Button", "id": "next_level", "position": "absolute", "left": 48, "top": 190, "width": 224, "height": 44, "text": "下一关", "fontFamily": "sans", "fontSize": 12, "textColor": [91, 76, 47, 255], "backgroundColor": [238, 156, 67, 255], "borderRadius": 11, "borderWidth": 2, "borderAlign": "center", "borderColor": [91, 76, 47, 255], "boxShadow": false, "hoverBoxShadow": false, "pressedBoxShadow": false, "padding": 0},
+          {"type": "Button", "id": "retry", "position": "absolute", "left": 48, "top": 244, "width": 224, "height": 44, "text": "再来一次", "fontFamily": "sans", "fontSize": 12, "textColor": [91, 76, 47, 255], "backgroundColor": [255, 246, 220, 255], "borderRadius": 11, "borderWidth": 2, "borderAlign": "center", "borderColor": [91, 76, 47, 255], "boxShadow": false, "hoverBoxShadow": false, "pressedBoxShadow": false, "padding": 0},
+          {"type": "Button", "id": "back", "position": "absolute", "left": 48, "top": 298, "width": 224, "height": 44, "text": "返回", "fontFamily": "sans", "fontSize": 12, "textColor": [91, 76, 47, 255], "backgroundColor": [255, 246, 220, 255], "borderRadius": 11, "borderWidth": 2, "borderAlign": "center", "borderColor": [91, 76, 47, 255], "boxShadow": false, "hoverBoxShadow": false, "pressedBoxShadow": false, "padding": 0}
+        ]}
+      ]
+    },
+    {
+      "type": "Panel", "id": "result-failed", "visible": false, "position": "absolute", "left": 0, "top": 0, "width": "100%", "height": "100%", "backgroundColor": [63, 56, 36, 120], "justifyContent": "center", "alignItems": "center",
+      "children": [
+        {"type": "Panel", "id": "result-failed-card", "width": 320, "height": 270, "children": [
+          {"type": "Panel", "position": "absolute", "left": 1, "top": 3, "width": 320, "height": 270, "backgroundColor": [151, 123, 78, 45], "borderRadius": 11},
+          {"type": "Panel", "position": "absolute", "left": 0, "top": 0, "width": 320, "height": 270, "backgroundColor": [255, 246, 220, 255], "borderRadius": 11, "borderWidth": 2.3, "borderAlign": "center", "borderColor": [91, 76, 47, 255]},
+          {"type": "Label", "id": "result-failed-title", "position": "absolute", "left": 0, "top": 15, "width": 320, "height": 38, "text": "时间耗尽", "fontFamily": "sans", "fontSize": 19.5, "fontColor": [91, 76, 47, 255], "textAlign": "center", "verticalAlign": "middle", "lineHeight": 1},
+          {"type": "Label", "id": "result-failed-message", "position": "absolute", "left": 20, "top": 72, "width": 280, "height": 28, "text": "还剩 3 对未消除", "fontFamily": "sans", "fontSize": 12.75, "fontColor": [91, 76, 47, 255], "textAlign": "center", "verticalAlign": "middle", "lineHeight": 1},
+          {"type": "Button", "id": "failed-retry", "position": "absolute", "left": 48, "top": 152, "width": 224, "height": 44, "text": "再试一次", "fontFamily": "sans", "fontSize": 12, "textColor": [91, 76, 47, 255], "backgroundColor": [238, 156, 67, 255], "borderRadius": 11, "borderWidth": 2, "borderAlign": "center", "borderColor": [91, 76, 47, 255], "boxShadow": false, "padding": 0},
+          {"type": "Button", "id": "failed-back", "position": "absolute", "left": 48, "top": 206, "width": 224, "height": 44, "text": "返回", "fontFamily": "sans", "fontSize": 12, "textColor": [91, 76, 47, 255], "backgroundColor": [255, 246, 220, 255], "borderRadius": 11, "borderWidth": 2, "borderAlign": "center", "borderColor": [91, 76, 47, 255], "boxShadow": false, "padding": 0}
+        ]}
+      ]
+    }
+  ]
+}

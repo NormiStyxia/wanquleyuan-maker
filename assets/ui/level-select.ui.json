@@ -1,0 +1,99 @@
+{
+  "type": "Panel", "id": "level-select", "width": 403.2, "height": 896,
+  "backgroundColor": [255, 248, 238, 255], "backgroundImage": "image/handdrawn/backgrounds/default.png", "backgroundFit": "cover",
+  "_extraction": {
+    "source": "scripts/shared/components/level-select-ui.lua",
+    "sampleSource": "scripts/games/p1-puzzle-land/screens/level-select.lua",
+    "dependencies": ["scripts/games/p1-puzzle-land/data/levels.lua", "scripts/games/p1-puzzle-land/save.lua", "scripts/shared/background-manager.lua", "scripts/shared/components/game-paper.lua", "scripts/shared/components/handdrawn.lua", "scripts/shared/rendering/game-scenery.lua", "scripts/shared/rendering/piece-sprites.lua"],
+    "designViewport": {"width": 540, "height": 1200, "dpr": 1},
+    "canvas": {"width": 403.2, "height": 896, "note": "DPR1经Density后的raw NanoVG逻辑画布，非原生UI画布。"},
+    "fonts": [{"family": "sans", "path": "Fonts/LongZhuTi-Regular.ttf"}],
+    "typography": "UI字号=原NVG像素字号×0.75；Theme.FontSize默认×4/3后等大。",
+    "layoutFormula": "TOP_BAR_H=60; back=(10,8,80,44); progressY=76; grid3列，cell76/gap16，startX=(403.2-260)/2=71.6,startY=112；真实12关共4行。indicatorY=488，footerY=500。",
+    "dynamicVariables": {"background.id": "default", "currentPage_": 1, "totalPages_": 1, "completed": 3, "total": 12, "saveData.completedLevels": {"lv-01": 3, "lv-02": 2, "lv-03": 1}, "unlocked": ["lv-01", "lv-02", "lv-03", "lv-04"], "featureFlags.masterEnabled": false},
+    "sampleProvenance": "使用推箱子真实12关ID与3/12可达存档样例；非任意新关卡。lsu本身只有绘图函数，网格/标题/评级来自真实调用者。",
+    "behaviorsRemainInLua": ["读取存档、关卡总数和解锁规则", "关卡选择/back/editor命中", "不同游戏评级样式", "翻页及背景选择", "底部小景呼吸动画"],
+    "limitations": ["纸卡轮廓转换为11像素圆角；星星用可编辑星形文本符号近似源五角路径。", "锁环用圆角描边Panel和覆盖锁体近似源半圆弧；源色值和几何尺寸保留。", "12关只有一页，源drawPageIndicator不绘分页圆点/箭头，因此不虚构这些控件；drawFooter未被此调用者调用。", "底部garden-bottom复用原图，固定Scenery.layout的中心与尺寸，不序列化呼吸。", "工坊按钮保留但visible=false，对应默认关闭的masterEnabled。"]
+  },
+  "children": [
+    {"type": "Panel", "id": "level-topbar", "position": "absolute", "left": 0, "top": 0, "width": 403.2, "height": 60, "backgroundColor": [255, 246, 220, 255]},
+    {"type": "Panel", "id": "level-topbar-rule", "position": "absolute", "left": 0, "top": 57.85, "width": 403.2, "height": 2.3, "backgroundColor": [91, 76, 47, 255]},
+    {"type": "Button", "id": "back", "position": "absolute", "left": 10, "top": 8, "width": 80, "height": 44, "text": "< 返回", "fontFamily": "sans", "fontSize": 12, "textColor": [91, 76, 47, 255], "backgroundColor": [255, 246, 220, 255], "borderRadius": 11, "borderWidth": 2, "borderAlign": "center", "borderColor": [91, 76, 47, 255], "padding": 0, "boxShadow": false},
+    {"type": "Label", "id": "level-title", "position": "absolute", "left": 98, "top": 15, "width": 207.2, "height": 30, "text": "推箱子 · 选择关卡", "fontFamily": "sans", "fontSize": 15, "fontColor": [91, 76, 47, 255], "textAlign": "center", "verticalAlign": "middle", "lineHeight": 1},
+    {"type": "Panel", "id": "level-progress-paper", "position": "absolute", "left": 0, "top": 60, "width": 403.2, "height": 43, "backgroundColor": [255, 246, 220, 255]},
+    {"type": "Panel", "id": "level-progress-rule", "position": "absolute", "left": 0, "top": 102.25, "width": 403.2, "height": 1.5, "backgroundColor": [91, 76, 47, 255]},
+    {"type": "Label", "id": "level-progress-title", "position": "absolute", "left": 20, "top": 65, "width": 180, "height": 22, "text": "通关进度", "fontFamily": "sans", "fontSize": 10.5, "fontColor": [140, 120, 90, 255], "textAlign": "left", "verticalAlign": "middle", "lineHeight": 1},
+    {"type": "Label", "id": "level-progress-count", "position": "absolute", "left": 203.2, "top": 65, "width": 180, "height": 22, "text": "3 / 12", "fontFamily": "sans", "fontSize": 10.5, "fontColor": [160, 135, 105, 255], "textAlign": "right", "verticalAlign": "middle", "lineHeight": 1},
+    {"type": "Panel", "id": "level-progress-track", "position": "absolute", "left": 20, "top": 90, "width": 363.2, "height": 8, "borderRadius": 2.4, "backgroundColor": [221, 207, 166, 255], "borderWidth": 1, "borderAlign": "center", "borderColor": [91, 76, 47, 255]},
+    {"type": "Panel", "id": "level-progress-fill", "position": "absolute", "left": 20, "top": 90, "width": 90.8, "height": 8, "borderRadius": 2.4, "backgroundColor": [132, 166, 78, 255]},
+    {
+      "type": "Panel", "id": "level-grid", "position": "absolute", "left": 71.6, "top": 112, "width": 260, "height": 352,
+      "children": [
+        {"type": "Button", "id": "lv-01", "position": "absolute", "left": 0, "top": 0, "width": 76, "height": 76, "backgroundColor": [238, 229, 191, 255], "borderRadius": 11, "borderWidth": 2.3, "borderAlign": "center", "borderColor": [91, 76, 47, 255], "padding": 0, "boxShadow": false, "children": [
+          {"type": "Panel", "position": "absolute", "left": 0, "top": 8, "width": 4, "height": 60, "backgroundColor": [245, 175, 60, 180], "borderRadius": 2},
+          {"type": "Label", "id": "lv-01-number", "position": "absolute", "left": 0, "top": 11, "width": 76, "height": 34, "text": "1", "fontFamily": "sans", "fontSize": 18, "fontColor": [100, 65, 30, 255], "textAlign": "center", "verticalAlign": "middle", "lineHeight": 1},
+          {"type": "Label", "id": "lv-01-stars", "position": "absolute", "left": 18, "top": 48, "width": 40, "height": 16, "text": "★★★", "fontFamily": "sans", "fontSize": 9, "letterSpacing": 2, "fontColor": [255, 210, 50, 255], "textAlign": "center", "verticalAlign": "middle", "lineHeight": 1}
+        ]},
+        {"type": "Button", "id": "lv-02", "position": "absolute", "left": 92, "top": 0, "width": 76, "height": 76, "backgroundColor": [238, 229, 191, 255], "borderRadius": 11, "borderWidth": 2.3, "borderAlign": "center", "borderColor": [91, 76, 47, 255], "padding": 0, "boxShadow": false, "children": [
+          {"type": "Panel", "position": "absolute", "left": 0, "top": 8, "width": 4, "height": 60, "backgroundColor": [230, 125, 70, 180], "borderRadius": 2},
+          {"type": "Label", "id": "lv-02-number", "position": "absolute", "left": 0, "top": 11, "width": 76, "height": 34, "text": "2", "fontFamily": "sans", "fontSize": 18, "fontColor": [100, 65, 30, 255], "textAlign": "center", "verticalAlign": "middle", "lineHeight": 1},
+          {"type": "Label", "id": "lv-02-stars-active", "position": "absolute", "left": 18, "top": 48, "width": 26, "height": 16, "text": "★★", "fontFamily": "sans", "fontSize": 9, "letterSpacing": 2, "fontColor": [255, 210, 50, 255], "textAlign": "center", "verticalAlign": "middle", "lineHeight": 1},
+          {"type": "Label", "id": "lv-02-stars-empty", "position": "absolute", "left": 46, "top": 48, "width": 12, "height": 16, "text": "★", "fontFamily": "sans", "fontSize": 9, "fontColor": [210, 200, 185, 100], "textAlign": "center", "verticalAlign": "middle", "lineHeight": 1}
+        ]},
+        {"type": "Button", "id": "lv-03", "position": "absolute", "left": 184, "top": 0, "width": 76, "height": 76, "backgroundColor": [238, 229, 191, 255], "borderRadius": 11, "borderWidth": 2.3, "borderAlign": "center", "borderColor": [91, 76, 47, 255], "padding": 0, "boxShadow": false, "children": [
+          {"type": "Panel", "position": "absolute", "left": 0, "top": 8, "width": 4, "height": 60, "backgroundColor": [200, 140, 90, 180], "borderRadius": 2},
+          {"type": "Label", "id": "lv-03-number", "position": "absolute", "left": 0, "top": 11, "width": 76, "height": 34, "text": "3", "fontFamily": "sans", "fontSize": 18, "fontColor": [100, 65, 30, 255], "textAlign": "center", "verticalAlign": "middle", "lineHeight": 1},
+          {"type": "Label", "id": "lv-03-stars-active", "position": "absolute", "left": 18, "top": 48, "width": 12, "height": 16, "text": "★", "fontFamily": "sans", "fontSize": 9, "fontColor": [255, 210, 50, 255], "textAlign": "center", "verticalAlign": "middle", "lineHeight": 1},
+          {"type": "Label", "id": "lv-03-stars-empty", "position": "absolute", "left": 32, "top": 48, "width": 26, "height": 16, "text": "★★", "fontFamily": "sans", "fontSize": 9, "letterSpacing": 2, "fontColor": [210, 200, 185, 100], "textAlign": "center", "verticalAlign": "middle", "lineHeight": 1}
+        ]},
+        {"type": "Button", "id": "lv-04", "position": "absolute", "left": 0, "top": 92, "width": 76, "height": 76, "backgroundColor": [255, 246, 220, 255], "borderRadius": 11, "borderWidth": 2.3, "borderAlign": "center", "borderColor": [91, 76, 47, 255], "padding": 0, "boxShadow": false, "children": [
+          {"type": "Panel", "position": "absolute", "left": 0, "top": 8, "width": 4, "height": 60, "backgroundColor": [220, 165, 55, 80], "borderRadius": 2},
+          {"type": "Label", "id": "lv-04-number", "position": "absolute", "left": 0, "top": 11, "width": 76, "height": 34, "text": "4", "fontFamily": "sans", "fontSize": 18, "fontColor": [100, 65, 30, 255], "textAlign": "center", "verticalAlign": "middle", "lineHeight": 1},
+          {"type": "Label", "id": "lv-04-stars", "position": "absolute", "left": 18, "top": 48, "width": 40, "height": 16, "text": "★★★", "fontFamily": "sans", "fontSize": 9, "letterSpacing": 2, "fontColor": [210, 200, 185, 100], "textAlign": "center", "verticalAlign": "middle", "lineHeight": 1}
+        ]},
+        {"type": "Panel", "id": "lv-05", "position": "absolute", "left": 92, "top": 92, "width": 76, "height": 76, "backgroundColor": [223, 216, 192, 255], "borderRadius": 11, "borderWidth": 2.3, "borderAlign": "center", "borderColor": [91, 76, 47, 255], "children": [
+          {"type": "Panel", "position": "absolute", "left": 31, "top": 24, "width": 14, "height": 14, "borderRadius": 7, "borderWidth": 2.5, "borderColor": [140, 95, 55, 180]},
+          {"type": "Panel", "position": "absolute", "left": 30, "top": 34, "width": 16, "height": 14, "borderRadius": 3, "backgroundColor": [140, 95, 55, 180]},
+          {"type": "Panel", "position": "absolute", "left": 35.5, "top": 35.5, "width": 5, "height": 5, "borderRadius": 2.5, "backgroundColor": [255, 248, 235, 220]}
+        ]},
+        {"type": "Panel", "id": "lv-06", "position": "absolute", "left": 184, "top": 92, "width": 76, "height": 76, "backgroundColor": [223, 216, 192, 255], "borderRadius": 11, "borderWidth": 2.3, "borderAlign": "center", "borderColor": [91, 76, 47, 255], "children": [
+          {"type": "Panel", "position": "absolute", "left": 31, "top": 24, "width": 14, "height": 14, "borderRadius": 7, "borderWidth": 2.5, "borderColor": [140, 95, 55, 180]},
+          {"type": "Panel", "position": "absolute", "left": 30, "top": 34, "width": 16, "height": 14, "borderRadius": 3, "backgroundColor": [140, 95, 55, 180]},
+          {"type": "Panel", "position": "absolute", "left": 35.5, "top": 35.5, "width": 5, "height": 5, "borderRadius": 2.5, "backgroundColor": [255, 248, 235, 220]}
+        ]},
+        {"type": "Panel", "id": "lv-07", "position": "absolute", "left": 0, "top": 184, "width": 76, "height": 76, "backgroundColor": [223, 216, 192, 255], "borderRadius": 11, "borderWidth": 2.3, "borderAlign": "center", "borderColor": [91, 76, 47, 255], "children": [
+          {"type": "Panel", "position": "absolute", "left": 31, "top": 24, "width": 14, "height": 14, "borderRadius": 7, "borderWidth": 2.5, "borderColor": [140, 95, 55, 180]},
+          {"type": "Panel", "position": "absolute", "left": 30, "top": 34, "width": 16, "height": 14, "borderRadius": 3, "backgroundColor": [140, 95, 55, 180]},
+          {"type": "Panel", "position": "absolute", "left": 35.5, "top": 35.5, "width": 5, "height": 5, "borderRadius": 2.5, "backgroundColor": [255, 248, 235, 220]}
+        ]},
+        {"type": "Panel", "id": "lv-08", "position": "absolute", "left": 92, "top": 184, "width": 76, "height": 76, "backgroundColor": [223, 216, 192, 255], "borderRadius": 11, "borderWidth": 2.3, "borderAlign": "center", "borderColor": [91, 76, 47, 255], "children": [
+          {"type": "Panel", "position": "absolute", "left": 31, "top": 24, "width": 14, "height": 14, "borderRadius": 7, "borderWidth": 2.5, "borderColor": [140, 95, 55, 180]},
+          {"type": "Panel", "position": "absolute", "left": 30, "top": 34, "width": 16, "height": 14, "borderRadius": 3, "backgroundColor": [140, 95, 55, 180]},
+          {"type": "Panel", "position": "absolute", "left": 35.5, "top": 35.5, "width": 5, "height": 5, "borderRadius": 2.5, "backgroundColor": [255, 248, 235, 220]}
+        ]},
+        {"type": "Panel", "id": "lv-09", "position": "absolute", "left": 184, "top": 184, "width": 76, "height": 76, "backgroundColor": [223, 216, 192, 255], "borderRadius": 11, "borderWidth": 2.3, "borderAlign": "center", "borderColor": [91, 76, 47, 255], "children": [
+          {"type": "Panel", "position": "absolute", "left": 31, "top": 24, "width": 14, "height": 14, "borderRadius": 7, "borderWidth": 2.5, "borderColor": [140, 95, 55, 180]},
+          {"type": "Panel", "position": "absolute", "left": 30, "top": 34, "width": 16, "height": 14, "borderRadius": 3, "backgroundColor": [140, 95, 55, 180]},
+          {"type": "Panel", "position": "absolute", "left": 35.5, "top": 35.5, "width": 5, "height": 5, "borderRadius": 2.5, "backgroundColor": [255, 248, 235, 220]}
+        ]},
+        {"type": "Panel", "id": "lv-10", "position": "absolute", "left": 0, "top": 276, "width": 76, "height": 76, "backgroundColor": [223, 216, 192, 255], "borderRadius": 11, "borderWidth": 2.3, "borderAlign": "center", "borderColor": [91, 76, 47, 255], "children": [
+          {"type": "Panel", "position": "absolute", "left": 31, "top": 24, "width": 14, "height": 14, "borderRadius": 7, "borderWidth": 2.5, "borderColor": [140, 95, 55, 180]},
+          {"type": "Panel", "position": "absolute", "left": 30, "top": 34, "width": 16, "height": 14, "borderRadius": 3, "backgroundColor": [140, 95, 55, 180]},
+          {"type": "Panel", "position": "absolute", "left": 35.5, "top": 35.5, "width": 5, "height": 5, "borderRadius": 2.5, "backgroundColor": [255, 248, 235, 220]}
+        ]},
+        {"type": "Panel", "id": "lv-11", "position": "absolute", "left": 92, "top": 276, "width": 76, "height": 76, "backgroundColor": [223, 216, 192, 255], "borderRadius": 11, "borderWidth": 2.3, "borderAlign": "center", "borderColor": [91, 76, 47, 255], "children": [
+          {"type": "Panel", "position": "absolute", "left": 31, "top": 24, "width": 14, "height": 14, "borderRadius": 7, "borderWidth": 2.5, "borderColor": [140, 95, 55, 180]},
+          {"type": "Panel", "position": "absolute", "left": 30, "top": 34, "width": 16, "height": 14, "borderRadius": 3, "backgroundColor": [140, 95, 55, 180]},
+          {"type": "Panel", "position": "absolute", "left": 35.5, "top": 35.5, "width": 5, "height": 5, "borderRadius": 2.5, "backgroundColor": [255, 248, 235, 220]}
+        ]},
+        {"type": "Panel", "id": "lv-12", "position": "absolute", "left": 184, "top": 276, "width": 76, "height": 76, "backgroundColor": [223, 216, 192, 255], "borderRadius": 11, "borderWidth": 2.3, "borderAlign": "center", "borderColor": [91, 76, 47, 255], "children": [
+          {"type": "Panel", "position": "absolute", "left": 31, "top": 24, "width": 14, "height": 14, "borderRadius": 7, "borderWidth": 2.5, "borderColor": [140, 95, 55, 180]},
+          {"type": "Panel", "position": "absolute", "left": 30, "top": 34, "width": 16, "height": 14, "borderRadius": 3, "backgroundColor": [140, 95, 55, 180]},
+          {"type": "Panel", "position": "absolute", "left": 35.5, "top": 35.5, "width": 5, "height": 5, "borderRadius": 2.5, "backgroundColor": [255, 248, 235, 220]}
+        ]}
+      ]
+    },
+    {"type": "Panel", "id": "level-garden-bottom", "position": "absolute", "left": 197.568, "top": 622.176, "width": 185.472, "height": 123.648, "backgroundColor": false, "backgroundImage": "image/handdrawn/pieces/scenes/garden-bottom.png", "backgroundFit": "fill"},
+    {"type": "Button", "id": "editor", "visible": false, "position": "absolute", "left": 287.2, "top": 842, "width": 104, "height": 44, "text": "关卡工坊", "fontFamily": "sans", "fontSize": 12, "textColor": [91, 76, 47, 255], "backgroundColor": [255, 246, 220, 255], "borderRadius": 11, "borderWidth": 2, "borderAlign": "center", "borderColor": [91, 76, 47, 255], "padding": 0, "boxShadow": false}
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "type": "Panel",
+  "id": "pause-menu",
+  "width": 403.2,
+  "height": 896,
+  "backgroundColor": [63, 56, 36, 120],
+  "justifyContent": "center",
+  "alignItems": "center",
+  "_extraction": {
+    "source": "scripts/shared/components/pause-overlay.lua",
+    "reviewedLegacySource": "scripts/shared/components/pause-menu.lua",
+    "sourceChoice": "当前生产使用pause-overlay；不采用未引用的旧pause-menu视觉。",
+    "designViewport": {"width": 540, "height": 1200, "dpr": 1},
+    "canvas": {"width": 403.2, "height": 896, "note": "540×1200在DPR1经Density后的游戏逻辑画布静态快照。"},
+    "layoutFormula": "w=min(280,screenW-32), h=260; x=(screenW-w)/2, y=(screenH-h)/2。",
+    "fonts": [{"family": "sans", "sourceAliases": ["sans"], "path": "Fonts/LongZhuTi-Regular.ttf"}],
+    "typography": "原NanoVG字号为像素；UI默认Theme.FontSize乘4/3，JSON fontSize=源像素字号×0.75。编辑器须已注册sans为所列字体。",
+    "dependencies": ["scripts/shared/components/game-paper.lua", "scripts/shared/components/handdrawn.lua", "scripts/shared/constants/art.lua"],
+    "dynamicVariables": ["screenW", "screenH", "buttons/hitAreas"],
+    "behaviorsRemainInLua": ["暂停/恢复游戏", "退出关卡", "hitTest及点击音效"],
+    "limitations": ["手绘二次曲线纸边转换成11像素圆角Panel；阴影按源偏移1,3的半透明纸片近似，不序列化NanoVG命令。"]
+  },
+  "children": [
+    {
+      "type": "Panel", "id": "pause-paper-stack", "width": 280, "height": 260,
+      "children": [
+        {"type": "Panel", "id": "pause-card-shadow", "position": "absolute", "left": 1, "top": 3, "width": 280, "height": 260, "borderRadius": 11, "backgroundColor": [151, 123, 78, 45]},
+        {
+          "type": "Panel", "id": "pause-card", "position": "absolute", "left": 0, "top": 0, "width": 280, "height": 260,
+          "backgroundColor": [255, 246, 220, 255], "borderRadius": 11, "borderWidth": 2.3, "borderAlign": "center", "borderColor": [91, 76, 47, 255],
+          "children": [
+            {"type": "Label", "id": "pause-title", "position": "absolute", "left": 0, "top": 22, "width": 280, "height": 36, "text": "游戏暂停", "fontFamily": "sans", "fontSize": 18.75, "fontColor": [91, 76, 47, 255], "textAlign": "center", "verticalAlign": "middle", "lineHeight": 1},
+            {"type": "Label", "id": "pause-description", "position": "absolute", "left": 0, "top": 65, "width": 280, "height": 22, "text": "歇一会儿，再继续", "fontFamily": "sans", "fontSize": 10.5, "fontColor": [116, 102, 70, 255], "textAlign": "center", "verticalAlign": "middle", "lineHeight": 1},
+            {"type": "Button", "id": "resume", "position": "absolute", "left": 24, "top": 112, "width": 232, "height": 48, "text": "继续游戏", "fontFamily": "sans", "fontSize": 12, "textColor": [91, 76, 47, 255], "backgroundColor": [238, 156, 67, 255], "borderRadius": 11, "borderWidth": 2, "borderAlign": "center", "borderColor": [91, 76, 47, 255], "boxShadow": false, "hoverBoxShadow": false, "pressedBoxShadow": false, "padding": 0},
+            {"type": "Button", "id": "exit", "position": "absolute", "left": 24, "top": 174, "width": 232, "height": 48, "text": "退出关卡", "fontFamily": "sans", "fontSize": 12, "textColor": [91, 76, 47, 255], "backgroundColor": [255, 246, 220, 255], "borderRadius": 11, "borderWidth": 2, "borderAlign": "center", "borderColor": [91, 76, 47, 255], "boxShadow": false, "hoverBoxShadow": false, "pressedBoxShadow": false, "padding": 0}
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "type": "Panel", "id": "background-unlock-popup", "width": 403.2, "height": 896,
+  "backgroundColor": [63, 56, 36, 140], "justifyContent": "center", "alignItems": "center",
+  "_extraction": {
+    "source": "scripts/shared/components/bg-unlock-popup.lua",
+    "dependencies": ["scripts/shared/background-manager.lua", "scripts/shared/components/game-paper.lua", "scripts/shared/components/handdrawn.lua", "scripts/shared/constants/art.lua"],
+    "designViewport": {"width": 540, "height": 1200, "dpr": 1},
+    "canvas": {"width": 403.2, "height": 896, "note": "DPR1经Density后的raw NanoVG逻辑画布稳定帧。"},
+    "fonts": [{"family": "sans", "sourceAliases": ["adv", "profile", "sans"], "path": "Fonts/LongZhuTi-Regular.ttf"}],
+    "typography": "UI字号=源NanoVG像素字号×0.75，抵消Theme.FontSize默认4/3；fontFamily用已注册sans。",
+    "layoutFormula": "w=min(280,screenW-40),h=min(400,screenH-32)，居中；ph=h-200=200,pw=ph*9/20=90,px=cx-pw/2,py=y+56；预览纸框额外外扩3。",
+    "dynamicVariables": {"bgId_": "sunset_glow", "bgData_.name": "夕阳余晖", "bgData_.previewImage": "image/handdrawn/backgrounds/previews/sunset_glow.png", "elapsed_": 1.3},
+    "sampleProvenance": "sunset_glow是BackgroundManager真实story-7解锁背景；renderBackground(200,444.444...)实际命中previewImage分支，使用该原有资源并cover。",
+    "behaviorsRemainInLua": ["背景解锁状态及配置选择", "卡片渐入和落定", "1秒后确认按钮渐显", "burst纸屑", "点击音效和onDismiss"],
+    "limitations": ["手绘纸边以11像素圆角Panel近似；源半透明纸影保留。", "只提取稳定帧，无NanoVG命令序列，无新增图片。"]
+  },
+  "children": [
+    {
+      "type": "Panel", "id": "background-unlock-card", "width": 280, "height": 400,
+      "children": [
+        {"type": "Panel", "id": "background-unlock-shadow", "position": "absolute", "left": 1, "top": 3, "width": 280, "height": 400, "backgroundColor": [151, 123, 78, 45], "borderRadius": 11},
+        {"type": "Panel", "id": "background-unlock-paper", "position": "absolute", "left": 0, "top": 0, "width": 280, "height": 400, "backgroundColor": [255, 246, 220, 255], "borderRadius": 11, "borderWidth": 2.3, "borderAlign": "center", "borderColor": [91, 76, 47, 255]},
+        {"type": "Label", "id": "background-unlock-title", "position": "absolute", "left": 0, "top": 10, "width": 280, "height": 36, "text": "解锁新背景！", "fontFamily": "sans", "fontSize": 18, "fontColor": [91, 76, 47, 255], "textAlign": "center", "verticalAlign": "middle", "lineHeight": 1},
+        {"type": "Panel", "id": "background-unlock-preview-shadow", "position": "absolute", "left": 93, "top": 56, "width": 96, "height": 206, "backgroundColor": [151, 123, 78, 45], "borderRadius": 11},
+        {"type": "Panel", "id": "background-unlock-preview-frame", "position": "absolute", "left": 92, "top": 53, "width": 96, "height": 206, "backgroundColor": [255, 246, 220, 255], "borderRadius": 11, "borderWidth": 2.3, "borderAlign": "center", "borderColor": [91, 76, 47, 255]},
+        {"type": "Panel", "id": "background-unlock-preview-sunset_glow", "position": "absolute", "left": 95, "top": 56, "width": 90, "height": 200, "backgroundColor": [255, 235, 220, 255], "backgroundImage": "image/handdrawn/backgrounds/previews/sunset_glow.png", "backgroundFit": "cover"},
+        {"type": "Label", "id": "background-unlock-name", "position": "absolute", "left": 0, "top": 268, "width": 280, "height": 28, "text": "夕阳余晖", "fontFamily": "sans", "fontSize": 15, "fontColor": [91, 76, 47, 255], "textAlign": "center", "verticalAlign": "middle", "lineHeight": 1},
+        {"type": "Label", "id": "background-unlock-description", "position": "absolute", "left": 0, "top": 296, "width": 280, "height": 20, "text": "可以在装扮页更换", "fontFamily": "sans", "fontSize": 9, "fontColor": [116, 102, 70, 255], "textAlign": "center", "verticalAlign": "middle", "lineHeight": 1},
+        {"type": "Button", "id": "background-unlock-confirm", "position": "absolute", "left": 60, "top": 334, "width": 160, "height": 44, "text": "太棒了！", "fontFamily": "sans", "fontSize": 12, "textColor": [91, 76, 47, 255], "backgroundColor": [238, 156, 67, 255], "borderRadius": 11, "borderWidth": 2, "borderAlign": "center", "borderColor": [91, 76, 47, 255], "boxShadow": false, "hoverBoxShadow": false, "pressedBoxShadow": false, "padding": 0}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "type": "Panel", "id": "outfit-unlock-popup", "width": 403.2, "height": 896,
+  "backgroundColor": [63, 56, 36, 140], "justifyContent": "center", "alignItems": "center",
+  "_extraction": {
+    "source": "scripts/shared/components/outfit-unlock-popup.lua",
+    "dependencies": ["scripts/shared/outfit-manager.lua", "scripts/shared/components/game-paper.lua", "scripts/shared/components/story-paper.lua", "scripts/shared/components/handdrawn.lua", "scripts/shared/constants/art.lua"],
+    "designViewport": {"width": 540, "height": 1200, "dpr": 1},
+    "canvas": {"width": 403.2, "height": 896, "note": "DPR1经Density后的raw NanoVG逻辑画布稳定帧。"},
+    "fonts": [{"family": "sans", "sourceAliases": ["adv", "profile", "sans"], "path": "Fonts/LongZhuTi-Regular.ttf"}],
+    "typography": "源默认adv是NanoVG独立上下文字体别名；UI用已注册sans指向同一源字体。UI字号=源NVG像素字号×0.75抵消默认4/3转换。",
+    "layoutFormula": "w=min(280,screenW-40), h=min(360,screenH-32); 居中；稳定帧appear=progress=alpha=1；size=min(140,h-210)=140；portrait y=62；按钮x=cx-80,y=h-66,160×44。",
+    "dynamicVariables": {"skinId_": "sport", "skinData_.name": "运动装", "skinData_.texture": "Textures/character/skins/fox_sport.png", "elapsed_": 1.3, "onDismiss_": "留在Lua"},
+    "sampleProvenance": "sport是OutfitManager真实主线story-7解锁皮肤。Panel.backgroundImage直接复用skinData_.texture，不替换成缩略图。",
+    "behaviorsRemainInLua": ["解锁皮肤ID及配置查询", "0.15秒插画延迟和渐显", "1秒后确认按钮渐显", "burst纸屑动画", "确认点击、音效、资源释放和onDismiss"],
+    "limitations": ["Paper.panel边缘转换成11像素圆角Panel，纸影用源偏移/颜色。", "仅稳定帧，burst在progress=1时原本不画；不伪造动画命令。", "portrait用backgroundFit=contain保留源完整立绘与透明背景，无新增头像框。"]
+  },
+  "children": [
+    {
+      "type": "Panel", "id": "outfit-unlock-card", "width": 280, "height": 360,
+      "children": [
+        {"type": "Panel", "id": "outfit-unlock-shadow", "position": "absolute", "left": 1, "top": 3, "width": 280, "height": 360, "backgroundColor": [151, 123, 78, 45], "borderRadius": 11},
+        {"type": "Panel", "id": "outfit-unlock-paper", "position": "absolute", "left": 0, "top": 0, "width": 280, "height": 360, "backgroundColor": [255, 246, 220, 255], "borderRadius": 11, "borderWidth": 2.3, "borderAlign": "center", "borderColor": [91, 76, 47, 255]},
+        {"type": "Label", "id": "outfit-unlock-title", "position": "absolute", "left": 0, "top": 10, "width": 280, "height": 36, "text": "获得新皮肤！", "fontFamily": "sans", "fontSize": 18, "fontColor": [91, 76, 47, 255], "textAlign": "center", "verticalAlign": "middle", "lineHeight": 1},
+        {"type": "Panel", "id": "outfit-unlock-portrait-sport", "position": "absolute", "left": 70, "top": 62, "width": 140, "height": 140, "backgroundColor": false, "backgroundImage": "Textures/character/skins/fox_sport.png", "backgroundFit": "contain"},
+        {"type": "Label", "id": "outfit-unlock-skin-name", "position": "absolute", "left": 0, "top": 224, "width": 280, "height": 28, "text": "运动装", "fontFamily": "sans", "fontSize": 15, "fontColor": [91, 76, 47, 255], "textAlign": "center", "verticalAlign": "middle", "lineHeight": 1},
+        {"type": "Label", "id": "outfit-unlock-description", "position": "absolute", "left": 0, "top": 252, "width": 280, "height": 20, "text": "可以在装扮页更换", "fontFamily": "sans", "fontSize": 9, "fontColor": [116, 102, 70, 255], "textAlign": "center", "verticalAlign": "middle", "lineHeight": 1},
+        {"type": "Button", "id": "outfit-unlock-confirm", "position": "absolute", "left": 60, "top": 294, "width": 160, "height": 44, "text": "太棒了！", "fontFamily": "sans", "fontSize": 12, "textColor": [91, 76, 47, 255], "backgroundColor": [238, 156, 67, 255], "borderRadius": 11, "borderWidth": 2, "borderAlign": "center", "borderColor": [91, 76, 47, 255], "boxShadow": false, "hoverBoxShadow": false, "pressedBoxShadow": false, "padding": 0}
+      ]
+    }
+  ]
+}

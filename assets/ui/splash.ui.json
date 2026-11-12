@@ -1,0 +1,66 @@
+{
+  "type": "Panel",
+  "id": "splash-screen",
+  "width": 540,
+  "height": 1200,
+  "backgroundImage": "image/handdrawn/splash-garden.png",
+  "backgroundFit": "cover",
+  "backgroundColor": [255, 246, 220, 255],
+  "fontFamily": "sans",
+  "_extraction": {
+    "sources": ["scripts/main.lua:CreateUI", "scripts/shared/components/health-advisory.lua", "scripts/shared/constants/art.lua", "scripts/shared/constants/layout.lua"],
+    "snapshot": {"width": 540, "height": 1200, "coordinateSpace": "UI base pixels", "safeArea": {"left": 0, "top": 0, "right": 0, "bottom": 0}, "elapsedSeconds": 5, "hintShown_": true, "cadpaPopupOpen_": false},
+    "fonts": [{"family": "sans", "sourceFamily": "sans", "path": "Fonts/LongZhuTi-Regular.ttf", "weight": "normal"}],
+    "typography": {"fontSizeUnit": "UI pt", "renderedPixelFormula": "Theme.FontSize(pt)=pt*4/3 at fontScale=1", "sourceUIValuesPreserved": true},
+    "actualStartup": "main.lua mounts HealthAdvisory.create() and immediately navigates to adventure underneath it. The splash and health advisory are one actual UI, not two sequential runtime pages. Old image/health_advisory.png and image/splash_bg_20260410070750.png are not used here.",
+    "coordinates": {
+      "scale": "min(min(w,620)/540,h/1200,(w-safe.left-safe.right)/540,(h-safe.top-safe.bottom)/1200)=1",
+      "hero": "compact=h/w<1.9=false; centerX=270; logoTop=max(safe.top+16*scale,h*0.15)=180; logoW=460; logoH=460*477/1331=164.853494; tagline top=logoTop+logoH+12=356.853494",
+      "bottom": "width=min(478*scale,w-safe.left-safe.right-32*scale)=478; left=31; bottom=safe.bottom+32*scale=32; hintHeight=ceil(20*4/3*1.35)=36; gap=14; footer naturalH approximately273; stackH approximately323; exact UI font and Yoga rounding remain runtime-dependent",
+      "characters": "bottomTop=h-safe.bottom-32*scale-max(measuredBottomH,334*scale)=834; characterTop=logoTop+logoH+78=422.853494; characterScale=min(scale,max(0,(bottomTop-characterTop-20*scale)/240))=1; group=(25,468,490,240); placements owl=(0,108,112),cat=(80,84,126),bunny=(292,84,126),raccoon=(378,108,112),fox=(141,0,216)",
+      "footerText": "layoutLine measures with the actual font; font shrinks only if measured width exceeds maxWidth; ceil(Theme.FontSize(fontSize)*1.35) supplies each fixed line box. Age entry width is measured text width+(31+9+24)*scale+3, capped to innerW=442."
+    },
+    "bindings": {
+      "splash-enter-hint": "hintShown_/elapsed_: opacity 0 until elapsed_>=5; static snapshot opacity=1",
+      "splash-progress-track": "visible only before hintShown_; hidden in this snapshot",
+      "splash-progress-fill": "floor((floor(290*scale)-3)*min(elapsed_/5,1)); static width=287",
+      "splash-age-entry": "showCadpaPopup(); complete static age-details subtree is in health-advisory.ui.json",
+      "splash-title": "Art.titleLogo",
+      "splash-characters": "Art.characters; exact placement arrays retained"
+    },
+    "behaviorsRemainLua": ["updateLayout safe-area/font-scale/viewport recalculation", "5-second loading progress then click hint", "10-second auto-dismiss", "whole-screen click dismiss only after hint and when age popup is closed", "age popup opens and pauses timer", "fade transition and onDismiss compliance/privacy/auth sequence"],
+    "limitations": ["Independent editor snapshot only; not loaded by existing gameplay Lua.", "Source min()/max(), measured age-entry width, compact-screen branch and safe-area adjustments are recorded here; numeric hero placement is frozen at 540x1200, while percentages, flex layout and bottom anchors remain editable.", "health-advisory.ui.json extracts the actual footer and age-details UI from this same startup component."]
+  },
+  "children": [
+    {"type": "Panel", "id": "splash-title", "position": "absolute", "left": 40, "top": 180, "width": 460, "height": 164.853494, "backgroundImage": "image/handdrawn/title-logo.png", "backgroundFit": "contain", "pointerEvents": "none", "children": []},
+    {"type": "Label", "id": "splash-tagline", "position": "absolute", "left": 127, "top": 356.853494, "width": 286, "height": 43, "paddingTop": 4, "paddingBottom": 4, "text": "动动脑筋，快乐出发", "fontFamily": "sans", "fontSize": 19, "fontColor": [91, 76, 47, 255], "textAlign": "center", "lineHeight": 1.35, "whiteSpace": "nowrap", "backgroundColor": [255, 246, 220, 255], "borderColor": [91, 76, 47, 255], "borderWidth": 1.5, "borderRadius": 12, "children": []},
+    {"type": "Panel", "id": "splash-characters", "position": "absolute", "left": 25, "top": 468, "width": 490, "height": 240, "pointerEvents": "none", "children": [
+      {"type": "Panel", "id": "splash-character-owl", "position": "absolute", "left": 0, "top": 108, "width": 112, "height": 112, "backgroundImage": "Textures/character/owl.png", "backgroundFit": "contain", "pointerEvents": "none", "children": []},
+      {"type": "Panel", "id": "splash-character-cat", "position": "absolute", "left": 80, "top": 84, "width": 126, "height": 126, "backgroundImage": "Textures/character/cat.png", "backgroundFit": "contain", "pointerEvents": "none", "children": []},
+      {"type": "Panel", "id": "splash-character-bunny", "position": "absolute", "left": 292, "top": 84, "width": 126, "height": 126, "backgroundImage": "Textures/character/bunny.png", "backgroundFit": "contain", "pointerEvents": "none", "children": []},
+      {"type": "Panel", "id": "splash-character-raccoon", "position": "absolute", "left": 378, "top": 108, "width": 112, "height": 112, "backgroundImage": "Textures/character/raccoon.png", "backgroundFit": "contain", "pointerEvents": "none", "children": []},
+      {"type": "Panel", "id": "splash-character-fox", "position": "absolute", "left": 141, "top": 0, "width": 216, "height": 216, "backgroundImage": "Textures/character/fox.png", "backgroundFit": "contain", "pointerEvents": "none", "children": []}
+    ]},
+    {"type": "Panel", "id": "splash-bottom-stack", "position": "absolute", "left": 31, "bottom": 32, "width": 478, "maxWidth": "100%", "flexDirection": "column", "alignItems": "center", "flexShrink": 0, "gap": 14, "pointerEvents": "box-none", "children": [
+      {"type": "Panel", "id": "splash-prepare", "width": "100%", "height": 36, "minHeight": 36, "flexShrink": 0, "pointerEvents": "none", "children": [
+        {"type": "Label", "id": "splash-enter-hint", "position": "absolute", "left": 0, "top": 0, "width": "100%", "height": 36, "minHeight": 36, "text": "点击屏幕进入游戏", "fontFamily": "sans", "fontSize": 20, "lineHeight": 1.35, "whiteSpace": "nowrap", "fontColor": [91, 76, 47, 255], "textAlign": "center", "verticalAlign": "middle", "flexShrink": 0, "opacity": 1, "children": []},
+        {"type": "Panel", "id": "splash-progress-track", "position": "absolute", "left": 94, "top": 14, "width": 290, "height": 8, "minHeight": 8, "visible": false, "backgroundColor": [221, 207, 166, 255], "borderColor": [91, 76, 47, 255], "borderWidth": 1.5, "borderRadius": 4, "overflow": "hidden", "children": [
+          {"type": "Panel", "id": "splash-progress-fill", "width": 287, "height": "100%", "backgroundColor": [132, 166, 78, 255], "borderRadius": 3, "children": []}
+        ]}
+      ]},
+      {"type": "Panel", "id": "splash-footer", "width": "100%", "padding": 16, "paddingBottom": 24, "gap": 10, "borderRadius": 20, "backgroundColor": [255, 246, 220, 245], "borderWidth": 2, "borderColor": [91, 76, 47, 255], "flexDirection": "column", "alignItems": "center", "flexShrink": 0, "pointerEvents": "box-none", "children": [
+        {"type": "Panel", "id": "splash-age-entry", "width": 227.267578, "maxWidth": "100%", "height": 52, "paddingTop": 5, "paddingBottom": 5, "paddingLeft": 12, "paddingRight": 12, "flexDirection": "row", "alignItems": "center", "justifyContent": "center", "borderRadius": 12, "borderWidth": 1.5, "borderColor": [91, 76, 47, 255], "backgroundColor": [255, 246, 220, 255], "flexShrink": 0, "children": [
+          {"type": "Panel", "id": "splash-age-icon", "width": 31, "height": 39, "marginRight": 9, "backgroundImage": "image/cadpa-8plus.jpg", "backgroundFit": "contain", "pointerEvents": "none", "children": []},
+          {"type": "Label", "id": "splash-age-text", "width": 161, "height": 31, "text": "适龄提示 8+  >", "fontFamily": "sans", "fontSize": 17, "lineHeight": 1.35, "whiteSpace": "nowrap", "fontColor": [91, 76, 47, 255], "children": []}
+        ]},
+        {"type": "Label", "id": "splash-health-title", "width": "100%", "height": 29, "minHeight": 29, "text": "健康游戏忠告", "fontFamily": "sans", "fontSize": 16, "lineHeight": 1.35, "whiteSpace": "nowrap", "fontWeight": "bold", "fontColor": [91, 76, 47, 255], "textAlign": "center", "flexShrink": 0, "children": []},
+        {"type": "Panel", "id": "splash-health-body", "width": "100%", "flexDirection": "column", "alignItems": "center", "flexShrink": 0, "gap": 4, "children": [
+          {"type": "Label", "id": "splash-health-line-1", "width": "100%", "height": 29, "minHeight": 29, "text": "抵制不良游戏，拒绝盗版游戏。", "fontFamily": "sans", "fontSize": 16, "lineHeight": 1.35, "whiteSpace": "nowrap", "fontColor": [116, 102, 70, 255], "textAlign": "center", "flexShrink": 0, "children": []},
+          {"type": "Label", "id": "splash-health-line-2", "width": "100%", "height": 29, "minHeight": 29, "text": "注意自我保护，谨防受骗上当。", "fontFamily": "sans", "fontSize": 16, "lineHeight": 1.35, "whiteSpace": "nowrap", "fontColor": [116, 102, 70, 255], "textAlign": "center", "flexShrink": 0, "children": []},
+          {"type": "Label", "id": "splash-health-line-3", "width": "100%", "height": 29, "minHeight": 29, "text": "适度游戏益脑，沉迷游戏伤身。", "fontFamily": "sans", "fontSize": 16, "lineHeight": 1.35, "whiteSpace": "nowrap", "fontColor": [116, 102, 70, 255], "textAlign": "center", "flexShrink": 0, "children": []},
+          {"type": "Label", "id": "splash-health-line-4", "width": "100%", "height": 29, "minHeight": 29, "text": "合理安排时间，享受健康生活。", "fontFamily": "sans", "fontSize": 16, "lineHeight": 1.35, "whiteSpace": "nowrap", "fontColor": [116, 102, 70, 255], "textAlign": "center", "flexShrink": 0, "children": []}
+        ]}
+      ]}
+    ]}
+  ]
+}

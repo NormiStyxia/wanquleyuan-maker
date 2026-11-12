@@ -1,0 +1,53 @@
+{
+  "type": "Panel",
+  "id": "health-advisory-page",
+  "width": 540,
+  "height": 1200,
+  "backgroundImage": "image/handdrawn/splash-garden.png",
+  "backgroundFit": "cover",
+  "backgroundColor": [255, 246, 220, 255],
+  "fontFamily": "sans",
+  "_extraction": {
+    "sources": ["scripts/main.lua:CreateUI", "scripts/shared/components/health-advisory.lua:makeFooter/layoutBottom/showCadpaPopup", "scripts/shared/constants/art.lua", "scripts/shared/constants/layout.lua"],
+    "snapshot": {"width": 540, "height": 1200, "coordinateSpace": "UI base pixels", "safeArea": {"left": 0, "top": 0, "right": 0, "bottom": 0}, "cadpaPopupOpen_": true},
+    "fonts": [{"family": "sans", "path": "Fonts/LongZhuTi-Regular.ttf", "weight": "normal"}],
+    "typography": {"fontSizeUnit": "UI pt", "renderedPixelFormula": "Theme.FontSize(pt)=pt*4/3 at fontScale=1", "sourceUIValuesPreserved": true},
+    "scope": "Health footer plus expanded age-advisory details from the actual startup component. This is not a separate runtime page. The full title/hero/tagline startup composition is extracted in splash.ui.json; it is intentionally not duplicated in this health-focused view.",
+    "coordinates": {"scale": "min(min(w,620)/540,h/1200)=1; safe insets=0", "footer": "left=(540-478)/2=31; bottom=32; width=478; natural content height from layoutLine; fontSize=16 and ceil(16*4/3*1.35)=29 per line", "ageEntry": "measured sans text width=160.267578 at fontSize17; width=min(innerW,textW+31+9+24+3)=227.267578; height=max(39,ceil(17*4/3*1.35))+10+3=52", "agePopup": "width=min(440*scale,w-32)=440; height=min(620*scale,h-48)=620; centered at (50,290); textWidth=440-48=392"},
+    "bindings": {"splash-health-line-1..4": "makeFooter lines[]; all four source lines preserved", "splash-age-overlay": "created by showCadpaPopup; source default absent, expanded state chosen to expose the full source legal content", "splash-age-close": "remove cadpaOverlay_, clear cadpaCard_, set cadpaPopupOpen_=false"},
+    "behaviorsRemainLua": ["Age entry click opens details", "age popup blocks startup dismissal and pauses countdown", "makeParagraph performs kinsoku.wrap at each source font size", "UI.ScrollView scrolls long age details", "safe-area and viewport updateLayout", "startup dismissal/compliance callbacks"],
+    "limitations": ["Only Panel/Label/Button are serialized. Source ScrollView becomes a clipped Panel viewport; all original paragraph text is retained in separate Label nodes, including text below the viewport. Scrolling requires Lua or restoring ScrollView.", "Age-detail Label wrapping uses the same font and width but no engine measurement/render pass was run; exact line-breaks can differ.", "No old health_advisory.png image is substituted for the actual current text UI."]
+  },
+  "children": [
+    {"type": "Panel", "id": "splash-footer", "position": "absolute", "left": 31, "bottom": 32, "width": 478, "padding": 16, "paddingBottom": 24, "gap": 10, "borderRadius": 20, "backgroundColor": [255, 246, 220, 245], "borderWidth": 2, "borderColor": [91, 76, 47, 255], "flexDirection": "column", "alignItems": "center", "flexShrink": 0, "children": [
+      {"type": "Panel", "id": "splash-age-entry", "width": 227.267578, "height": 52, "paddingTop": 5, "paddingBottom": 5, "paddingLeft": 12, "paddingRight": 12, "flexDirection": "row", "alignItems": "center", "justifyContent": "center", "borderRadius": 12, "borderWidth": 1.5, "borderColor": [91, 76, 47, 255], "backgroundColor": [255, 246, 220, 255], "flexShrink": 0, "children": [
+        {"type": "Panel", "id": "splash-age-icon", "width": 31, "height": 39, "marginRight": 9, "backgroundImage": "image/cadpa-8plus.jpg", "backgroundFit": "contain", "children": []},
+        {"type": "Label", "id": "splash-age-text", "width": 161, "height": 31, "text": "适龄提示 8+  >", "fontFamily": "sans", "fontSize": 17, "lineHeight": 1.35, "fontColor": [91, 76, 47, 255], "children": []}
+      ]},
+      {"type": "Label", "id": "splash-health-title", "text": "健康游戏忠告", "width": "100%", "height": 29, "fontFamily": "sans", "fontSize": 16, "fontWeight": "bold", "fontColor": [91, 76, 47, 255], "lineHeight": 1.35, "textAlign": "center", "flexShrink": 0, "children": []},
+      {"type": "Panel", "id": "splash-health-body", "width": "100%", "flexDirection": "column", "gap": 4, "children": [
+        {"type": "Label", "id": "splash-health-line-1", "text": "抵制不良游戏，拒绝盗版游戏。", "width": "100%", "height": 29, "fontFamily": "sans", "fontSize": 16, "fontColor": [116, 102, 70, 255], "lineHeight": 1.35, "textAlign": "center", "flexShrink": 0, "children": []},
+        {"type": "Label", "id": "splash-health-line-2", "text": "注意自我保护，谨防受骗上当。", "width": "100%", "height": 29, "fontFamily": "sans", "fontSize": 16, "fontColor": [116, 102, 70, 255], "lineHeight": 1.35, "textAlign": "center", "flexShrink": 0, "children": []},
+        {"type": "Label", "id": "splash-health-line-3", "text": "适度游戏益脑，沉迷游戏伤身。", "width": "100%", "height": 29, "fontFamily": "sans", "fontSize": 16, "fontColor": [116, 102, 70, 255], "lineHeight": 1.35, "textAlign": "center", "flexShrink": 0, "children": []},
+        {"type": "Label", "id": "splash-health-line-4", "text": "合理安排时间，享受健康生活。", "width": "100%", "height": 29, "fontFamily": "sans", "fontSize": 16, "fontColor": [116, 102, 70, 255], "lineHeight": 1.35, "textAlign": "center", "flexShrink": 0, "children": []}
+      ]}
+    ]},
+    {"type": "Panel", "id": "splash-age-overlay", "position": "absolute", "left": 0, "top": 0, "right": 0, "bottom": 0, "backgroundColor": [46, 42, 29, 150], "justifyContent": "center", "alignItems": "center", "children": [
+      {"type": "Panel", "id": "splash-age-card", "width": 440, "maxWidth": "100%", "height": 620, "backgroundColor": [255, 246, 220, 255], "borderColor": [91, 76, 47, 255], "borderWidth": 2, "borderRadius": 18, "overflow": "hidden", "flexDirection": "column", "alignItems": "center", "children": [
+        {"type": "Panel", "id": "splash-age-header", "width": "100%", "height": 76, "flexShrink": 0, "backgroundColor": [132, 166, 78, 255], "justifyContent": "center", "alignItems": "center", "flexDirection": "column", "children": [
+          {"type": "Label", "id": "splash-age-game-name", "text": "玩趣乐园", "fontFamily": "sans", "fontSize": 16, "fontColor": [255, 246, 220, 255], "marginBottom": 4, "children": []},
+          {"type": "Label", "id": "splash-age-title", "text": "适龄提示", "fontFamily": "sans", "fontSize": 22, "fontWeight": "bold", "fontColor": [255, 246, 220, 255], "children": []}
+        ]},
+        {"type": "Panel", "id": "splash-age-scroll", "width": "100%", "flexGrow": 1, "flexShrink": 1, "flexBasis": 0, "padding": 20, "paddingTop": 16, "paddingBottom": 8, "overflow": "hidden", "flexDirection": "column", "children": [
+          {"type": "Label", "id": "splash-age-paragraph-1", "text": "1、本游戏是适用于年满8周岁及以上的用户，建议未成年人在家长监护下使用游戏产品。", "width": "100%", "whiteSpace": "normal", "fontFamily": "sans", "fontSize": 14, "lineHeight": 1.4, "fontColor": [91, 76, 47, 255], "flexShrink": 0, "marginBottom": 12, "children": []},
+          {"type": "Label", "id": "splash-age-paragraph-2", "text": "2、本游戏中有用户实名认证系统，认证为未成年人的用户将接受以下管理：", "width": "100%", "whiteSpace": "normal", "fontFamily": "sans", "fontSize": 14, "lineHeight": 1.4, "fontColor": [91, 76, 47, 255], "flexShrink": 0, "marginBottom": 12, "children": []},
+          {"type": "Label", "id": "splash-age-paragraph-3", "text": "游戏中有部分的付费道具。未满8周岁的用户不能付费；8周岁以上未满16周岁的未成年人用户，单次充值金额不得超过50元人民币，每月充值金额累计不得超过200元人民币；16周岁以上的未成年人用户，单次充值金额不得超过100元人民币，每月充值金额累计不得超过400元人民币。", "width": "100%", "whiteSpace": "normal", "fontFamily": "sans", "fontSize": 13, "lineHeight": 1.4, "fontColor": [91, 76, 47, 255], "flexShrink": 0, "marginBottom": 12, "children": []},
+          {"type": "Label", "id": "splash-age-paragraph-4", "text": "所有用户需完成实名认证后方可进入游戏，未实名认证的用户不得进入游戏。认证为未成年人的用户每次游玩不超过1小时，且每日20时至次日8时不能进入游戏。", "width": "100%", "whiteSpace": "normal", "fontFamily": "sans", "fontSize": 13, "lineHeight": 1.4, "fontColor": [91, 76, 47, 255], "flexShrink": 0, "marginBottom": 12, "children": []}
+        ]},
+        {"type": "Panel", "id": "splash-age-footer", "width": "100%", "padding": 16, "paddingTop": 8, "flexShrink": 0, "children": [
+          {"type": "Button", "id": "splash-age-close", "text": "我知道了", "variant": "primary", "width": "100%", "height": 46, "fontFamily": "sans", "fontSize": 17, "fontWeight": "bold", "borderRadius": 12, "backgroundColor": [238, 156, 67, 255], "textColor": [91, 76, 47, 255], "borderColor": [91, 76, 47, 255], "borderWidth": 2, "boxShadow": false, "children": []}
+        ]}
+      ]}
+    ]}
+  ]
+}
