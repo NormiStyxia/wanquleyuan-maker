@@ -527,6 +527,21 @@
           "overflow": "hidden",
           "children": [
             {
+              "type": "Panel",
+              "id": "skin-grid-rule",
+              "position": "absolute",
+              "left": 24,
+              "top": 0,
+              "width": 355.2,
+              "height": 1.5,
+              "backgroundColor": [
+                221,
+                207,
+                166,
+                255
+              ]
+            },
+            {
               "type": "Button",
               "id": "skin-default",
               "position": "absolute",
@@ -546,6 +561,29 @@
               "children": [
                 {
                   "type": "Panel",
+                  "id": "skin-default-paper",
+                  "position": "absolute",
+                  "left": 0,
+                  "top": 0,
+                  "width": 76,
+                  "height": 76,
+                  "backgroundColor": [
+                    255,
+                    246,
+                    220,
+                    255
+                  ],
+                  "borderRadius": 11,
+                  "borderColor": [
+                    238,
+                    156,
+                    67,
+                    255
+                  ],
+                  "borderWidth": 3
+                },
+                {
+                  "type": "Panel",
                   "id": "skin-default-image",
                   "position": "absolute",
                   "left": 3,
@@ -554,7 +592,8 @@
                   "height": 70,
                   "backgroundImage": "image/handdrawn/character-previews/default.png",
                   "backgroundFit": "contain",
-                  "pointerEvents": "none"
+                  "pointerEvents": "none",
+                  "backgroundImageOpacity": 1
                 },
                 {
                   "type": "Label",
@@ -566,7 +605,7 @@
                   "height": 22,
                   "text": "默认",
                   "fontFamily": "sans",
-                  "fontSize": 12,
+                  "fontSize": 9,
                   "fontColor": [
                     91,
                     76,
@@ -575,7 +614,35 @@
                   ],
                   "textAlign": "center",
                   "verticalAlign": "middle",
-                  "pointerEvents": "none"
+                  "pointerEvents": "none",
+                  "lineHeight": 1
+                },
+                {
+                  "type": "Label",
+                  "id": "skin-default-selected",
+                  "position": "absolute",
+                  "left": 56,
+                  "top": 0,
+                  "width": 20,
+                  "height": 20,
+                  "text": "✓",
+                  "fontFamily": "sans",
+                  "fontSize": 10.5,
+                  "fontColor": [
+                    255,
+                    246,
+                    220,
+                    255
+                  ],
+                  "textAlign": "center",
+                  "verticalAlign": "middle",
+                  "backgroundColor": [
+                    132,
+                    166,
+                    78,
+                    255
+                  ],
+                  "borderRadius": 10
                 }
               ]
             },
@@ -599,6 +666,29 @@
               "children": [
                 {
                   "type": "Panel",
+                  "id": "skin-sport-paper",
+                  "position": "absolute",
+                  "left": 0,
+                  "top": 0,
+                  "width": 76,
+                  "height": 76,
+                  "backgroundColor": [
+                    255,
+                    246,
+                    220,
+                    255
+                  ],
+                  "borderRadius": 11,
+                  "borderColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "borderWidth": 2
+                },
+                {
+                  "type": "Panel",
                   "id": "skin-sport-image",
                   "position": "absolute",
                   "left": 3,
@@ -620,7 +710,7 @@
                   "height": 22,
                   "text": "完成7关",
                   "fontFamily": "sans",
-                  "fontSize": 11,
+                  "fontSize": 8.25,
                   "fontColor": [
                     116,
                     102,
@@ -629,7 +719,36 @@
                   ],
                   "textAlign": "center",
                   "verticalAlign": "middle",
-                  "pointerEvents": "none"
+                  "pointerEvents": "none",
+                  "lineHeight": 1
+                },
+                {
+                  "type": "Panel",
+                  "id": "skin-sport-tint",
+                  "position": "absolute",
+                  "left": 0,
+                  "top": 0,
+                  "width": 76,
+                  "height": 76,
+                  "backgroundColor": [
+                    255,
+                    246,
+                    220,
+                    90
+                  ],
+                  "borderRadius": 11
+                },
+                {
+                  "type": "Panel",
+                  "id": "skin-sport-lock",
+                  "position": "absolute",
+                  "left": 26,
+                  "top": 26,
+                  "width": 24,
+                  "height": 26,
+                  "backgroundColor": false,
+                  "backgroundImage": "ui/art/map-lock.png",
+                  "backgroundFit": "contain"
                 }
               ]
             },
@@ -653,6 +772,29 @@
               "children": [
                 {
                   "type": "Panel",
+                  "id": "skin-chef-paper",
+                  "position": "absolute",
+                  "left": 0,
+                  "top": 0,
+                  "width": 76,
+                  "height": 76,
+                  "backgroundColor": [
+                    255,
+                    246,
+                    220,
+                    255
+                  ],
+                  "borderRadius": 11,
+                  "borderColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "borderWidth": 2
+                },
+                {
+                  "type": "Panel",
                   "id": "skin-chef-image",
                   "position": "absolute",
                   "left": 3,
@@ -674,7 +816,7 @@
                   "height": 22,
                   "text": "完成14关",
                   "fontFamily": "sans",
-                  "fontSize": 11,
+                  "fontSize": 8.25,
                   "fontColor": [
                     116,
                     102,
@@ -683,7 +825,36 @@
                   ],
                   "textAlign": "center",
                   "verticalAlign": "middle",
-                  "pointerEvents": "none"
+                  "pointerEvents": "none",
+                  "lineHeight": 1
+                },
+                {
+                  "type": "Panel",
+                  "id": "skin-chef-tint",
+                  "position": "absolute",
+                  "left": 0,
+                  "top": 0,
+                  "width": 76,
+                  "height": 76,
+                  "backgroundColor": [
+                    255,
+                    246,
+                    220,
+                    90
+                  ],
+                  "borderRadius": 11
+                },
+                {
+                  "type": "Panel",
+                  "id": "skin-chef-lock",
+                  "position": "absolute",
+                  "left": 26,
+                  "top": 26,
+                  "width": 24,
+                  "height": 26,
+                  "backgroundColor": false,
+                  "backgroundImage": "ui/art/map-lock.png",
+                  "backgroundFit": "contain"
                 }
               ]
             },
@@ -707,6 +878,29 @@
               "children": [
                 {
                   "type": "Panel",
+                  "id": "skin-suit-paper",
+                  "position": "absolute",
+                  "left": 0,
+                  "top": 0,
+                  "width": 76,
+                  "height": 76,
+                  "backgroundColor": [
+                    255,
+                    246,
+                    220,
+                    255
+                  ],
+                  "borderRadius": 11,
+                  "borderColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "borderWidth": 2
+                },
+                {
+                  "type": "Panel",
                   "id": "skin-suit-image",
                   "position": "absolute",
                   "left": 3,
@@ -728,7 +922,7 @@
                   "height": 22,
                   "text": "点击购买",
                   "fontFamily": "sans",
-                  "fontSize": 11,
+                  "fontSize": 8.25,
                   "fontColor": [
                     116,
                     102,
@@ -737,7 +931,36 @@
                   ],
                   "textAlign": "center",
                   "verticalAlign": "middle",
-                  "pointerEvents": "none"
+                  "pointerEvents": "none",
+                  "lineHeight": 1
+                },
+                {
+                  "type": "Panel",
+                  "id": "skin-suit-tint",
+                  "position": "absolute",
+                  "left": 0,
+                  "top": 0,
+                  "width": 76,
+                  "height": 76,
+                  "backgroundColor": [
+                    255,
+                    246,
+                    220,
+                    90
+                  ],
+                  "borderRadius": 11
+                },
+                {
+                  "type": "Panel",
+                  "id": "skin-suit-lock",
+                  "position": "absolute",
+                  "left": 26,
+                  "top": 26,
+                  "width": 24,
+                  "height": 26,
+                  "backgroundColor": false,
+                  "backgroundImage": "ui/art/map-lock.png",
+                  "backgroundFit": "contain"
                 }
               ]
             },
@@ -761,6 +984,29 @@
               "children": [
                 {
                   "type": "Panel",
+                  "id": "skin-astronaut-paper",
+                  "position": "absolute",
+                  "left": 0,
+                  "top": 0,
+                  "width": 76,
+                  "height": 76,
+                  "backgroundColor": [
+                    255,
+                    246,
+                    220,
+                    255
+                  ],
+                  "borderRadius": 11,
+                  "borderColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "borderWidth": 2
+                },
+                {
+                  "type": "Panel",
                   "id": "skin-astronaut-image",
                   "position": "absolute",
                   "left": 3,
@@ -782,7 +1028,7 @@
                   "height": 22,
                   "text": "点击购买",
                   "fontFamily": "sans",
-                  "fontSize": 11,
+                  "fontSize": 8.25,
                   "fontColor": [
                     116,
                     102,
@@ -791,7 +1037,36 @@
                   ],
                   "textAlign": "center",
                   "verticalAlign": "middle",
-                  "pointerEvents": "none"
+                  "pointerEvents": "none",
+                  "lineHeight": 1
+                },
+                {
+                  "type": "Panel",
+                  "id": "skin-astronaut-tint",
+                  "position": "absolute",
+                  "left": 0,
+                  "top": 0,
+                  "width": 76,
+                  "height": 76,
+                  "backgroundColor": [
+                    255,
+                    246,
+                    220,
+                    90
+                  ],
+                  "borderRadius": 11
+                },
+                {
+                  "type": "Panel",
+                  "id": "skin-astronaut-lock",
+                  "position": "absolute",
+                  "left": 26,
+                  "top": 26,
+                  "width": 24,
+                  "height": 26,
+                  "backgroundColor": false,
+                  "backgroundImage": "ui/art/map-lock.png",
+                  "backgroundFit": "contain"
                 }
               ]
             },
@@ -815,6 +1090,29 @@
               "children": [
                 {
                   "type": "Panel",
+                  "id": "skin-worker-paper",
+                  "position": "absolute",
+                  "left": 0,
+                  "top": 0,
+                  "width": 76,
+                  "height": 76,
+                  "backgroundColor": [
+                    255,
+                    246,
+                    220,
+                    255
+                  ],
+                  "borderRadius": 11,
+                  "borderColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "borderWidth": 2
+                },
+                {
+                  "type": "Panel",
                   "id": "skin-worker-image",
                   "position": "absolute",
                   "left": 3,
@@ -836,7 +1134,7 @@
                   "height": 22,
                   "text": "点击购买",
                   "fontFamily": "sans",
-                  "fontSize": 11,
+                  "fontSize": 8.25,
                   "fontColor": [
                     116,
                     102,
@@ -845,7 +1143,36 @@
                   ],
                   "textAlign": "center",
                   "verticalAlign": "middle",
-                  "pointerEvents": "none"
+                  "pointerEvents": "none",
+                  "lineHeight": 1
+                },
+                {
+                  "type": "Panel",
+                  "id": "skin-worker-tint",
+                  "position": "absolute",
+                  "left": 0,
+                  "top": 0,
+                  "width": 76,
+                  "height": 76,
+                  "backgroundColor": [
+                    255,
+                    246,
+                    220,
+                    90
+                  ],
+                  "borderRadius": 11
+                },
+                {
+                  "type": "Panel",
+                  "id": "skin-worker-lock",
+                  "position": "absolute",
+                  "left": 26,
+                  "top": 26,
+                  "width": 24,
+                  "height": 26,
+                  "backgroundColor": false,
+                  "backgroundImage": "ui/art/map-lock.png",
+                  "backgroundFit": "contain"
                 }
               ]
             },
@@ -869,6 +1196,29 @@
               "children": [
                 {
                   "type": "Panel",
+                  "id": "skin-pirate-paper",
+                  "position": "absolute",
+                  "left": 0,
+                  "top": 0,
+                  "width": 76,
+                  "height": 76,
+                  "backgroundColor": [
+                    255,
+                    246,
+                    220,
+                    255
+                  ],
+                  "borderRadius": 11,
+                  "borderColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "borderWidth": 2
+                },
+                {
+                  "type": "Panel",
                   "id": "skin-pirate-image",
                   "position": "absolute",
                   "left": 3,
@@ -890,7 +1240,7 @@
                   "height": 22,
                   "text": "点击购买",
                   "fontFamily": "sans",
-                  "fontSize": 11,
+                  "fontSize": 8.25,
                   "fontColor": [
                     116,
                     102,
@@ -899,7 +1249,36 @@
                   ],
                   "textAlign": "center",
                   "verticalAlign": "middle",
-                  "pointerEvents": "none"
+                  "pointerEvents": "none",
+                  "lineHeight": 1
+                },
+                {
+                  "type": "Panel",
+                  "id": "skin-pirate-tint",
+                  "position": "absolute",
+                  "left": 0,
+                  "top": 0,
+                  "width": 76,
+                  "height": 76,
+                  "backgroundColor": [
+                    255,
+                    246,
+                    220,
+                    90
+                  ],
+                  "borderRadius": 11
+                },
+                {
+                  "type": "Panel",
+                  "id": "skin-pirate-lock",
+                  "position": "absolute",
+                  "left": 26,
+                  "top": 26,
+                  "width": 24,
+                  "height": 26,
+                  "backgroundColor": false,
+                  "backgroundImage": "ui/art/map-lock.png",
+                  "backgroundFit": "contain"
                 }
               ]
             },
@@ -923,6 +1302,29 @@
               "children": [
                 {
                   "type": "Panel",
+                  "id": "skin-detective-paper",
+                  "position": "absolute",
+                  "left": 0,
+                  "top": 0,
+                  "width": 76,
+                  "height": 76,
+                  "backgroundColor": [
+                    255,
+                    246,
+                    220,
+                    255
+                  ],
+                  "borderRadius": 11,
+                  "borderColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "borderWidth": 2
+                },
+                {
+                  "type": "Panel",
                   "id": "skin-detective-image",
                   "position": "absolute",
                   "left": 3,
@@ -944,7 +1346,7 @@
                   "height": 22,
                   "text": "点击购买",
                   "fontFamily": "sans",
-                  "fontSize": 11,
+                  "fontSize": 8.25,
                   "fontColor": [
                     116,
                     102,
@@ -953,7 +1355,36 @@
                   ],
                   "textAlign": "center",
                   "verticalAlign": "middle",
-                  "pointerEvents": "none"
+                  "pointerEvents": "none",
+                  "lineHeight": 1
+                },
+                {
+                  "type": "Panel",
+                  "id": "skin-detective-tint",
+                  "position": "absolute",
+                  "left": 0,
+                  "top": 0,
+                  "width": 76,
+                  "height": 76,
+                  "backgroundColor": [
+                    255,
+                    246,
+                    220,
+                    90
+                  ],
+                  "borderRadius": 11
+                },
+                {
+                  "type": "Panel",
+                  "id": "skin-detective-lock",
+                  "position": "absolute",
+                  "left": 26,
+                  "top": 26,
+                  "width": 24,
+                  "height": 26,
+                  "backgroundColor": false,
+                  "backgroundImage": "ui/art/map-lock.png",
+                  "backgroundFit": "contain"
                 }
               ]
             },
@@ -977,6 +1408,29 @@
               "children": [
                 {
                   "type": "Panel",
+                  "id": "skin-artist-paper",
+                  "position": "absolute",
+                  "left": 0,
+                  "top": 0,
+                  "width": 76,
+                  "height": 76,
+                  "backgroundColor": [
+                    255,
+                    246,
+                    220,
+                    255
+                  ],
+                  "borderRadius": 11,
+                  "borderColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "borderWidth": 2
+                },
+                {
+                  "type": "Panel",
                   "id": "skin-artist-image",
                   "position": "absolute",
                   "left": 3,
@@ -998,7 +1452,7 @@
                   "height": 22,
                   "text": "点击购买",
                   "fontFamily": "sans",
-                  "fontSize": 11,
+                  "fontSize": 8.25,
                   "fontColor": [
                     116,
                     102,
@@ -1007,7 +1461,36 @@
                   ],
                   "textAlign": "center",
                   "verticalAlign": "middle",
-                  "pointerEvents": "none"
+                  "pointerEvents": "none",
+                  "lineHeight": 1
+                },
+                {
+                  "type": "Panel",
+                  "id": "skin-artist-tint",
+                  "position": "absolute",
+                  "left": 0,
+                  "top": 0,
+                  "width": 76,
+                  "height": 76,
+                  "backgroundColor": [
+                    255,
+                    246,
+                    220,
+                    90
+                  ],
+                  "borderRadius": 11
+                },
+                {
+                  "type": "Panel",
+                  "id": "skin-artist-lock",
+                  "position": "absolute",
+                  "left": 26,
+                  "top": 26,
+                  "width": 24,
+                  "height": 26,
+                  "backgroundColor": false,
+                  "backgroundImage": "ui/art/map-lock.png",
+                  "backgroundFit": "contain"
                 }
               ]
             },
@@ -1031,6 +1514,29 @@
               "children": [
                 {
                   "type": "Panel",
+                  "id": "skin-ninja-paper",
+                  "position": "absolute",
+                  "left": 0,
+                  "top": 0,
+                  "width": 76,
+                  "height": 76,
+                  "backgroundColor": [
+                    255,
+                    246,
+                    220,
+                    255
+                  ],
+                  "borderRadius": 11,
+                  "borderColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "borderWidth": 2
+                },
+                {
+                  "type": "Panel",
                   "id": "skin-ninja-image",
                   "position": "absolute",
                   "left": 3,
@@ -1052,7 +1558,7 @@
                   "height": 22,
                   "text": "点击购买",
                   "fontFamily": "sans",
-                  "fontSize": 11,
+                  "fontSize": 8.25,
                   "fontColor": [
                     116,
                     102,
@@ -1061,7 +1567,36 @@
                   ],
                   "textAlign": "center",
                   "verticalAlign": "middle",
-                  "pointerEvents": "none"
+                  "pointerEvents": "none",
+                  "lineHeight": 1
+                },
+                {
+                  "type": "Panel",
+                  "id": "skin-ninja-tint",
+                  "position": "absolute",
+                  "left": 0,
+                  "top": 0,
+                  "width": 76,
+                  "height": 76,
+                  "backgroundColor": [
+                    255,
+                    246,
+                    220,
+                    90
+                  ],
+                  "borderRadius": 11
+                },
+                {
+                  "type": "Panel",
+                  "id": "skin-ninja-lock",
+                  "position": "absolute",
+                  "left": 26,
+                  "top": 26,
+                  "width": 24,
+                  "height": 26,
+                  "backgroundColor": false,
+                  "backgroundImage": "ui/art/map-lock.png",
+                  "backgroundFit": "contain"
                 }
               ]
             },
@@ -1085,6 +1620,29 @@
               "children": [
                 {
                   "type": "Panel",
+                  "id": "skin-doctor-paper",
+                  "position": "absolute",
+                  "left": 0,
+                  "top": 0,
+                  "width": 76,
+                  "height": 76,
+                  "backgroundColor": [
+                    255,
+                    246,
+                    220,
+                    255
+                  ],
+                  "borderRadius": 11,
+                  "borderColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "borderWidth": 2
+                },
+                {
+                  "type": "Panel",
                   "id": "skin-doctor-image",
                   "position": "absolute",
                   "left": 3,
@@ -1106,7 +1664,7 @@
                   "height": 22,
                   "text": "点击购买",
                   "fontFamily": "sans",
-                  "fontSize": 11,
+                  "fontSize": 8.25,
                   "fontColor": [
                     116,
                     102,
@@ -1115,7 +1673,36 @@
                   ],
                   "textAlign": "center",
                   "verticalAlign": "middle",
-                  "pointerEvents": "none"
+                  "pointerEvents": "none",
+                  "lineHeight": 1
+                },
+                {
+                  "type": "Panel",
+                  "id": "skin-doctor-tint",
+                  "position": "absolute",
+                  "left": 0,
+                  "top": 0,
+                  "width": 76,
+                  "height": 76,
+                  "backgroundColor": [
+                    255,
+                    246,
+                    220,
+                    90
+                  ],
+                  "borderRadius": 11
+                },
+                {
+                  "type": "Panel",
+                  "id": "skin-doctor-lock",
+                  "position": "absolute",
+                  "left": 26,
+                  "top": 26,
+                  "width": 24,
+                  "height": 26,
+                  "backgroundColor": false,
+                  "backgroundImage": "ui/art/map-lock.png",
+                  "backgroundFit": "contain"
                 }
               ]
             }

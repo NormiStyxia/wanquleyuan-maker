@@ -35,5 +35,22 @@ def populate(grid,rows,kind):
 populate(find(d,'profile-skin-grid'),skins,'skin')
 rows=[(id,name,'image/handdrawn/backgrounds/previews/'+id+'.png',caption,unlocked) for id,name,caption,unlocked in bgs]
 populate(find(d,'profile-background-grid'),rows,'background')
+# 仅完善本轮提取的角色节点，不触碰其他手工资产。
+grid=find(d,'profile-skin-grid')
+for i,row in enumerate(skins):
+ sid,name,path,caption,unlocked=row
+ item=next(c for c in grid['children'] if c.get('id')=='skin-'+sid)
+ prefix=item['id'];selected=sid=='default'
+ image=next(c for c in item['children'] if c.get('backgroundImage'))
+ image['backgroundImageOpacity']=1 if unlocked else .55
+ label=next(c for c in item['children'] if c['type']=='Label')
+ label['fontSize']=9 if unlocked else 8.25
+ label['lineHeight']=1
+ item['children'].insert(0,node('Panel',prefix+'-paper',0,0,76,76,backgroundColor=PAPER,borderRadius=11,borderColor=ORANGE if selected else INK,borderWidth=3 if selected else 2))
+ if not unlocked:
+  item['children'].extend([node('Panel',prefix+'-tint',0,0,76,76,backgroundColor=[255,246,220,90],borderRadius=11),node('Panel',prefix+'-lock',26,26,24,26,backgroundColor=False,backgroundImage='ui/art/map-lock.png',backgroundFit='contain')])
+ else:
+  item['children'].append(node('Label',prefix+'-selected',56,0,20,20,text='✓',fontFamily='sans',fontSize=10.5,fontColor=PAPER,textAlign='center',verticalAlign='middle',backgroundColor=[132,166,78,255],borderRadius=10))
+grid['children'].insert(0,node('Panel','skin-grid-rule',24,0,355.2,1.5,backgroundColor=[221,207,166,255]))
 p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')
 print('完成11角色和7背景缩略图')

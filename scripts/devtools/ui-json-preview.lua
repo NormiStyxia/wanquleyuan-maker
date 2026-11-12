@@ -6,7 +6,7 @@ function Start()
         fonts = {{family="sans", weights={normal="Fonts/LongZhuTi-Regular.ttf"}}},
         scale = 1,
     })
-    local instance, err = UI.LoadJSON("ui/adventure-reference.ui.json")
+    local instance, err = UI.LoadJSON("ui/profile.ui.json")
     assert(instance, err)
     UI.SetRoot(instance:GetRoot())
     _G.UIJsonPreviewInstance = instance
