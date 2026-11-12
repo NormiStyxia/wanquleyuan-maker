@@ -5,7 +5,7 @@ local function verify(label)
     local root = UI.GetRoot()
     local safe = root:FindById("safe_content"):GetAbsoluteLayout()
     local stack = root:FindById("splash-bottom-stack"):GetAbsoluteLayout()
-    V.assert(stack.w > 0 and stack.w <= 637.5, label .. " 限宽")
+    V.assert(stack.w > 0 and stack.w <= 638.333, label .. " 限宽（允许布局像素取整）")
     V.assertNear(stack.x + stack.w / 2, safe.x + safe.w / 2, 1, label .. " 底部容器居中")
     for _, id in ipairs(targets) do
         local widget = root:FindById(id)

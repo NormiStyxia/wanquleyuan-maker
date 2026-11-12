@@ -1,0 +1,90 @@
+{
+    "version": 2,
+    "script": "tests/e2e/splash-layout-check-scene.lua",
+    "result": "FAIL",
+    "duration_ms": 5209,
+    "frames_completed": 140,
+    "phases": {
+        "load": {
+            "result": "PASS",
+            "errors": []
+        },
+        "init": {
+            "result": "PASS",
+            "errors": []
+        },
+        "run": {
+            "result": "FAIL",
+            "errors": [
+                {
+                    "category": "engine",
+                    "message": "Frame time spike: 415.064ms (threshold: 100ms)",
+                    "frame": 67
+                }
+            ]
+        },
+        "scene": {
+            "result": "PASS",
+            "errors": [],
+            "node_count": 0,
+            "component_count": 0,
+            "scene_exists": false
+        }
+    },
+    "state_snapshots": [
+        {
+            "frame": 1,
+            "phase": "init",
+            "nodes": 0,
+            "components": 0,
+            "hash": 0,
+            "frame_time_ms": 653.5440063476563
+        },
+        {
+            "frame": 10,
+            "phase": "run",
+            "nodes": 0,
+            "components": 0,
+            "hash": 0,
+            "frame_time_ms": 19.520999908447267
+        },
+        {
+            "frame": 70,
+            "phase": "run",
+            "nodes": 0,
+            "components": 0,
+            "hash": 0,
+            "frame_time_ms": 16.63399887084961
+        },
+        {
+            "frame": 140,
+            "phase": "run",
+            "nodes": 0,
+            "components": 0,
+            "hash": 0,
+            "frame_time_ms": 16.593000411987306
+        }
+    ],
+    "scene_stalled": true,
+    "max_frame_time_ms": 415.0639953613281,
+    "update_defined": false,
+    "component_census": {},
+    "test_result": "FAILED",
+    "test_assertions": {
+        "total": 76,
+        "passed": 74,
+        "failed": 2
+    },
+    "test_issues": [
+        "正常安全区 限宽",
+        "非零安全区 限宽"
+    ],
+    "missing_resources": [],
+    "missing_engine_resources": [],
+    "summary": {
+        "lua_errors": 0,
+        "resource_errors": 0,
+        "engine_errors": 1,
+        "total_errors": 1
+    }
+}

@@ -2,7 +2,7 @@
     "version": 2,
     "script": "tests/e2e/splash-layout-check-scene.lua",
     "result": "FAIL",
-    "duration_ms": 6162,
+    "duration_ms": 5543,
     "frames_completed": 140,
     "phases": {
         "load": {
@@ -18,8 +18,8 @@
             "errors": [
                 {
                     "category": "engine",
-                    "message": "Frame time spike: 353.737ms (threshold: 100ms)",
-                    "frame": 68
+                    "message": "Frame time spike: 335.603ms (threshold: 100ms)",
+                    "frame": 72
                 }
             ]
         },
@@ -38,7 +38,7 @@
             "nodes": 0,
             "components": 0,
             "hash": 0,
-            "frame_time_ms": 817.8670043945313
+            "frame_time_ms": 764.5469970703125
         },
         {
             "frame": 10,
@@ -46,7 +46,7 @@
             "nodes": 0,
             "components": 0,
             "hash": 0,
-            "frame_time_ms": 16.621000289916993
+            "frame_time_ms": 16.634000778198243
         },
         {
             "frame": 70,
@@ -54,7 +54,7 @@
             "nodes": 0,
             "components": 0,
             "hash": 0,
-            "frame_time_ms": 16.62700080871582
+            "frame_time_ms": 16.963001251220704
         },
         {
             "frame": 140,
@@ -62,23 +62,20 @@
             "nodes": 0,
             "components": 0,
             "hash": 0,
-            "frame_time_ms": 16.714000701904298
+            "frame_time_ms": 18.6200008392334
         }
     ],
     "scene_stalled": true,
-    "max_frame_time_ms": 353.73699951171877,
+    "max_frame_time_ms": 335.6029968261719,
     "update_defined": false,
     "component_census": {},
-    "test_result": "FAILED",
+    "test_result": "PASSED",
     "test_assertions": {
         "total": 76,
-        "passed": 74,
-        "failed": 2
+        "passed": 76,
+        "failed": 0
     },
-    "test_issues": [
-        "正常安全区 底部容器居中: 247.5000 not within 1.0000 of 269.0000",
-        "非零安全区 底部容器居中: 248.5000 not within 1.0000 of 269.0000"
-    ],
+    "test_issues": [],
     "missing_resources": [],
     "missing_engine_resources": [],
     "summary": {
