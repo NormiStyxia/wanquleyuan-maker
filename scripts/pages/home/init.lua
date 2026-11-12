@@ -1,397 +1,275 @@
---- 游戏主菜单（NanoVG 渲染版，替代原 UI 库 + Emoji 方案）
---- 拥有独立 NanoVG 上下文，通过 active_ 控制渲染/输入
+--- 自由模式页：布局读取编辑器文档，交互和动态状态保留在 Lua。
 local UI = require("urhox-libs/UI")
-local Colors = require("shared.constants.colors")
-local Layout = require("shared.constants.layout")
-local gameRegistry = require("modules.game-registry.init")
-local GameCard = require("shared.components.game-card")
 local Router = require("app.router")
+local gameRegistry = require("modules.game-registry.init")
 local ScreenTransition = require("shared.components.screen-transition")
-local SoundManager = require("shared.sound-manager")
-local logger = require("shared.utils.logger")
-local uiTap = require("shared.utils.ui-tap")
 local SettingsPopup = require("shared.components.settings-popup")
-local TabBar = require("shared.components.tab-bar")
-local Storyline = require("modules.storyline.init")
 local FoxMascot = require("shared.components.fox-mascot")
-local Density = require("shared.utils.density")
-local bgManager = require("shared.background-manager")
-local PageHeader = require("shared.components.page-header")
+local OutfitManager = require("shared.outfit-manager")
+local BackgroundManager = require("shared.background-manager")
+local Storyline = require("modules.storyline.init")
 local PlayTimeGuard = require("shared.utils.play-time-guard")
 local AntiAddictionPopup = require("shared.components.anti-addiction-popup")
+local uiTap = require("shared.utils.ui-tap")
+local logger = require("shared.utils.logger")
 
 local M = {}
 local MODULE = "page-home"
-
--- NanoVG 状态
----@type userdata|nil
-local nvgCtx_ = nil
-local fontHandle_ = -1
+local RESOURCE = "ui/home.ui.json"
 local active_ = false
-
--- 瓷砖点击区域缓存（复用表，避免每帧 GC）
-local tileHitAreas_ = {}  -- { { x, y, w, h, config } }
-local tileHitCount_ = 0   -- 当前帧有效的点击区域数量
-
--- 游戏数据缓存
-local games_ = {}
-local onlineCount_ = 0
-
--- 动画时间累计
-local animTime_ = 0
-
--- 布局缓存（避免每帧重算 calcTileSize）
-local tileSizeCache_ = {
-    screenW = 0, screenH = 0,
-    tileSize = 0, gridOffsetX = 0,
-}
-
----@type any 首页返回的 UI 容器（用于挂载弹窗）
-local pageContainer_ = nil
--- 设置弹窗管理器
+local animTime_ = 0.0
+---@type any
+local instance_
+---@type Panel
+local pageContainer_
+---@type Panel
+local document_
+---@type Panel
+local canvas_
+---@type Node
+local eventNode_
+---@type LuaScriptObject
+local receiver_
+---@type table<string, any>
+local widgets_ = {}
+local designW_, designH_ = 403.2, 896.0
+local viewportW_, viewportH_ = 0.0, 0.0
+local lastSkin_, lastBackground_, lastUnlocked_ = "", "", nil
+---@type any
+local lastGameList_
+local enteringGame_ = false
 local settingsHelper_ = SettingsPopup.createPageHelper({
     extraButtons = SettingsPopup.makeDevButtons(),
 })
--- 页签栏点击区域
-local tabBarHitAreas_ = nil
 
--- ============================================================================
--- NanoVG 渲染
--- ============================================================================
-
---- 绘制标题区域，返回绘制后的 curY（委托给公共组件）
----@param vg userdata
----@param screenW number
----@param curY number
----@param t number 动画时间（未使用，保持接口一致）
----@return number curY
-local function renderTitle(vg, screenW, curY, t)
-    return PageHeader.render(vg, screenW, PageHeader.PRESET_HOME, curY) or curY
+local function find(id)
+    if not widgets_[id] then widgets_[id] = instance_:Find(id) end
+    return widgets_[id]
 end
 
---- 计算瓷砖尺寸（带最大值约束）
----@param screenW number
----@param screenH number
----@return number tileSize
----@return number gridOffsetX 网格左偏移（居中用）
-local function calcTileSize(screenW, screenH)
-    local padding = Layout.MENU_PADDING
-    local gap = Layout.TILE_GAP
-    local cols = Layout.TILE_COLUMNS
-    local gridW = screenW - padding * 2
-    local tileSize = (gridW - gap * (cols - 1)) / cols
-
-    -- 限制卡片最大尺寸：不超过可用高度的 30%（避免高屏下卡片过大遮挡狐狸）
-    local maxTile = screenH * 0.28
-    if tileSize > maxTile then
-        tileSize = maxTile
-    end
-
-    -- 计算居中偏移
-    local actualGridW = tileSize * cols + gap * (cols - 1)
-    local gridOffsetX = padding + (gridW - actualGridW) / 2
-
-    return tileSize, gridOffsetX
+local function canInteract()
+    return active_ and not enteringGame_ and not settingsHelper_.isOpen()
 end
 
---- 绘制游戏瓷砖网格，返回绘制后的 curY
----@param vg userdata
----@param screenW number
----@param screenH number
----@param curY number
----@return number curY
-local function renderGrid(vg, screenW, screenH, curY)
-    local gap = Layout.TILE_GAP
-    local cols = Layout.TILE_COLUMNS
-
-    -- 使用缓存的 tileSize（屏幕尺寸不变时跳过计算）
-    if screenW ~= tileSizeCache_.screenW or screenH ~= tileSizeCache_.screenH then
-        tileSizeCache_.screenW = screenW
-        tileSizeCache_.screenH = screenH
-        tileSizeCache_.tileSize, tileSizeCache_.gridOffsetX = calcTileSize(screenW, screenH)
-    end
-    local tileSize = tileSizeCache_.tileSize
-    local gridOffsetX = tileSizeCache_.gridOffsetX
-    local rows = math.ceil(#games_ / cols)
-
-    -- 重置点击区域计数（复用已有表条目）
-    tileHitCount_ = 0
-
-    if #games_ == 0 then
-        nvgFontFace(vg, "menu")
-        nvgFontSize(vg, Layout.FONT_SIZE_BODY)
-        nvgTextAlign(vg, NVG_ALIGN_CENTER | NVG_ALIGN_MIDDLE)
-        local hc = Colors.textHint
-        nvgFillColor(vg, nvgRGBA(hc[1], hc[2], hc[3], 255))
-        nvgText(vg, screenW / 2, curY + 60, "暂无游戏")
-        return curY + 120
-    end
-
-    for i, config in ipairs(games_) do
-        local row = math.ceil(i / cols) - 1
-        local col = (i - 1) % cols
-        local tx = gridOffsetX + col * (tileSize + gap)
-        local ty = curY + row * (tileSize + gap)
-
-        GameCard.drawTile(vg, tx, ty, tileSize, config, i)
-
-        -- 复用已有 table 条目，减少 GC
-        tileHitCount_ = tileHitCount_ + 1
-        local hitArea = tileHitAreas_[tileHitCount_]
-        if not hitArea then
-            hitArea = { x = 0, y = 0, w = 0, h = 0, config = nil }
-            tileHitAreas_[tileHitCount_] = hitArea
-        end
-        hitArea.x = tx
-        hitArea.y = ty
-        hitArea.w = tileSize
-        hitArea.h = tileSize
-        hitArea.config = config
-    end
-
-    local gridH = rows * tileSize + math.max(0, rows - 1) * gap
-    return curY + gridH
-end
-
---- 主渲染函数
-local function renderAll(vg, screenW, screenH, t)
-    local gap = Layout.TILE_GAP
-    local cols = Layout.TILE_COLUMNS
-
-    -- 预算总内容高度
-    local tileSize = calcTileSize(screenW, screenH)
-    local rows = math.ceil(math.max(1, #games_) / cols)
-    local gridH = rows * tileSize + math.max(0, rows - 1) * gap
-
-    -- 绘制标题 + 网格
-    local curY = Layout.MENU_START_Y + Layout.MENU_TITLE_GAP
-    curY = renderTitle(vg, screenW, curY, t)
-    curY = curY + Layout.MENU_GRID_GAP
-    renderGrid(vg, screenW, screenH, curY)
-
-    -- 狐狸立绘（在页签栏下方）
-    FoxMascot.render(vg, screenW, screenH, TabBar.HEIGHT, { handdrawn=true, size=screenH<720 and 100 or 128, bubbleBottomInset=72 })
-
-    -- 底部页签栏
-    local lockedTabs = Storyline.getNodeState("story-4") ~= "done" and { home = true } or nil
-    tabBarHitAreas_ = TabBar.render(vg, screenW, screenH, "home", t, "menu", lockedTabs, { handdrawn = true })
-
-
-end
-
--- ============================================================================
--- 事件回调（全局函数名，UrhoX 要求）
--- ============================================================================
-
---- NanoVG 渲染回调
----@param eventType string
----@param eventData table
-function Home_HandleNanoVGRender(eventType, eventData)
-    if not active_ or not nvgCtx_ then return end
-
-    -- 累计动画时间
-    local dt = 1.0 / 60.0
-    animTime_ = animTime_ + dt
-    FoxMascot.update(dt)
-
-    local logW, logH = Density.beginFrame(nvgCtx_)
-
-    -- 背景（跟随装扮页面选择）
-    bgManager.renderBackground(nvgCtx_, logW, logH, animTime_, nil)
-
-    renderAll(nvgCtx_, logW, logH, animTime_)
-
-    -- 非可游玩时间遮罩
-    PlayTimeGuard.renderOverlay(nvgCtx_, logW, logH, "menu", animTime_)
-
-    Density.endFrame(nvgCtx_)
-end
-
---- 处理点击/触摸
-local function handleClickAt(screenX, screenY)
-    if not active_ then return end
-    -- 设置弹窗打开时，不处理 NanoVG 层点击（UI 层会拦截弹窗内的点击）
-    if settingsHelper_.isOpen() then return end
-
-    local lx, ly = Density.toGameCoords(screenX, screenY)
-
-    -- 狐狸立绘点击 → 触发聊天气泡
-    local logW, logH = Density.getGameSize()
-    if FoxMascot.hitTest(lx, ly, logW, logH, TabBar.HEIGHT) then
-        FoxMascot.notifyChat()
-        return
-    end
-
-    -- 检测页签栏点击
-    local tabAction = TabBar.handleClick(lx, ly, tabBarHitAreas_)
-    if tabAction then
-        if tabAction.type == "tab" and tabAction.id ~= "home" then
-            uiTap.play()
-            ScreenTransition.run(function()
-                Router.replace(tabAction.id)
-            end)
-        elseif tabAction.type == "settings" then
-            uiTap.play()
-            settingsHelper_.open(pageContainer_)
+--- 沿用原卡片入口：防沉迷检查、点击音效、转场及游戏参数不变。
+local function enterGame(gameId)
+    if not canInteract() then return end
+    local config = gameRegistry.getGameById(gameId)
+    if not config then return end
+    if PlayTimeGuard.isRestricted() then
+        logger.info(MODULE, "click_game_tile", "blocked: restricted play time")
+        local reason = PlayTimeGuard.getBlockReason()
+        if reason == "curfew" then
+            AntiAddictionPopup.showCurfew(pageContainer_, function() end)
+        elseif reason == "time_limit" then
+            AntiAddictionPopup.showForceExit(pageContainer_, function() end)
         end
         return
     end
+    enteringGame_ = true
+    uiTap.play()
+    logger.info(MODULE, "click_game_tile", gameId)
+    ScreenTransition.run(function()
+        Router.push("game", { gameConfig = config })
+    end)
+end
 
-    for i = 1, tileHitCount_ do
-        local area = tileHitAreas_[i]
-        if lx >= area.x and lx <= area.x + area.w and
-           ly >= area.y and ly <= area.y + area.h then
-            -- 非可游玩时间禁止进入游戏
-            if PlayTimeGuard.isRestricted() then
-                logger.info(MODULE, "click_game_tile", "blocked: restricted play time")
-                -- 弹出防沉迷提示告知用户原因
-                if pageContainer_ then
-                    local reason = PlayTimeGuard.getBlockReason()
-                    if reason == "curfew" then
-                        AntiAddictionPopup.showCurfew(pageContainer_, function() end)
-                    elseif reason == "time_limit" then
-                        AntiAddictionPopup.showForceExit(pageContainer_, function() end)
-                    end
-                end
-                return
+local function navigate(pageId)
+    if not canInteract() then return end
+    uiTap.play()
+    ScreenTransition.run(function() Router.replace(pageId) end)
+end
+
+--- 整体适配文档画布；不重排、覆盖文档中各元素的编辑器布局。
+local function fitCanvas()
+    local w, h = UI.GetViewportSize()
+    if w <= 0 or h <= 0 or (w == viewportW_ and h == viewportH_) then return end
+    viewportW_, viewportH_ = w, h
+    local scale = math.min(w / designW_, h / designH_)
+    canvas_:SetStyle({
+        left = (w - designW_ * scale) / 2,
+        top = (h - designH_ * scale) / 2,
+        scale = scale,
+    })
+end
+
+local function refreshGames()
+    local games = gameRegistry.getGameList()
+    if games == lastGameList_ then return end
+    lastGameList_ = games
+    ---@type table<string, any>
+    local available = {}
+    for _, config in ipairs(games) do available[config.gameId] = config end
+    for _, button in ipairs(instance_:FindAll("Button")) do
+        local id = button.props.id or ""
+        if id:sub(1, 5) == "game-" then
+            local gameId = id:sub(6)
+            local config = available[gameId]
+            button:SetVisible(config ~= nil)
+            if config then
+                local title = find(gameId .. "-title")
+                local subtitle = find(gameId .. "-subtitle")
+                if title then title:SetText(config.title) end
+                if subtitle then subtitle:SetText(config.subtitle or "") end
             end
-            uiTap.play()
-            logger.info(MODULE, "click_game_tile", area.config.gameId)
-            ScreenTransition.run(function()
-                Router.push("game", { gameConfig = area.config })
-            end)
-            return
         end
     end
 end
 
---- 鼠标点击回调
----@param eventType string
----@param eventData table
-function Home_HandleMouseDown(eventType, eventData)
-    if not active_ then return end
-    local button = eventData["Button"]:GetInt()
-    if button ~= MOUSEB_LEFT then return end
-    local x = eventData["X"]:GetInt()
-    local y = eventData["Y"]:GetInt()
-    handleClickAt(x, y)
+local function refreshState()
+    local skin = OutfitManager.getTexturePath()
+    if skin ~= lastSkin_ then
+        lastSkin_ = skin
+        local mascot = find("home-mascot")
+        if mascot then mascot:SetBackgroundImage(skin) end
+    end
+    local bg = BackgroundManager.getCurrent()
+    if bg.id ~= lastBackground_ then
+        lastBackground_ = bg.id
+        local background = find("home-background")
+        if background then
+            background:SetStyle({backgroundImage = bg.themeImage, backgroundColor = bg.colors.base})
+        end
+    end
+    local unlocked = Storyline.getNodeState("story-4") == "done"
+    if unlocked ~= lastUnlocked_ then
+        lastUnlocked_ = unlocked
+        local tab = find("tab-home")
+        local lock = find("tab-home-lock")
+        local plaque = find("tab-home-plaque")
+        if tab then tab:SetDisabled(not unlocked) end
+        if lock then lock:SetVisible(not unlocked) end
+        if plaque then
+            plaque:SetStyle({backgroundColor = unlocked and {238,156,67,255} or {224,220,197,255}})
+        end
+    end
+    refreshGames()
 end
 
---- 触摸回调
----@param eventType string
----@param eventData table
-function Home_HandleTouchBegin(eventType, eventData)
-    if not active_ then return end
-    local x = eventData["X"]:GetInt()
-    local y = eventData["Y"]:GetInt()
-    handleClickAt(x, y)
-end
-
--- ============================================================================
--- 页面生命周期
--- ============================================================================
-
---- 设置页面活跃状态（由 main.lua 通过 Router.onNavigate 调用）
---- 显示自由模式进入问候
 local function showHomeGreeting()
-    local homeGreetings = {
+    local greetings = {
         "自由模式！想玩哪个就玩哪个~",
         "欢迎回来！今天想挑战哪个游戏？",
         "自由选择，随心畅玩！",
         "嘿嘿，选一个你最拿手的游戏吧！",
         "自由模式真棒，每个游戏都很有趣哦~",
     }
-    FoxMascot.showMessage(homeGreetings[math.random(1, #homeGreetings)])
+    FoxMascot.showMessage(greetings[math.random(1, #greetings)])
 end
 
-function M.setActive(a)
-    active_ = a
-    if a then
-        -- 从游戏返回时需要重新订阅输入事件（游戏可能覆盖了全局订阅）
-        SubscribeToEvent("MouseButtonDown", "Home_HandleMouseDown")
-        SubscribeToEvent("TouchBegin", "Home_HandleTouchBegin")
-        -- 从游戏返回时重新初始化狐狸立绘（游戏 onExit 会 cleanup）
-        if nvgCtx_ then
-            FoxMascot.init(nvgCtx_)
-        end
-        showHomeGreeting()
+--- 动态绘制处于 JSON 背景之上、设置等弹窗之下，不再绘制旧首页。
+---@class HomeDynamicLayer : Panel
+local HomeDynamicLayer = UI.Panel:Extend("HomeDynamicLayer")
+function HomeDynamicLayer:Render(vg)
+    if not active_ then return end
+    local mascot = find("home-mascot")
+    if mascot then
+        local rect = mascot:GetAbsoluteLayout()
+        local root = document_:GetAbsoluteLayout()
+        FoxMascot.render(vg, root.x + designW_, root.y + designH_, 56, {
+            handdrawn = true, size = rect.w, x = rect.x, y = rect.y,
+            drawPortrait = false, bubbleBottomInset = 72,
+        })
     end
+    local rect = document_:GetAbsoluteLayout()
+    nvgSave(vg)
+    nvgTranslate(vg, rect.x, rect.y)
+    PlayTimeGuard.renderOverlay(vg, designW_, designH_, "sans", animTime_)
+    nvgRestore(vg)
 end
 
---- 创建首页
----@param params table|nil
----@return any UI 节点（透明占位面板，实际渲染由 NanoVG 完成）
+function M.setActive(active)
+    active_ = active
+    if not active or not instance_ then return end
+    enteringGame_ = false
+    FoxMascot.init(UI.GetNVGContext())
+    refreshState()
+    fitCanvas()
+    showHomeGreeting()
+end
+
 function M.create(params)
-    -- 加载游戏数据
-    games_ = gameRegistry.getGameList()
-    onlineCount_ = 0
-    for _, g in ipairs(games_) do
-        if g.status == "online" then
-            onlineCount_ = onlineCount_ + 1
-        end
-    end
+    local err
+    instance_, err = UI.LoadJSON(RESOURCE)
+    if not instance_ then error("无法加载首页 UI：" .. tostring(err)) end
+    document_ = instance_:GetRoot() --[[@as Panel]]
+    assert(document_, "首页 UI 缺少根节点")
+    designW_ = tonumber(document_.props.width) or 403.2
+    designH_ = tonumber(document_.props.height) or 896
+    widgets_ = {}
+    lastSkin_, lastBackground_, lastUnlocked_, lastGameList_ = "", "", nil, nil
+    viewportW_, viewportH_, animTime_ = 0.0, 0.0, 0.0
+    enteringGame_ = false
 
-    -- 创建 NanoVG 上下文（如果不存在）
-    if not nvgCtx_ then
-        nvgCtx_ = nvgCreate(1)
-        if nvgCtx_ then
-            fontHandle_ = nvgCreateFont(nvgCtx_, "menu", "Fonts/LongZhuTi-Regular.ttf")
-            if fontHandle_ < 0 then
-                logger.warn(MODULE, "create", "font load failed")
-            end
-            -- NanoVGRender 订阅在 nvgCtx_ 对象上，不与游戏冲突
-            SubscribeToEvent(nvgCtx_, "NanoVGRender", "Home_HandleNanoVGRender")
-            FoxMascot.init(nvgCtx_)
-            showHomeGreeting()
-        else
-            logger.error(MODULE, "create", "failed to create NanoVG context")
-        end
-    end
-
-    active_ = true
-    tileHitCount_ = 0
-    tileSizeCache_.screenW = 0  -- 强制重算布局
-
-    -- 订阅输入事件
-    SubscribeToEvent("MouseButtonDown", "Home_HandleMouseDown")
-    SubscribeToEvent("TouchBegin", "Home_HandleTouchBegin")
-
-    logger.info(MODULE, "create", "games=" .. #games_)
-
-    -- 返回透明占位面板，供 Router 管理节点树
-    -- 使用相对定位容器以便挂载 absolute 弹窗
-    pageContainer_ = UI.Panel {
-        width = "100%",
-        flexGrow = 1,
-        flexBasis = 0,
+    canvas_ = UI.Panel {
+        id = "home-document-canvas", position = "absolute",
+        width = designW_, height = designH_, transformOrigin = "top-left",
+        pointerEvents = "box-none", children = {document_},
     }
+    canvas_:AddChild(HomeDynamicLayer {
+        id = "home-dynamic-layer", position = "absolute",
+        left = 0, top = 0, width = "100%", height = "100%", pointerEvents = "none",
+    })
+    pageContainer_ = UI.Panel {
+        id = "home-page-container", width = "100%", height = "100%",
+        flexGrow = 1, flexBasis = 0, pointerEvents = "box-none",
+        backgroundColor = {0,0,0,255}, children = {canvas_},
+    }
+
+    for _, button in ipairs(instance_:FindAll("Button")) do
+        local id = button.props.id or ""
+        if id:sub(1, 5) == "game-" then
+            local gameId = id:sub(6)
+            button:OnEvent("click", function() enterGame(gameId) end)
+        end
+    end
+    local adventure = find("tab-adventure")
+    local profile = find("tab-profile")
+    local settings = find("tab-settings")
+    if adventure then adventure:OnEvent("click", function() navigate("adventure") end) end
+    if profile then profile:OnEvent("click", function() navigate("profile") end) end
+    if settings then
+        settings:OnEvent("click", function()
+            if not canInteract() then return end
+            uiTap.play()
+            settingsHelper_.open(pageContainer_)
+        end)
+    end
+    local mascot = find("home-mascot")
+    if mascot then
+        mascot:SetStyle({pointerEvents = "auto"})
+        mascot:OnEvent("click", function()
+            if canInteract() then FoxMascot.notifyChat() end
+        end)
+    end
+
+    -- 独立接收者不替换 UI 或其他页面的全局 Update/Input 订阅。
+    eventNode_ = Node()
+    receiver_ = eventNode_:CreateScriptObject("LuaScriptObject") --[[@as LuaScriptObject]]
+    receiver_:SubscribeToEvent("Update", function(self, eventType, eventData)
+        if not active_ then return end
+        local dt = eventData["TimeStep"]:GetFloat()
+        animTime_ = animTime_ + dt
+        FoxMascot.update(dt)
+        fitCanvas()
+        refreshState()
+    end)
+    M.setActive(true)
+    logger.info(MODULE, "create", "loaded " .. RESOURCE .. "; games=" .. #gameRegistry.getGameList())
     return pageContainer_
 end
 
---- 销毁首页
 function M.destroy()
     active_ = false
-    tileHitCount_ = 0
-    settingsBtnArea_ = nil
-    adventureBtnArea_ = nil
-
-    -- 关闭设置弹窗
     settingsHelper_.close()
-    pageContainer_ = nil
-
+    if receiver_ then receiver_:UnsubscribeFromAllEvents() end
+    receiver_, eventNode_ = nil, nil
+    -- 只释放首页的独立树，不替换 main 的全局 UI 根或其他覆盖层。
+    if canvas_ then canvas_:Destroy() end
+    instance_, document_, canvas_, pageContainer_ = nil, nil, nil, nil
+    widgets_ = {}
+    lastGameList_ = nil
     FoxMascot.cleanup()
-
-    if nvgCtx_ then
-        bgManager.clearThemeCache(nvgCtx_)
-        PlayTimeGuard.cleanup(nvgCtx_)
-        nvgDelete(nvgCtx_)
-        nvgCtx_ = nil
-    end
-
-    -- 全局输入事件由各页共享；销毁时由 active_ 门控，保留具名回调供再次进入。
-    -- 不调用全局退订，否则会移除 UI 系统和其他页面的同名事件。
-
-
     logger.info(MODULE, "destroy", "ok")
 end
 

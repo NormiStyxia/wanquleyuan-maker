@@ -369,21 +369,22 @@ function M.render(vg, screenW, screenH, bottomOffset, options)
     local botOff = bottomOffset or 0
 
     -- 狐狸位置（左下角，底部预留 bottomOffset）
-    local foxX = options.marginLeft or FOX_MARGIN_L
-    local foxY = screenH - botOff - FOX_MARGIN_B - foxSize
+    local foxX = options.x or options.marginLeft or FOX_MARGIN_L
+    local foxY = options.y or (screenH - botOff - FOX_MARGIN_B - foxSize)
 
-    -- idle 浮动
-    local floatY = math.sin(animTime_ * FLOAT_SPEED) * FLOAT_AMP
+    -- JSON 页面保留自己的立绘位置；默认调用仍沿用原浮动动画。
+    local floatY = options.y and 0 or math.sin(animTime_ * FLOAT_SPEED) * FLOAT_AMP
     foxY = foxY + floatY
 
-    -- 绘制狐狸立绘
-    local imgPaint = nvgImagePattern(vg,
-        foxX, foxY, foxSize, foxSize,
-        0, foxImg_, 1.0)
-    nvgBeginPath(vg)
-    nvgRect(vg, foxX, foxY, foxSize, foxSize)
-    nvgFillPaint(vg, imgPaint)
-    nvgFill(vg)
+    if options.drawPortrait ~= false then
+        local imgPaint = nvgImagePattern(vg,
+            foxX, foxY, foxSize, foxSize,
+            0, foxImg_, 1.0)
+        nvgBeginPath(vg)
+        nvgRect(vg, foxX, foxY, foxSize, foxSize)
+        nvgFillPaint(vg, imgPaint)
+        nvgFill(vg)
+    end
 
     -- 气泡渲染
     if state_ == "idle" then return end

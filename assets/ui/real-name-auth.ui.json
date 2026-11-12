@@ -1,46 +1,370 @@
 {
   "type": "Panel",
   "id": "real-name-auth-page",
-  "width": 540,
-  "height": 1200,
+  "width": "100%",
+  "height": "100%",
   "fontFamily": "sans",
-  "backgroundColor": [63, 56, 36, 175],
-  "justifyContent": "center",
-  "alignItems": "center",
-  "_extraction": {
-    "sources": ["scripts/shared/components/real-name-auth-overlay.lua:M.create/M.submit", "scripts/shared/components/paper-ui.lua", "scripts/shared/constants/art.lua", "scripts/shared/constants/layout.lua", "scripts/main.lua:CreateUI"],
-    "snapshot": {"width": 540, "height": 1200, "coordinateSpace": "UI base pixels", "active_": true, "nameValue_": "", "inputValue_": "", "errorLabel_": ""},
-    "fonts": [{"family": "sans", "path": "Fonts/LongZhuTi-Regular.ttf", "weight": "normal"}],
-    "typography": {"fontSizeUnit": "UI pt", "renderedPixelFormula": "Theme.FontSize(pt)=pt*4/3 at fontScale=1", "sourceUIValuesPreserved": true},
-    "coordinates": {"card": "width=min(540*0.9,420)=420; height=min(1200*0.88,620)=620; centered=(60,290); borderWidth=2.5", "header": "height80; title22pt, subtitle12pt; title marginBottom4", "form": "source ScrollView width100%, flexGrow1/flexBasis0/flexShrink1; padding24/top20/bottom16; fields46; spacers12/16; error height18+marginTop4; submit46; privacy block marginTop16", "paperSkin": "PaperUI.field overrides radius to8, fill={255,251,238}, border=muted/1.5 and paddingHorizontal12; PaperUI.button overrides radius=min(requested24,10)=10, minHeight44, borderInk/2, textColorInk and no shadow"},
-    "bindings": {"auth-name-placeholder": "nameValue_ initially empty; source TextField placeholder, maxLength20; onChange updates nameValue_ and clears auth-error", "auth-id-number-placeholder": "inputValue_ initially empty; source TextField placeholder, maxLength18; onChange updates inputValue_ and clears auth-error; onSubmit calls M.submit", "auth-error": {"variable": "validation result", "states": ["", "请输入真实姓名", "请输入身份证号码", "认证失败", "errMsg from realNameAuth.verify"]}, "auth-submit": "M.submit -> realNameAuth.verify(nameValue_,inputValue_,callback)"},
-    "behaviorsRemainLua": ["Editable text input, focus, IME and submit event", "empty-name and empty-id checks", "realNameAuth.verify asynchronous callback and error message", "hide overlay after success and onComplete(true,isAdult)", "main compliance.isEnabled gating and cloud sync", "form scrolling for short screens"],
-    "limitations": ["Restricted to Panel/Label/Button: both TextFields become styled Panel+placeholder Label static previews with their original ids; they are not editable fields.", "ScrollView becomes a clipped Panel, retaining the full form children but not scroll behavior.", "Source comments mention future SDK but current title is 模拟实名认证 and is preserved verbatim.", "No actual personal information is embedded; empty input state is the original initial state.", "Legacy shadowOffsetY in source is not a declared Widget field; shadowBlur=0 means no visible shadow, so it is not invented as serialized behavior."]
-  },
+  "backgroundColor": [
+    63,
+    56,
+    36,
+    175
+  ],
   "children": [
-    {"type": "Panel", "id": "auth-card", "width": "90%", "maxWidth": 420, "height": "88%", "maxHeight": 620, "backgroundColor": [255, 246, 220, 255], "borderWidth": 2.5, "borderColor": [91, 76, 47, 255], "borderRadius": 12, "overflow": "hidden", "flexDirection": "column", "alignItems": "center", "shadowBlur": 0, "children": [
-      {"type": "Panel", "id": "auth-header", "width": "100%", "height": 80, "backgroundColor": [255, 246, 220, 255], "borderBottomWidth": 2, "borderColor": [221, 207, 166, 255], "flexShrink": 0, "paddingHorizontal": 12, "justifyContent": "center", "alignItems": "center", "flexDirection": "column", "children": [
-        {"type": "Label", "id": "auth-title", "text": "模拟实名认证", "fontFamily": "sans", "fontSize": 22, "fontColor": [91, 76, 47, 255], "fontWeight": "bold", "marginBottom": 4, "children": []},
-        {"type": "Label", "id": "auth-subtitle", "text": "根据国家规定，需完成实名认证后进入游戏", "fontFamily": "sans", "fontSize": 12, "fontColor": [116, 102, 70, 255], "children": []}
-      ]},
-      {"type": "Panel", "id": "auth-scroll", "flexGrow": 1, "flexBasis": 0, "flexShrink": 1, "width": "100%", "padding": 24, "paddingTop": 20, "paddingBottom": 16, "flexDirection": "column", "overflow": "hidden", "children": [
-        {"type": "Label", "id": "auth-name-caption", "text": "请输入您的真实姓名：", "fontFamily": "sans", "fontSize": 14, "fontColor": [80, 60, 40, 255], "marginBottom": 12, "flexShrink": 0, "children": []},
-        {"type": "Panel", "id": "auth-name", "width": "100%", "height": 46, "borderRadius": 8, "borderWidth": 1.5, "borderColor": [116, 102, 70, 255], "backgroundColor": [255, 251, 238, 255], "paddingHorizontal": 12, "justifyContent": "center", "flexShrink": 0, "children": [
-          {"type": "Label", "id": "auth-name-placeholder", "text": "请输入真实姓名", "fontFamily": "sans", "fontSize": 16, "fontColor": [116, 102, 70, 255], "verticalAlign": "middle", "children": []}
-        ]},
-        {"type": "Panel", "id": "auth-name-gap", "height": 12, "flexShrink": 0, "children": []},
-        {"type": "Label", "id": "auth-id-number-caption", "text": "请输入您的身份证号码：", "fontFamily": "sans", "fontSize": 14, "fontColor": [80, 60, 40, 255], "marginBottom": 12, "flexShrink": 0, "children": []},
-        {"type": "Panel", "id": "auth-id-number", "width": "100%", "height": 46, "borderRadius": 8, "borderWidth": 1.5, "borderColor": [116, 102, 70, 255], "backgroundColor": [255, 251, 238, 255], "paddingHorizontal": 12, "justifyContent": "center", "flexShrink": 0, "children": [
-          {"type": "Label", "id": "auth-id-number-placeholder", "text": "请输入18位身份证号码", "fontFamily": "sans", "fontSize": 16, "fontColor": [116, 102, 70, 255], "verticalAlign": "middle", "children": []}
-        ]},
-        {"type": "Label", "id": "auth-error", "text": "", "fontFamily": "sans", "fontSize": 13, "fontColor": [220, 60, 60, 255], "height": 18, "marginTop": 4, "textAlign": "center", "flexShrink": 0, "children": []},
-        {"type": "Panel", "id": "auth-submit-gap", "height": 16, "flexShrink": 0, "children": []},
-        {"type": "Button", "id": "auth-submit", "text": "确认提交", "variant": "primary", "width": "100%", "height": 46, "minHeight": 44, "fontFamily": "sans", "fontSize": 17, "fontWeight": "bold", "borderRadius": 10, "borderWidth": 2, "borderColor": [91, 76, 47, 255], "backgroundColor": [238, 156, 67, 255], "textColor": [91, 76, 47, 255], "hoverBackgroundColor": [245, 176, 98, 255], "pressedBackgroundColor": [221, 140, 57, 255], "boxShadow": false, "hoverBoxShadow": false, "pressedBoxShadow": false, "flexShrink": 0, "children": []},
-        {"type": "Panel", "id": "auth-privacy-notice", "marginTop": 16, "flexDirection": "column", "alignItems": "center", "flexShrink": 0, "children": [
-          {"type": "Label", "id": "auth-privacy-line-1", "text": "您的信息仅用于实名认证，我们将严格保护", "fontFamily": "sans", "fontSize": 11, "fontColor": [116, 102, 70, 255], "textAlign": "center", "children": []},
-          {"type": "Label", "id": "auth-privacy-line-2", "text": "您的个人隐私安全", "fontFamily": "sans", "fontSize": 11, "fontColor": [116, 102, 70, 255], "textAlign": "center", "marginTop": 2, "children": []}
-        ]}
-      ]}
-    ]}
+    {
+      "type": "SafeAreaView",
+      "id": "safe_area",
+      "position": "absolute",
+      "left": 0,
+      "top": 0,
+      "right": 0,
+      "bottom": 0,
+      "children": [
+        {
+          "type": "Panel",
+          "id": "safe_content",
+          "flexGrow": 1,
+          "minWidth": 0,
+          "minHeight": 0,
+          "children": [
+            {
+              "type": "Panel",
+              "id": "auth-card",
+              "width": "90%",
+              "maxWidth": 560,
+              "height": "88%",
+              "maxHeight": 826.667,
+              "backgroundColor": [
+                255,
+                246,
+                220,
+                255
+              ],
+              "borderWidth": 3.333,
+              "borderColor": [
+                91,
+                76,
+                47,
+                255
+              ],
+              "borderRadius": 16,
+              "overflow": "hidden",
+              "flexDirection": "column",
+              "alignItems": "center",
+              "shadowBlur": 0,
+              "children": [
+                {
+                  "type": "Panel",
+                  "id": "auth-header",
+                  "width": "100%",
+                  "height": 106.667,
+                  "backgroundColor": [
+                    255,
+                    246,
+                    220,
+                    255
+                  ],
+                  "borderBottomWidth": 2,
+                  "borderColor": [
+                    221,
+                    207,
+                    166,
+                    255
+                  ],
+                  "flexShrink": 0,
+                  "paddingHorizontal": 16,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "flexDirection": "column",
+                  "children": [
+                    {
+                      "type": "Label",
+                      "id": "auth-title",
+                      "text": "模拟实名认证",
+                      "fontFamily": "sans",
+                      "fontSize": 29.333,
+                      "fontColor": [
+                        91,
+                        76,
+                        47,
+                        255
+                      ],
+                      "fontWeight": "bold",
+                      "marginBottom": 5.333,
+                      "children": []
+                    },
+                    {
+                      "type": "Label",
+                      "id": "auth-subtitle",
+                      "text": "根据国家规定，需完成实名认证后进入游戏",
+                      "fontFamily": "sans",
+                      "fontSize": 16,
+                      "fontColor": [
+                        116,
+                        102,
+                        70,
+                        255
+                      ],
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "Panel",
+                  "id": "auth-scroll",
+                  "flexGrow": 1,
+                  "flexBasis": 0,
+                  "flexShrink": 1,
+                  "width": "100%",
+                  "padding": 32,
+                  "paddingTop": 26.667,
+                  "paddingBottom": 21.333,
+                  "flexDirection": "column",
+                  "overflow": "hidden",
+                  "children": [
+                    {
+                      "type": "Label",
+                      "id": "auth-name-caption",
+                      "text": "请输入您的真实姓名：",
+                      "fontFamily": "sans",
+                      "fontSize": 18.667,
+                      "fontColor": [
+                        80,
+                        60,
+                        40,
+                        255
+                      ],
+                      "marginBottom": 16,
+                      "flexShrink": 0,
+                      "children": []
+                    },
+                    {
+                      "type": "Panel",
+                      "id": "auth-name",
+                      "width": "100%",
+                      "height": 61.333,
+                      "borderRadius": 10.667,
+                      "borderWidth": 2,
+                      "borderColor": [
+                        116,
+                        102,
+                        70,
+                        255
+                      ],
+                      "backgroundColor": [
+                        255,
+                        251,
+                        238,
+                        255
+                      ],
+                      "paddingHorizontal": 16,
+                      "justifyContent": "center",
+                      "flexShrink": 0,
+                      "children": [
+                        {
+                          "type": "Label",
+                          "id": "auth-name-placeholder",
+                          "text": "请输入真实姓名",
+                          "fontFamily": "sans",
+                          "fontSize": 21.333,
+                          "fontColor": [
+                            116,
+                            102,
+                            70,
+                            255
+                          ],
+                          "verticalAlign": "middle",
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Panel",
+                      "id": "auth-name-gap",
+                      "height": 16,
+                      "flexShrink": 0,
+                      "children": []
+                    },
+                    {
+                      "type": "Label",
+                      "id": "auth-id-number-caption",
+                      "text": "请输入您的身份证号码：",
+                      "fontFamily": "sans",
+                      "fontSize": 18.667,
+                      "fontColor": [
+                        80,
+                        60,
+                        40,
+                        255
+                      ],
+                      "marginBottom": 16,
+                      "flexShrink": 0,
+                      "children": []
+                    },
+                    {
+                      "type": "Panel",
+                      "id": "auth-id-number",
+                      "width": "100%",
+                      "height": 61.333,
+                      "borderRadius": 10.667,
+                      "borderWidth": 2,
+                      "borderColor": [
+                        116,
+                        102,
+                        70,
+                        255
+                      ],
+                      "backgroundColor": [
+                        255,
+                        251,
+                        238,
+                        255
+                      ],
+                      "paddingHorizontal": 16,
+                      "justifyContent": "center",
+                      "flexShrink": 0,
+                      "children": [
+                        {
+                          "type": "Label",
+                          "id": "auth-id-number-placeholder",
+                          "text": "请输入18位身份证号码",
+                          "fontFamily": "sans",
+                          "fontSize": 21.333,
+                          "fontColor": [
+                            116,
+                            102,
+                            70,
+                            255
+                          ],
+                          "verticalAlign": "middle",
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Label",
+                      "id": "auth-error",
+                      "text": "",
+                      "fontFamily": "sans",
+                      "fontSize": 17.333,
+                      "fontColor": [
+                        220,
+                        60,
+                        60,
+                        255
+                      ],
+                      "height": 24,
+                      "marginTop": 5.333,
+                      "textAlign": "center",
+                      "flexShrink": 0,
+                      "children": []
+                    },
+                    {
+                      "type": "Panel",
+                      "id": "auth-submit-gap",
+                      "height": 21.333,
+                      "flexShrink": 0,
+                      "children": []
+                    },
+                    {
+                      "type": "Button",
+                      "id": "auth-submit",
+                      "text": "确认提交",
+                      "variant": "primary",
+                      "width": "100%",
+                      "height": 61.333,
+                      "minHeight": 58.667,
+                      "fontFamily": "sans",
+                      "fontSize": 22.667,
+                      "fontWeight": "bold",
+                      "borderRadius": 13.333,
+                      "borderWidth": 2.667,
+                      "borderColor": [
+                        91,
+                        76,
+                        47,
+                        255
+                      ],
+                      "backgroundColor": [
+                        238,
+                        156,
+                        67,
+                        255
+                      ],
+                      "textColor": [
+                        91,
+                        76,
+                        47,
+                        255
+                      ],
+                      "hoverBackgroundColor": [
+                        245,
+                        176,
+                        98,
+                        255
+                      ],
+                      "pressedBackgroundColor": [
+                        221,
+                        140,
+                        57,
+                        255
+                      ],
+                      "boxShadow": false,
+                      "hoverBoxShadow": false,
+                      "pressedBoxShadow": false,
+                      "flexShrink": 0,
+                      "children": []
+                    },
+                    {
+                      "type": "Panel",
+                      "id": "auth-privacy-notice",
+                      "marginTop": 21.333,
+                      "flexDirection": "column",
+                      "alignItems": "center",
+                      "flexShrink": 0,
+                      "children": [
+                        {
+                          "type": "Label",
+                          "id": "auth-privacy-line-1",
+                          "text": "您的信息仅用于实名认证，我们将严格保护",
+                          "fontFamily": "sans",
+                          "fontSize": 14.667,
+                          "fontColor": [
+                            116,
+                            102,
+                            70,
+                            255
+                          ],
+                          "textAlign": "center",
+                          "children": []
+                        },
+                        {
+                          "type": "Label",
+                          "id": "auth-privacy-line-2",
+                          "text": "您的个人隐私安全",
+                          "fontFamily": "sans",
+                          "fontSize": 14.667,
+                          "fontColor": [
+                            116,
+                            102,
+                            70,
+                            255
+                          ],
+                          "textAlign": "center",
+                          "marginTop": 2.667,
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "justifyContent": "center",
+          "alignItems": "center"
+        }
+      ]
+    }
   ]
 }
