@@ -783,7 +783,7 @@
                               "text": "清空存档（重新开始）",
                               "height": 72,
                               "fontFamily": "sans",
-                              "fontSize": 20,
+                              "fontSize": 14,
                               "fontWeight": "bold",
                               "textColor": [
                                 91,
@@ -812,7 +812,8 @@
                               "flexGrow": 1,
                               "flexBasis": 0,
                               "minWidth": 0,
-                              "paddingHorizontal": 8
+                              "paddingHorizontal": 8,
+                              "minFontSize": 12
                             }
                           ]
                         }

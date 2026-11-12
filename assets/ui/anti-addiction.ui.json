@@ -1,1389 +1,1453 @@
 {
   "type": "Panel",
   "id": "anti-addiction-page",
-  "width": 540,
-  "height": 1200,
+  "width": "100%",
+  "height": "100%",
   "fontFamily": "sans",
   "children": [
     {
-      "type": "Panel",
-      "id": "anti-addiction-reminder",
+      "type": "SafeAreaView",
+      "id": "safe_area",
       "position": "absolute",
       "left": 0,
       "top": 0,
-      "width": "100%",
-      "height": "100%",
-      "backgroundColor": [
-        63,
-        56,
-        36,
-        140
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "visible": true,
+      "right": 0,
+      "bottom": 0,
       "children": [
         {
           "type": "Panel",
-          "id": "rest-card",
-          "width": 453,
-          "height": 313,
-          "backgroundColor": [
-            255,
-            246,
-            220,
-            255
-          ],
-          "borderWidth": 2.5,
-          "borderColor": [
-            91,
-            76,
-            47,
-            255
-          ],
-          "borderRadius": 12,
-          "overflow": "hidden",
-          "flexDirection": "column",
+          "id": "safe_content",
+          "flexGrow": 1,
+          "minWidth": 0,
+          "minHeight": 0,
           "children": [
             {
               "type": "Panel",
-              "id": "rest-header",
+              "id": "anti-addiction-reminder",
+              "position": "absolute",
+              "left": 0,
+              "top": 0,
               "width": "100%",
-              "height": 86,
-              "flexShrink": 0,
-              "borderBottomWidth": 1.5,
-              "borderColor": [
-                221,
-                207,
-                166,
-                255
+              "height": "100%",
+              "backgroundColor": [
+                63,
+                56,
+                36,
+                140
               ],
               "justifyContent": "center",
               "alignItems": "center",
-              "gap": 4,
-              "children": [
-                {
-                  "type": "Label",
-                  "id": "rest-brand",
-                  "text": "玩趣乐园 · 温馨提示",
-                  "fontSize": 12,
-                  "fontColor": [
-                    116,
-                    102,
-                    70,
-                    255
-                  ],
-                  "children": [],
-                  "fontFamily": "sans"
-                },
-                {
-                  "type": "Label",
-                  "id": "rest-title",
-                  "text": "休息一下吧！",
-                  "fontSize": 21,
-                  "fontColor": [
-                    91,
-                    76,
-                    47,
-                    255
-                  ],
-                  "fontWeight": "bold",
-                  "children": [],
-                  "fontFamily": "sans"
-                }
-              ]
-            },
-            {
-              "type": "Panel",
-              "id": "rest-scroll",
-              "width": "100%",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "flexBasis": 0,
-              "overflow": "hidden",
+              "visible": true,
               "children": [
                 {
                   "type": "Panel",
-                  "id": "rest-paragraphs",
-                  "width": "100%",
-                  "padding": 21,
-                  "flexShrink": 0,
-                  "flexDirection": "column",
-                  "gap": 2,
-                  "children": [
-                    {
-                      "type": "Label",
-                      "id": "rest-paragraph-1",
-                      "text": "你已经玩了 30 分钟啦，",
-                      "fontSize": 15,
-                      "width": "100%",
-                      "fontColor": [
-                        116,
-                        102,
-                        70,
-                        255
-                      ],
-                      "textAlign": "center",
-                      "lineHeight": 1.6,
-                      "whiteSpace": "normal",
-                      "verticalAlign": "top",
-                      "flexShrink": 0,
-                      "children": [],
-                      "fontFamily": "sans"
-                    },
-                    {
-                      "type": "Label",
-                      "id": "rest-paragraph-2",
-                      "text": "休息一下眼睛吧！",
-                      "fontSize": 15,
-                      "width": "100%",
-                      "fontColor": [
-                        116,
-                        102,
-                        70,
-                        255
-                      ],
-                      "textAlign": "center",
-                      "lineHeight": 1.6,
-                      "whiteSpace": "normal",
-                      "verticalAlign": "top",
-                      "flexShrink": 0,
-                      "children": [],
-                      "fontFamily": "sans"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "Panel",
-              "id": "rest-footer",
-              "width": "100%",
-              "padding": 17,
-              "paddingTop": 8,
-              "flexShrink": 0,
-              "flexDirection": "column",
-              "gap": 10,
-              "children": [
-                {
-                  "type": "Button",
-                  "id": "rest-action-1",
-                  "text": "好的，休息一会儿",
-                  "fontSize": 18,
-                  "width": "100%",
-                  "height": 49,
-                  "minHeight": 44,
-                  "backgroundColor": [
-                    238,
-                    156,
-                    67,
-                    255
-                  ],
-                  "textColor": [
-                    91,
-                    76,
-                    47,
-                    255
-                  ],
-                  "borderColor": [
-                    91,
-                    76,
-                    47,
-                    255
-                  ],
-                  "borderWidth": 2,
-                  "borderRadius": 10,
-                  "variant": "primary",
-                  "flexShrink": 0,
-                  "boxShadow": false,
-                  "hoverBoxShadow": false,
-                  "pressedBoxShadow": false,
-                  "children": [],
-                  "fontFamily": "sans"
-                },
-                {
-                  "type": "Button",
-                  "id": "rest-action-2",
-                  "text": "再玩一会儿",
-                  "fontSize": 18,
-                  "width": "100%",
-                  "height": 49,
-                  "minHeight": 44,
+                  "id": "rest-card",
+                  "width": "92%",
+                  "height": "auto",
                   "backgroundColor": [
                     255,
                     246,
                     220,
                     255
                   ],
-                  "textColor": [
-                    91,
-                    76,
-                    47,
-                    255
-                  ],
+                  "borderWidth": 3.333,
                   "borderColor": [
                     91,
                     76,
                     47,
                     255
                   ],
-                  "borderWidth": 2,
-                  "borderRadius": 10,
-                  "variant": "outline",
-                  "flexShrink": 0,
-                  "boxShadow": false,
-                  "hoverBoxShadow": false,
-                  "pressedBoxShadow": false,
-                  "children": [],
-                  "fontFamily": "sans"
+                  "borderRadius": 16,
+                  "overflow": "hidden",
+                  "flexDirection": "column",
+                  "children": [
+                    {
+                      "type": "Panel",
+                      "id": "rest-header",
+                      "width": "100%",
+                      "height": 114.667,
+                      "flexShrink": 0,
+                      "borderBottomWidth": 1.5,
+                      "borderColor": [
+                        221,
+                        207,
+                        166,
+                        255
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "gap": 5.333,
+                      "children": [
+                        {
+                          "type": "Label",
+                          "id": "rest-brand",
+                          "text": "玩趣乐园 · 温馨提示",
+                          "fontSize": 16,
+                          "fontColor": [
+                            116,
+                            102,
+                            70,
+                            255
+                          ],
+                          "children": [],
+                          "fontFamily": "sans"
+                        },
+                        {
+                          "type": "Label",
+                          "id": "rest-title",
+                          "text": "休息一下吧！",
+                          "fontSize": 28,
+                          "fontColor": [
+                            91,
+                            76,
+                            47,
+                            255
+                          ],
+                          "fontWeight": "bold",
+                          "children": [],
+                          "fontFamily": "sans"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Panel",
+                      "id": "rest-scroll",
+                      "width": "100%",
+                      "flexGrow": 0,
+                      "flexShrink": 1,
+                      "flexBasis": "auto",
+                      "overflow": "hidden",
+                      "children": [
+                        {
+                          "type": "Panel",
+                          "id": "rest-paragraphs",
+                          "width": "100%",
+                          "padding": 28,
+                          "flexShrink": 0,
+                          "flexDirection": "column",
+                          "gap": 2.667,
+                          "children": [
+                            {
+                              "type": "Label",
+                              "id": "rest-paragraph-1",
+                              "text": "你已经玩了 30 分钟啦，",
+                              "fontSize": 20,
+                              "width": "100%",
+                              "fontColor": [
+                                116,
+                                102,
+                                70,
+                                255
+                              ],
+                              "textAlign": "center",
+                              "lineHeight": 1.6,
+                              "whiteSpace": "normal",
+                              "verticalAlign": "top",
+                              "flexShrink": 0,
+                              "children": [],
+                              "fontFamily": "sans"
+                            },
+                            {
+                              "type": "Label",
+                              "id": "rest-paragraph-2",
+                              "text": "休息一下眼睛吧！",
+                              "fontSize": 20,
+                              "width": "100%",
+                              "fontColor": [
+                                116,
+                                102,
+                                70,
+                                255
+                              ],
+                              "textAlign": "center",
+                              "lineHeight": 1.6,
+                              "whiteSpace": "normal",
+                              "verticalAlign": "top",
+                              "flexShrink": 0,
+                              "children": [],
+                              "fontFamily": "sans"
+                            }
+                          ]
+                        }
+                      ],
+                      "minHeight": 0
+                    },
+                    {
+                      "type": "Panel",
+                      "id": "rest-footer",
+                      "width": "100%",
+                      "padding": 22.667,
+                      "paddingTop": 10.667,
+                      "flexShrink": 0,
+                      "flexDirection": "column",
+                      "gap": 13.333,
+                      "children": [
+                        {
+                          "type": "Button",
+                          "id": "rest-action-1",
+                          "text": "好的，休息一会儿",
+                          "fontSize": 24,
+                          "width": "100%",
+                          "height": 65.333,
+                          "minHeight": 58.667,
+                          "backgroundColor": [
+                            238,
+                            156,
+                            67,
+                            255
+                          ],
+                          "textColor": [
+                            91,
+                            76,
+                            47,
+                            255
+                          ],
+                          "borderColor": [
+                            91,
+                            76,
+                            47,
+                            255
+                          ],
+                          "borderWidth": 2.667,
+                          "borderRadius": 13.333,
+                          "variant": "primary",
+                          "flexShrink": 0,
+                          "boxShadow": false,
+                          "hoverBoxShadow": false,
+                          "pressedBoxShadow": false,
+                          "children": [],
+                          "fontFamily": "sans",
+                          "minWidth": 0
+                        },
+                        {
+                          "type": "Button",
+                          "id": "rest-action-2",
+                          "text": "再玩一会儿",
+                          "fontSize": 24,
+                          "width": "100%",
+                          "height": 65.333,
+                          "minHeight": 58.667,
+                          "backgroundColor": [
+                            255,
+                            246,
+                            220,
+                            255
+                          ],
+                          "textColor": [
+                            91,
+                            76,
+                            47,
+                            255
+                          ],
+                          "borderColor": [
+                            91,
+                            76,
+                            47,
+                            255
+                          ],
+                          "borderWidth": 2.667,
+                          "borderRadius": 13.333,
+                          "variant": "outline",
+                          "flexShrink": 0,
+                          "boxShadow": false,
+                          "hoverBoxShadow": false,
+                          "pressedBoxShadow": false,
+                          "children": [],
+                          "fontFamily": "sans",
+                          "minWidth": 0
+                        }
+                      ]
+                    }
+                  ],
+                  "maxWidth": 604,
+                  "minWidth": 0,
+                  "maxHeight": "90%",
+                  "flexShrink": 1,
+                  "minHeight": 0
                 }
               ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "Panel",
-      "id": "anti-addiction-force-exit",
-      "position": "absolute",
-      "left": 0,
-      "top": 0,
-      "width": "100%",
-      "height": "100%",
-      "backgroundColor": [
-        63,
-        56,
-        36,
-        140
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "visible": false,
-      "children": [
-        {
-          "type": "Panel",
-          "id": "force-exit-rest-card",
-          "width": 453,
-          "height": 251,
-          "backgroundColor": [
-            255,
-            246,
-            220,
-            255
-          ],
-          "borderWidth": 2.5,
-          "borderColor": [
-            91,
-            76,
-            47,
-            255
-          ],
-          "borderRadius": 12,
-          "overflow": "hidden",
-          "flexDirection": "column",
-          "children": [
+            },
             {
               "type": "Panel",
-              "id": "force-exit-rest-header",
+              "id": "anti-addiction-force-exit",
+              "position": "absolute",
+              "left": 0,
+              "top": 0,
               "width": "100%",
-              "height": 86,
-              "flexShrink": 0,
-              "borderBottomWidth": 1.5,
-              "borderColor": [
-                221,
-                207,
-                166,
-                255
+              "height": "100%",
+              "backgroundColor": [
+                63,
+                56,
+                36,
+                140
               ],
               "justifyContent": "center",
               "alignItems": "center",
-              "gap": 4,
-              "children": [
-                {
-                  "type": "Label",
-                  "id": "force-exit-rest-brand",
-                  "text": "玩趣乐园 · 温馨提示",
-                  "fontSize": 12,
-                  "fontColor": [
-                    116,
-                    102,
-                    70,
-                    255
-                  ],
-                  "children": [],
-                  "fontFamily": "sans"
-                },
-                {
-                  "type": "Label",
-                  "id": "force-exit-rest-title",
-                  "text": "今天玩够啦！",
-                  "fontSize": 21,
-                  "fontColor": [
-                    91,
-                    76,
-                    47,
-                    255
-                  ],
-                  "fontWeight": "bold",
-                  "children": [],
-                  "fontFamily": "sans"
-                }
-              ]
-            },
-            {
-              "type": "Panel",
-              "id": "force-exit-rest-scroll",
-              "width": "100%",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "flexBasis": 0,
-              "overflow": "hidden",
+              "visible": false,
               "children": [
                 {
                   "type": "Panel",
-                  "id": "force-exit-rest-paragraphs",
-                  "width": "100%",
-                  "padding": 21,
-                  "flexShrink": 0,
-                  "flexDirection": "column",
-                  "gap": 2,
-                  "children": [
-                    {
-                      "type": "Label",
-                      "id": "force-exit-rest-paragraph-1",
-                      "text": "你已经玩了 60 分钟啦，",
-                      "fontSize": 15,
-                      "width": "100%",
-                      "fontColor": [
-                        116,
-                        102,
-                        70,
-                        255
-                      ],
-                      "textAlign": "center",
-                      "lineHeight": 1.6,
-                      "whiteSpace": "normal",
-                      "verticalAlign": "top",
-                      "flexShrink": 0,
-                      "children": [],
-                      "fontFamily": "sans"
-                    },
-                    {
-                      "type": "Label",
-                      "id": "force-exit-rest-paragraph-2",
-                      "text": "今天要先休息了哦！",
-                      "fontSize": 15,
-                      "width": "100%",
-                      "fontColor": [
-                        116,
-                        102,
-                        70,
-                        255
-                      ],
-                      "textAlign": "center",
-                      "lineHeight": 1.6,
-                      "whiteSpace": "normal",
-                      "verticalAlign": "top",
-                      "flexShrink": 0,
-                      "children": [],
-                      "fontFamily": "sans"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "Panel",
-              "id": "force-exit-rest-footer",
-              "width": "100%",
-              "padding": 17,
-              "paddingTop": 8,
-              "flexShrink": 0,
-              "flexDirection": "column",
-              "gap": 10,
-              "children": [
-                {
-                  "type": "Button",
-                  "id": "force-exit-rest-action-1",
-                  "text": "好的",
-                  "fontSize": 18,
-                  "width": "100%",
-                  "height": 49,
-                  "minHeight": 44,
-                  "backgroundColor": [
-                    238,
-                    156,
-                    67,
-                    255
-                  ],
-                  "textColor": [
-                    91,
-                    76,
-                    47,
-                    255
-                  ],
-                  "borderColor": [
-                    91,
-                    76,
-                    47,
-                    255
-                  ],
-                  "borderWidth": 2,
-                  "borderRadius": 10,
-                  "variant": "primary",
-                  "flexShrink": 0,
-                  "boxShadow": false,
-                  "hoverBoxShadow": false,
-                  "pressedBoxShadow": false,
-                  "children": [],
-                  "fontFamily": "sans"
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "Panel",
-      "id": "anti-addiction-curfew",
-      "position": "absolute",
-      "left": 0,
-      "top": 0,
-      "width": "100%",
-      "height": "100%",
-      "backgroundColor": [
-        63,
-        56,
-        36,
-        140
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "visible": false,
-      "children": [
-        {
-          "type": "Panel",
-          "id": "curfew-rest-card",
-          "width": 453,
-          "height": 337,
-          "backgroundColor": [
-            255,
-            246,
-            220,
-            255
-          ],
-          "borderWidth": 2.5,
-          "borderColor": [
-            91,
-            76,
-            47,
-            255
-          ],
-          "borderRadius": 12,
-          "overflow": "hidden",
-          "flexDirection": "column",
-          "children": [
-            {
-              "type": "Panel",
-              "id": "curfew-rest-header",
-              "width": "100%",
-              "height": 86,
-              "flexShrink": 0,
-              "borderBottomWidth": 1.5,
-              "borderColor": [
-                221,
-                207,
-                166,
-                255
-              ],
-              "justifyContent": "center",
-              "alignItems": "center",
-              "gap": 4,
-              "children": [
-                {
-                  "type": "Label",
-                  "id": "curfew-rest-brand",
-                  "text": "玩趣乐园 · 温馨提示",
-                  "fontSize": 12,
-                  "fontColor": [
-                    116,
-                    102,
-                    70,
-                    255
-                  ],
-                  "children": [],
-                  "fontFamily": "sans"
-                },
-                {
-                  "type": "Label",
-                  "id": "curfew-rest-title",
-                  "text": "现在不能玩哦！",
-                  "fontSize": 21,
-                  "fontColor": [
-                    91,
-                    76,
-                    47,
-                    255
-                  ],
-                  "fontWeight": "bold",
-                  "children": [],
-                  "fontFamily": "sans"
-                }
-              ]
-            },
-            {
-              "type": "Panel",
-              "id": "curfew-rest-scroll",
-              "width": "100%",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "flexBasis": 0,
-              "overflow": "hidden",
-              "children": [
-                {
-                  "type": "Panel",
-                  "id": "curfew-rest-paragraphs",
-                  "width": "100%",
-                  "padding": 21,
-                  "flexShrink": 0,
-                  "flexDirection": "column",
-                  "gap": 2,
-                  "children": [
-                    {
-                      "type": "Label",
-                      "id": "curfew-rest-paragraph-1",
-                      "text": "当前账号实名为未成年人。",
-                      "fontSize": 15,
-                      "width": "100%",
-                      "fontColor": [
-                        116,
-                        102,
-                        70,
-                        255
-                      ],
-                      "textAlign": "center",
-                      "lineHeight": 1.6,
-                      "whiteSpace": "normal",
-                      "verticalAlign": "top",
-                      "flexShrink": 0,
-                      "children": [],
-                      "fontFamily": "sans"
-                    },
-                    {
-                      "type": "Label",
-                      "id": "curfew-rest-paragraph-2",
-                      "text": "未成年人每日 20:00 至次日 08:00 不能进入游戏，请明天 8 点以后再来玩吧。",
-                      "fontSize": 15,
-                      "width": "100%",
-                      "fontColor": [
-                        116,
-                        102,
-                        70,
-                        255
-                      ],
-                      "textAlign": "center",
-                      "lineHeight": 1.6,
-                      "whiteSpace": "normal",
-                      "verticalAlign": "top",
-                      "flexShrink": 0,
-                      "children": [],
-                      "fontFamily": "sans"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "Panel",
-              "id": "curfew-rest-footer",
-              "width": "100%",
-              "padding": 17,
-              "paddingTop": 8,
-              "flexShrink": 0,
-              "flexDirection": "column",
-              "gap": 10,
-              "children": [
-                {
-                  "type": "Button",
-                  "id": "curfew-rest-action-1",
-                  "text": "好的",
-                  "fontSize": 18,
-                  "width": "100%",
-                  "height": 49,
-                  "minHeight": 44,
-                  "backgroundColor": [
-                    238,
-                    156,
-                    67,
-                    255
-                  ],
-                  "textColor": [
-                    91,
-                    76,
-                    47,
-                    255
-                  ],
-                  "borderColor": [
-                    91,
-                    76,
-                    47,
-                    255
-                  ],
-                  "borderWidth": 2,
-                  "borderRadius": 10,
-                  "variant": "primary",
-                  "flexShrink": 0,
-                  "boxShadow": false,
-                  "hoverBoxShadow": false,
-                  "pressedBoxShadow": false,
-                  "children": [],
-                  "fontFamily": "sans"
-                },
-                {
-                  "type": "Button",
-                  "id": "curfew-rest-action-2",
-                  "text": "退出游戏",
-                  "fontSize": 18,
-                  "width": "100%",
-                  "height": 49,
-                  "minHeight": 44,
+                  "id": "force-exit-rest-card",
+                  "width": "92%",
+                  "height": "auto",
                   "backgroundColor": [
                     255,
                     246,
                     220,
                     255
                   ],
-                  "textColor": [
-                    91,
-                    76,
-                    47,
-                    255
-                  ],
+                  "borderWidth": 3.333,
                   "borderColor": [
                     91,
                     76,
                     47,
                     255
                   ],
-                  "borderWidth": 2,
-                  "borderRadius": 10,
-                  "variant": "outline",
-                  "flexShrink": 0,
-                  "boxShadow": false,
-                  "hoverBoxShadow": false,
-                  "pressedBoxShadow": false,
-                  "children": [],
-                  "fontFamily": "sans"
+                  "borderRadius": 16,
+                  "overflow": "hidden",
+                  "flexDirection": "column",
+                  "children": [
+                    {
+                      "type": "Panel",
+                      "id": "force-exit-rest-header",
+                      "width": "100%",
+                      "height": 114.667,
+                      "flexShrink": 0,
+                      "borderBottomWidth": 1.5,
+                      "borderColor": [
+                        221,
+                        207,
+                        166,
+                        255
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "gap": 5.333,
+                      "children": [
+                        {
+                          "type": "Label",
+                          "id": "force-exit-rest-brand",
+                          "text": "玩趣乐园 · 温馨提示",
+                          "fontSize": 16,
+                          "fontColor": [
+                            116,
+                            102,
+                            70,
+                            255
+                          ],
+                          "children": [],
+                          "fontFamily": "sans"
+                        },
+                        {
+                          "type": "Label",
+                          "id": "force-exit-rest-title",
+                          "text": "今天玩够啦！",
+                          "fontSize": 28,
+                          "fontColor": [
+                            91,
+                            76,
+                            47,
+                            255
+                          ],
+                          "fontWeight": "bold",
+                          "children": [],
+                          "fontFamily": "sans"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Panel",
+                      "id": "force-exit-rest-scroll",
+                      "width": "100%",
+                      "flexGrow": 0,
+                      "flexShrink": 1,
+                      "flexBasis": "auto",
+                      "overflow": "hidden",
+                      "children": [
+                        {
+                          "type": "Panel",
+                          "id": "force-exit-rest-paragraphs",
+                          "width": "100%",
+                          "padding": 28,
+                          "flexShrink": 0,
+                          "flexDirection": "column",
+                          "gap": 2.667,
+                          "children": [
+                            {
+                              "type": "Label",
+                              "id": "force-exit-rest-paragraph-1",
+                              "text": "你已经玩了 60 分钟啦，",
+                              "fontSize": 20,
+                              "width": "100%",
+                              "fontColor": [
+                                116,
+                                102,
+                                70,
+                                255
+                              ],
+                              "textAlign": "center",
+                              "lineHeight": 1.6,
+                              "whiteSpace": "normal",
+                              "verticalAlign": "top",
+                              "flexShrink": 0,
+                              "children": [],
+                              "fontFamily": "sans"
+                            },
+                            {
+                              "type": "Label",
+                              "id": "force-exit-rest-paragraph-2",
+                              "text": "今天要先休息了哦！",
+                              "fontSize": 20,
+                              "width": "100%",
+                              "fontColor": [
+                                116,
+                                102,
+                                70,
+                                255
+                              ],
+                              "textAlign": "center",
+                              "lineHeight": 1.6,
+                              "whiteSpace": "normal",
+                              "verticalAlign": "top",
+                              "flexShrink": 0,
+                              "children": [],
+                              "fontFamily": "sans"
+                            }
+                          ]
+                        }
+                      ],
+                      "minHeight": 0
+                    },
+                    {
+                      "type": "Panel",
+                      "id": "force-exit-rest-footer",
+                      "width": "100%",
+                      "padding": 22.667,
+                      "paddingTop": 10.667,
+                      "flexShrink": 0,
+                      "flexDirection": "column",
+                      "gap": 13.333,
+                      "children": [
+                        {
+                          "type": "Button",
+                          "id": "force-exit-rest-action-1",
+                          "text": "好的",
+                          "fontSize": 24,
+                          "width": "100%",
+                          "height": 65.333,
+                          "minHeight": 58.667,
+                          "backgroundColor": [
+                            238,
+                            156,
+                            67,
+                            255
+                          ],
+                          "textColor": [
+                            91,
+                            76,
+                            47,
+                            255
+                          ],
+                          "borderColor": [
+                            91,
+                            76,
+                            47,
+                            255
+                          ],
+                          "borderWidth": 2.667,
+                          "borderRadius": 13.333,
+                          "variant": "primary",
+                          "flexShrink": 0,
+                          "boxShadow": false,
+                          "hoverBoxShadow": false,
+                          "pressedBoxShadow": false,
+                          "children": [],
+                          "fontFamily": "sans",
+                          "minWidth": 0
+                        }
+                      ]
+                    }
+                  ],
+                  "maxWidth": 604,
+                  "minWidth": 0,
+                  "maxHeight": "90%",
+                  "flexShrink": 1,
+                  "minHeight": 0
                 }
               ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "Panel",
-      "id": "anti-addiction-minor-7",
-      "position": "absolute",
-      "left": 0,
-      "top": 0,
-      "width": "100%",
-      "height": "100%",
-      "backgroundColor": [
-        63,
-        56,
-        36,
-        140
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "visible": false,
-      "children": [
-        {
-          "type": "Panel",
-          "id": "minor-7-rest-card",
-          "width": 453,
-          "height": 371,
-          "backgroundColor": [
-            255,
-            246,
-            220,
-            255
-          ],
-          "borderWidth": 2.5,
-          "borderColor": [
-            91,
-            76,
-            47,
-            255
-          ],
-          "borderRadius": 12,
-          "overflow": "hidden",
-          "flexDirection": "column",
-          "children": [
+            },
             {
               "type": "Panel",
-              "id": "minor-7-rest-header",
+              "id": "anti-addiction-curfew",
+              "position": "absolute",
+              "left": 0,
+              "top": 0,
               "width": "100%",
-              "height": 86,
-              "flexShrink": 0,
-              "borderBottomWidth": 1.5,
-              "borderColor": [
-                221,
-                207,
-                166,
-                255
+              "height": "100%",
+              "backgroundColor": [
+                63,
+                56,
+                36,
+                140
               ],
               "justifyContent": "center",
               "alignItems": "center",
-              "gap": 4,
-              "children": [
-                {
-                  "type": "Label",
-                  "id": "minor-7-rest-brand",
-                  "text": "玩趣乐园 · 温馨提示",
-                  "fontSize": 12,
-                  "fontColor": [
-                    116,
-                    102,
-                    70,
-                    255
-                  ],
-                  "children": [],
-                  "fontFamily": "sans"
-                },
-                {
-                  "type": "Label",
-                  "id": "minor-7-rest-title",
-                  "text": "未成年人保护提示",
-                  "fontSize": 21,
-                  "fontColor": [
-                    91,
-                    76,
-                    47,
-                    255
-                  ],
-                  "fontWeight": "bold",
-                  "children": [],
-                  "fontFamily": "sans"
-                }
-              ]
-            },
-            {
-              "type": "Panel",
-              "id": "minor-7-rest-scroll",
-              "width": "100%",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "flexBasis": 0,
-              "overflow": "hidden",
+              "visible": false,
               "children": [
                 {
                   "type": "Panel",
-                  "id": "minor-7-rest-paragraphs",
-                  "width": "100%",
-                  "padding": 21,
-                  "flexShrink": 0,
-                  "flexDirection": "column",
-                  "gap": 2,
-                  "children": [
-                    {
-                      "type": "Label",
-                      "id": "minor-7-rest-paragraph-1",
-                      "text": "实名认证成功，当前身份为7周岁。",
-                      "fontSize": 15,
-                      "width": "100%",
-                      "fontColor": [
-                        116,
-                        102,
-                        70,
-                        255
-                      ],
-                      "textAlign": "center",
-                      "lineHeight": 1.6,
-                      "whiteSpace": "normal",
-                      "verticalAlign": "top",
-                      "flexShrink": 0,
-                      "children": [],
-                      "fontFamily": "sans"
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "minor-7-rest-gap-2",
-                      "height": 10,
-                      "flexShrink": 0,
-                      "children": []
-                    },
-                    {
-                      "type": "Label",
-                      "id": "minor-7-rest-paragraph-3",
-                      "text": "根据防沉迷规定，未成年人每日20:00至次日08:00不能进入游戏；单次游玩满30分钟会提醒休息，累计满60分钟后今天需先休息。",
-                      "fontSize": 15,
-                      "width": "100%",
-                      "fontColor": [
-                        116,
-                        102,
-                        70,
-                        255
-                      ],
-                      "textAlign": "center",
-                      "lineHeight": 1.6,
-                      "whiteSpace": "normal",
-                      "verticalAlign": "top",
-                      "flexShrink": 0,
-                      "children": [],
-                      "fontFamily": "sans"
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "minor-7-rest-gap-4",
-                      "height": 10,
-                      "flexShrink": 0,
-                      "children": []
-                    },
-                    {
-                      "type": "Label",
-                      "id": "minor-7-rest-paragraph-5",
-                      "text": "未满8周岁的用户不能进行充值消费。",
-                      "fontSize": 15,
-                      "width": "100%",
-                      "fontColor": [
-                        116,
-                        102,
-                        70,
-                        255
-                      ],
-                      "textAlign": "center",
-                      "lineHeight": 1.6,
-                      "whiteSpace": "normal",
-                      "verticalAlign": "top",
-                      "flexShrink": 0,
-                      "children": [],
-                      "fontFamily": "sans"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "Panel",
-              "id": "minor-7-rest-footer",
-              "width": "100%",
-              "padding": 17,
-              "paddingTop": 8,
-              "flexShrink": 0,
-              "flexDirection": "column",
-              "gap": 10,
-              "children": [
-                {
-                  "type": "Button",
-                  "id": "minor-7-rest-action-1",
-                  "text": "我知道了",
-                  "fontSize": 18,
-                  "width": "100%",
-                  "height": 49,
-                  "minHeight": 44,
+                  "id": "curfew-rest-card",
+                  "width": "92%",
+                  "height": "auto",
                   "backgroundColor": [
-                    238,
-                    156,
-                    67,
+                    255,
+                    246,
+                    220,
                     255
                   ],
-                  "textColor": [
-                    91,
-                    76,
-                    47,
-                    255
-                  ],
+                  "borderWidth": 3.333,
                   "borderColor": [
                     91,
                     76,
                     47,
                     255
                   ],
-                  "borderWidth": 2,
-                  "borderRadius": 10,
-                  "variant": "primary",
-                  "flexShrink": 0,
-                  "boxShadow": false,
-                  "hoverBoxShadow": false,
-                  "pressedBoxShadow": false,
-                  "children": [],
-                  "fontFamily": "sans"
+                  "borderRadius": 16,
+                  "overflow": "hidden",
+                  "flexDirection": "column",
+                  "children": [
+                    {
+                      "type": "Panel",
+                      "id": "curfew-rest-header",
+                      "width": "100%",
+                      "height": 114.667,
+                      "flexShrink": 0,
+                      "borderBottomWidth": 1.5,
+                      "borderColor": [
+                        221,
+                        207,
+                        166,
+                        255
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "gap": 5.333,
+                      "children": [
+                        {
+                          "type": "Label",
+                          "id": "curfew-rest-brand",
+                          "text": "玩趣乐园 · 温馨提示",
+                          "fontSize": 16,
+                          "fontColor": [
+                            116,
+                            102,
+                            70,
+                            255
+                          ],
+                          "children": [],
+                          "fontFamily": "sans"
+                        },
+                        {
+                          "type": "Label",
+                          "id": "curfew-rest-title",
+                          "text": "现在不能玩哦！",
+                          "fontSize": 28,
+                          "fontColor": [
+                            91,
+                            76,
+                            47,
+                            255
+                          ],
+                          "fontWeight": "bold",
+                          "children": [],
+                          "fontFamily": "sans"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Panel",
+                      "id": "curfew-rest-scroll",
+                      "width": "100%",
+                      "flexGrow": 0,
+                      "flexShrink": 1,
+                      "flexBasis": "auto",
+                      "overflow": "hidden",
+                      "children": [
+                        {
+                          "type": "Panel",
+                          "id": "curfew-rest-paragraphs",
+                          "width": "100%",
+                          "padding": 28,
+                          "flexShrink": 0,
+                          "flexDirection": "column",
+                          "gap": 2.667,
+                          "children": [
+                            {
+                              "type": "Label",
+                              "id": "curfew-rest-paragraph-1",
+                              "text": "当前账号实名为未成年人。",
+                              "fontSize": 20,
+                              "width": "100%",
+                              "fontColor": [
+                                116,
+                                102,
+                                70,
+                                255
+                              ],
+                              "textAlign": "center",
+                              "lineHeight": 1.6,
+                              "whiteSpace": "normal",
+                              "verticalAlign": "top",
+                              "flexShrink": 0,
+                              "children": [],
+                              "fontFamily": "sans"
+                            },
+                            {
+                              "type": "Label",
+                              "id": "curfew-rest-paragraph-2",
+                              "text": "未成年人每日 20:00 至次日 08:00 不能进入游戏，请明天 8 点以后再来玩吧。",
+                              "fontSize": 20,
+                              "width": "100%",
+                              "fontColor": [
+                                116,
+                                102,
+                                70,
+                                255
+                              ],
+                              "textAlign": "center",
+                              "lineHeight": 1.6,
+                              "whiteSpace": "normal",
+                              "verticalAlign": "top",
+                              "flexShrink": 0,
+                              "children": [],
+                              "fontFamily": "sans"
+                            }
+                          ]
+                        }
+                      ],
+                      "minHeight": 0
+                    },
+                    {
+                      "type": "Panel",
+                      "id": "curfew-rest-footer",
+                      "width": "100%",
+                      "padding": 22.667,
+                      "paddingTop": 10.667,
+                      "flexShrink": 0,
+                      "flexDirection": "column",
+                      "gap": 13.333,
+                      "children": [
+                        {
+                          "type": "Button",
+                          "id": "curfew-rest-action-1",
+                          "text": "好的",
+                          "fontSize": 24,
+                          "width": "100%",
+                          "height": 65.333,
+                          "minHeight": 58.667,
+                          "backgroundColor": [
+                            238,
+                            156,
+                            67,
+                            255
+                          ],
+                          "textColor": [
+                            91,
+                            76,
+                            47,
+                            255
+                          ],
+                          "borderColor": [
+                            91,
+                            76,
+                            47,
+                            255
+                          ],
+                          "borderWidth": 2.667,
+                          "borderRadius": 13.333,
+                          "variant": "primary",
+                          "flexShrink": 0,
+                          "boxShadow": false,
+                          "hoverBoxShadow": false,
+                          "pressedBoxShadow": false,
+                          "children": [],
+                          "fontFamily": "sans",
+                          "minWidth": 0
+                        },
+                        {
+                          "type": "Button",
+                          "id": "curfew-rest-action-2",
+                          "text": "退出游戏",
+                          "fontSize": 24,
+                          "width": "100%",
+                          "height": 65.333,
+                          "minHeight": 58.667,
+                          "backgroundColor": [
+                            255,
+                            246,
+                            220,
+                            255
+                          ],
+                          "textColor": [
+                            91,
+                            76,
+                            47,
+                            255
+                          ],
+                          "borderColor": [
+                            91,
+                            76,
+                            47,
+                            255
+                          ],
+                          "borderWidth": 2.667,
+                          "borderRadius": 13.333,
+                          "variant": "outline",
+                          "flexShrink": 0,
+                          "boxShadow": false,
+                          "hoverBoxShadow": false,
+                          "pressedBoxShadow": false,
+                          "children": [],
+                          "fontFamily": "sans",
+                          "minWidth": 0
+                        }
+                      ]
+                    }
+                  ],
+                  "maxWidth": 604,
+                  "minWidth": 0,
+                  "maxHeight": "90%",
+                  "flexShrink": 1,
+                  "minHeight": 0
                 }
               ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "Panel",
-      "id": "anti-addiction-minor-12",
-      "position": "absolute",
-      "left": 0,
-      "top": 0,
-      "width": "100%",
-      "height": "100%",
-      "backgroundColor": [
-        63,
-        56,
-        36,
-        140
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "visible": false,
-      "children": [
-        {
-          "type": "Panel",
-          "id": "minor-12-rest-card",
-          "width": 453,
-          "height": 395,
-          "backgroundColor": [
-            255,
-            246,
-            220,
-            255
-          ],
-          "borderWidth": 2.5,
-          "borderColor": [
-            91,
-            76,
-            47,
-            255
-          ],
-          "borderRadius": 12,
-          "overflow": "hidden",
-          "flexDirection": "column",
-          "children": [
+            },
             {
               "type": "Panel",
-              "id": "minor-12-rest-header",
+              "id": "anti-addiction-minor-7",
+              "position": "absolute",
+              "left": 0,
+              "top": 0,
               "width": "100%",
-              "height": 86,
-              "flexShrink": 0,
-              "borderBottomWidth": 1.5,
-              "borderColor": [
-                221,
-                207,
-                166,
-                255
+              "height": "100%",
+              "backgroundColor": [
+                63,
+                56,
+                36,
+                140
               ],
               "justifyContent": "center",
               "alignItems": "center",
-              "gap": 4,
-              "children": [
-                {
-                  "type": "Label",
-                  "id": "minor-12-rest-brand",
-                  "text": "玩趣乐园 · 温馨提示",
-                  "fontSize": 12,
-                  "fontColor": [
-                    116,
-                    102,
-                    70,
-                    255
-                  ],
-                  "children": [],
-                  "fontFamily": "sans"
-                },
-                {
-                  "type": "Label",
-                  "id": "minor-12-rest-title",
-                  "text": "未成年人保护提示",
-                  "fontSize": 21,
-                  "fontColor": [
-                    91,
-                    76,
-                    47,
-                    255
-                  ],
-                  "fontWeight": "bold",
-                  "children": [],
-                  "fontFamily": "sans"
-                }
-              ]
-            },
-            {
-              "type": "Panel",
-              "id": "minor-12-rest-scroll",
-              "width": "100%",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "flexBasis": 0,
-              "overflow": "hidden",
+              "visible": false,
               "children": [
                 {
                   "type": "Panel",
-                  "id": "minor-12-rest-paragraphs",
-                  "width": "100%",
-                  "padding": 21,
-                  "flexShrink": 0,
-                  "flexDirection": "column",
-                  "gap": 2,
-                  "children": [
-                    {
-                      "type": "Label",
-                      "id": "minor-12-rest-paragraph-1",
-                      "text": "实名认证成功，当前身份为12周岁。",
-                      "fontSize": 15,
-                      "width": "100%",
-                      "fontColor": [
-                        116,
-                        102,
-                        70,
-                        255
-                      ],
-                      "textAlign": "center",
-                      "lineHeight": 1.6,
-                      "whiteSpace": "normal",
-                      "verticalAlign": "top",
-                      "flexShrink": 0,
-                      "children": [],
-                      "fontFamily": "sans"
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "minor-12-rest-gap-2",
-                      "height": 10,
-                      "flexShrink": 0,
-                      "children": []
-                    },
-                    {
-                      "type": "Label",
-                      "id": "minor-12-rest-paragraph-3",
-                      "text": "根据防沉迷规定，未成年人每日20:00至次日08:00不能进入游戏；单次游玩满30分钟会提醒休息，累计满60分钟后今天需先休息。",
-                      "fontSize": 15,
-                      "width": "100%",
-                      "fontColor": [
-                        116,
-                        102,
-                        70,
-                        255
-                      ],
-                      "textAlign": "center",
-                      "lineHeight": 1.6,
-                      "whiteSpace": "normal",
-                      "verticalAlign": "top",
-                      "flexShrink": 0,
-                      "children": [],
-                      "fontFamily": "sans"
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "minor-12-rest-gap-4",
-                      "height": 10,
-                      "flexShrink": 0,
-                      "children": []
-                    },
-                    {
-                      "type": "Label",
-                      "id": "minor-12-rest-paragraph-5",
-                      "text": "8周岁以上未满16周岁的用户，单次充值金额不得超过50元人民币，每月充值金额累计不得超过200元人民币。",
-                      "fontSize": 15,
-                      "width": "100%",
-                      "fontColor": [
-                        116,
-                        102,
-                        70,
-                        255
-                      ],
-                      "textAlign": "center",
-                      "lineHeight": 1.6,
-                      "whiteSpace": "normal",
-                      "verticalAlign": "top",
-                      "flexShrink": 0,
-                      "children": [],
-                      "fontFamily": "sans"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "Panel",
-              "id": "minor-12-rest-footer",
-              "width": "100%",
-              "padding": 17,
-              "paddingTop": 8,
-              "flexShrink": 0,
-              "flexDirection": "column",
-              "gap": 10,
-              "children": [
-                {
-                  "type": "Button",
-                  "id": "minor-12-rest-action-1",
-                  "text": "我知道了",
-                  "fontSize": 18,
-                  "width": "100%",
-                  "height": 49,
-                  "minHeight": 44,
+                  "id": "minor-7-rest-card",
+                  "width": "92%",
+                  "height": "auto",
                   "backgroundColor": [
-                    238,
-                    156,
-                    67,
+                    255,
+                    246,
+                    220,
                     255
                   ],
-                  "textColor": [
-                    91,
-                    76,
-                    47,
-                    255
-                  ],
+                  "borderWidth": 3.333,
                   "borderColor": [
                     91,
                     76,
                     47,
                     255
                   ],
-                  "borderWidth": 2,
-                  "borderRadius": 10,
-                  "variant": "primary",
-                  "flexShrink": 0,
-                  "boxShadow": false,
-                  "hoverBoxShadow": false,
-                  "pressedBoxShadow": false,
-                  "children": [],
-                  "fontFamily": "sans"
+                  "borderRadius": 16,
+                  "overflow": "hidden",
+                  "flexDirection": "column",
+                  "children": [
+                    {
+                      "type": "Panel",
+                      "id": "minor-7-rest-header",
+                      "width": "100%",
+                      "height": 114.667,
+                      "flexShrink": 0,
+                      "borderBottomWidth": 1.5,
+                      "borderColor": [
+                        221,
+                        207,
+                        166,
+                        255
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "gap": 5.333,
+                      "children": [
+                        {
+                          "type": "Label",
+                          "id": "minor-7-rest-brand",
+                          "text": "玩趣乐园 · 温馨提示",
+                          "fontSize": 16,
+                          "fontColor": [
+                            116,
+                            102,
+                            70,
+                            255
+                          ],
+                          "children": [],
+                          "fontFamily": "sans"
+                        },
+                        {
+                          "type": "Label",
+                          "id": "minor-7-rest-title",
+                          "text": "未成年人保护提示",
+                          "fontSize": 28,
+                          "fontColor": [
+                            91,
+                            76,
+                            47,
+                            255
+                          ],
+                          "fontWeight": "bold",
+                          "children": [],
+                          "fontFamily": "sans"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Panel",
+                      "id": "minor-7-rest-scroll",
+                      "width": "100%",
+                      "flexGrow": 0,
+                      "flexShrink": 1,
+                      "flexBasis": "auto",
+                      "overflow": "hidden",
+                      "children": [
+                        {
+                          "type": "Panel",
+                          "id": "minor-7-rest-paragraphs",
+                          "width": "100%",
+                          "padding": 28,
+                          "flexShrink": 0,
+                          "flexDirection": "column",
+                          "gap": 2.667,
+                          "children": [
+                            {
+                              "type": "Label",
+                              "id": "minor-7-rest-paragraph-1",
+                              "text": "实名认证成功，当前身份为7周岁。",
+                              "fontSize": 20,
+                              "width": "100%",
+                              "fontColor": [
+                                116,
+                                102,
+                                70,
+                                255
+                              ],
+                              "textAlign": "center",
+                              "lineHeight": 1.6,
+                              "whiteSpace": "normal",
+                              "verticalAlign": "top",
+                              "flexShrink": 0,
+                              "children": [],
+                              "fontFamily": "sans"
+                            },
+                            {
+                              "type": "Panel",
+                              "id": "minor-7-rest-gap-2",
+                              "height": 13.333,
+                              "flexShrink": 0,
+                              "children": []
+                            },
+                            {
+                              "type": "Label",
+                              "id": "minor-7-rest-paragraph-3",
+                              "text": "根据防沉迷规定，未成年人每日20:00至次日08:00不能进入游戏；单次游玩满30分钟会提醒休息，累计满60分钟后今天需先休息。",
+                              "fontSize": 20,
+                              "width": "100%",
+                              "fontColor": [
+                                116,
+                                102,
+                                70,
+                                255
+                              ],
+                              "textAlign": "center",
+                              "lineHeight": 1.6,
+                              "whiteSpace": "normal",
+                              "verticalAlign": "top",
+                              "flexShrink": 0,
+                              "children": [],
+                              "fontFamily": "sans"
+                            },
+                            {
+                              "type": "Panel",
+                              "id": "minor-7-rest-gap-4",
+                              "height": 13.333,
+                              "flexShrink": 0,
+                              "children": []
+                            },
+                            {
+                              "type": "Label",
+                              "id": "minor-7-rest-paragraph-5",
+                              "text": "未满8周岁的用户不能进行充值消费。",
+                              "fontSize": 20,
+                              "width": "100%",
+                              "fontColor": [
+                                116,
+                                102,
+                                70,
+                                255
+                              ],
+                              "textAlign": "center",
+                              "lineHeight": 1.6,
+                              "whiteSpace": "normal",
+                              "verticalAlign": "top",
+                              "flexShrink": 0,
+                              "children": [],
+                              "fontFamily": "sans"
+                            }
+                          ]
+                        }
+                      ],
+                      "minHeight": 0
+                    },
+                    {
+                      "type": "Panel",
+                      "id": "minor-7-rest-footer",
+                      "width": "100%",
+                      "padding": 22.667,
+                      "paddingTop": 10.667,
+                      "flexShrink": 0,
+                      "flexDirection": "column",
+                      "gap": 13.333,
+                      "children": [
+                        {
+                          "type": "Button",
+                          "id": "minor-7-rest-action-1",
+                          "text": "我知道了",
+                          "fontSize": 24,
+                          "width": "100%",
+                          "height": 65.333,
+                          "minHeight": 58.667,
+                          "backgroundColor": [
+                            238,
+                            156,
+                            67,
+                            255
+                          ],
+                          "textColor": [
+                            91,
+                            76,
+                            47,
+                            255
+                          ],
+                          "borderColor": [
+                            91,
+                            76,
+                            47,
+                            255
+                          ],
+                          "borderWidth": 2.667,
+                          "borderRadius": 13.333,
+                          "variant": "primary",
+                          "flexShrink": 0,
+                          "boxShadow": false,
+                          "hoverBoxShadow": false,
+                          "pressedBoxShadow": false,
+                          "children": [],
+                          "fontFamily": "sans",
+                          "minWidth": 0
+                        }
+                      ]
+                    }
+                  ],
+                  "maxWidth": 604,
+                  "minWidth": 0,
+                  "maxHeight": "90%",
+                  "flexShrink": 1,
+                  "minHeight": 0
                 }
               ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "Panel",
-      "id": "anti-addiction-minor-17",
-      "position": "absolute",
-      "left": 0,
-      "top": 0,
-      "width": "100%",
-      "height": "100%",
-      "backgroundColor": [
-        63,
-        56,
-        36,
-        140
-      ],
-      "justifyContent": "center",
-      "alignItems": "center",
-      "visible": false,
-      "children": [
-        {
-          "type": "Panel",
-          "id": "minor-17-rest-card",
-          "width": 453,
-          "height": 395,
-          "backgroundColor": [
-            255,
-            246,
-            220,
-            255
-          ],
-          "borderWidth": 2.5,
-          "borderColor": [
-            91,
-            76,
-            47,
-            255
-          ],
-          "borderRadius": 12,
-          "overflow": "hidden",
-          "flexDirection": "column",
-          "children": [
+            },
             {
               "type": "Panel",
-              "id": "minor-17-rest-header",
+              "id": "anti-addiction-minor-12",
+              "position": "absolute",
+              "left": 0,
+              "top": 0,
               "width": "100%",
-              "height": 86,
-              "flexShrink": 0,
-              "borderBottomWidth": 1.5,
-              "borderColor": [
-                221,
-                207,
-                166,
-                255
+              "height": "100%",
+              "backgroundColor": [
+                63,
+                56,
+                36,
+                140
               ],
               "justifyContent": "center",
               "alignItems": "center",
-              "gap": 4,
-              "children": [
-                {
-                  "type": "Label",
-                  "id": "minor-17-rest-brand",
-                  "text": "玩趣乐园 · 温馨提示",
-                  "fontSize": 12,
-                  "fontColor": [
-                    116,
-                    102,
-                    70,
-                    255
-                  ],
-                  "children": [],
-                  "fontFamily": "sans"
-                },
-                {
-                  "type": "Label",
-                  "id": "minor-17-rest-title",
-                  "text": "未成年人保护提示",
-                  "fontSize": 21,
-                  "fontColor": [
-                    91,
-                    76,
-                    47,
-                    255
-                  ],
-                  "fontWeight": "bold",
-                  "children": [],
-                  "fontFamily": "sans"
-                }
-              ]
-            },
-            {
-              "type": "Panel",
-              "id": "minor-17-rest-scroll",
-              "width": "100%",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "flexBasis": 0,
-              "overflow": "hidden",
+              "visible": false,
               "children": [
                 {
                   "type": "Panel",
-                  "id": "minor-17-rest-paragraphs",
-                  "width": "100%",
-                  "padding": 21,
-                  "flexShrink": 0,
-                  "flexDirection": "column",
-                  "gap": 2,
-                  "children": [
-                    {
-                      "type": "Label",
-                      "id": "minor-17-rest-paragraph-1",
-                      "text": "实名认证成功，当前身份为17周岁。",
-                      "fontSize": 15,
-                      "width": "100%",
-                      "fontColor": [
-                        116,
-                        102,
-                        70,
-                        255
-                      ],
-                      "textAlign": "center",
-                      "lineHeight": 1.6,
-                      "whiteSpace": "normal",
-                      "verticalAlign": "top",
-                      "flexShrink": 0,
-                      "children": [],
-                      "fontFamily": "sans"
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "minor-17-rest-gap-2",
-                      "height": 10,
-                      "flexShrink": 0,
-                      "children": []
-                    },
-                    {
-                      "type": "Label",
-                      "id": "minor-17-rest-paragraph-3",
-                      "text": "根据防沉迷规定，未成年人每日20:00至次日08:00不能进入游戏；单次游玩满30分钟会提醒休息，累计满60分钟后今天需先休息。",
-                      "fontSize": 15,
-                      "width": "100%",
-                      "fontColor": [
-                        116,
-                        102,
-                        70,
-                        255
-                      ],
-                      "textAlign": "center",
-                      "lineHeight": 1.6,
-                      "whiteSpace": "normal",
-                      "verticalAlign": "top",
-                      "flexShrink": 0,
-                      "children": [],
-                      "fontFamily": "sans"
-                    },
-                    {
-                      "type": "Panel",
-                      "id": "minor-17-rest-gap-4",
-                      "height": 10,
-                      "flexShrink": 0,
-                      "children": []
-                    },
-                    {
-                      "type": "Label",
-                      "id": "minor-17-rest-paragraph-5",
-                      "text": "16周岁以上未满18周岁的用户，单次充值金额不得超过100元人民币，每月充值金额累计不得超过400元人民币。",
-                      "fontSize": 15,
-                      "width": "100%",
-                      "fontColor": [
-                        116,
-                        102,
-                        70,
-                        255
-                      ],
-                      "textAlign": "center",
-                      "lineHeight": 1.6,
-                      "whiteSpace": "normal",
-                      "verticalAlign": "top",
-                      "flexShrink": 0,
-                      "children": [],
-                      "fontFamily": "sans"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "Panel",
-              "id": "minor-17-rest-footer",
-              "width": "100%",
-              "padding": 17,
-              "paddingTop": 8,
-              "flexShrink": 0,
-              "flexDirection": "column",
-              "gap": 10,
-              "children": [
-                {
-                  "type": "Button",
-                  "id": "minor-17-rest-action-1",
-                  "text": "我知道了",
-                  "fontSize": 18,
-                  "width": "100%",
-                  "height": 49,
-                  "minHeight": 44,
+                  "id": "minor-12-rest-card",
+                  "width": "92%",
+                  "height": "auto",
                   "backgroundColor": [
-                    238,
-                    156,
-                    67,
+                    255,
+                    246,
+                    220,
                     255
                   ],
-                  "textColor": [
-                    91,
-                    76,
-                    47,
-                    255
-                  ],
+                  "borderWidth": 3.333,
                   "borderColor": [
                     91,
                     76,
                     47,
                     255
                   ],
-                  "borderWidth": 2,
-                  "borderRadius": 10,
-                  "variant": "primary",
-                  "flexShrink": 0,
-                  "boxShadow": false,
-                  "hoverBoxShadow": false,
-                  "pressedBoxShadow": false,
-                  "children": [],
-                  "fontFamily": "sans"
+                  "borderRadius": 16,
+                  "overflow": "hidden",
+                  "flexDirection": "column",
+                  "children": [
+                    {
+                      "type": "Panel",
+                      "id": "minor-12-rest-header",
+                      "width": "100%",
+                      "height": 114.667,
+                      "flexShrink": 0,
+                      "borderBottomWidth": 1.5,
+                      "borderColor": [
+                        221,
+                        207,
+                        166,
+                        255
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "gap": 5.333,
+                      "children": [
+                        {
+                          "type": "Label",
+                          "id": "minor-12-rest-brand",
+                          "text": "玩趣乐园 · 温馨提示",
+                          "fontSize": 16,
+                          "fontColor": [
+                            116,
+                            102,
+                            70,
+                            255
+                          ],
+                          "children": [],
+                          "fontFamily": "sans"
+                        },
+                        {
+                          "type": "Label",
+                          "id": "minor-12-rest-title",
+                          "text": "未成年人保护提示",
+                          "fontSize": 28,
+                          "fontColor": [
+                            91,
+                            76,
+                            47,
+                            255
+                          ],
+                          "fontWeight": "bold",
+                          "children": [],
+                          "fontFamily": "sans"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Panel",
+                      "id": "minor-12-rest-scroll",
+                      "width": "100%",
+                      "flexGrow": 0,
+                      "flexShrink": 1,
+                      "flexBasis": "auto",
+                      "overflow": "hidden",
+                      "children": [
+                        {
+                          "type": "Panel",
+                          "id": "minor-12-rest-paragraphs",
+                          "width": "100%",
+                          "padding": 28,
+                          "flexShrink": 0,
+                          "flexDirection": "column",
+                          "gap": 2.667,
+                          "children": [
+                            {
+                              "type": "Label",
+                              "id": "minor-12-rest-paragraph-1",
+                              "text": "实名认证成功，当前身份为12周岁。",
+                              "fontSize": 20,
+                              "width": "100%",
+                              "fontColor": [
+                                116,
+                                102,
+                                70,
+                                255
+                              ],
+                              "textAlign": "center",
+                              "lineHeight": 1.6,
+                              "whiteSpace": "normal",
+                              "verticalAlign": "top",
+                              "flexShrink": 0,
+                              "children": [],
+                              "fontFamily": "sans"
+                            },
+                            {
+                              "type": "Panel",
+                              "id": "minor-12-rest-gap-2",
+                              "height": 13.333,
+                              "flexShrink": 0,
+                              "children": []
+                            },
+                            {
+                              "type": "Label",
+                              "id": "minor-12-rest-paragraph-3",
+                              "text": "根据防沉迷规定，未成年人每日20:00至次日08:00不能进入游戏；单次游玩满30分钟会提醒休息，累计满60分钟后今天需先休息。",
+                              "fontSize": 20,
+                              "width": "100%",
+                              "fontColor": [
+                                116,
+                                102,
+                                70,
+                                255
+                              ],
+                              "textAlign": "center",
+                              "lineHeight": 1.6,
+                              "whiteSpace": "normal",
+                              "verticalAlign": "top",
+                              "flexShrink": 0,
+                              "children": [],
+                              "fontFamily": "sans"
+                            },
+                            {
+                              "type": "Panel",
+                              "id": "minor-12-rest-gap-4",
+                              "height": 13.333,
+                              "flexShrink": 0,
+                              "children": []
+                            },
+                            {
+                              "type": "Label",
+                              "id": "minor-12-rest-paragraph-5",
+                              "text": "8周岁以上未满16周岁的用户，单次充值金额不得超过50元人民币，每月充值金额累计不得超过200元人民币。",
+                              "fontSize": 20,
+                              "width": "100%",
+                              "fontColor": [
+                                116,
+                                102,
+                                70,
+                                255
+                              ],
+                              "textAlign": "center",
+                              "lineHeight": 1.6,
+                              "whiteSpace": "normal",
+                              "verticalAlign": "top",
+                              "flexShrink": 0,
+                              "children": [],
+                              "fontFamily": "sans"
+                            }
+                          ]
+                        }
+                      ],
+                      "minHeight": 0
+                    },
+                    {
+                      "type": "Panel",
+                      "id": "minor-12-rest-footer",
+                      "width": "100%",
+                      "padding": 22.667,
+                      "paddingTop": 10.667,
+                      "flexShrink": 0,
+                      "flexDirection": "column",
+                      "gap": 13.333,
+                      "children": [
+                        {
+                          "type": "Button",
+                          "id": "minor-12-rest-action-1",
+                          "text": "我知道了",
+                          "fontSize": 24,
+                          "width": "100%",
+                          "height": 65.333,
+                          "minHeight": 58.667,
+                          "backgroundColor": [
+                            238,
+                            156,
+                            67,
+                            255
+                          ],
+                          "textColor": [
+                            91,
+                            76,
+                            47,
+                            255
+                          ],
+                          "borderColor": [
+                            91,
+                            76,
+                            47,
+                            255
+                          ],
+                          "borderWidth": 2.667,
+                          "borderRadius": 13.333,
+                          "variant": "primary",
+                          "flexShrink": 0,
+                          "boxShadow": false,
+                          "hoverBoxShadow": false,
+                          "pressedBoxShadow": false,
+                          "children": [],
+                          "fontFamily": "sans",
+                          "minWidth": 0
+                        }
+                      ]
+                    }
+                  ],
+                  "maxWidth": 604,
+                  "minWidth": 0,
+                  "maxHeight": "90%",
+                  "flexShrink": 1,
+                  "minHeight": 0
+                }
+              ]
+            },
+            {
+              "type": "Panel",
+              "id": "anti-addiction-minor-17",
+              "position": "absolute",
+              "left": 0,
+              "top": 0,
+              "width": "100%",
+              "height": "100%",
+              "backgroundColor": [
+                63,
+                56,
+                36,
+                140
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "visible": false,
+              "children": [
+                {
+                  "type": "Panel",
+                  "id": "minor-17-rest-card",
+                  "width": "92%",
+                  "height": "auto",
+                  "backgroundColor": [
+                    255,
+                    246,
+                    220,
+                    255
+                  ],
+                  "borderWidth": 3.333,
+                  "borderColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "borderRadius": 16,
+                  "overflow": "hidden",
+                  "flexDirection": "column",
+                  "children": [
+                    {
+                      "type": "Panel",
+                      "id": "minor-17-rest-header",
+                      "width": "100%",
+                      "height": 114.667,
+                      "flexShrink": 0,
+                      "borderBottomWidth": 1.5,
+                      "borderColor": [
+                        221,
+                        207,
+                        166,
+                        255
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "gap": 5.333,
+                      "children": [
+                        {
+                          "type": "Label",
+                          "id": "minor-17-rest-brand",
+                          "text": "玩趣乐园 · 温馨提示",
+                          "fontSize": 16,
+                          "fontColor": [
+                            116,
+                            102,
+                            70,
+                            255
+                          ],
+                          "children": [],
+                          "fontFamily": "sans"
+                        },
+                        {
+                          "type": "Label",
+                          "id": "minor-17-rest-title",
+                          "text": "未成年人保护提示",
+                          "fontSize": 28,
+                          "fontColor": [
+                            91,
+                            76,
+                            47,
+                            255
+                          ],
+                          "fontWeight": "bold",
+                          "children": [],
+                          "fontFamily": "sans"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "Panel",
+                      "id": "minor-17-rest-scroll",
+                      "width": "100%",
+                      "flexGrow": 0,
+                      "flexShrink": 1,
+                      "flexBasis": "auto",
+                      "overflow": "hidden",
+                      "children": [
+                        {
+                          "type": "Panel",
+                          "id": "minor-17-rest-paragraphs",
+                          "width": "100%",
+                          "padding": 28,
+                          "flexShrink": 0,
+                          "flexDirection": "column",
+                          "gap": 2.667,
+                          "children": [
+                            {
+                              "type": "Label",
+                              "id": "minor-17-rest-paragraph-1",
+                              "text": "实名认证成功，当前身份为17周岁。",
+                              "fontSize": 20,
+                              "width": "100%",
+                              "fontColor": [
+                                116,
+                                102,
+                                70,
+                                255
+                              ],
+                              "textAlign": "center",
+                              "lineHeight": 1.6,
+                              "whiteSpace": "normal",
+                              "verticalAlign": "top",
+                              "flexShrink": 0,
+                              "children": [],
+                              "fontFamily": "sans"
+                            },
+                            {
+                              "type": "Panel",
+                              "id": "minor-17-rest-gap-2",
+                              "height": 13.333,
+                              "flexShrink": 0,
+                              "children": []
+                            },
+                            {
+                              "type": "Label",
+                              "id": "minor-17-rest-paragraph-3",
+                              "text": "根据防沉迷规定，未成年人每日20:00至次日08:00不能进入游戏；单次游玩满30分钟会提醒休息，累计满60分钟后今天需先休息。",
+                              "fontSize": 20,
+                              "width": "100%",
+                              "fontColor": [
+                                116,
+                                102,
+                                70,
+                                255
+                              ],
+                              "textAlign": "center",
+                              "lineHeight": 1.6,
+                              "whiteSpace": "normal",
+                              "verticalAlign": "top",
+                              "flexShrink": 0,
+                              "children": [],
+                              "fontFamily": "sans"
+                            },
+                            {
+                              "type": "Panel",
+                              "id": "minor-17-rest-gap-4",
+                              "height": 13.333,
+                              "flexShrink": 0,
+                              "children": []
+                            },
+                            {
+                              "type": "Label",
+                              "id": "minor-17-rest-paragraph-5",
+                              "text": "16周岁以上未满18周岁的用户，单次充值金额不得超过100元人民币，每月充值金额累计不得超过400元人民币。",
+                              "fontSize": 20,
+                              "width": "100%",
+                              "fontColor": [
+                                116,
+                                102,
+                                70,
+                                255
+                              ],
+                              "textAlign": "center",
+                              "lineHeight": 1.6,
+                              "whiteSpace": "normal",
+                              "verticalAlign": "top",
+                              "flexShrink": 0,
+                              "children": [],
+                              "fontFamily": "sans"
+                            }
+                          ]
+                        }
+                      ],
+                      "minHeight": 0
+                    },
+                    {
+                      "type": "Panel",
+                      "id": "minor-17-rest-footer",
+                      "width": "100%",
+                      "padding": 22.667,
+                      "paddingTop": 10.667,
+                      "flexShrink": 0,
+                      "flexDirection": "column",
+                      "gap": 13.333,
+                      "children": [
+                        {
+                          "type": "Button",
+                          "id": "minor-17-rest-action-1",
+                          "text": "我知道了",
+                          "fontSize": 24,
+                          "width": "100%",
+                          "height": 65.333,
+                          "minHeight": 58.667,
+                          "backgroundColor": [
+                            238,
+                            156,
+                            67,
+                            255
+                          ],
+                          "textColor": [
+                            91,
+                            76,
+                            47,
+                            255
+                          ],
+                          "borderColor": [
+                            91,
+                            76,
+                            47,
+                            255
+                          ],
+                          "borderWidth": 2.667,
+                          "borderRadius": 13.333,
+                          "variant": "primary",
+                          "flexShrink": 0,
+                          "boxShadow": false,
+                          "hoverBoxShadow": false,
+                          "pressedBoxShadow": false,
+                          "children": [],
+                          "fontFamily": "sans",
+                          "minWidth": 0
+                        }
+                      ]
+                    }
+                  ],
+                  "maxWidth": 604,
+                  "minWidth": 0,
+                  "maxHeight": "90%",
+                  "flexShrink": 1,
+                  "minHeight": 0
                 }
               ]
             }
@@ -1391,117 +1455,5 @@
         }
       ]
     }
-  ],
-  "_extraction": {
-    "sources": [
-      "scripts/shared/components/anti-addiction-popup.lua",
-      "scripts/shared/components/paper-ui.lua",
-      "scripts/shared/constants/art.lua",
-      "scripts/shared/constants/colors.lua",
-      "scripts/main.lua:CreateUI"
-    ],
-    "snapshot": {
-      "width": 540,
-      "height": 1200,
-      "coordinateSpace": "UI base pixels",
-      "visibleVariant": "reminder",
-      "hiddenVariants": [
-        "force-exit",
-        "curfew",
-        "minor-7",
-        "minor-12",
-        "minor-17"
-      ]
-    },
-    "fonts": [
-      {
-        "family": "sans",
-        "path": "Fonts/LongZhuTi-Regular.ttf"
-      }
-    ],
-    "typography": {
-      "sourceUIValuesPreserved": true,
-      "fontSizeUnit": "UI pt",
-      "renderedPixelFormula": "pt*4/3 at fontScale1"
-    },
-    "coordinates": {
-      "scale": "uiScale_=clamp(min(logW,logH)/500,1,2)=1.08; s(v)=floor(v*uiScale_)",
-      "card": "cardW=min(viewportW*0.9,s(420))=453; textW=max(100,cardW-s(40))=410",
-      "height": "rows=sum(max(1,ceil(utf8.len(line)*s(14)/textW))); naturalH=s(90+40+#buttons*58)+rows*s(23); cardH=min(viewportH*0.88,naturalH); centered",
-      "header": "height86, gap4; brand12pt,title21pt",
-      "body": "padding21; gap2; blank lines10; source14 ->15pt,lineHeight1.6",
-      "footer": "padding17/top8,gap10,buttons49 high,18pt; PaperUI effective border2/radius10/text ink",
-      "variants": {
-        "reminder": {
-          "cardW": 453,
-          "textW": 410,
-          "rows": 2,
-          "cardH": 313,
-          "x": 43.5,
-          "y": 443.5
-        },
-        "force-exit": {
-          "cardW": 453,
-          "textW": 410,
-          "rows": 2,
-          "cardH": 251,
-          "x": 43.5,
-          "y": 474.5
-        },
-        "curfew": {
-          "cardW": 453,
-          "textW": 410,
-          "rows": 3,
-          "cardH": 337,
-          "x": 43.5,
-          "y": 431.5
-        },
-        "minor-7": {
-          "cardW": 453,
-          "textW": 410,
-          "rows": 7,
-          "cardH": 371,
-          "x": 43.5,
-          "y": 414.5
-        },
-        "minor-12": {
-          "cardW": 453,
-          "textW": 410,
-          "rows": 8,
-          "cardH": 395,
-          "x": 43.5,
-          "y": 402.5
-        },
-        "minor-17": {
-          "cardW": 453,
-          "textW": 410,
-          "rows": 8,
-          "cardH": 395,
-          "x": 43.5,
-          "y": 402.5
-        }
-      }
-    },
-    "bindings": {
-      "variant": "All four source popup functions and three age payment branches retained as independent Panel subtrees. Toggle visible flags to inspect. Hidden ids namespaced.",
-      "minor ageText": "age and tostring(age)..'周岁' or '未成年'; nil age uses payment branch age17",
-      "opts.icon": "Not rendered by createPopup; intentionally not invented as a node.",
-      "rest-action-1": "reminder onRest; other states onConfirm; dismiss first",
-      "rest-action-2": "reminder onContinue; curfew engine:Exit"
-    },
-    "behaviorsRemainLua": [
-      "M.dismiss and mount/unmount",
-      "uiTap feedback",
-      "timers and age/curfew checks",
-      "onRest/onContinue/onConfirm",
-      "engine:Exit",
-      "scrolling and responsive scale"
-    ],
-    "limitations": [
-      "ScrollView becomes clipped Panel; all original text remains in child Labels even below viewport.",
-      "Source height estimate retained rather than altering legal text to make it fit.",
-      "Hidden variants are editor previews, not executable state transitions.",
-      "PaperUI forces ink text and borders; source opts fontColor/borderColor are not passed by createPopup."
-    ]
-  }
+  ]
 }
