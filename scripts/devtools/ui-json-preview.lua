@@ -6,6 +6,9 @@ function Start()
         fonts = {{family="sans", weights={normal="Fonts/LongZhuTi-Regular.ttf"}}},
         scale = 1,
     })
-    UI.SetRoot(UI.Panel{width="100%",height="100%",backgroundColor={255,246,220,255}})
-    print("[UI资源验证] 独立验证环境已初始化")
+    local instance, err = UI.LoadJSON("ui/adventure-reference.ui.json")
+    assert(instance, err)
+    UI.SetRoot(instance:GetRoot())
+    _G.UIJsonPreviewInstance = instance
+    print("[UI资源验证] 主线参考图已加载")
 end

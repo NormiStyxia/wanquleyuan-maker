@@ -6,26 +6,81 @@
   "position": "relative",
   "padding": 0,
   "borderWidth": 0,
-  "backgroundColor": [0, 0, 0, 0],
+  "backgroundColor": [
+    0,
+    0,
+    0,
+    0
+  ],
   "overflow": "hidden",
   "pointerEvents": "box-none",
   "_extraction": {
-    "source": ["scripts/pages/profile/init.lua", "scripts/pages/profile/layout.lua", "scripts/shared/outfit-manager.lua:SKINS", "scripts/shared/background-manager.lua:BACKGROUNDS/renderBackground", "scripts/shared/components/page-header.lua:PRESET_PROFILE/render", "scripts/shared/components/game-paper.lua", "scripts/shared/components/handdrawn.lua", "scripts/shared/components/story-paper.lua:portrait", "scripts/shared/components/tab-bar.lua:renderHanddrawn", "scripts/shared/constants/art.lua"],
-    "schemaSource": ["urhox-libs/UI/Core/UILoader.lua:createWidget", "urhox-libs/UI/Core/Widget.lua", "urhox-libs/UI/Widgets/Label.lua", "urhox-libs/UI/Widgets/Button.lua"],
+    "source": [
+      "scripts/pages/profile/init.lua",
+      "scripts/pages/profile/layout.lua",
+      "scripts/shared/outfit-manager.lua:SKINS",
+      "scripts/shared/background-manager.lua:BACKGROUNDS/renderBackground",
+      "scripts/shared/components/page-header.lua:PRESET_PROFILE/render",
+      "scripts/shared/components/game-paper.lua",
+      "scripts/shared/components/handdrawn.lua",
+      "scripts/shared/components/story-paper.lua:portrait",
+      "scripts/shared/components/tab-bar.lua:renderHanddrawn",
+      "scripts/shared/constants/art.lua"
+    ],
+    "schemaSource": [
+      "urhox-libs/UI/Core/UILoader.lua:createWidget",
+      "urhox-libs/UI/Core/Widget.lua",
+      "urhox-libs/UI/Widgets/Label.lua",
+      "urhox-libs/UI/Widgets/Button.lua"
+    ],
     "viewport": {
       "source": "scripts/shared/utils/density.lua:beginFrame/getFactor",
-      "sourceViewport": [540, 1200],
+      "sourceViewport": [
+        540,
+        1200
+      ],
       "assumedDPR": 1,
       "densityReferenceHeight": 896,
       "densityFactor": 1.3392857142857142,
-      "effectiveSize": [403.2, 896],
+      "effectiveSize": [
+        403.2,
+        896
+      ],
       "offsetX": 0,
       "formula": "factor=clamp((physicalH/DPR)/896,0.85,2.5); scale=DPR*factor; fullW=physicalW/scale; fullH=physicalH/scale; gameW=min(fullW,fullH/1.2); offsetX=(fullW-gameW)/2",
       "editorCanvas": "403.2x896 effective NVG units, not540x1200 raw coordinates.",
       "runtimeRoot": "Original Router placeholder width=100%,flexGrow=1,flexBasis=0. Future full-screen loader may use100%/100% after matching Density; no entry/adapter changes made."
     },
-    "fonts": [{"sourceFaces": ["profile"], "path": "Fonts/LongZhuTi-Regular.ttf", "jsonFontFamily": "sans", "note": "Source font registered by Lua. No registration changed; editor sans may differ in metrics."}],
-    "snapshot": {"category": "character", "skinId": "default", "backgroundId": "default", "skinCount": 11, "backgroundCount": 7, "gridPage": {"character": 1, "background": 1}, "storyProgress": "none assumed", "purchases": "none assumed", "animationTime": 0, "categoryFade": 1, "switchAnim": 0, "activeTab": "profile", "story4State": "not done", "hiddenBranch": "profile-background-content visible=false is an independently editable alternative. Preview by hiding profile-character-content, showing this branch and exchanging category plaque orange/paper fills.", "popups": "purchase/settings closed"},
+    "fonts": [
+      {
+        "sourceFaces": [
+          "profile"
+        ],
+        "path": "Fonts/LongZhuTi-Regular.ttf",
+        "jsonFontFamily": "sans",
+        "note": "Source font registered by Lua. No registration changed; editor sans may differ in metrics."
+      }
+    ],
+    "snapshot": {
+      "category": "character",
+      "skinId": "default",
+      "backgroundId": "default",
+      "skinCount": 11,
+      "backgroundCount": 7,
+      "gridPage": {
+        "character": 1,
+        "background": 1
+      },
+      "storyProgress": "none assumed",
+      "purchases": "none assumed",
+      "animationTime": 0,
+      "categoryFade": 1,
+      "switchAnim": 0,
+      "activeTab": "profile",
+      "story4State": "not done",
+      "hiddenBranch": "profile-background-content visible=false is an independently editable alternative. Preview by hiding profile-character-content, showing this branch and exchanging category plaque orange/paper fills.",
+      "popups": "purchase/settings closed"
+    },
     "layout": {
       "header": "titleY52,size26; width=min(W-40,max(136,2*26+44))=136; plaque[133.6,31.2,136,41.6]",
       "category": "startX=(W-(90*2+8))/2=107.6;y88;pills90x44,gap8",
@@ -49,24 +104,1060 @@
     },
     "paletteSource": "scripts/shared/constants/art.lua:colors; locked tint[255,246,220,90]; selected outline orange3,other ink2;thumb alpha1/.55",
     "bindings": [
-      {"id": "profile-background", "fields": ["backgroundImage", "backgroundColor"], "lua": "bgManager.getCurrent().themeImage / .colors.base", "source": "scripts/shared/background-manager.lua:BACKGROUNDS/getCurrent/renderBackground", "default": "image/handdrawn/backgrounds/default.png"},
-      {"ids": ["profile-character-preview", "profile-character-name"], "fields": ["backgroundImage", "text"], "lua": "selectedId_=OutfitManager.getCurrent();previewFor(vg,selectedId_)->skin.texture;OutfitManager.getCurrentName()", "source": "scripts/pages/profile/init.lua:renderPreview; scripts/shared/outfit-manager.lua:SKINS", "defaultTexture": "Textures/character/fox.png", "defaultName": "默认"},
-      {"ids": ["category-character", "category-background", "profile-character-content", "profile-background-content"], "lua": "category_;categoryFade_=0 then min(1,categoryFade_+dt*8)", "source": "scripts/pages/profile/init.lua:renderCategoryBar/renderAll/handleClickAt", "fields": ["content.visible", "plaque.backgroundColor"], "rule": "Selected category visible;active plaque orange,other paper;content opacity0.65+0.35*categoryFade_."},
-      {"id": "profile-skin-grid", "lua": "OutfitManager.getAllSkins();isUnlocked(skin.id);getLockReason(skin.id);selectedId_;gridPage_.character", "source": "scripts/pages/profile/init.lua:renderGrid; scripts/shared/outfit-manager.lua:SKINS", "fields": ["per-skin image=skin.thumbnail or skin.texture", "label=unlocked and skin.name or getLockReason(id).label", "imageOpacity=unlocked and1 or.55", "lock/tint visible=not unlocked", "selected orange3/check=selected and unlocked"], "action": "Unlocked->selectSkin;purchase-type locked->PurchasePopup.show. Locked Buttons remain enabled, matching source purchase hit handling."},
-      {"ids": ["profile-background-preview", "profile-background-name"], "fields": ["backgroundImage", "text"], "lua": "bgManager.getCurrent().previewImage/.name;themeImage fallback if no preview", "source": "scripts/pages/profile/init.lua:renderBgPreview; scripts/shared/background-manager.lua:renderBackground"},
-      {"id": "profile-background-grid", "lua": "bgManager.getAll();getUnlockLabel(id);isUnlocked(id);selectedBgId_;gridPage_.background", "source": "scripts/pages/profile/init.lua:renderBgGrid", "fields": ["image=bg.previewImage", "label=unlocked and bg.name or getUnlockLabel(bg.id);purchase overrides yuan price", "lock/tint visible=not unlocked", "selected orange3/check=selected and unlocked"], "action": "Unlocked->bgManager.select;purchase locked->cloudAge check then bgManager.purchase"},
-      {"id": "bottom-tabs", "component": "ui/bottom-tabs.ui.json", "lua": "activeTab=profile;lockedTabs=Storyline.getNodeState('story-4')~='done' and {home=true} or nil", "source": "scripts/shared/components/tab-bar.lua:renderHanddrawn"}
+      {
+        "id": "profile-background",
+        "fields": [
+          "backgroundImage",
+          "backgroundColor"
+        ],
+        "lua": "bgManager.getCurrent().themeImage / .colors.base",
+        "source": "scripts/shared/background-manager.lua:BACKGROUNDS/getCurrent/renderBackground",
+        "default": "image/handdrawn/backgrounds/default.png"
+      },
+      {
+        "ids": [
+          "profile-character-preview",
+          "profile-character-name"
+        ],
+        "fields": [
+          "backgroundImage",
+          "text"
+        ],
+        "lua": "selectedId_=OutfitManager.getCurrent();previewFor(vg,selectedId_)->skin.texture;OutfitManager.getCurrentName()",
+        "source": "scripts/pages/profile/init.lua:renderPreview; scripts/shared/outfit-manager.lua:SKINS",
+        "defaultTexture": "Textures/character/fox.png",
+        "defaultName": "默认"
+      },
+      {
+        "ids": [
+          "category-character",
+          "category-background",
+          "profile-character-content",
+          "profile-background-content"
+        ],
+        "lua": "category_;categoryFade_=0 then min(1,categoryFade_+dt*8)",
+        "source": "scripts/pages/profile/init.lua:renderCategoryBar/renderAll/handleClickAt",
+        "fields": [
+          "content.visible",
+          "plaque.backgroundColor"
+        ],
+        "rule": "Selected category visible;active plaque orange,other paper;content opacity0.65+0.35*categoryFade_."
+      },
+      {
+        "id": "profile-skin-grid",
+        "lua": "OutfitManager.getAllSkins();isUnlocked(skin.id);getLockReason(skin.id);selectedId_;gridPage_.character",
+        "source": "scripts/pages/profile/init.lua:renderGrid; scripts/shared/outfit-manager.lua:SKINS",
+        "fields": [
+          "per-skin image=skin.thumbnail or skin.texture",
+          "label=unlocked and skin.name or getLockReason(id).label",
+          "imageOpacity=unlocked and1 or.55",
+          "lock/tint visible=not unlocked",
+          "selected orange3/check=selected and unlocked"
+        ],
+        "action": "Unlocked->selectSkin;purchase-type locked->PurchasePopup.show. Locked Buttons remain enabled, matching source purchase hit handling."
+      },
+      {
+        "ids": [
+          "profile-background-preview",
+          "profile-background-name"
+        ],
+        "fields": [
+          "backgroundImage",
+          "text"
+        ],
+        "lua": "bgManager.getCurrent().previewImage/.name;themeImage fallback if no preview",
+        "source": "scripts/pages/profile/init.lua:renderBgPreview; scripts/shared/background-manager.lua:renderBackground"
+      },
+      {
+        "id": "profile-background-grid",
+        "lua": "bgManager.getAll();getUnlockLabel(id);isUnlocked(id);selectedBgId_;gridPage_.background",
+        "source": "scripts/pages/profile/init.lua:renderBgGrid",
+        "fields": [
+          "image=bg.previewImage",
+          "label=unlocked and bg.name or getUnlockLabel(bg.id);purchase overrides yuan price",
+          "lock/tint visible=not unlocked",
+          "selected orange3/check=selected and unlocked"
+        ],
+        "action": "Unlocked->bgManager.select;purchase locked->cloudAge check then bgManager.purchase"
+      },
+      {
+        "id": "bottom-tabs",
+        "component": "ui/bottom-tabs.ui.json",
+        "lua": "activeTab=profile;lockedTabs=Storyline.getNodeState('story-4')~='done' and {home=true} or nil",
+        "source": "scripts/shared/components/tab-bar.lua:renderHanddrawn"
+      }
     ],
-    "layerOrder": ["page selected background", "header", "category buttons", "selected preview + name/check", "grid paper/rule", "tile plaque,image,locked tint/body/shackle,outline,selected circle/check,label", "pagination only if pages>1 (not drawn)", "bottom tabs", "purchase/settings overlays only if opened (omitted)"],
-    "limitations": ["Static editor extraction only; no entry/gameplay/Lua changes. _extraction metadata is not executable bindings; Buttons have IDs but no callbacks.", "Cloud state cannot be inferred offline. Default skin/background,no purchases,no story progress are explicit snapshot assumptions.", "Hidden background category is an editable alternative in the same JSON; category switching requires future Lua binding.", "Pen.plaque quadratic corners approximated by Panel borderRadius11; strokes/colors/bounds preserved. Vector checks/lock arcs approximate with editable rotated/rounded Panels.", "Portrait contain preserved; background postcards use previewImage9:20 cover,not square-cropped themes.", "Name widths measured from source font via FreeType; exact NVG glyph positions and editor sans may differ.", "Density-effective403.2x896 canvas;percent widths/bottom56 retained. Other sizes need recorded dynamic min/floor/text-measure formulas recomputed.", "Outfit switch animation,category fade,dynamic pagination,purchase/settings overlays remain original Lua-owned behavior.", "Tabs independently copied from bottom-tabs.ui.json without custom component registration; gear approximation documented there.", "JSON/reference validation only; no build or runtime screenshot."]
+    "layerOrder": [
+      "page selected background",
+      "header",
+      "category buttons",
+      "selected preview + name/check",
+      "grid paper/rule",
+      "tile plaque,image,locked tint/body/shackle,outline,selected circle/check,label",
+      "pagination only if pages>1 (not drawn)",
+      "bottom tabs",
+      "purchase/settings overlays only if opened (omitted)"
+    ],
+    "limitations": [
+      "Static editor extraction only; no entry/gameplay/Lua changes. _extraction metadata is not executable bindings; Buttons have IDs but no callbacks.",
+      "Cloud state cannot be inferred offline. Default skin/background,no purchases,no story progress are explicit snapshot assumptions.",
+      "Hidden background category is an editable alternative in the same JSON; category switching requires future Lua binding.",
+      "Pen.plaque quadratic corners approximated by Panel borderRadius11; strokes/colors/bounds preserved. Vector checks/lock arcs approximate with editable rotated/rounded Panels.",
+      "Portrait contain preserved; background postcards use previewImage9:20 cover,not square-cropped themes.",
+      "Name widths measured from source font via FreeType; exact NVG glyph positions and editor sans may differ.",
+      "Density-effective403.2x896 canvas;percent widths/bottom56 retained. Other sizes need recorded dynamic min/floor/text-measure formulas recomputed.",
+      "Outfit switch animation,category fade,dynamic pagination,purchase/settings overlays remain original Lua-owned behavior.",
+      "Tabs independently copied from bottom-tabs.ui.json without custom component registration; gear approximation documented there.",
+      "JSON/reference validation only; no build or runtime screenshot."
+    ]
   },
   "children": [
-    {"type": "Panel", "id": "profile-background", "position": "absolute", "left": 0, "top": 0, "width": "100%", "height": "100%", "backgroundColor": [255, 248, 238, 255], "backgroundImage": "image/handdrawn/backgrounds/default.png", "backgroundFit": "cover", "borderWidth": 0, "pointerEvents": "none"},
-    {"type": "Panel", "id": "profile-header-shadow", "position": "absolute", "left": 134.6, "top": 34.2, "width": 136, "height": 41.6, "borderRadius": 11, "backgroundColor": [151, 123, 78, 45], "borderWidth": 0, "pointerEvents": "none"},
-    {"type": "Panel", "id": "profile-header-plaque", "position": "absolute", "left": 133.6, "top": 31.2, "width": 136, "height": 41.6, "borderRadius": 11, "backgroundColor": [255, 246, 220, 255], "borderWidth": 2.3, "borderColor": [91, 76, 47, 255], "borderAlign": "center", "pointerEvents": "none"},
-    {"type": "Label", "id": "profile-title", "position": "absolute", "left": 0, "top": 32, "width": "100%", "height": 40, "text": "装扮", "fontFamily": "sans", "fontSize": 26, "fontWeight": "normal", "fontColor": [91, 76, 47, 255], "textAlign": "center", "verticalAlign": "middle", "lineHeight": 1, "pointerEvents": "none"},
-    {"type": "Panel", "id": "profile-category-bar", "position": "absolute", "left": "50%", "translateX": -94, "top": 88, "width": 188, "height": 44, "backgroundColor": [0, 0, 0, 0], "pointerEvents": "box-none", "children": []},
-    {"type": "Panel", "id": "profile-character-content", "position": "absolute", "left": 0, "top": 0, "width": "100%", "height": "100%", "backgroundColor": [0, 0, 0, 0], "pointerEvents": "box-none", "children": []},
-    {"type": "Panel", "id": "profile-background-content", "visible": false, "position": "absolute", "left": 0, "top": 0, "width": "100%", "height": "100%", "backgroundColor": [0, 0, 0, 0], "pointerEvents": "box-none", "children": []}
+    {
+      "type": "Panel",
+      "id": "profile-background",
+      "position": "absolute",
+      "left": 0,
+      "top": 0,
+      "width": "100%",
+      "height": "100%",
+      "backgroundColor": [
+        255,
+        248,
+        238,
+        255
+      ],
+      "backgroundImage": "image/handdrawn/backgrounds/default.png",
+      "backgroundFit": "cover",
+      "borderWidth": 0,
+      "pointerEvents": "none"
+    },
+    {
+      "type": "Panel",
+      "id": "profile-header-shadow",
+      "position": "absolute",
+      "left": 134.6,
+      "top": 34.2,
+      "width": 136,
+      "height": 41.6,
+      "borderRadius": 11,
+      "backgroundColor": [
+        151,
+        123,
+        78,
+        45
+      ],
+      "borderWidth": 0,
+      "pointerEvents": "none"
+    },
+    {
+      "type": "Panel",
+      "id": "profile-header-plaque",
+      "position": "absolute",
+      "left": 133.6,
+      "top": 31.2,
+      "width": 136,
+      "height": 41.6,
+      "borderRadius": 11,
+      "backgroundColor": [
+        255,
+        246,
+        220,
+        255
+      ],
+      "borderWidth": 2.3,
+      "borderColor": [
+        91,
+        76,
+        47,
+        255
+      ],
+      "borderAlign": "center",
+      "pointerEvents": "none"
+    },
+    {
+      "type": "Label",
+      "id": "profile-title",
+      "position": "absolute",
+      "left": 0,
+      "top": 32,
+      "width": "100%",
+      "height": 40,
+      "text": "装扮",
+      "fontFamily": "sans",
+      "fontSize": 26,
+      "fontWeight": "normal",
+      "fontColor": [
+        91,
+        76,
+        47,
+        255
+      ],
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "lineHeight": 1,
+      "pointerEvents": "none"
+    },
+    {
+      "type": "Panel",
+      "id": "profile-category-bar",
+      "position": "absolute",
+      "left": "50%",
+      "translateX": -94,
+      "top": 88,
+      "width": 188,
+      "height": 44,
+      "backgroundColor": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pointerEvents": "box-none",
+      "children": [
+        {
+          "type": "Button",
+          "id": "category-character",
+          "position": "absolute",
+          "left": 0,
+          "top": 0,
+          "width": 90,
+          "height": 44,
+          "padding": 0,
+          "paddingHorizontal": 0,
+          "borderRadius": 11,
+          "borderWidth": 2,
+          "borderAlign": "center",
+          "borderColor": [
+            91,
+            76,
+            47,
+            255
+          ],
+          "backgroundColor": [
+            238,
+            156,
+            67,
+            255
+          ],
+          "hoverBackgroundColor": [
+            255,
+            246,
+            220,
+            255
+          ],
+          "pressedBackgroundColor": [
+            255,
+            246,
+            220,
+            255
+          ],
+          "boxShadow": false,
+          "decorations": false,
+          "children": [
+            {
+              "type": "Label",
+              "id": "category-character-label",
+              "position": "absolute",
+              "left": 0,
+              "top": 8,
+              "width": 90,
+              "height": 28,
+              "text": "角色",
+              "fontFamily": "sans",
+              "fontSize": 16,
+              "fontColor": [
+                91,
+                76,
+                47,
+                255
+              ],
+              "textAlign": "center",
+              "verticalAlign": "middle",
+              "pointerEvents": "none"
+            }
+          ]
+        },
+        {
+          "type": "Button",
+          "id": "category-background",
+          "position": "absolute",
+          "left": 98,
+          "top": 0,
+          "width": 90,
+          "height": 44,
+          "padding": 0,
+          "paddingHorizontal": 0,
+          "borderRadius": 11,
+          "borderWidth": 2,
+          "borderAlign": "center",
+          "borderColor": [
+            91,
+            76,
+            47,
+            255
+          ],
+          "backgroundColor": [
+            255,
+            246,
+            220,
+            255
+          ],
+          "hoverBackgroundColor": [
+            255,
+            246,
+            220,
+            255
+          ],
+          "pressedBackgroundColor": [
+            255,
+            246,
+            220,
+            255
+          ],
+          "boxShadow": false,
+          "decorations": false,
+          "children": [
+            {
+              "type": "Label",
+              "id": "category-background-label",
+              "position": "absolute",
+              "left": 0,
+              "top": 8,
+              "width": 90,
+              "height": 28,
+              "text": "背景",
+              "fontFamily": "sans",
+              "fontSize": 16,
+              "fontColor": [
+                91,
+                76,
+                47,
+                255
+              ],
+              "textAlign": "center",
+              "verticalAlign": "middle",
+              "pointerEvents": "none"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Panel",
+      "id": "profile-character-content",
+      "position": "absolute",
+      "left": 0,
+      "top": 0,
+      "width": "100%",
+      "height": "100%",
+      "backgroundColor": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pointerEvents": "box-none",
+      "children": [
+        {
+          "type": "Panel",
+          "id": "profile-character-preview",
+          "position": "absolute",
+          "left": 104.6,
+          "top": 154,
+          "width": 194,
+          "height": 194,
+          "backgroundImage": "Textures/character/fox.png",
+          "backgroundFit": "contain",
+          "pointerEvents": "none"
+        },
+        {
+          "type": "Panel",
+          "id": "profile-character-name-pill",
+          "position": "absolute",
+          "left": 167.6,
+          "top": 350,
+          "width": 68,
+          "height": 28,
+          "borderRadius": 14,
+          "backgroundColor": [
+            255,
+            246,
+            220,
+            255
+          ],
+          "children": [
+            {
+              "type": "Label",
+              "id": "profile-character-name",
+              "position": "absolute",
+              "left": 0,
+              "top": 0,
+              "width": 68,
+              "height": 28,
+              "text": "默认",
+              "fontFamily": "sans",
+              "fontSize": 16,
+              "fontColor": [
+                91,
+                76,
+                47,
+                255
+              ],
+              "textAlign": "center",
+              "verticalAlign": "middle",
+              "pointerEvents": "none"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Panel",
+      "id": "profile-background-content",
+      "visible": false,
+      "position": "absolute",
+      "left": 0,
+      "top": 0,
+      "width": "100%",
+      "height": "100%",
+      "backgroundColor": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pointerEvents": "box-none",
+      "children": []
+    },
+    {
+      "type": "Panel",
+      "id": "bottom-tabs",
+      "width": "100%",
+      "height": 56,
+      "position": "absolute",
+      "padding": 0,
+      "gap": 0,
+      "borderWidth": 0,
+      "borderRadius": 0,
+      "backgroundColor": [
+        255,
+        246,
+        220,
+        255
+      ],
+      "boxShadow": false,
+      "pointerEvents": "box-none",
+      "children": [
+        {
+          "type": "Panel",
+          "id": "tab-top-rule",
+          "position": "absolute",
+          "left": 0,
+          "top": -1.25,
+          "width": "100%",
+          "height": 2.5,
+          "backgroundColor": [
+            91,
+            76,
+            47,
+            255
+          ],
+          "borderWidth": 0,
+          "borderRadius": 0,
+          "boxShadow": false,
+          "pointerEvents": "none"
+        },
+        {
+          "type": "Panel",
+          "id": "tab-area",
+          "position": "absolute",
+          "left": 0,
+          "right": 72,
+          "top": 0,
+          "height": "100%",
+          "flexDirection": "row",
+          "padding": 0,
+          "gap": 0,
+          "backgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "borderWidth": 0,
+          "pointerEvents": "box-none",
+          "children": [
+            {
+              "type": "Button",
+              "id": "tab-adventure",
+              "position": "relative",
+              "width": "33.33333333333333%",
+              "height": 56,
+              "padding": 0,
+              "paddingHorizontal": 0,
+              "borderWidth": 0,
+              "borderRadius": 0,
+              "backgroundColor": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "hoverBackgroundColor": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "pressedBackgroundColor": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "boxShadow": false,
+              "hoverBoxShadow": false,
+              "pressedBoxShadow": false,
+              "decorations": false,
+              "backgroundGradient": false,
+              "children": [
+                {
+                  "type": "Panel",
+                  "id": "tab-adventure-plaque",
+                  "position": "absolute",
+                  "left": "5%",
+                  "top": 8,
+                  "width": "90%",
+                  "height": 40,
+                  "padding": 0,
+                  "borderWidth": 2,
+                  "borderAlign": "center",
+                  "borderColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "borderRadius": 11,
+                  "backgroundColor": [
+                    255,
+                    246,
+                    220,
+                    255
+                  ],
+                  "pointerEvents": "none",
+                  "children": [
+                    {
+                      "type": "Label",
+                      "id": "tab-adventure-label",
+                      "position": "absolute",
+                      "left": 0,
+                      "top": 8,
+                      "width": "100%",
+                      "height": 24,
+                      "text": "主线模式",
+                      "fontFamily": "sans",
+                      "fontSize": 17,
+                      "fontWeight": "normal",
+                      "fontColor": [
+                        91,
+                        76,
+                        47,
+                        255
+                      ],
+                      "textAlign": "center",
+                      "verticalAlign": "middle",
+                      "lineHeight": 1,
+                      "padding": 0,
+                      "pointerEvents": "none"
+                    },
+                    {
+                      "type": "Panel",
+                      "id": "tab-adventure-lock",
+                      "visible": false,
+                      "position": "absolute",
+                      "left": "50%",
+                      "translateX": -3.5,
+                      "top": 26.36,
+                      "width": 7,
+                      "height": 8.14,
+                      "backgroundColor": [
+                        0,
+                        0,
+                        0,
+                        0
+                      ],
+                      "pointerEvents": "none"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Button",
+              "id": "tab-home",
+              "position": "relative",
+              "width": "33.33333333333333%",
+              "height": 56,
+              "disabled": true,
+              "padding": 0,
+              "paddingHorizontal": 0,
+              "borderWidth": 0,
+              "borderRadius": 0,
+              "backgroundColor": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "hoverBackgroundColor": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "pressedBackgroundColor": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "disabledBackgroundColor": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "boxShadow": false,
+              "hoverBoxShadow": false,
+              "pressedBoxShadow": false,
+              "disabledBoxShadow": false,
+              "decorations": false,
+              "backgroundGradient": false,
+              "children": [
+                {
+                  "type": "Panel",
+                  "id": "tab-home-plaque",
+                  "position": "absolute",
+                  "left": "5%",
+                  "top": 8,
+                  "width": "90%",
+                  "height": 40,
+                  "padding": 0,
+                  "borderWidth": 2,
+                  "borderAlign": "center",
+                  "borderColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "borderRadius": 11,
+                  "backgroundColor": [
+                    224,
+                    220,
+                    197,
+                    255
+                  ],
+                  "pointerEvents": "none",
+                  "children": [
+                    {
+                      "type": "Label",
+                      "id": "tab-home-label",
+                      "position": "absolute",
+                      "left": 0,
+                      "top": 3,
+                      "width": "100%",
+                      "height": 24,
+                      "text": "自由模式",
+                      "fontFamily": "sans",
+                      "fontSize": 17,
+                      "fontWeight": "normal",
+                      "fontColor": [
+                        116,
+                        102,
+                        70,
+                        255
+                      ],
+                      "textAlign": "center",
+                      "verticalAlign": "middle",
+                      "lineHeight": 1,
+                      "padding": 0,
+                      "pointerEvents": "none"
+                    },
+                    {
+                      "type": "Panel",
+                      "id": "tab-home-lock",
+                      "position": "absolute",
+                      "left": "50%",
+                      "translateX": -3.5,
+                      "top": 26.36,
+                      "width": 7,
+                      "height": 8.14,
+                      "padding": 0,
+                      "backgroundColor": [
+                        0,
+                        0,
+                        0,
+                        0
+                      ],
+                      "borderWidth": 0,
+                      "pointerEvents": "none",
+                      "children": [
+                        {
+                          "type": "Panel",
+                          "id": "tab-home-lock-shackle",
+                          "position": "absolute",
+                          "left": 1.26,
+                          "top": 0,
+                          "width": 4.48,
+                          "height": 4.48,
+                          "borderWidth": 2,
+                          "borderBottomWidth": 0,
+                          "borderRadius": 2.24,
+                          "borderAlign": "center",
+                          "borderColor": [
+                            160,
+                            150,
+                            140,
+                            200
+                          ],
+                          "backgroundColor": [
+                            0,
+                            0,
+                            0,
+                            0
+                          ],
+                          "pointerEvents": "none"
+                        },
+                        {
+                          "type": "Panel",
+                          "id": "tab-home-lock-body",
+                          "position": "absolute",
+                          "left": 0,
+                          "top": 3.24,
+                          "width": 7,
+                          "height": 4.9,
+                          "borderWidth": 0,
+                          "borderRadius": 1.5,
+                          "backgroundColor": [
+                            160,
+                            150,
+                            140,
+                            200
+                          ],
+                          "pointerEvents": "none"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Button",
+              "id": "tab-profile",
+              "position": "relative",
+              "width": "33.33333333333333%",
+              "height": 56,
+              "padding": 0,
+              "paddingHorizontal": 0,
+              "borderWidth": 0,
+              "borderRadius": 0,
+              "backgroundColor": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "hoverBackgroundColor": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "pressedBackgroundColor": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "boxShadow": false,
+              "hoverBoxShadow": false,
+              "pressedBoxShadow": false,
+              "decorations": false,
+              "backgroundGradient": false,
+              "children": [
+                {
+                  "type": "Panel",
+                  "id": "tab-profile-plaque",
+                  "position": "absolute",
+                  "left": "5%",
+                  "top": 8,
+                  "width": "90%",
+                  "height": 40,
+                  "padding": 0,
+                  "borderWidth": 2,
+                  "borderAlign": "center",
+                  "borderColor": [
+                    91,
+                    76,
+                    47,
+                    255
+                  ],
+                  "borderRadius": 11,
+                  "backgroundColor": [
+                    238,
+                    156,
+                    67,
+                    255
+                  ],
+                  "pointerEvents": "none",
+                  "children": [
+                    {
+                      "type": "Label",
+                      "id": "tab-profile-label",
+                      "position": "absolute",
+                      "left": 0,
+                      "top": 8,
+                      "width": "100%",
+                      "height": 24,
+                      "text": "装扮",
+                      "fontFamily": "sans",
+                      "fontSize": 17,
+                      "fontWeight": "normal",
+                      "fontColor": [
+                        91,
+                        76,
+                        47,
+                        255
+                      ],
+                      "textAlign": "center",
+                      "verticalAlign": "middle",
+                      "lineHeight": 1,
+                      "padding": 0,
+                      "pointerEvents": "none"
+                    },
+                    {
+                      "type": "Panel",
+                      "id": "tab-profile-lock",
+                      "visible": false,
+                      "position": "absolute",
+                      "left": "50%",
+                      "translateX": -3.5,
+                      "top": 26.36,
+                      "width": 7,
+                      "height": 8.14,
+                      "backgroundColor": [
+                        0,
+                        0,
+                        0,
+                        0
+                      ],
+                      "pointerEvents": "none"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Button",
+          "id": "tab-settings",
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+          "width": 52,
+          "height": 56,
+          "padding": 0,
+          "paddingHorizontal": 0,
+          "borderWidth": 0,
+          "borderRadius": 0,
+          "backgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "hoverBackgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pressedBackgroundColor": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "boxShadow": false,
+          "hoverBoxShadow": false,
+          "pressedBoxShadow": false,
+          "decorations": false,
+          "backgroundGradient": false,
+          "children": [
+            {
+              "type": "Panel",
+              "id": "settings-plaque",
+              "position": "absolute",
+              "left": -2,
+              "top": 8,
+              "width": 44,
+              "height": 40,
+              "padding": 0,
+              "borderWidth": 2,
+              "borderAlign": "center",
+              "borderColor": [
+                91,
+                76,
+                47,
+                255
+              ],
+              "borderRadius": 11,
+              "backgroundColor": [
+                255,
+                246,
+                220,
+                255
+              ],
+              "pointerEvents": "none",
+              "children": [
+                {
+                  "type": "Panel",
+                  "id": "gear",
+                  "position": "absolute",
+                  "left": 10,
+                  "top": 8,
+                  "width": 24,
+                  "height": 24,
+                  "padding": 0,
+                  "backgroundColor": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "borderWidth": 0,
+                  "pointerEvents": "none",
+                  "children": [
+                    {
+                      "type": "Panel",
+                      "id": "gear-teeth-horizontal",
+                      "position": "absolute",
+                      "left": 0,
+                      "top": 9,
+                      "width": 24,
+                      "height": 6,
+                      "backgroundColor": [
+                        91,
+                        76,
+                        47,
+                        255
+                      ],
+                      "borderWidth": 0,
+                      "pointerEvents": "none"
+                    },
+                    {
+                      "type": "Panel",
+                      "id": "gear-teeth-diagonal-a",
+                      "position": "absolute",
+                      "left": 0,
+                      "top": 9,
+                      "width": 24,
+                      "height": 6,
+                      "rotate": 45,
+                      "backgroundColor": [
+                        91,
+                        76,
+                        47,
+                        255
+                      ],
+                      "borderWidth": 0,
+                      "pointerEvents": "none"
+                    },
+                    {
+                      "type": "Panel",
+                      "id": "gear-teeth-vertical",
+                      "position": "absolute",
+                      "left": 0,
+                      "top": 9,
+                      "width": 24,
+                      "height": 6,
+                      "rotate": 90,
+                      "backgroundColor": [
+                        91,
+                        76,
+                        47,
+                        255
+                      ],
+                      "borderWidth": 0,
+                      "pointerEvents": "none"
+                    },
+                    {
+                      "type": "Panel",
+                      "id": "gear-teeth-diagonal-b",
+                      "position": "absolute",
+                      "left": 0,
+                      "top": 9,
+                      "width": 24,
+                      "height": 6,
+                      "rotate": 135,
+                      "backgroundColor": [
+                        91,
+                        76,
+                        47,
+                        255
+                      ],
+                      "borderWidth": 0,
+                      "pointerEvents": "none"
+                    },
+                    {
+                      "type": "Panel",
+                      "id": "gear-disc",
+                      "position": "absolute",
+                      "left": 3,
+                      "top": 3,
+                      "width": 18,
+                      "height": 18,
+                      "shape": "circle",
+                      "backgroundColor": [
+                        91,
+                        76,
+                        47,
+                        255
+                      ],
+                      "borderWidth": 0,
+                      "pointerEvents": "none"
+                    },
+                    {
+                      "type": "Panel",
+                      "id": "gear-hole",
+                      "position": "absolute",
+                      "left": 8,
+                      "top": 8,
+                      "width": 8,
+                      "height": 8,
+                      "shape": "circle",
+                      "backgroundColor": [
+                        255,
+                        246,
+                        220,
+                        255
+                      ],
+                      "borderWidth": 0,
+                      "pointerEvents": "none"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "left": 0,
+      "bottom": 0
+    }
   ]
 }
