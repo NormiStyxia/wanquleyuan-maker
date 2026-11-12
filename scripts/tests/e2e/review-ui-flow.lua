@@ -197,6 +197,39 @@ V.atFrame(272,function()
     V.assert(#state.imageFailures==0,"完整路径所有实际图片加载成功")
     for _,path in ipairs(state.imageFailures) do print("[UIFlowImageError] "..path) end
     V.assert(state.files["saves/p1-puzzle-land.json"]~=nil,"退出存档只写独立内存")
-    print("[UIFlow] finished real main/router/adapter path; saves and cloud isolated")
+    Router.replace("home")
+end)
+V.atFrame(278,function()
+    local root=UI.GetRoot()
+    local document=root:FindById("home-page")
+    V.assert(document and document._jsonSource and document._jsonSource.file=="ui/home.ui.json","首页确实来自目标JSON资源")
+    local guard=require("shared.utils.play-time-guard")
+    local restricted,reason=guard.isRestricted,guard.getBlockReason
+    guard.isRestricted=function() return true end
+    guard.getBlockReason=function() return "time_limit" end
+    clickWidget("game-p1-puzzle-land")
+    V.assert(Router.getCurrent()=="home" and Container.getState()=="IDLE","防沉迷限制仍拦截JSON卡片进入")
+    V.assert(root:FindById("rest-card")~=nil,"受限入口仍显示原防沉迷弹窗")
+    require("shared.components.anti-addiction-popup").dismiss()
+    guard.isRestricted,guard.getBlockReason=restricted,reason
+    local previousBg=Bg.getCurrent
+    Bg.getCurrent=function()
+        return {id="preview-test",themeImage="image/handdrawn/backgrounds/sky_blue.png",colors={base={230,242,255,255}}}
+    end
+    local outfit=require("shared.outfit-manager")
+    local previousTexture=outfit.getTexturePath
+    outfit.getTexturePath=function() return "Textures/character/skins/fox_sport.png" end
+    state.restoreHomeDynamic=function()
+        Bg.getCurrent=previousBg
+        outfit.getTexturePath=previousTexture
+    end
+end)
+V.atFrame(282,function()
+    local root=UI.GetRoot()
+    V.assert(root:FindById("home-background").props.backgroundImage=="image/handdrawn/backgrounds/sky_blue.png","JSON背景跟随原管理器状态更新")
+    V.assert(root:FindById("home-mascot").props.backgroundImage=="Textures/character/skins/fox_sport.png","JSON狐狸跟随原皮肤状态更新")
+    V.assert(root:FindById("tab-home").props.disabled==false,"已通关第4关时解除JSON自由页签静态禁用")
+    state.restoreHomeDynamic()
+    print("[UIFlow] finished JSON home/router/adapter path; saves and cloud isolated")
     V.finish()
 end)

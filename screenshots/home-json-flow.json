@@ -2,7 +2,7 @@
     "version": 2,
     "script": "tests/e2e/ui-flow-scene.lua",
     "result": "FAIL",
-    "duration_ms": 9615,
+    "duration_ms": 9960,
     "frames_completed": 285,
     "phases": {
         "load": {
@@ -18,22 +18,32 @@
             "errors": [
                 {
                     "category": "engine",
-                    "message": "Frame time spike: 886.527ms (threshold: 100ms)",
+                    "message": "Frame time spike: 359.371ms (threshold: 100ms)",
                     "frame": 2
                 },
                 {
                     "category": "engine",
-                    "message": "Frame time spike: 168.676ms (threshold: 100ms)",
+                    "message": "Frame time spike: 120.786ms (threshold: 100ms)",
                     "frame": 9
                 },
                 {
                     "category": "engine",
-                    "message": "Frame time spike: 206.903ms (threshold: 100ms)",
-                    "frame": 150
+                    "message": "Frame time spike: 376.379ms (threshold: 100ms)",
+                    "frame": 10
                 },
                 {
                     "category": "engine",
-                    "message": "Frame time spike: 350.732ms (threshold: 100ms)",
+                    "message": "Frame time spike: 111.462ms (threshold: 100ms)",
+                    "frame": 20
+                },
+                {
+                    "category": "engine",
+                    "message": "Frame time spike: 173.373ms (threshold: 100ms)",
+                    "frame": 149
+                },
+                {
+                    "category": "engine",
+                    "message": "Frame time spike: 110.09ms (threshold: 100ms)",
                     "frame": 214
                 }
             ]
@@ -53,7 +63,7 @@
             "nodes": 0,
             "components": 0,
             "hash": 0,
-            "frame_time_ms": 862.9760131835938
+            "frame_time_ms": 942.0150146484375
         },
         {
             "frame": 10,
@@ -61,7 +71,7 @@
             "nodes": 0,
             "components": 0,
             "hash": 0,
-            "frame_time_ms": 16.62700080871582
+            "frame_time_ms": 376.3789978027344
         },
         {
             "frame": 142,
@@ -69,7 +79,7 @@
             "nodes": 0,
             "components": 0,
             "hash": 0,
-            "frame_time_ms": 16.5989990234375
+            "frame_time_ms": 24.781999588012697
         },
         {
             "frame": 285,
@@ -77,47 +87,26 @@
             "nodes": 0,
             "components": 0,
             "hash": 0,
-            "frame_time_ms": 16.591001510620118
+            "frame_time_ms": 16.96299934387207
         }
     ],
     "scene_stalled": true,
-    "max_frame_time_ms": 886.5269775390625,
+    "max_frame_time_ms": 376.3789978027344,
     "update_defined": false,
     "component_census": {},
-    "test_result": "FAILED",
+    "test_result": "PASSED",
     "test_assertions": {
-        "total": 198,
-        "passed": 178,
-        "failed": 20
+        "total": 304,
+        "passed": 304,
+        "failed": 0
     },
-    "test_issues": [
-        "真实卡片进入adapter p2-memory-flip",
-        "进入的玩法身份正确 p2-memory-flip",
-        "游戏压栈保留来源大厅",
-        "选关由adapter渲染 p2-memory-flip",
-        "真实关卡已渲染 p2-memory-flip",
-        "容器暂停有效 p2-memory-flip",
-        "容器恢复有效 p2-memory-flip",
-        "Escape打开真实暂停层 p2-memory-flip",
-        "实际绘制的点击区存在",
-        "实际绘制的点击区存在",
-        "真实卡片进入adapter p3-match-3",
-        "进入的玩法身份正确 p3-match-3",
-        "游戏压栈保留来源大厅",
-        "选关由adapter渲染 p3-match-3",
-        "真实关卡已渲染 p3-match-3",
-        "容器暂停有效 p3-match-3",
-        "容器恢复有效 p3-match-3",
-        "Escape打开真实暂停层 p3-match-3",
-        "实际绘制的点击区存在",
-        "实际绘制的点击区存在"
-    ],
+    "test_issues": [],
     "missing_resources": [],
     "missing_engine_resources": [],
     "summary": {
         "lua_errors": 0,
         "resource_errors": 0,
-        "engine_errors": 4,
-        "total_errors": 4
+        "engine_errors": 6,
+        "total_errors": 6
     }
 }
