@@ -146,7 +146,8 @@ function P4LM_HandleNanoVGRender(eventType, eventData)
     local logW, logH = Density.beginFrame(nvgCtx_)
 
     local function foxAfterBg()
-        FoxMascot.render(nvgCtx_, logW, logH, 34, {handdrawn=true})
+        local foxOptions = screen_ == "level_select" and FoxMascot.getLevelSelectOptions(34) or { handdrawn = true }
+        FoxMascot.render(nvgCtx_, logW, logH, 34, foxOptions)
     end
 
     if screen_ == "level_select" then

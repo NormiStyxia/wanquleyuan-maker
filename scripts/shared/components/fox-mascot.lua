@@ -339,6 +339,17 @@ function M.hitTest(lx, ly, screenW, screenH, bottomOffset, options)
        and ly >= (foxY - padding) and ly <= (foxY + foxSize + padding)
 end
 
+--- 四个选关页统一使用狐狸头顶偏右的留白，不改变立绘与点击区。
+---@param bottomOffset number|nil
+---@return table
+function M.getLevelSelectOptions(bottomOffset)
+    return {
+        handdrawn = true,
+        bubbleLeft = 36,
+        bubbleBottomInset = 180 - (bottomOffset or 0),
+    }
+end
+
 --- 每帧渲染（在 nvgBeginFrame/nvgEndFrame 之间调用，在其他内容之后）
 ---@param vg userdata NanoVG 上下文
 ---@param screenW number 逻辑屏幕宽度
@@ -408,7 +419,8 @@ function M.render(vg, screenW, screenH, bottomOffset, options)
     if bubbleAlpha <= 0.01 then return end
 
     -- 选关页将气泡抬到角色右上方，为翻页区留出空间；其他页面沿用脚底对齐。
-    local textX = foxX + foxSize + TEXT_OFFSET_X
+    local textX = options.bubbleLeft and (options.bubbleLeft + TEXT_BG_PAD_H)
+        or (foxX + foxSize + TEXT_OFFSET_X)
     local foxBottom = foxY + foxSize  -- 狐狸脚底 Y 坐标
     local textBottom = foxBottom - TEXT_MARGIN_B - (options.bubbleBottomInset or 0)
 

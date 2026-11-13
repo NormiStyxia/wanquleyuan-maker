@@ -182,8 +182,9 @@ function HomeDynamicLayer:Render(vg)
     local mascot = find("home-mascot")
     if mascot then
         local mRect = mascot:GetAbsoluteLayout()
+        local mascotY = mRect.y + (mascot:GetRenderProp("translateY") or 0)
         FoxMascot.render(vg, rect.x + designW_, rect.y + designH_, 56, {
-            handdrawn = true, size = mRect.w, x = mRect.x, y = mRect.y,
+            handdrawn = true, size = mRect.w, x = mRect.x, y = mascotY,
             drawPortrait = false, bubbleBottomInset = 72,
         })
     end
@@ -201,19 +202,18 @@ local GAME_ICON_IDS = {
 }
 
 local function updateIdleAnimations()
-    -- 四张玩法卡片内的手绘图标错峰轻柔浮动
+    -- 只更新渲染变换，避免 Yoga 像素取整把连续起伏变成阶梯跳动。
     for i, iconId in ipairs(GAME_ICON_IDS) do
         local icon = find(iconId)
         if icon then
             local bob = math.sin(animTime_ * 2.6 + (i - 1) * 1.15) * 2.2
-            icon:SetStyle({ top = 15 + bob })
+            icon:SetStyle({ translateY = bob })
         end
     end
-    -- 吉祥物轻微呼吸浮动
     local mascot = find("home-mascot")
     if mascot then
         local mBob = math.sin(animTime_ * 2.0) * 2.0
-        mascot:SetStyle({ top = 676 + mBob })
+        mascot:SetStyle({ translateY = mBob })
     end
 end
 

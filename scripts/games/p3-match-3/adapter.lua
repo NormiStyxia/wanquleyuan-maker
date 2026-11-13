@@ -153,7 +153,8 @@ function P3M3_HandleNanoVGRender(eventType, eventData)
     local logW, logH = Density.beginFrame(nvgCtx_)
 
     local function foxAfterBg()
-        FoxMascot.render(nvgCtx_, logW, logH, 0, {handdrawn=true})
+        local foxOptions = screen_ == "level_select" and FoxMascot.getLevelSelectOptions(0) or { handdrawn = true }
+        FoxMascot.render(nvgCtx_, logW, logH, 0, foxOptions)
     end
 
     if screen_ == "level_select" then
